@@ -18,7 +18,7 @@
 ## Team
 
 - Student A
-- Student B
+- Artur Yurchuk - 2021130221
 - Student C
 
 ***
