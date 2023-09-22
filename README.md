@@ -20,6 +20,8 @@
 - Francisco Costa - 2021146317
 - Artur Yurchuk - 2021130221
 - Student C
+- Student D
+- Student E
 
 ***
 
