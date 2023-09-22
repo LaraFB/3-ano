@@ -17,7 +17,7 @@
 
 ## Team
 
-- Student A
+- Ola Francisco
 - Artur Yurchuk - 2021130221
 - Student C
 
