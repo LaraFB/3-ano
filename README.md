@@ -19,7 +19,7 @@
 
 - Francisco Costa - 2021146317
 - Artur Yurchuk - 2021130221
-- Student C
+- Lara Bizarro - 2021130066
 - Student D
 - Student E
 
