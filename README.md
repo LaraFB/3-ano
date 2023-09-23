@@ -18,9 +18,9 @@
 ## Team
 
 - Francisco Costa - 2021146317
-- Artur Yurchuk - 2021130221
-- Lara Bizarro - 2021130066
-- Student D
+- Artur Yurchuk   - 2021130221
+- Lara Bizarro    - 2021130066
+- Joana Ferrao    - 2020131638
 - Student E
 
 ***
