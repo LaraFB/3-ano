@@ -21,7 +21,7 @@
 - Artur Yurchuk   - 2021130221
 - Lara Bizarro    - 2021130066
 - Joana Ferrao    - 2020131638
-- Student E
+- Ana Sofia Silva - 2021154586
 
 ***
 
