@@ -31,10 +31,7 @@
 
 ##### Project background
 
-This section contains a summary of the problem that the project will solve. It should provide a brief history of the
-problem and an explanation of how the organization justified the decision to build software to address it. This section
-should cover the reasons why the problem exists, the organization's history with this problem, any previous projects
-that were undertaken to try to address it, and the way that the decision to begin this project was reached.
+Gerir as finanças pessoais é uma parte essencial da vida quotidiana. Atualmente, de forma a controlar as despesas apenas consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. Numa tentativa de facilitar a leitura dos gastos financeiros, procuramos desenvolver um Gestor de Despesas, uma solução intuitiva e fácil de usar, que permite categorizar e visualizar um resumo das despesas do dia, do mês ou até do ano. 
 
 ##### Stakeholders
 
@@ -43,9 +40,7 @@ manager," "CTO," "senior manager"). The needs of each stakeholder are described 
 
 ##### Users
 
-This is a bulleted list of the users. As with the stakeholders, each user can either be referred to by name or role ("
-support rep," "call quality auditor," "home web site user")however, if there are many users, it is usually inefficient
-to try to name each one. The needs of each user are described.
+O software “Gestor de Despesas” é projetado para uma ampla variedade de utilizadores: Indivíduos (Pessoas que desejam manter um registo detalhado de suas despesas para uma melhor gestão financeira), Famílias (Famílias que procuram gerir as despesas dos vários membros do agregado familiar) e Empresas (Profissionais autônomos e pequenos empresários que desejam controlar as finanças relativas ao seu negócio).
 
 ***
 
@@ -53,12 +48,21 @@ to try to name each one. The needs of each user are described.
 
 ##### Vision statement
 
-The goal of the vision statement is to describe what the project is expected to accomplish. It should explain what the
-purpose of the project is. This should be a compelling reason, a solid justification for spending time, money, and
-resources on the project. The best time to write the vision statement is after talking to the stakeholders and users and
-writing down their needs; by this time, a concrete understanding of the project should be starting to jell.
+Com Gestor de Despesas procuramos um mundo onde a gestão financeira é facilmente acessível.  Aspiramos criar um software que sirva como um companheiro financeiro confiável, simplificando as complexidades do acompanhamento financeiro. 
+Vemos o Gestor de Despesas como um catalisador de mudanças, ajudando os utilizadores a assumir o controlo do seu dinheiro, reduzindo o stress financeiro e ajudando a criar e cumprir objetivos impostos pelos próprios utilizadores.
+ A nossa visão é capacitar as pessoas a abraçarem um futuro financeiro mais controlado, onde a gestão de despesas não seja um fardo, mas uma oportunidade de crescimento, estabilidade e prosperidade. 
+
 
 ##### List of features
+
+Os nossos principais objetivos são os seguintes:
+- Acompanhar as despesas
+- Categorizar as despesas
+- Resumo de despesas
+- Autenticação dos utilizadores
+- Análise de despesas
+- Estabelecer budgets/limites em certas áreas
+- Disparar notificações quando os limites forem ultrapassados  
 
 This section contains a list of features. A feature is as a cohesive area of the software that fulfills a specific need
 by providing a set of services or capabilities. Any software package, in fact, any engineered product, can be broken
