@@ -18,9 +18,9 @@
 ## Team
 
 - Francisco Costa - 2021146317
-- Artur Yurchuk   - 2021130221
-- Lara Bizarro    - 2021130066
-- Joana Ferrao    - 2020131638
+- Artur Yurchuk - 2021130221
+- Lara Bizarro - 2021130066
+- Joana Ferrao - 2020131638
 - Ana Sofia Silva - 2021154586
 
 ***
@@ -31,38 +31,41 @@
 
 ##### Project background
 
-Gerir as finanças pessoais é uma parte essencial da vida quotidiana. Atualmente, de forma a controlar as despesas apenas consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. Numa tentativa de facilitar a leitura dos gastos financeiros, procuramos desenvolver um Gestor de Despesas, uma solução intuitiva e fácil de usar, que permite categorizar e visualizar um resumo das despesas do dia, do mês ou até do ano. 
+Gerir as finanças pessoais é uma parte essencial da vida quotidiana. Atualmente, de forma a controlar as despesas apenas
+consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. Numa tentativa de facilitar a
+leitura dos gastos financeiros, procuramos desenvolver um Gestor de Despesas, uma solução intuitiva e fácil de usar, que
+permite categorizar e visualizar um resumo das despesas do dia, do mês ou até do ano.
 
 ##### Stakeholders
 
-
-
 ##### Users
 
-O software “Gestor de Despesas” é projetado para uma ampla variedade de utilizadores: Indivíduos (Pessoas que desejam manter um registo detalhado de suas despesas para uma melhor gestão financeira), Famílias (Famílias que procuram gerir as despesas dos vários membros do agregado familiar) e Empresas (Profissionais autônomos e pequenos empresários que desejam controlar as finanças relativas ao seu negócio).
+O software “Gestor de Despesas” é projetado para estudantes deslocados - Pessoas que desejam
+manter um registo detalhado de suas despesas para uma melhor gestão financeira. Estas despesas são distribuidas entre custos de vida (renda, compras de supermercado, serviços de água, eletrecidade, entre outros), despesas pessoas (jantares com amigos, idas a cafés, etc) e custos únicos adicionais (o estudante pode comprar manuais escolares durante o primeiro mês de aulas).
 
-***
 
 #### Vision & Scope of the Solution
 
 ##### Vision statement
 
-Com Gestor de Despesas procuramos um mundo onde a gestão financeira é facilmente acessível.  Aspiramos criar um software que sirva como um companheiro financeiro confiável, simplificando as complexidades do acompanhamento financeiro. 
-Vemos o Gestor de Despesas como um catalisador de mudanças, ajudando os utilizadores a assumir o controlo do seu dinheiro, reduzindo o stress financeiro e ajudando a criar e cumprir objetivos impostos pelos próprios utilizadores.
- A nossa visão é capacitar as pessoas a abraçarem um futuro financeiro mais controlado, onde a gestão de despesas não seja um fardo, mas uma oportunidade de crescimento, estabilidade e prosperidade. 
-
+Com Gestor de Despesas procuramos um mundo onde a gestão financeira é facilmente acessível. Aspiramos criar um software
+que sirva como um companheiro financeiro confiável, simplificando as complexidades do acompanhamento financeiro.
+Vemos o Gestor de Despesas como um catalisador de mudanças, ajudando os utilizadores a assumir o controlo do seu
+dinheiro, reduzindo o stress financeiro e ajudando a criar e cumprir objetivos impostos pelos próprios utilizadores.
+A nossa visão é capacitar as pessoas a abraçarem um futuro financeiro mais controlado, onde a gestão de despesas não
+seja um fardo, mas uma oportunidade de crescimento, estabilidade e prosperidade.
 
 ##### List of features
 
 Os nossos principais objetivos são os seguintes:
+
 - Acompanhar as despesas
 - Categorizar as despesas
 - Resumo de despesas
 - Autenticação dos utilizadores
 - Análise de despesas
 - Estabelecer budgets/limites em certas áreas
-- Disparar notificações quando os limites forem ultrapassados  
-
+- Disparar notificações quando os limites forem ultrapassados
 
 ##### Features that will not be developed
 
@@ -70,10 +73,7 @@ Ainda não temos uma ideia concreta.
 
 ##### Risk
 
-
-
 ##### Assumptions
-
 
 ***
 
