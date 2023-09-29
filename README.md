@@ -31,7 +31,7 @@
 
 ##### Project background
 
-Gerir as finanças pessoais é uma parte essencial da vida quotidiana. Atualmente, de forma a controlar as despesas apenas consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. Numa tentativa de facilitar a leitura dos gastos financeiros, procuramos desenvolver um Gestor de Despesas, uma solução intuitiva e fácil de usar, que permite categorizar e visualizar um resumo das despesas do dia, do mês ou até do ano. 
+Gerir as finanças pessoais é uma parte essencial da vida quotidiana. Atualmente, de forma a controlar as despesas apenas consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. Numa tentativa de facilitar a leitura dos gastos financeiros e de controlar as despesas, procurámos desenvolver um Gestor de Despesas, uma solução intuitiva e fácil de usar, que permite categorizar e visualizar um resumo das despesas do dia, do mês ou até do ano. 
 
 ##### Stakeholders
 
@@ -39,7 +39,7 @@ Gerir as finanças pessoais é uma parte essencial da vida quotidiana. Atualment
 
 ##### Users
 
-O software “Gestor de Despesas” é projetado para uma ampla variedade de utilizadores: Indivíduos (Pessoas que desejam manter um registo detalhado de suas despesas para uma melhor gestão financeira), Famílias (Famílias que procuram gerir as despesas dos vários membros do agregado familiar) e Empresas (Profissionais autônomos e pequenos empresários que desejam controlar as finanças relativas ao seu negócio).
+Ao contrário das outras aplicações no mercado, o nosso projeto foca-se no estudante (Pessoas que se encontram deslocadas e que desejam manter um registo detalhado de suas despesas para uma melhor gestão financeira).
 
 ***
 
@@ -56,17 +56,16 @@ Vemos o Gestor de Despesas como um catalisador de mudanças, ajudando os utiliza
 
 Os nossos principais objetivos são os seguintes:
 - Acompanhar as despesas
-- Categorizar as despesas
+- Categorizar as despesas (Por exemplo: Refeições na cantina, propinas, "going out", despesas, etc.)
 - Resumo de despesas
-- Autenticação dos utilizadores
 - Análise de despesas
-- Estabelecer budgets/limites em certas áreas
-- Disparar notificações quando os limites forem ultrapassados  
+- Estabelecer budgets/limites em certas áreas (reservar ou não permitir que o utilizador gaste mais)
+- Notificar o utilizador quando os limites estiverem próximos de serem ultrapassados  
 
 
 ##### Features that will not be developed
 
-Ainda não temos uma ideia concreta.
+Associar um cartão e uma conta bancária, uma vez que exige permissões que não temos (pretendemos resolver esta questão criando um budget que é introduzido pelo utilizador e adiciona a cada mês o mesmo valor. Irá exigir que o utilizador tome o cuidado de registar todas as operações financeiras efetuadas.)
 
 ##### Risk
 
