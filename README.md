@@ -38,11 +38,22 @@ permite categorizar e visualizar um resumo das despesas do dia, do mês ou até 
 
 ##### Stakeholders
 
+###### Stakeholder Primário - Estudante Deslocado
+Os estudantes são os principais beneficiários deste software, visto que afeta diretamente a sua capacidade de gerir as suas finanças enquanto vivem longe de casa.
+
+
+###### Interessados Secundários: Pais / Responsáveis
+Podem fornecer apoio financeiro aos estudantes e têm um interesse indireto na eficiência do software. É do seu interesse que as suas contribuições financeiras sejam usadas de maneira responsável e que o seu filho tenha estabilidade e educação financeira.
+
+
+###### Stakeholders Terceários - Instituições de Ensino 
+Embora possam não ter um interesse financeiro direto, têm interesse no bem-estar geral de seus estudantes - é um tema que pode afetar seu desempenho acadêmico e experiência geral na instituição.
+Existem também algumas instituições que oferecem bolsas a certos estudantes, de acordo com o seu desempenho ou contribuição para com a mesma.
+
 ##### Users
 
 O software “Gestor de Despesas” é projetado para estudantes deslocados - Pessoas que desejam
 manter um registo detalhado de suas despesas para uma melhor gestão financeira. Estas despesas são distribuidas entre custos de vida (renda, compras de supermercado, serviços de água, eletrecidade, entre outros), despesas pessoas (jantares com amigos, idas a cafés, etc) e custos únicos adicionais (o estudante pode comprar manuais escolares durante o primeiro mês de aulas).
-
 
 #### Vision & Scope of the Solution
 
