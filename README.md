@@ -85,9 +85,26 @@ Os nossos principais objetivos são os seguintes:
 
 Associar um cartão e uma conta bancária, uma vez que exige permissões que não temos (pretendemos resolver esta questão criando um budget que é introduzido pelo utilizador e adiciona a cada mês o mesmo valor. Irá exigir que o utilizador tome o cuidado de registar todas as operações financeiras efetuadas.)
 
+
 ##### Risk
 
+###### Segurança e privacidade
+
+Como pretendemos trabalhar com informação sensível temos um grande risco de violações de dados ou de privacidade, o que poderia pôr em causa a fidelidade do nosso software. Desta forma, a implementação de protocolos de segurança rigorosos, criptologia e a conformidade com leis de proteção de dados são essenciais. 
+
+###### Marketing
+
+Outro risco será a adoção dos estudantes, por outras palavras, a falta de conhecimento sobre o software, uma vez que existem imensas aplicações financeiras. Para combater isto, pretendemos fazer parcerias com instituições, adotar medidas eficazes de marketing.
+
 ##### Assumptions
+
+Supõe-se:
+- que os estudantes utilizem o software ativamente para acompanhar despesas, definir orçamentos e trabalhar em direção aos seus objetivos.
+- que os utilizadores fornecerão valores precisos, como renda e despesas.
+-  a demanda de um produto financeiro dedicado às necessidades dos estudantes.
+- que a infraestrutura do software será segura e resistente a violações de dados.
+- que o software cumprirá todas as regulamentações e leis financeiras relevantes.
+- O software pressupõe a necessidade de atualizações e melhorias contínuas para se adaptar às mudanças no cenário financeiro e às necessidades dos utilizadores.
 
 ***
 
@@ -134,12 +151,16 @@ Associar um cartão e uma conta bancária, uma vez que exige permissões que nã
 
 ##### User Story 1
 
-As ..., I want ..., so ...
+As a new user,
+I want to be able to create a new account,
+So that I can start using it and mange my finances effectively.
+
+(Como um novo utilizador. desejo poder registar-me para puder usar o software).
 
 ###### Acceptance Criteria
 
 ```
-An acceptance test should be written here
+Quando abrir o software, devo ver uma opção clara e intuitiva para fazer o login ou para registar uma nova conta. Durante o processo de registo, devo ser pedido o meu nome, endereço de e-mail e criar uma senha segura com verificação. Após fornecer as informações necessárias, devo receber um e-mail de verificação para confirmar minha conta. Após clicar no link de verificação no e-mail, devo receber uma mensagem de confirmação no software, indicando que minha conta está ativa. Não devo ser capaz de aceder aos recursos do software até que minha conta seja verificada. Se encontrar qualquer problema durante o login, como um e-mail ou senha inválidos, devo receber mensagens de erro claras me orientando sobre como resgatar a palavra-passe.
 ```
 
 ###### Prototype
@@ -150,10 +171,37 @@ A prototype of user story 1 should be here. You can see in (#use-case-diagram) h
 
 ##### User Story 2
 
+As a student, I want to be able to track my daily expenses and categorize them,so that I can gain insights into my spending habits.
+
+(Como estudante, quero ser capaz de controlar as minhas despesas diárias e categorizá-las, para saber mais sobre os meus gastos diários).
+
+###### Acceptance Criteria
+
+```
+Após fazer o login, devo ter um painel inicial que mostre o meu balanço semanal, de forma a mostrar o dinheiro que tenho reservado para aquela semana, assim como um balanço do que já gastei. Além disso, o software deve ter uma opção bem vísivelpara inserir as minhas despesas. Devo ser capaz de inserir o valor gasto, a data, uma breve descrição e escolher uma categoria existente (por exemplo, alimentação, refeições na cantina, propinas, transporte, ginásio) ou criar uma nova. Devo ser capaz de visualizar gráficos ou informação clara e curta em cada categoria sobre os balanços mensais e semanais. Devo receber lembretes se exceder os limites de gastos predefinidos.
+```
+
+###### Prototype
+
+A prototype of user story 2 should be here. You can see in (#use-case-diagram) how to import an image.
+
 ***
 
 ##### User Story 3
 
+As a student, I want to analyze my spending patterns, So that I can better understand where my money is going and make informed financial decisions.
+
+(Como estudante, quero analisar os meus gastos, para entender para onde vai o meu dinheiro e tomar melhores decisões).
+
+###### Acceptance Criteria
+
+```
+Após fazer o login, devo ter um menu que me permita efetuar diversas operações, como por exemplo ver o conjunto de todas as despesas, ver as despesas por categoria, ver uma breve análise. Nessa análise, posso escolher o intervalos de datas que pretendo (o último mês, o último semestre, a última semana, hoje, ou datas personalizadas). O software deve fazer um resumo das minhas despezas, exibir um pequeno texto que me informe das minhas despesas (por exemplo, este mês gastou mais 50€ em compras, para melhorar tente fazer uma lista do que realmete precisa e obrigue-se a segui-la). Poderá também exiber algund gráficos ou imagens representivas. 
+```
+
+###### Prototype
+
+A prototype of user story 3 should be here. You can see in (#use-case-diagram) how to import an image.
 ***
 
 ## Architecture and Design
