@@ -88,6 +88,21 @@ Associar um cartão e uma conta bancária, uma vez que exige permissões que nã
 
 ##### Risk
 
+###### Falta de Experiencia
+
+A falta de experiência da equipa neste tipo de projetos pode levar a atrasos em metas por estimativas de tempo mal calculadas ou falhas de comunicação.
+
+###### Alterações constantes e conflitos
+
+Alterações constantes ao projeto podem vir a causar complicações ou atrasos principalmente por conflitos que possam surgir a cada nova alteração elaborada em simultaneo pelos vários elementos da equipa
+
+###### Alterações constantes e conflitos no projeto
+
+Alterações constantes ao projeto podem vir a causar complicações ou atrasos principalmente por conflitos que possam surgir a cada nova alteração elaborada em simultaneo pelos vários elementos da equipa
+
+###### Bugs e uso excessivo de recursos
+Bugs que ocorram durante a realização do projeto obrigar-nos-ão a dispender mais tempo do que o necessário levando a envetuais atrasos. Uso excessivo de recursos terá este mesmo efeito por alterações de última hora com o objetivo de diminuir o seu uso
+
 ###### Segurança e privacidade
 
 Como pretendemos trabalhar com informação sensível temos um grande risco de violações de dados ou de privacidade, o que poderia pôr em causa a fidelidade do nosso software. Desta forma, a implementação de protocolos de segurança rigorosos, criptologia e a conformidade com leis de proteção de dados são essenciais. 
