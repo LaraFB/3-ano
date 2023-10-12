@@ -239,6 +239,57 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 
 ***
 
+## Pre-Game
+
+### Sprint 0 Plan
+
+- Goal: description
+- Dates: from 10-13/Oct to 24-27/Oct, 2 weeks
+- Sprint 0 Backlog (don't edit this list):
+  - Task1 – Write Team
+  - Task2 – Write V&S
+  - Task3 – Write Requirements
+  - Task4 – Write DoD
+  - Task5 – Write Architecture&Design
+  - Task6 – Write Risk Plan
+  - Task7 – Write Pre-Gane
+  - Task8 – Write Release Plan
+  - Task9 – Write Product Increments
+  - Task10 – Create Product Board
+  - Task11 – Create Sprint 0 Board
+  - Task12 – Write US in PB, estimate (SML), prioritize (MoSCoW), sort
+  - Task13 – Create repository with “GPS Git” Workflow
+
+***
+
+## Release Plan
+
+### Release 1
+
+- Goal: UI basica, modelo inicial a ser trabalhado, metodos mais basicos
+- Dates: 
+- Release: V1.0
+
+***
+
+### Release 2
+
+- Goal: Grande parte dos metodos realizados
+- Date: 
+- Release: V2.0
+
+***
+
+### Release 3
+
+- Goal: UI final, metodos completos e correção de  possiveis bugs
+- Date: 
+- Release: V3.0
+
+***
+
+***
+
 ## Implementation
 
 #### Product Increment 1
