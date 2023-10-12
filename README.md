@@ -109,23 +109,6 @@ Como pretendemos trabalhar com informação sensível temos um grande risco de v
 Outro risco será a adoção dos estudantes, por outras palavras, a falta de conhecimento sobre o software, uma vez que existem imensas aplicações financeiras. Para combater isto, pretendemos fazer parcerias com instituições, adotar medidas eficazes de marketing.
 
 
-##### Mitigation Actions
-
-####### RSK1 Falta de Experiencia
-
-####### RSK2 Alterações constantes e conflitos
-
-####### RSK3 Bugs e uso excessivo de recursos
-
-####### RSK4 Segurança e privacidade
-
-####### RSK5 Marketing
-
-
-
-
-***
-
 
 ##### Assumptions
 
