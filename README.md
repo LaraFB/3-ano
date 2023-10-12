@@ -225,8 +225,11 @@ A domain model should be here. You can see in (#use-case-diagram) how to import 
 
 
 ##### Mitigation Actions (threats>=20)
-- RSKn – CP/AS/MS; Contingency Plan (CP), Avoidance Strategy (AS) or Minimization Strategy (MS)
-- RSK2 – MS; At the middle of each sprint, compare the progress of the project with the estimation and, if necessary, review the sprint plan. (for example)
+- RSK1 - AS; Efetuar check-ins regulares durante os sprints, e reuniões; 
+- RSK2 - AS; Panificar bem o projeto, para evitar qualquer alteração futura; 
+- RSK3 - AS; Comunicar com os membros do grupo, para que estes ajudem a manter o código coroente e sem bugs;
+- RSK4 - CP; Efetuar reuniões todas as semanas para averiguar o progresso de todos os membros;
+- RSK5 - MS; Gerir de forma eficiente o tempo entre todos os membros, de forma a implementar o maior numero de funcionalidades possiveis.
 
 ***
 
