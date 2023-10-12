@@ -212,6 +212,24 @@ A domain model should be here. You can see in (#use-case-diagram) how to import 
 
 ***
 
+## Risk Plan
+
+##### Threshhold of Success
+- By the 2nd release date, 30% of all the User Stories from the Product Backlog are closed. (for example)
+- Goal2
+- Goal3
+
+##### Risk List
+- RSKn – PxI: axb=c; Risk statement
+- RSK2 – PxI: 4x5=20; The team has no experience in software estimation, therefore there might cause underestimation, delaying the project in an uncontrolled way (for example)
+
+
+##### Mitigation Actions (threats>=20)
+- RSKn – CP/AS/MS; Contingency Plan (CP), Avoidance Strategy (AS) or Minimization Strategy (MS)
+- RSK2 – MS; At the middle of each sprint, compare the progress of the project with the estimation and, if necessary, review the sprint plan. (for example)
+
+***
+
 ## Implementation
 
 #### Product Increment 1
