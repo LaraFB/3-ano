@@ -248,11 +248,7 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
   - Developer: Lara Bizzarro
   	       Joana Ferrao
   	       Ana Sofia Silva
-
-- Story Points:
-
-- Priorities (MoSCoW):
-
+  
 - Sprint 0 Backlog (don't edit this list):
   - Task1 – Write Team
   - Task2 – Write V&S
@@ -274,7 +270,7 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 
 ### Release 1
 
-- Goal: MVP - description
+- Goal: MVP - description -- Acompanhamento,categorização, resumo e análise de despesas, permitir estabelecer budgets/limites em certas áreas
 - Dates: [teams 0] 21-24/Nov | [teams1] 28-30/Nov
 - Release: V1.0
 
@@ -387,7 +383,6 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 #### Sprint 3
 
 ##### Sprint Plan
-sp3: fix todos os bugs,fazer funcs em falta,  apresentar ui final 
 
 - Goal: User Interfeca aperfeiçoada, terminar todos os metodos em falta, e corrigir bugs que possam existir 
 
