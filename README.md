@@ -87,10 +87,10 @@ Associar um cartão e uma conta bancária, uma vez que exige permissões que nã
 
 ##### Risk
 
-#### Segurança e privacidade
+###### Segurança e privacidade
 Como pretendemos trabalhar com informação sensível temos um grande risco de violações de dados ou de privacidade, o que poderia pôr em causa a fidelidade do nosso software. Desta forma, a implementação de protocolos de segurança rigorosos, criptologia e a conformidade com leis de proteção de dados são essenciais.
 
-#### Marketing
+###### Marketing
 Outro risco será a adoção dos estudantes, por outras palavras, a falta de conhecimento sobre o software, uma vez que existem imensas aplicações financeiras. Para combater isto, pretendemos fazer parcerias com instituições, adotar medidas eficazes de marketing.
 
 ##### Assumptions
@@ -115,30 +115,107 @@ Supõe-se:
 
 ##### Use Case 1
 
-- Actor: Actor x
-- Description: Description of use case number 1
+- Actor: Utilizador
+- Description: Criar uma conta
 - Preconditions:
-    - Precondition 1
-    - Precondition 2
-    - Without preconditions
+    - O utilizador não se encontra registado no sistema.
 - Postconditions:
-    - Postcondition 1
-    - Postcondition 2
-    - Without postcondition
+    - A conta é criada com sucesso, aparecendo uma mensagem de sucesso.
+    - O utilizador pode efetuar o loggin no sistema.
 - Normal flow:
-    - The user ...
-    - The user ...
+    1. O novo utilizador abre o software.
+    2. O sitema apresenta duas opções de escolha (efetuar login ou criar uma nova conta).
+    3. O utilizador clica na opção criar nova conta.
+    4. O sistema apresenta um formulário de registo com campos para informações pessoais.
+    5. O utilizador fornece as informações necessárias, incluindo seu nome completo, endereço de e-mail, uma palavra-passe segura e algumas opções adicionais para começar o seu perfil.
+    6. O sistema valida os dados fornecidos, garantindo que o endereço de e-mail seja único e que a senha atenda aos requisitos de segurança do sistema.
+    7. Após uma validação bem-sucedida, o utilizador envia o formulário de registo.
+    8. O sistema processa o registo, criando uma nova conta associada às informações fornecidas.
+    9. O utilizador recebe um e-mail de verificação no endereço de e-mail fornecido.
+    10. O utilizador clica no link de verificação no e-mail para ativar sua conta.
+    11. O sistema confirma a ativação da conta e faz o login automaticamente do utilizador.
+    12. O utilizador está agora conectado ao sistema e pode começar a usá-lo.
+
 - Alternative flows:
-    - The user ...
-    - The user ...
+    ###### Dados Inválidos (6) 
+        Se o sistema detetar dados inválidos (por exemplo, um endereço de e-mail não único ou uma senha fraca), ele mostra mensagens de erro.
+        O utilizador corrige os erros e envia o formulário novamente, retornando ao passo 4.
+    ###### E-mail de Verificação Não Recebido (9)
+        Se o utilizador não receber o e-mail de verificação, pode solicitar um novo e-mail de verificação.
+        O sistema envia um novo e-mail de verificação.
+        O utilizador verifica o e-mail, clica no novo link de verificação e continua com a ativação da conta.
+    ###### Tempo Limite de Ativação da Conta (10)
+        Se o utilizador não clicar no link de verificação dentro de um período de tempo razoável, o link pode expirar.
+        O utilizador pode solicitar outro e-mail de verificação para concluir o processo de ativação.
+        O sistema envia um novo e-mail de verificação para o utilizador clicar e ativar sua conta.
+
 
 ***
 
 ##### Use Case 2
 
+- Actor: Utilizador
+- Description: Inserir despesas.
+- Preconditions:
+    - O utilizador efetua o login com sucesso e/ou cria uma nova conta com sucesso. 
+    - O utilizador encontra-se no sistema.
+- Postconditions:
+    - Existem categorias no sistema.
+    - O sistema permite criar novas categorias.
+- Normal flow:
+    1. O utilizador faz login no sistema.
+    2. O sistema exibe uma página inicial.
+    3. O utilizador clica na opção '+'.
+    4. O sistema apresenta um pequeno formulário para adicionar uma nova despesa.
+    5. O utilizador insere os detalhes da despesa, incluindo o valor, a data e uma breve descrição.
+    6. O sistema permite ao utilizador selecionar uma categoria para a despesa (por exemplo, alimentação, transporte, material escolar).
+    7. O utilizador confirma as informações sobre a despesa.
+    8. O sistema regista a despesa e associa à categoria desejada.
+    9. O utilizador pode visualizar um resumo de despesas.
+
+- Alternative flows:
+    
+    
+    ###### Categoria Personalizada (6)
+        O utilizador deseja criar uma categoria personalizada que não está na lista de categorias padrão, ele pode fazê-lo.
+        O sistema permite ao utilizador criar uma categoria personalizada e associá-la à despesa.
+    ###### Dados Incorretos (5)
+        O sistema deteta dados incorretos (por exemplo, um valor negativo), ele mostra mensagens de erro.
+        O utilizador corrige os erros e envia o formulário novamente, retornando ao passo 5.
+    ###### Edição de Despesas (9)
+        O utilizador tem a opção de editar ou excluir despesas registadas.
+        O sistema permite que o utilizador tenha acesso às suas despesas, edite informações ou exclua despesas, se necessário.
+     ###### Relatórios (9)
+        O utilizador pode gerar relatórios com base nas suas despesas registadas.
+        O sistema fornece gráficos sobre os hábitos de gastos do estudante, assim como despesas médias em diferentes categorias e variações ao longo do tempo
+
 ***
 
 ##### Use Case 3
+
+- Actor: Utilizador
+- Description: Analisar Padrões de Gastos
+- Preconditions:
+    - O utilizador efetua o login com sucesso e/ou cria uma nova conta com sucesso. 
+    - O utilizador encontra-se no sistema.
+- Postconditions:
+    - O utilizador verá breves resumos sobre as suas despesas e/ou gráficos e/ou dicas e sugestões como poupar
+- Normal flow:
+    1. O utilizador faz login no sistema.
+    2. O sistema exibe uma página inicial.
+    3. O utilizador clica na opção 'Análise de gastos'.
+    4. O sistema fornece opções de filtragem para que o estudante possa selecionar um período específico ou categorias de gastos.
+    5. O estudante seleciona um período de tempo e/ou as categorias de gastos para análise.
+    6. O sistema gera relatórios e gráficos com base nos dados do utilizador, mostrando informações como despesas totais, despesas por categoria e variações ao longo do tempo.
+    7. O utilizador examina os relatórios e ganha conhecimento sobre seus padrões de gastos.
+
+- Alternative flows:
+    ###### Exportação de Dados
+        O utilizador deseja exportar os relatórios e dados gerados.
+        O sistema oferece a opção de exportar os relatórios em formatos como PDF ou Excel.
+    ###### Ação com Base nos relatórios
+        Com base no conhecimento obtido, o estudante pode tomar ações específicas, como ajustar o seu orçamento, economizar em categorias de alto gasto ou planear investimentos futuros.
+        O sistema fornece opções para que o utilizador tome essas ações diretamente no software, como configurar metas.
 
 ***
 
@@ -156,9 +233,14 @@ So that I can start using it and mange my finances effectively.
 
 ###### Acceptance Criteria
 
-```
-Quando abrir o software, devo ver uma opção clara e intuitiva para fazer o login ou para registar uma nova conta. Durante o processo de registo, devo ser pedido o meu nome, endereço de e-mail e criar uma senha segura com verificação. Após fornecer as informações necessárias, devo receber um e-mail de verificação para confirmar minha conta. Após clicar no link de verificação no e-mail, devo receber uma mensagem de confirmação no software, indicando que minha conta está ativa. Não devo ser capaz de aceder aos recursos do software até que minha conta seja verificada. Se encontrar qualquer problema durante o login, como um e-mail ou senha inválidos, devo receber mensagens de erro claras me orientando sobre como resgatar a palavra-passe.
-```
+
+-> Quando abrir o software, devo ver uma opção clara e intuitiva para fazer o login ou para registar uma nova conta. 
+-> Durante o processo de registo, devo ser pedido o meu nome, endereço de e-mail e criar uma senha segura com verificação. 
+-> Após fornecer as informações necessárias, devo receber um e-mail de verificação para confirmar minha conta.
+-> Após clicar no link de verificação no e-mail, devo receber uma mensagem de confirmação no software, indicando que minha conta está ativa. 
+-> Não devo ser capaz de aceder aos recursos do software até que minha conta seja verificada. 
+-> Se encontrar qualquer problema durante o login, como um e-mail ou senha inválidos, devo receber mensagens de erro claras me orientando sobre como resgatar a palavra-passe.
+
 
 ###### Prototype
 
@@ -174,9 +256,12 @@ As a student, I want to be able to track my daily expenses and categorize them,s
 
 ###### Acceptance Criteria
 
-```
-Após fazer o login, devo ter um painel inicial que mostre o meu balanço semanal, de forma a mostrar o dinheiro que tenho reservado para aquela semana, assim como um balanço do que já gastei. Além disso, o software deve ter uma opção bem vísivelpara inserir as minhas despesas. Devo ser capaz de inserir o valor gasto, a data, uma breve descrição e escolher uma categoria existente (por exemplo, alimentação, refeições na cantina, propinas, transporte, ginásio) ou criar uma nova. Devo ser capaz de visualizar gráficos ou informação clara e curta em cada categoria sobre os balanços mensais e semanais. Devo receber lembretes se exceder os limites de gastos predefinidos.
-```
+
+-> Após fazer o login, devo ter um painel inicial que mostre o meu balanço semanal, de forma a mostrar o dinheiro que tenho reservado para aquela semana, assim como um balanço do que já gastei. 
+-> Além disso, o software deve ter uma opção bem vísivel para inserir as minhas despesas. 
+-> Devo ser capaz de inserir o valor gasto, a data, uma breve descrição e escolher uma categoria existente (por exemplo, alimentação, refeições na cantina, propinas, transporte, ginásio) ou criar uma nova. Devo ser capaz de visualizar gráficos ou informação clara e curta em cada categoria sobre os balanços mensais e semanais. 
+-> Devo receber lembretes se exceder os limites de gastos predefinidos.
+
 
 ###### Prototype
 
@@ -192,9 +277,11 @@ As a student, I want to analyze my spending patterns, So that I can better under
 
 ###### Acceptance Criteria
 
-```
-Após fazer o login, devo ter um menu que me permita efetuar diversas operações, como por exemplo ver o conjunto de todas as despesas, ver as despesas por categoria, ver uma breve análise. Nessa análise, posso escolher o intervalos de datas que pretendo (o último mês, o último semestre, a última semana, hoje, ou datas personalizadas). O software deve fazer um resumo das minhas despezas, exibir um pequeno texto que me informe das minhas despesas (por exemplo, este mês gastou mais 50€ em compras, para melhorar tente fazer uma lista do que realmete precisa e obrigue-se a segui-la). Poderá também exiber algund gráficos ou imagens representivas. 
-```
+
+-> Após fazer o login, devo ter um menu que me permita efetuar diversas operações, como por exemplo ver o conjunto de todas as despesas, ver as despesas por categoria, ver uma breve análise. Nessa análise, posso escolher o intervalos de datas que pretendo (o último mês, o último semestre, a última semana, hoje, ou datas personalizadas). 
+-> O software deve fazer um resumo das minhas despezas, exibir um pequeno texto que me informe das minhas despesas (por exemplo, este mês gastou mais 50€ em compras, para melhorar tente fazer uma lista do que realmete precisa e obrigue-se a segui-la).
+-> Poderá também exiber alguns gráficos ou imagens representivas. 
+
 
 ###### Prototype
 
