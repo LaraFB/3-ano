@@ -244,7 +244,7 @@ So that I can start using it and mange my finances effectively.
 
 ###### Prototype
 
-(imgs/login.png)
+![Sign up](imgs/login.png)
 
 ***
 
@@ -265,7 +265,7 @@ As a student, I want to be able to track my daily expenses and categorize them,s
 
 ###### Prototype
 
-(imgs/pagina_inicial.png)
+![Painel Inicial](imgs/pagina_inicial.png)
 
 ***
 
@@ -285,7 +285,7 @@ As a student, I want to analyze my spending patterns, So that I can better under
 
 ###### Prototype
 
-(imgs/despesas.png)
+![Despesas](imgs/despesas.png)
 ***
 
 ## Architecture and Design
