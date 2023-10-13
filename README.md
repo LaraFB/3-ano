@@ -200,9 +200,17 @@ It is a collection of criteria that must be completed for a User Story to be con
 ## Risk Plan
 
 ##### Threshhold of Success
+Para que o projeto seja considerado "sucesso" devemos ter, pelo terceiro sprint :
+  Acompanhamento de despesas
+  Categorização, resumo e analise de despesas
+  Estabelecer budgets/limites em certas áreas
+
+
+/*
 - By the 2nd release date, 30% of all the User Stories from the Product Backlog are closed. (for example)
 - Goal2
 - Goal3
+*/
 
 ##### Risk List
 
