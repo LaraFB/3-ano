@@ -122,7 +122,10 @@ As a new user,
 I want to be able to create a new account,
 So that I can start using it and mange my finances effectively.
 
-(Como um novo utilizador. desejo poder registar-me para puder usar o software).
+(Como um novo utilizador, desejo poder registar-me(S) para puder usar o software(M)).
+
+Story Points - 2S
+Priorities  - Must have (M)
 
 ###### Acceptance Criteria
 
@@ -142,7 +145,11 @@ So that I can start using it and mange my finances effectively.
 
 As a student, I want to be able to track my daily expenses and categorize them,so that I can gain insights into my spending habits.
 
-(Como estudante, quero ser capaz de controlar as minhas despesas diárias e categorizá-las, para saber mais sobre os meus gastos diários).
+(Como estudante, quero ser capaz de controlar as minhas despesas diárias e categorizá-las (M), para saber mais sobre os meus gastos diários(S)).
+
+
+Story Points - 3M
+Priorities  - Should Have (S)
 
 ###### Acceptance Criteria
 
@@ -159,7 +166,10 @@ As a student, I want to be able to track my daily expenses and categorize them,s
 
 As a student, I want to analyze my spending patterns, So that I can better understand where my money is going and make informed financial decisions.
 
-(Como estudante, quero analisar os meus gastos, para entender para onde vai o meu dinheiro e tomar melhores decisões).
+(Como estudante, quero analisar os meus gastos (X), para entender para onde vai o meu dinheiro e tomar melhores decisões (C) ).
+
+Story Points - 3X
+Priorities  - Could Have (C)
 
 ###### Acceptance Criteria
 
@@ -249,6 +259,9 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
   	       Joana Ferrao
   	       Ana Sofia Silva
   
+- Story Points: 2S+3M+3X
+- Prioritize: MSC
+
 - Sprint 0 Backlog (don't edit this list):
   - Task1 – Write Team
   - Task2 – Write V&S
