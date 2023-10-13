@@ -248,7 +248,11 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
   - Developer: Lara Bizzarro
   	       Joana Ferrao
   	       Ana Sofia Silva
-  
+
+- Story Points:
+
+- Priorities (MoSCoW):
+
 - Sprint 0 Backlog (don't edit this list):
   - Task1 – Write Team
   - Task2 – Write V&S
