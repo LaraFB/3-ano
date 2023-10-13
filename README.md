@@ -196,9 +196,12 @@ It is a collection of criteria that must be completed for a User Story to be con
 ## Risk Plan
 
 ##### Threshhold of Success
-- By the 2nd release date, 30% of all the User Stories from the Product Backlog are closed. (for example)
-- Goal2
-- Goal3
+Para que o projeto seja considerado "sucesso" devemos ter : 
+ - Acompanhamento de Despesas
+ - categorização, resumo e análise de despesas
+ - Permitir estabelecer budgets/limites em certas áreas
+
+
 
 ##### Risk List
 
@@ -286,7 +289,7 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 ### Sprint 1
 ##### Sprint Plan
 
-- Goal: what’s the goal for this sprint
+- Goal: User Interface que permita ter um ideia inicial do projeto, com os metodos mais simples
 - Roles:
   - Product Owner: name
   - Scrum Master: name
@@ -330,8 +333,98 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 
 #### Sprint 2
 
+##### Sprint Plan
+
+
+- Goal: Metodos mais complexos, melhorando e adicionando alguns aspetos de user interface 
+
+- Roles:
+  - Product Owner: name
+  - Scrum Master: name
+- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
+
+- Roles:
+  - Product Owner: name
+  - Scrum Master: name
+
+- To do:
+  - (list of US or Tasks from the PB)
+  - US1: As … I want … so that …
+  - Task1: Some task
+  
+- Story Points: 2S+3M+3X+2H
+
+- Analysis: short analysis of the planning meeting
+
+##### Sprint Review
+
+- Analysis: what was not done or what was added (Link to US or Task from the PB)
+
+- Story Points: 2S+1M+2X+2H
+
+- Version: 0.1 
+
+- Client analysis: client feedback
+
+- Conclusions: what to add/review
+
+##### Sprint Retrospective
+
+- What we did well:
+    - A
+- What we did less well:
+    - B
+- How to improve to the next sprint:
+    - C
+
+
 ***
 
 #### Sprint 3
+
+##### Sprint Plan
+sp3: fix todos os bugs,fazer funcs em falta,  apresentar ui final 
+
+- Goal: User Interfeca aperfeiçoada, terminar todos os metodos em falta, e corrigir bugs que possam existir 
+
+- Roles:
+  - Product Owner: name
+  - Scrum Master: name
+- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
+
+- Roles:
+  - Product Owner: name
+  - Scrum Master: name
+
+- To do:
+  - (list of US or Tasks from the PB)
+  - US1: As … I want … so that …
+  - Task1: Some task
+  
+- Story Points: 2S+3M+3X+2H
+
+- Analysis: short analysis of the planning meeting
+
+##### Sprint Review
+
+- Analysis: what was not done or what was added (Link to US or Task from the PB)
+
+- Story Points: 2S+1M+2X+2H
+
+- Version: 0.1 
+
+- Client analysis: client feedback
+
+- Conclusions: what to add/review
+
+##### Sprint Retrospective
+
+- What we did well:
+    - A
+- What we did less well:
+    - B
+- How to improve to the next sprint:
+    - C
+
 
 ***
