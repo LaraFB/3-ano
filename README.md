@@ -109,7 +109,7 @@ Supõe-se:
 
 #### Use Case Diagram
 
-![Use case diagram](imgs/UML_use_case_example-800x707.png)
+![Use case diagram](imgs/UseCaseDiagram1.png)
 
 ***
 
