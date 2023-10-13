@@ -281,7 +281,8 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 ### Sprint 1
 ##### Sprint Plan
 
-- Goal: what’s the goal for this sprint
+- Goal: sp1: UI basica para ter uma ideia da app c/ funcs simples
+
 
 - Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
 
@@ -323,8 +324,90 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 
 #### Sprint 2
 
+##### Sprint Plan
+
+- Goal: sp2: fazer maior parte das funcs, melhorar ui
+
+
+- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
+
+- Roles:
+  - Product Owner: name
+  - Scrum Master: name
+
+- To do:
+  - (list of US or Tasks from the PB)
+  - US1: As … I want … so that …
+  - Task1: Some task
+  
+- Story Points: 2S+3M+3X+2H
+
+- Analysis: short analysis of the planning meeting
+
+##### Sprint Review
+
+- Analysis: what was not done or what was added (Link to US or Task from the PB)
+
+- Story Points: 2S+1M+2X+2H
+
+- Version: 0.1 
+
+- Client analysis: client feedback
+
+- Conclusions: what to add/review
+
+##### Sprint Retrospective
+
+- What we did well:
+    - A
+- What we did less well:
+    - B
+- How to improve to the next sprint:
+    - C
+
+
 ***
 
 #### Sprint 3
+##### Sprint Plan
+
+- Goal: sp3: fix todos os bugs,fazer funcs em falta,  apresentar ui final 
+
+
+- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
+
+- Roles:
+  - Product Owner: name
+  - Scrum Master: name
+
+- To do:
+  - (list of US or Tasks from the PB)
+  - US1: As … I want … so that …
+  - Task1: Some task
+  
+- Story Points: 2S+3M+3X+2H
+
+- Analysis: short analysis of the planning meeting
+
+##### Sprint Review
+
+- Analysis: what was not done or what was added (Link to US or Task from the PB)
+
+- Story Points: 2S+1M+2X+2H
+
+- Version: 0.1 
+
+- Client analysis: client feedback
+
+- Conclusions: what to add/review
+
+##### Sprint Retrospective
+
+- What we did well:
+    - A
+- What we did less well:
+    - B
+- How to improve to the next sprint:
+    - C
 
 ***
