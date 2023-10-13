@@ -292,8 +292,7 @@ As a student, I want to analyze my spending patterns, So that I can better under
 
 #### Domain Model
 
-A domain model should be here. You can see in (#use-case-diagram) how to import an image.
-
+![Domain Model](imgs/domain_model.png)
 ***
 
 ## Risk Plan
