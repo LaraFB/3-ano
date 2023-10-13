@@ -37,15 +37,14 @@
 
 ##### Project background
 
-Gerir as finanças pessoais é uma parte essencial da vida quotidiana. Atualmente, de forma a controlar as despesas apenas
-consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. Numa tentativa de facilitar a
-leitura dos gastos financeiros, procuramos desenvolver um Gestor de Despesas, uma solução intuitiva e fácil de usar, que
+Atualmente, de forma a controlar as despesas apenas consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. 
+Numa tentativa de facilitar a leitura dos gastos financeiros, procuramos desenvolver um Gestor de Despesas - uma solução intuitiva e fácil de usar - que
 permite categorizar e visualizar um resumo das despesas do dia, do mês ou até do ano.
 
 ##### Stakeholders
 
-###### Stakeholder Primário - Estudante Deslocado
-Os estudantes são os principais beneficiários deste software, visto que afeta diretamente a sua capacidade de gerir as suas finanças enquanto vivem longe de casa.
+###### Stakeholder Primário - Estudante 
+Os estudantes são os principais beneficiários deste software, visto que afeta diretamente a sua capacidade de gerir as suas finanças.
 
 
 ###### Interessados Secundários: Pais / Responsáveis
@@ -57,21 +56,16 @@ Embora possam não ter um interesse financeiro direto, têm interesse no bem-est
 Existem também algumas instituições que oferecem bolsas a certos estudantes, de acordo com o seu desempenho ou contribuição para com a mesma.
 
 ##### Users
-
-O software “Gestor de Despesas” é projetado para estudantes deslocados - Pessoas que desejam
-manter um registo detalhado de suas despesas para uma melhor gestão financeira. Estas despesas são distribuidas entre custos de vida (renda, compras de supermercado, serviços de água, eletrecidade, entre outros), despesas pessoas (jantares com amigos, idas a cafés, etc) e custos únicos adicionais (o estudante pode comprar manuais escolares durante o primeiro mês de aulas).
+###### Estudantes
+Pessoas que desejam manter um registo detalhado de suas despesas para uma melhor gestão financeira. Estas despesas são distribuidas entre custos de vida, despesas pessoas e custos únicos adicionais.
 ***
 
 #### Vision & Scope of the Solution
 
 ##### Vision statement
 
-Com Gestor de Despesas procuramos um mundo onde a gestão financeira é facilmente acessível. Aspiramos criar um software
-que sirva como um companheiro financeiro confiável, simplificando as complexidades do acompanhamento financeiro.
-Vemos o Gestor de Despesas como um catalisador de mudanças, ajudando os utilizadores a assumir o controlo do seu
-dinheiro, reduzindo o stress financeiro e ajudando a criar e cumprir objetivos impostos pelos próprios utilizadores.
-A nossa visão é capacitar as pessoas a abraçarem um futuro financeiro mais controlado, onde a gestão de despesas não
-seja um fardo, mas uma oportunidade de crescimento, estabilidade e prosperidade.
+Vemos o Gestor de Despesas como um catalisador de mudanças, ajudando os utilizadores a assumir o controlo do seu dinheiro, reduzindo o stress financeiro e ajudando a criar e cumprir objetivos impostos pelos próprios utilizadores.
+
 
 
 ##### List of features
@@ -86,18 +80,18 @@ Os nossos principais objetivos são os seguintes:
 - Notificar o utilizador quando os limites estiverem próximos de serem ultrapassados  
 
 ##### Features that will not be developed
-
-Associar um cartão e uma conta bancária, uma vez que exige permissões que não temos (pretendemos resolver esta questão criando um budget que é introduzido pelo utilizador e adiciona a cada mês o mesmo valor. Irá exigir que o utilizador tome o cuidado de registar todas as operações financeiras efetuadas.)
+##### Associar um cartão e uma conta bancária
+Uma vez que exige permissões que não temos (pretendemos resolver esta questão criando um budget que é introduzido pelo utilizador e adiciona a cada mês o mesmo valor. Irá exigir que o utilizador tome o cuidado de registar todas as operações financeiras efetuadas.)
 
 
 ##### Assumptions
 
 Supõe-se:
-- que os estudantes utilizem o software ativamente para acompanhar despesas, definir orçamentos e trabalhar em direção aos seus objetivos.
-- que os utilizadores fornecerão valores precisos, como renda e despesas.
--  a demanda de um produto financeiro dedicado às necessidades dos estudantes.
-- que a infraestrutura do software será segura e resistente a violações de dados.
-- que o software cumprirá todas as regulamentações e leis financeiras relevantes.
+- Os estudantes utilizem o software ativamente para acompanhar despesas, definir orçamentos e trabalhar em direção aos seus objetivos.
+- Os utilizadores fornecerão valores precisos, como renda e despesas.
+- A demanda de um produto financeiro dedicado às necessidades dos estudantes.
+- A infraestrutura do software será segura e resistente a violações de dados.
+- O software cumprirá todas as regulamentações e leis financeiras relevantes.
 - O software pressupõe a necessidade de atualizações e melhorias contínuas para se adaptar às mudanças no cenário financeiro e às necessidades dos utilizadores.
 
 ***
@@ -113,7 +107,9 @@ Supõe-se:
 ### Mockups
 
 ![Sign up](imgs/login.png)
+
 ![Painel Inicial](imgs/pagina_inicial.png)
+
 ![Despesas](imgs/despesas.png)
 
 ***
@@ -200,17 +196,9 @@ It is a collection of criteria that must be completed for a User Story to be con
 ## Risk Plan
 
 ##### Threshhold of Success
-Para que o projeto seja considerado "sucesso" devemos ter, pelo terceiro sprint :
-  Acompanhamento de despesas
-  Categorização, resumo e analise de despesas
-  Estabelecer budgets/limites em certas áreas
-
-
-/*
 - By the 2nd release date, 30% of all the User Stories from the Product Backlog are closed. (for example)
 - Goal2
 - Goal3
-*/
 
 ##### Risk List
 
@@ -289,8 +277,7 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 ### Sprint 1
 ##### Sprint Plan
 
-- Goal: sp1: UI basica para ter uma ideia da app c/ funcs simples
-
+- Goal: what’s the goal for this sprint
 
 - Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
 
@@ -332,90 +319,8 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 
 #### Sprint 2
 
-##### Sprint Plan
-
-- Goal: sp2: fazer maior parte das funcs, melhorar ui
-
-
-- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
-
-- Roles:
-  - Product Owner: name
-  - Scrum Master: name
-
-- To do:
-  - (list of US or Tasks from the PB)
-  - US1: As … I want … so that …
-  - Task1: Some task
-  
-- Story Points: 2S+3M+3X+2H
-
-- Analysis: short analysis of the planning meeting
-
-##### Sprint Review
-
-- Analysis: what was not done or what was added (Link to US or Task from the PB)
-
-- Story Points: 2S+1M+2X+2H
-
-- Version: 0.1 
-
-- Client analysis: client feedback
-
-- Conclusions: what to add/review
-
-##### Sprint Retrospective
-
-- What we did well:
-    - A
-- What we did less well:
-    - B
-- How to improve to the next sprint:
-    - C
-
-
 ***
 
 #### Sprint 3
-##### Sprint Plan
-
-- Goal: sp3: fix todos os bugs,fazer funcs em falta,  apresentar ui final 
-
-
-- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
-
-- Roles:
-  - Product Owner: name
-  - Scrum Master: name
-
-- To do:
-  - (list of US or Tasks from the PB)
-  - US1: As … I want … so that …
-  - Task1: Some task
-  
-- Story Points: 2S+3M+3X+2H
-
-- Analysis: short analysis of the planning meeting
-
-##### Sprint Review
-
-- Analysis: what was not done or what was added (Link to US or Task from the PB)
-
-- Story Points: 2S+1M+2X+2H
-
-- Version: 0.1 
-
-- Client analysis: client feedback
-
-- Conclusions: what to add/review
-
-##### Sprint Retrospective
-
-- What we did well:
-    - A
-- What we did less well:
-    - B
-- How to improve to the next sprint:
-    - C
 
 ***
