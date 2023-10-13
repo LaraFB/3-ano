@@ -85,7 +85,13 @@ Os nossos principais objetivos são os seguintes:
 
 Associar um cartão e uma conta bancária, uma vez que exige permissões que não temos (pretendemos resolver esta questão criando um budget que é introduzido pelo utilizador e adiciona a cada mês o mesmo valor. Irá exigir que o utilizador tome o cuidado de registar todas as operações financeiras efetuadas.)
 
+##### Risk
 
+#### Segurança e privacidade
+Como pretendemos trabalhar com informação sensível temos um grande risco de violações de dados ou de privacidade, o que poderia pôr em causa a fidelidade do nosso software. Desta forma, a implementação de protocolos de segurança rigorosos, criptologia e a conformidade com leis de proteção de dados são essenciais.
+
+#### Marketing
+Outro risco será a adoção dos estudantes, por outras palavras, a falta de conhecimento sobre o software, uma vez que existem imensas aplicações financeiras. Para combater isto, pretendemos fazer parcerias com instituições, adotar medidas eficazes de marketing.
 
 ##### Assumptions
 
@@ -234,8 +240,11 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 
 
 ##### Mitigation Actions (threats>=20)
-- RSKn – CP/AS/MS; Contingency Plan (CP), Avoidance Strategy (AS) or Minimization Strategy (MS)
-- RSK2 – MS; At the middle of each sprint, compare the progress of the project with the estimation and, if necessary, review the sprint plan. (for example)
+- RSK1 - AS; Efetuar check-ins regulares durante os sprints, e reuniões;
+- RSK2 - AS; Panificar bem o projeto, para evitar qualquer alteração futura;
+- RSK3 - AS; Comunicar com os membros do grupo, para que estes ajudem a manter o código coroente e sem bugs;
+- RSK4 - CP; Efetuar reuniões todas as semanas para averiguar o progresso de todos os membros;
+- RSK5 - MS; Gerir de forma eficiente o tempo entre todos os membros, de forma a implementar o maior numero de funcionalidades possiveis.
 
 ***
 
