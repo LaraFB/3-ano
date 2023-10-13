@@ -239,8 +239,17 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 ## Pre-Game
 ### Sprint 0 Plan
 
-- Goal: description
+- Goal: Planear o projeto, criar um plano de ação e efetuar a apresentação do projeto ao cliente
+
 - Dates: from 10-13/Oct to 24-27/Oct, 2 weeks
+
+- Roles:
+  - Product Owner: Francisco Costa
+  - Scrum Master: Artur Yurchuck
+  - Developer: Lara Bizzarro
+  	       Joana Ferrao
+  	       Ana Sofia Silva
+  
 - Sprint 0 Backlog (don't edit this list):
   - Task1 – Write Team
   - Task2 – Write V&S
@@ -282,7 +291,9 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
 ##### Sprint Plan
 
 - Goal: what’s the goal for this sprint
-
+- Roles:
+  - Product Owner: name
+  - Scrum Master: name
 - Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
 
 - Roles:
