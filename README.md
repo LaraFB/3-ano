@@ -141,21 +141,6 @@ So that I can start using it and mange my finances effectively.
 
 ***
 
-## Definition of done
-
-(This section is already written, do not edit)
-It is a collection of criteria that must be completed for a User Story to be considered “done.”
-
-1. All tasks done:
-  - CI – built, tested (Junit), reviewed (SonarCloud)
-  - Merge request to qa (code review)
-2. Acceptance tests passed
-3. Accepted by the client
-4. Code merged to main
-
-
-***
-
 ##### User Story 2
 
 
@@ -186,6 +171,21 @@ As a student, I want to analyze my spending patterns, So that I can better under
 - Após fazer o login, devo ter um menu que me permita efetuar diversas operações, como por exemplo ver o conjunto de todas as despesas, ver as despesas por categoria, ver uma breve análise. Nessa análise, posso escolher o intervalos de datas que pretendo (o último mês, o último semestre, a última semana, hoje, ou datas personalizadas). 
 - O software deve fazer um resumo das minhas despezas, exibir um pequeno texto que me informe das minhas despesas (por exemplo, este mês gastou mais 50€ em compras, para melhorar tente fazer uma lista do que realmete precisa e obrigue-se a segui-la).
 - Poderá também exiber alguns gráficos ou imagens representivas. 
+
+***
+
+## Definition of done
+
+(This section is already written, do not edit)
+It is a collection of criteria that must be completed for a User Story to be considered “done.”
+
+1. All tasks done:
+  - CI – built, tested (Junit), reviewed (SonarCloud)
+  - Merge request to qa (code review)
+2. Acceptance tests passed
+3. Accepted by the client
+4. Code merged to main
+
 
 ***
 
