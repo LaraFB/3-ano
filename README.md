@@ -138,16 +138,16 @@ Supõe-se:
 
 - Alternative flows:
     ###### Dados Inválidos (6) 
-        Se o sistema detetar dados inválidos (por exemplo, um endereço de e-mail não único ou uma senha fraca), ele mostra mensagens de erro.
-        O utilizador corrige os erros e envia o formulário novamente, retornando ao passo 4.
+    Se o sistema detetar dados inválidos (por exemplo, um endereço de e-mail não único ou uma senha fraca), ele mostra mensagens de erro.
+    O utilizador corrige os erros e envia o formulário novamente, retornando ao passo 4.
     ###### E-mail de Verificação Não Recebido (9)
-        Se o utilizador não receber o e-mail de verificação, pode solicitar um novo e-mail de verificação.
-        O sistema envia um novo e-mail de verificação.
-        O utilizador verifica o e-mail, clica no novo link de verificação e continua com a ativação da conta.
+    Se o utilizador não receber o e-mail de verificação, pode solicitar um novo e-mail de verificação.
+    O sistema envia um novo e-mail de verificação.
+    O utilizador verifica o e-mail, clica no novo link de verificação e continua com a ativação da conta.
     ###### Tempo Limite de Ativação da Conta (10)
-        Se o utilizador não clicar no link de verificação dentro de um período de tempo razoável, o link pode expirar.
-        O utilizador pode solicitar outro e-mail de verificação para concluir o processo de ativação.
-        O sistema envia um novo e-mail de verificação para o utilizador clicar e ativar sua conta.
+    Se o utilizador não clicar no link de verificação dentro de um período de tempo razoável, o link pode expirar.
+    O utilizador pode solicitar outro e-mail de verificação para concluir o processo de ativação.
+    O sistema envia um novo e-mail de verificação para o utilizador clicar e ativar sua conta.
 
 
 ***
@@ -177,17 +177,17 @@ Supõe-se:
     
     
     ###### Categoria Personalizada (6)
-        O utilizador deseja criar uma categoria personalizada que não está na lista de categorias padrão, ele pode fazê-lo.
-        O sistema permite ao utilizador criar uma categoria personalizada e associá-la à despesa.
+    O utilizador deseja criar uma categoria personalizada que não está na lista de categorias padrão, ele pode fazê-lo.
+    O sistema permite ao utilizador criar uma categoria personalizada e associá-la à despesa.
     ###### Dados Incorretos (5)
-        O sistema deteta dados incorretos (por exemplo, um valor negativo), ele mostra mensagens de erro.
-        O utilizador corrige os erros e envia o formulário novamente, retornando ao passo 5.
+    O sistema deteta dados incorretos (por exemplo, um valor negativo), ele mostra mensagens de erro.
+    O utilizador corrige os erros e envia o formulário novamente, retornando ao passo 5.
     ###### Edição de Despesas (9)
-        O utilizador tem a opção de editar ou excluir despesas registadas.
-        O sistema permite que o utilizador tenha acesso às suas despesas, edite informações ou exclua despesas, se necessário.
-     ###### Relatórios (9)
-        O utilizador pode gerar relatórios com base nas suas despesas registadas.
-        O sistema fornece gráficos sobre os hábitos de gastos do estudante, assim como despesas médias em diferentes categorias e variações ao longo do tempo
+    O utilizador tem a opção de editar ou excluir despesas registadas.
+    O sistema permite que o utilizador tenha acesso às suas despesas, edite informações ou exclua despesas, se necessário.
+    ###### Relatórios (9)
+    O utilizador pode gerar relatórios com base nas suas despesas registadas.
+    O sistema fornece gráficos sobre os hábitos de gastos do estudante, assim como despesas médias em diferentes categorias e variações ao longo do tempo.
 
 ***
 
@@ -210,12 +210,12 @@ Supõe-se:
     7. O utilizador examina os relatórios e ganha conhecimento sobre seus padrões de gastos.
 
 - Alternative flows:
-    ###### Exportação de Dados
-        O utilizador deseja exportar os relatórios e dados gerados.
-        O sistema oferece a opção de exportar os relatórios em formatos como PDF ou Excel.
-    ###### Ação com Base nos relatórios
-        Com base no conhecimento obtido, o estudante pode tomar ações específicas, como ajustar o seu orçamento, economizar em categorias de alto gasto ou planear investimentos futuros.
-        O sistema fornece opções para que o utilizador tome essas ações diretamente no software, como configurar metas.
+    ###### Exportação de Dados(6)
+    O utilizador deseja exportar os relatórios e dados gerados.
+    O sistema oferece a opção de exportar os relatórios em formatos como PDF ou Excel.
+    ###### Ação com Base nos relatórios(7)
+    Com base no conhecimento obtido, o estudante pode tomar ações específicas, como ajustar o seu orçamento, economizar em categorias de alto gasto ou planear investimentos futuros.
+    O sistema fornece opções para que o utilizador tome essas ações diretamente no software, como configurar metas.
 
 ***
 
@@ -234,12 +234,12 @@ So that I can start using it and mange my finances effectively.
 ###### Acceptance Criteria
 
 
--> Quando abrir o software, devo ver uma opção clara e intuitiva para fazer o login ou para registar uma nova conta. 
--> Durante o processo de registo, devo ser pedido o meu nome, endereço de e-mail e criar uma senha segura com verificação. 
--> Após fornecer as informações necessárias, devo receber um e-mail de verificação para confirmar minha conta.
--> Após clicar no link de verificação no e-mail, devo receber uma mensagem de confirmação no software, indicando que minha conta está ativa. 
--> Não devo ser capaz de aceder aos recursos do software até que minha conta seja verificada. 
--> Se encontrar qualquer problema durante o login, como um e-mail ou senha inválidos, devo receber mensagens de erro claras me orientando sobre como resgatar a palavra-passe.
+- Quando abrir o software, devo ver uma opção clara e intuitiva para fazer o login ou para registar uma nova conta. 
+- Durante o processo de registo, devo ser pedido o meu nome, endereço de e-mail e criar uma senha segura com verificação. 
+- Após fornecer as informações necessárias, devo receber um e-mail de verificação para confirmar minha conta.
+- Após clicar no link de verificação no e-mail, devo receber uma mensagem de confirmação no software, indicando que minha conta está ativa. 
+- Não devo ser capaz de aceder aos recursos do software até que minha conta seja verificada. 
+- Se encontrar qualquer problema durante o login, como um e-mail ou senha inválidos, devo receber mensagens de erro claras me orientando sobre como resgatar a palavra-passe.
 
 
 ###### Prototype
@@ -257,10 +257,10 @@ As a student, I want to be able to track my daily expenses and categorize them,s
 ###### Acceptance Criteria
 
 
--> Após fazer o login, devo ter um painel inicial que mostre o meu balanço semanal, de forma a mostrar o dinheiro que tenho reservado para aquela semana, assim como um balanço do que já gastei. 
--> Além disso, o software deve ter uma opção bem vísivel para inserir as minhas despesas. 
--> Devo ser capaz de inserir o valor gasto, a data, uma breve descrição e escolher uma categoria existente (por exemplo, alimentação, refeições na cantina, propinas, transporte, ginásio) ou criar uma nova. Devo ser capaz de visualizar gráficos ou informação clara e curta em cada categoria sobre os balanços mensais e semanais. 
--> Devo receber lembretes se exceder os limites de gastos predefinidos.
+- Após fazer o login, devo ter um painel inicial que mostre o meu balanço semanal, de forma a mostrar o dinheiro que tenho reservado para aquela semana, assim como um balanço do que já gastei. 
+- Além disso, o software deve ter uma opção bem vísivel para inserir as minhas despesas. 
+- Devo ser capaz de inserir o valor gasto, a data, uma breve descrição e escolher uma categoria existente (por exemplo, alimentação, refeições na cantina, propinas, transporte, ginásio) ou criar uma nova. Devo ser capaz de visualizar gráficos ou informação clara e curta em cada categoria sobre os balanços mensais e semanais. 
+- Devo receber lembretes se exceder os limites de gastos predefinidos.
 
 
 ###### Prototype
@@ -278,9 +278,9 @@ As a student, I want to analyze my spending patterns, So that I can better under
 ###### Acceptance Criteria
 
 
--> Após fazer o login, devo ter um menu que me permita efetuar diversas operações, como por exemplo ver o conjunto de todas as despesas, ver as despesas por categoria, ver uma breve análise. Nessa análise, posso escolher o intervalos de datas que pretendo (o último mês, o último semestre, a última semana, hoje, ou datas personalizadas). 
--> O software deve fazer um resumo das minhas despezas, exibir um pequeno texto que me informe das minhas despesas (por exemplo, este mês gastou mais 50€ em compras, para melhorar tente fazer uma lista do que realmete precisa e obrigue-se a segui-la).
--> Poderá também exiber alguns gráficos ou imagens representivas. 
+- Após fazer o login, devo ter um menu que me permita efetuar diversas operações, como por exemplo ver o conjunto de todas as despesas, ver as despesas por categoria, ver uma breve análise. Nessa análise, posso escolher o intervalos de datas que pretendo (o último mês, o último semestre, a última semana, hoje, ou datas personalizadas). 
+- O software deve fazer um resumo das minhas despezas, exibir um pequeno texto que me informe das minhas despesas (por exemplo, este mês gastou mais 50€ em compras, para melhorar tente fazer uma lista do que realmete precisa e obrigue-se a segui-la).
+- Poderá também exiber alguns gráficos ou imagens representivas. 
 
 
 ###### Prototype
