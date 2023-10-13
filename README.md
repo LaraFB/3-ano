@@ -244,7 +244,7 @@ So that I can start using it and mange my finances effectively.
 
 ###### Prototype
 
-A prototype of user story 1 should be here. You can see in (#use-case-diagram) how to import an image.
+(imgs/login.png)
 
 ***
 
@@ -265,7 +265,7 @@ As a student, I want to be able to track my daily expenses and categorize them,s
 
 ###### Prototype
 
-A prototype of user story 2 should be here. You can see in (#use-case-diagram) how to import an image.
+(imgs/pagina_inicial.png)
 
 ***
 
@@ -285,7 +285,7 @@ As a student, I want to analyze my spending patterns, So that I can better under
 
 ###### Prototype
 
-A prototype of user story 3 should be here. You can see in (#use-case-diagram) how to import an image.
+(imgs/despesas.png)
 ***
 
 ## Architecture and Design
