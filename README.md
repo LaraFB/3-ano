@@ -37,62 +37,62 @@
 
 ##### Project background
 
-Atualmente, de forma a controlar as despesas apenas consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. 
-Numa tentativa de facilitar a leitura dos gastos financeiros, procuramos desenvolver um Gestor de Despesas - uma solução intuitiva e fácil de usar - que
-permite categorizar e visualizar um resumo das despesas do dia, do mês ou até do ano.
+Currently, the only way to control expenses is through bank statements, which becomes a tedious and complex job.
+In an attempt to make it easier to read financial expenses, we sought to develop an Expense Manager - an intuitive and easy-to-use solution - that
+allows you to categorize and view a summary of expenses for the day, month or even the year.
 
 ##### Stakeholders
 
 ###### Stakeholder Primário - Estudante 
-Os estudantes são os principais beneficiários deste software, visto que afeta diretamente a sua capacidade de gerir as suas finanças.
+Students are the main beneficiaries of this software, as it directly affects their ability to manage their finances.
 
 
 ###### Interessados Secundários: Pais / Responsáveis
-Podem fornecer apoio financeiro aos estudantes e têm um interesse indireto na eficiência do software. É do seu interesse que as suas contribuições financeiras sejam usadas de maneira responsável e que o seu filho tenha estabilidade e educação financeira.
+They may provide financial support to students and have an indirect interest in the efficiency of the software. It is in your interest that your financial contributions are used responsibly and that your child has financial stability and education.
 
 
 ###### Stakeholders Terceários - Instituições de Ensino 
-Embora possam não ter um interesse financeiro direto, têm interesse no bem-estar geral de seus estudantes - é um tema que pode afetar seu desempenho acadêmico e experiência geral na instituição.
-Existem também algumas instituições que oferecem bolsas a certos estudantes, de acordo com o seu desempenho ou contribuição para com a mesma.
+Although they may not have a direct financial interest, they do have an interest in the general well-being of their students - it is an issue that can affect their academic performance and overall experience at the institution.
+There are also some institutions that offer scholarships to certain students, according to their performance or contribution to it.
 
 ##### Users
-###### Estudantes
-Pessoas que desejam manter um registo detalhado de suas despesas para uma melhor gestão financeira. Estas despesas são distribuidas entre custos de vida, despesas pessoas e custos únicos adicionais.
+Students(People who want to keep a detailed record of their expenses for better financial management. These expenses are distributed between living costs, personal expenses and additional one-off costs).
+
 ***
 
 #### Vision & Scope of the Solution
 
 ##### Vision statement
 
-Vemos o Gestor de Despesas como um catalisador de mudanças, ajudando os utilizadores a assumir o controlo do seu dinheiro, reduzindo o stress financeiro e ajudando a criar e cumprir objetivos impostos pelos próprios utilizadores.
+We see Expense Manager as a catalyst for change, helping users take control of their money, reducing financial stress and helping to create and meet user-imposed goals.
 
 
 
 ##### List of features
 
-Os nossos principais objetivos são os seguintes:
+Our main objectives are the following:
 
-- Acompanhar as despesas
-- Categorizar as despesas (Por exemplo: Refeições na cantina, propinas, "going out", despesas, etc.)
-- Resumo de despesas
-- Análise de despesas
-- Estabelecer budgets/limites em certas áreas (reservar ou não permitir que o utilizador gaste mais)
-- Notificar o utilizador quando os limites estiverem próximos de serem ultrapassados  
+- Track expenses
+- Categorize expenses (For example: Canteen meals, tuition fees, going out, expenses, etc.)
+- Expense summary
+- Expense analysis
+- Establish budgets/limits in certain areas (reserve or not allow the user to spend more)
+- Notify the user when limits are close to being exceeded
 
 ##### Features that will not be developed
 ##### Associar um cartão e uma conta bancária
-Uma vez que exige permissões que não temos (pretendemos resolver esta questão criando um budget que é introduzido pelo utilizador e adiciona a cada mês o mesmo valor. Irá exigir que o utilizador tome o cuidado de registar todas as operações financeiras efetuadas.)
+Since it requires permissions that we do not have (we intend to resolve this issue by creating a budget that is entered by the user and adds the same amount each month. It will require the user to take care to record all financial operations carried out.)
 
 
 ##### Assumptions
 
-Supõe-se:
-- Os estudantes utilizem o software ativamente para acompanhar despesas, definir orçamentos e trabalhar em direção aos seus objetivos.
-- Os utilizadores fornecerão valores precisos, como renda e despesas.
-- A demanda de um produto financeiro dedicado às necessidades dos estudantes.
-- A infraestrutura do software será segura e resistente a violações de dados.
-- O software cumprirá todas as regulamentações e leis financeiras relevantes.
-- O software pressupõe a necessidade de atualizações e melhorias contínuas para se adaptar às mudanças no cenário financeiro e às necessidades dos utilizadores.
+It is assumed:
+- Students actively use the software to track expenses, set budgets, and work toward their goals.
+- Users will provide accurate values such as income and expenses.
+- The demand for a financial product dedicated to the needs of students.
+- The software infrastructure will be secure and resistant to data breaches.
+- The software will comply with all relevant financial regulations and laws.
+- The software assumes the need for continuous updates and improvements to adapt to changes in the financial scenario and user needs.
 
 ***
 
@@ -116,7 +116,7 @@ Supõe-se:
 
 ![Despesas](imgs/despesas.png)
 
-![Gerir categorias](imgs/gerir_categotias.png)
+![Gerir categorias](imgs/gerir_categorias.png)
 
 ![Budget](imgs/guardar_montante.png)
 
@@ -129,67 +129,9 @@ Supõe-se:
 
 ### User Stories
 
-##### User Story 1
-
-As a new user,
-I want to be able to create a new account,
-So that I can start using it and mange my finances effectively.
-
-(Como um novo utilizador, desejo poder registar-me(S) para puder usar o software(M)).
-
-Story Points - 2S
-Priorities  - Must have (M)
-
-###### Acceptance Criteria
-
-
-- Quando abrir o software, devo ver uma opção clara e intuitiva para fazer o login ou para registar uma nova conta. 
-- Durante o processo de registo, devo ser pedido o meu nome, endereço de e-mail e criar uma senha segura com verificação. 
-- Após fornecer as informações necessárias, devo receber um e-mail de verificação para confirmar minha conta.
-- Após clicar no link de verificação no e-mail, devo receber uma mensagem de confirmação no software, indicando que minha conta está ativa. 
-- Não devo ser capaz de aceder aos recursos do software até que minha conta seja verificada. 
-- Se encontrar qualquer problema durante o login, como um e-mail ou senha inválidos, devo receber mensagens de erro claras me orientando sobre como resgatar a palavra-passe.
-
-
-***
-
-##### User Story 2
-
-
-As a student, I want to be able to track my daily expenses and categorize them,so that I can gain insights into my spending habits.
-
-(Como estudante, quero ser capaz de controlar as minhas despesas diárias e categorizá-las (M), para saber mais sobre os meus gastos diários(S)).
-
-
-Story Points - 3M
-Priorities  - Should Have (S)
-
-###### Acceptance Criteria
-
-
-- Após fazer o login, devo ter um painel inicial que mostre o meu balanço semanal, de forma a mostrar o dinheiro que tenho reservado para aquela semana, assim como um balanço do que já gastei. 
-- Além disso, o software deve ter uma opção bem vísivel para inserir as minhas despesas. 
-- Devo ser capaz de inserir o valor gasto, a data, uma breve descrição e escolher uma categoria existente (por exemplo, alimentação, refeições na cantina, propinas, transporte, ginásio) ou criar uma nova. Devo ser capaz de visualizar gráficos ou informação clara e curta em cada categoria sobre os balanços mensais e semanais. 
-- Devo receber lembretes se exceder os limites de gastos predefinidos.
-
-***
-
-
-##### User Story 3
-
-As a student, I want to analyze my spending patterns, So that I can better understand where my money is going and make informed financial decisions.
-
-(Como estudante, quero analisar os meus gastos (X), para entender para onde vai o meu dinheiro e tomar melhores decisões (C) ).
-
-Story Points - 3X
-Priorities  - Could Have (C)
-
-###### Acceptance Criteria
-
-
-- Após fazer o login, devo ter um menu que me permita efetuar diversas operações, como por exemplo ver o conjunto de todas as despesas, ver as despesas por categoria, ver uma breve análise. Nessa análise, posso escolher o intervalos de datas que pretendo (o último mês, o último semestre, a última semana, hoje, ou datas personalizadas). 
-- O software deve fazer um resumo das minhas despezas, exibir um pequeno texto que me informe das minhas despesas (por exemplo, este mês gastou mais 50€ em compras, para melhorar tente fazer uma lista do que realmete precisa e obrigue-se a segui-la).
-- Poderá também exiber alguns gráficos ou imagens representivas. 
+- User story 1 (link to issue card)
+- User story 2 (link to issue card)
+- User story 3 (link to issue card)
 
 ***
 
@@ -208,6 +150,64 @@ It is a collection of criteria that must be completed for a User Story to be con
 
 ***
 
+##### User Story 1
+As a new user,
+I want to be able to create a new account,
+So that I can start using it and mange my finances effectively.
+
+(Como um novo utilizador, desejo poder registar-me(S) para puder usar o software(M)).
+
+Story Points - 2S
+Priorities  - Must have (M)
+
+###### Acceptance Criteria
+
+
+- When I open the software, I should see a clear and intuitive option to log in or register a new account.
+- During the registration process, I must be asked for my name, email address and create a secure password with verification.
+- After providing the required information, I should receive a verification email to confirm my account.
+- After clicking the verification link in the email, I should receive a confirmation message in the software indicating that my account is active.
+- I should not be able to access the software features until my account is verified.
+- If I encounter any problems during login, such as an invalid email or password, I should receive clear error messages guiding me on how to reset the password.
+***
+
+##### User Story 2
+As a student, I want to be able to track my daily expenses and categorize them,so that I can gain insights into my spending habits.
+
+(Como estudante, quero ser capaz de controlar as minhas despesas diárias e categorizá-las (M), para saber mais sobre os meus gastos diários(S)).
+
+
+Story Points - 3M
+Priorities  - Should Have (S)
+
+###### Acceptance Criteria
+
+
+- After logging in, I should have an initial panel that shows my weekly balance, in order to show the money I have set aside for that week, as well as a balance of what I have already spent.
+- Furthermore, the software must have a very visible option to enter my expenses.
+- I should be able to enter the amount spent, the date, a brief description and choose an existing category (e.g. food, canteen meals, tuition fees, transport, gym) or create a new one. I must be able to visualize graphs or clear and short information in each category about the monthly and weekly balance sheets.
+- I should receive reminders if I exceed preset spending limits.
+***
+
+##### User Story 3
+As a student, I want to analyze my spending patterns, So that I can better understand where my money is going and make informed financial decisions.
+
+(Como estudante, quero analisar os meus gastos (X), para entender para onde vai o meu dinheiro e tomar melhores decisões (C) ).
+
+Story Points - 3X
+Priorities  - Could Have (C)
+
+###### Acceptance Criteria
+
+
+- After logging in, I should have a menu that allows me to perform various operations, such as seeing all expenses together, seeing expenses by category, seeing a brief analysis. In this analysis, I can choose the date range I want (the last month, the last semester, the last week, today, or custom dates).
+- The software should make a summary of my expenses, display a small text that informs me of my expenses (for example, this month you spent another €50 on shopping, to improve try to make a list of what you really need and force yourself to follow it -there).
+- You may also display some graphs or representative images.
+***
+##### User Story 4
+
+***
+
 ## Architecture and Design
 
 #### Domain Model
@@ -219,50 +219,50 @@ It is a collection of criteria that must be completed for a User Story to be con
 ## Risk Plan
 
 ##### Threshhold of Success
-Para que o projeto seja considerado "sucesso" devemos ter : 
- - Acompanhamento de Despesas
- - categorização, resumo e análise de despesas
- - Permitir estabelecer budgets/limites em certas áreas
+For the project to be considered "successful" we must have:
+  - Expense Tracking
+  - categorization, summary and analysis of expenses
+  - Allows you to establish budgets/limits in certain areas
 
 
 
 ##### Risk List
 
 ###### RSK1 Falta de Experiencia
-RSK1 – PxI: 4x5=20; Todos os membros da equipa estão a fazer a cadeira pela primeira vez - nenhum tem experiência neste tipo de projetos. 
-Este facto pode levar a atrasos em metas por estimativas de tempo mal calculadas ou falhas de comunicação.
+RSK1 – PxI: 4x5=20; All team members are making the chair for the first time - none have experience in this type of project.
+This can lead to delays in goals due to poorly calculated time estimates or communication failures.
 
 ###### RSK2 Alterações constantes e conflitos
-RSK2 – PxI: 3x4=12; Todos os projetos sofrem alterações ao longo do seu desenvolvimento.
-Alterações constantes ao projeto podem vir a causar complicações ou atrasos principalmente por conflitos que possam surgir a cada nova alteração elaborada em simultaneo pelos vários elementos da equipa.
+RSK2 – PxI: 3x4=12; All projects undergo changes throughout their development.
+Constant changes to the project can cause complications or delays, mainly due to conflicts that may arise with each new change prepared simultaneously by the various team members.
 
 ###### RSK3 Bugs e uso excessivo de recursos
-RSK3 – PxI: 4x=8; Existe uma grande probabilidade que o projeto possua bugs; Tendo em conta que os membros do grupo não são profissionais na àrea da programação, podem vir a escrever código que utilize excessivamente recursos da máquina onde o programa será executado.
-Bugs que ocorram durante a realização do projeto obrigar-nos-ão a dispender mais tempo do que o necessário levando a envetuais atrasos. Uso excessivo de recursos terá este mesmo efeito por alterações de última hora com o objetivo de diminuir o seu uso.
+RSK3 – PxI: 4x=8; There is a high probability that the project has bugs; Taking into account that the group members are not professionals in the area of programming, they may write code that uses excessive resources of the machine where the program will be executed.
+Bugs that occur during the project will force us to spend more time than necessary, leading to possible delays. Excessive use of resources will have this same effect due to last minute changes aimed at reducing their use.
 
 ###### RSK4 Segurança e privacidade
-RSK4 - PxI: 4x5=20; Os elementos do grupo são inesperientes na área da segurança e privacidade. 
-Como pretendemos trabalhar com informação sensível temos um grande risco de violações de dados ou de privacidade, o que poderia pôr em causa a fidelidade do nosso software. Desta forma, a implementação de protocolos de segurança rigorosos, criptologia e a conformidade com leis de proteção de dados são essenciais. 
+RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy.
+As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software. Therefore, the implementation of strict security protocols, cryptology and compliance with data protection laws are essential.
 
 ###### RSK5 Marketing
-RSK5 - PxI: 5x5=25; O software será inútil se não for utilizado.
-Outro risco será a adoção dos estudantes, por outras palavras, a falta de conhecimento sobre o software, uma vez que existem imensas aplicações financeiras. É essencial fazer parcerias com instituições, adotar medidas eficazes de marketing.
+RSK5 - PxI: 5x5=25; The software will be useless if it is not used.
+Another risk will be student adoption, in other words, the lack of knowledge about the software, as there are many financial applications. It is essential to form partnerships with institutions and adopt effective marketing measures.
 
 
 
 ##### Mitigation Actions (threats>=20)
-- RSK1 - AS; Efetuar check-ins regulares durante os sprints, e reuniões;
-- RSK2 - AS; Panificar bem o projeto, para evitar qualquer alteração futura;
-- RSK3 - AS; Comunicar com os membros do grupo, para que estes ajudem a manter o código coroente e sem bugs;
-- RSK4 - CP; Efetuar reuniões todas as semanas para averiguar o progresso de todos os membros;
-- RSK5 - MS; Gerir de forma eficiente o tempo entre todos os membros, de forma a implementar o maior numero de funcionalidades possiveis.
+- RSK1 - AS; Perform regular check-ins during sprints and meetings;
+- RSK2 - AS; Pan the project well to avoid any future changes;
+- RSK3 - AS; Communicate with group members, so that they help keep the code consistent and bug-free;
+- RSK4 - CP; Hold meetings every week to check the progress of all members;
+- RSK5 - MS; Efficiently manage time among all members, in order to implement as many features as possible.
 
 ***
 
 ## Pre-Game
 ### Sprint 0 Plan
 
-- Goal: Planear o projeto, criar um plano de ação e efetuar a apresentação do projeto ao cliente
+- Goal: Plan the project, create an action plan and present the project to the client
 
 - Dates: from 10-13/Oct to 24-27/Oct, 2 weeks
 
@@ -270,8 +270,8 @@ Outro risco será a adoção dos estudantes, por outras palavras, a falta de con
   - Product Owner: Francisco Costa
   - Scrum Master: Artur Yurchuck
   - Developer: Lara Bizzarro
-  	       Joana Ferrao
-  	       Ana Sofia Silva
+  	           Joana Ferrao
+  	           Ana Sofia Silva
   
 - Story Points: 2S+3M+3X
 - Prioritize: MSC
