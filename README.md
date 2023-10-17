@@ -110,8 +110,21 @@ Supõe-se:
 
 ![Painel Inicial](imgs/pagina_inicial.png)
 
+![Adicionar despesas](imgs/adicionar_despesa.png)
+
+![Despesas por categotia](imgs/despesas_compras.png)
+
 ![Despesas](imgs/despesas.png)
 
+![Gerir categorias](imgs/gerir_categotias.png)
+
+![Budget](imgs/guardar_montante.png)
+
+![Objetivos](imgs/objetivos.png)
+
+![Relatorio](imgs/relatorio.png)
+
+![Reservar Montante](imgs/reservar_montantes.png)
 ***
 
 ### User Stories
