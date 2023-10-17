@@ -154,11 +154,7 @@ It is a collection of criteria that must be completed for a User Story to be con
 
 ##### User Story 1
 
-As a new user,
-I want to be able to create a new account,
-So that I can start using it and mange my finances effectively.
-
-(Como um novo utilizador, desejo poder registar-me(S) para puder usar o software(M)).
+As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.
 
 Story Points - 2S
 Priorities  - Must have (M)
@@ -179,11 +175,8 @@ Priorities  - Must have (M)
 
 As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
 
-(Como estudante, quero ser capaz de controlar as minhas despesas diárias (M), para saber mais sobre os meus gastos diários(S)).
-
-
-Story Points - 3M
-Priorities  - Should Have (S)
+Story Points -
+Priorities  - 
 
 ###### Acceptance Criteria
 
@@ -198,21 +191,39 @@ Priorities  - Should Have (S)
 
 ##### User Story 3
 
-As a student, I want to analyze my spending patterns, So that I can better understand where my money is going and make informed financial decisions.
+As a user, I want to manage categories so that I can organize my expenses according to different types.
 
-(Como estudante, quero analisar os meus gastos (X), para entender para onde vai o meu dinheiro e tomar melhores decisões (C) ).
+Story Points -
+Priorities  - 
 
-Story Points - 3X
-Priorities  - Could Have (C)
+###### Acceptance Criteria
+
+- There should be a section in the application dedicated to category management.
+- The user should be able to create and delete categories.
+- The created categories should be applicable to the expenses entered in User Story 2.
+- It should be possible to assign a category to each expense during entry.
+
+***
+
+##### User Story 4
+
+As a student, I want to access expenses so that I can view all my recorded expenses.
+
+Story Points -
+Priorities  - 
 
 ###### Acceptance Criteria
 
 
-- After logging in, I should have a menu that allows me to perform various operations, such as seeing all expenses together, seeing expenses by category, seeing a brief analysis. In this analysis, I can choose the date range I want (the last month, the last semester, the last week, today, or custom dates).
-- The software should make a summary of my expenses, display a small text that informs me of my expenses (for example, this month you spent another €50 on shopping, to improve try to make a list of what you really need and force yourself to follow it -there).
-- You may also display some graphs or representative images.
+
 ***
-##### User Story 4
+
+##### User Story 5
+
+Story Points -
+Priorities  - 
+
+###### Acceptance Criteria
 
 ***
 
