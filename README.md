@@ -112,6 +112,8 @@ It is assumed:
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
 
+![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
+
 ![Despesas por categotia](imgs/despesas_compras.png)
 
 ![Despesas](imgs/despesas.png)
@@ -151,6 +153,7 @@ It is a collection of criteria that must be completed for a User Story to be con
 ***
 
 ##### User Story 1
+
 As a new user,
 I want to be able to create a new account,
 So that I can start using it and mange my finances effectively.
@@ -169,12 +172,14 @@ Priorities  - Must have (M)
 - After clicking the verification link in the email, I should receive a confirmation message in the software indicating that my account is active.
 - I should not be able to access the software features until my account is verified.
 - If I encounter any problems during login, such as an invalid email or password, I should receive clear error messages guiding me on how to reset the password.
+
 ***
 
 ##### User Story 2
-As a student, I want to be able to track my daily expenses and categorize them,so that I can gain insights into my spending habits.
 
-(Como estudante, quero ser capaz de controlar as minhas despesas diárias e categorizá-las (M), para saber mais sobre os meus gastos diários(S)).
+As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
+
+(Como estudante, quero ser capaz de controlar as minhas despesas diárias (M), para saber mais sobre os meus gastos diários(S)).
 
 
 Story Points - 3M
@@ -182,14 +187,17 @@ Priorities  - Should Have (S)
 
 ###### Acceptance Criteria
 
+- After logging in, I should have an initial panel.
+- Furthermore, the software must have a very visible entry to enter my expenses.
+- I should be able to enter the amount spent, the date, a optional description and choose an existing category (e.g. food, canteen meals, tuition fees, transport, gym) or create a new one. 
+- The system must validate if the mandatory fields are filled in correctly.
+- After entry, expenses should be recorded and displayed in a list or panel in the application.
+- It should be possible to edit or delete previously entered expenses.
 
-- After logging in, I should have an initial panel that shows my weekly balance, in order to show the money I have set aside for that week, as well as a balance of what I have already spent.
-- Furthermore, the software must have a very visible option to enter my expenses.
-- I should be able to enter the amount spent, the date, a brief description and choose an existing category (e.g. food, canteen meals, tuition fees, transport, gym) or create a new one. I must be able to visualize graphs or clear and short information in each category about the monthly and weekly balance sheets.
-- I should receive reminders if I exceed preset spending limits.
 ***
 
 ##### User Story 3
+
 As a student, I want to analyze my spending patterns, So that I can better understand where my money is going and make informed financial decisions.
 
 (Como estudante, quero analisar os meus gastos (X), para entender para onde vai o meu dinheiro e tomar melhores decisões (C) ).
