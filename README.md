@@ -134,6 +134,17 @@ It is assumed:
 - User story 1 (link to issue card)
 - User story 2 (link to issue card)
 - User story 3 (link to issue card)
+- User story 4 (link to issue card)
+- User story 5 (link to issue card)
+- User story 6 (link to issue card)
+- User story 7 (link to issue card)
+- User story 8 (link to issue card)
+- User story 9 (link to issue card)
+- User story 10 (link to issue card)
+- User story 11 (link to issue card)
+- User story 12 (link to issue card)
+- User story 13 (link to issue card)
+- User story 14 (link to issue card)
 
 ***
 
@@ -157,6 +168,7 @@ It is a collection of criteria that must be completed for a User Story to be con
 As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.
 
 Story Points - 2S
+
 Priorities  - Must have (M)
 
 ###### Acceptance Criteria
@@ -176,6 +188,7 @@ Priorities  - Must have (M)
 As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
 
 Story Points -
+
 Priorities  - 
 
 ###### Acceptance Criteria
@@ -194,6 +207,7 @@ Priorities  -
 As a user, I want to manage categories so that I can organize my expenses according to different types.
 
 Story Points -
+
 Priorities  - 
 
 ###### Acceptance Criteria
@@ -210,6 +224,88 @@ Priorities  -
 As a student, I want to access expenses so that I can view all my recorded expenses.
 
 Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+- There should be a page or panel where I can view all recorded expenses.
+- Expenses should be displayed in a list or table, showing details such as date, amount, category, and description (if available).
+- I should be able to filter expenses by date, category, or amount.
+
+***
+
+##### User Story 5
+
+As a student, I want to generate reports so that I can analyze send them or analize them later.
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+- There should be a report feature.
+- I should be able to select a specific time period for the report.
+- The report should include information on total spending, spending by category, and other relevant statistics.
+- I should be able to view and export the report in common formats, such as PDF or CSV.
+
+***
+
+##### User Story 6
+
+As a user, I want to reserve amounts for future expenses so that I can plan my budget.
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+- There should be a feature to reserve amounts for future expenses in the application.
+- I should be able to create specific reservations for expense categories.
+- The system should track the reserved amount and automatically subtract it from future expenses in that category.
+
+***
+
+##### User Story 7
+
+As a user, I want to set budgets for specific expense categories so that I can control my spending.
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+- There should be a feature to set budgets for categories in the application.
+- I should be able to define a maximum budget for each category.
+- The system should provide notifications or alerts when the budget is close to being exceeded.
+
+***
+
+##### User Story 8
+
+As a user, I want to update the monthly budget so that I can make adjustments as needed.
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+- There should be a feature to update budget in the application.
+- I should be able to change the budget amount for each month.
+- The system should reflect the budget updates in the application's statistics and alerts.
+
+
+***
+
+##### User Story 9
+
+
+Story Points -
+
 Priorities  - 
 
 ###### Acceptance Criteria
@@ -218,12 +314,68 @@ Priorities  -
 
 ***
 
-##### User Story 5
+##### User Story 10
+
 
 Story Points -
+
 Priorities  - 
 
 ###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 11
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 12
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 13
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 14
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
 
 ***
 
