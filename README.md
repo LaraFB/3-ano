@@ -134,6 +134,17 @@ It is assumed:
 - User story 1 (link to issue card)
 - User story 2 (link to issue card)
 - User story 3 (link to issue card)
+- User story 4 (link to issue card)
+- User story 5 (link to issue card)
+- User story 6 (link to issue card)
+- User story 7 (link to issue card)
+- User story 8 (link to issue card)
+- User story 9 (link to issue card)
+- User story 10 (link to issue card)
+- User story 11 (link to issue card)
+- User story 12 (link to issue card)
+- User story 13 (link to issue card)
+- User story 14 (link to issue card)
 
 ***
 
@@ -156,8 +167,9 @@ It is a collection of criteria that must be completed for a User Story to be con
 
 As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.
 
-Story Points - 2S.
-Priorities  - Must have (M).
+Story Points - 2S
+
+Priorities  - Must have (M)
 
 ###### Acceptance Criteria
 
@@ -175,8 +187,9 @@ Priorities  - Must have (M).
 
 As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
 
-Story Points -.
-Priorities  - .
+Story Points -
+
+Priorities  - 
 
 ###### Acceptance Criteria
 
@@ -193,8 +206,9 @@ Priorities  - .
 
 As a user, I want to manage categories so that I can organize my expenses according to different types.
 
-Story Points -.
-Priorities  - .
+Story Points -
+
+Priorities  - 
 
 ###### Acceptance Criteria
 
@@ -209,8 +223,9 @@ Priorities  - .
 
 As a student, I want to access expenses so that I can view all my recorded expenses.
 
-Story Points -.
-Priorities  - .
+Story Points -
+
+Priorities  - 
 
 ###### Acceptance Criteria
 
@@ -225,6 +240,7 @@ Priorities  - .
 As a student, I want to generate reports so that I can analyze send them or analize them later.
 
 Story Points -
+
 Priorities  - 
 
 ###### Acceptance Criteria
@@ -241,6 +257,7 @@ Priorities  -
 As a user, I want to reserve amounts for future expenses so that I can plan my budget.
 
 Story Points -
+
 Priorities  - 
 
 ###### Acceptance Criteria
@@ -256,6 +273,7 @@ Priorities  -
 As a user, I want to set budgets for specific expense categories so that I can control my spending.
 
 Story Points -
+
 Priorities  - 
 
 ###### Acceptance Criteria
@@ -271,6 +289,7 @@ Priorities  -
 As a user, I want to update the monthly budget so that I can make adjustments as needed.
 
 Story Points -
+
 Priorities  - 
 
 ###### Acceptance Criteria
@@ -278,6 +297,84 @@ Priorities  -
 - There should be a feature to update budget in the application.
 - I should be able to change the budget amount for each month.
 - The system should reflect the budget updates in the application's statistics and alerts.
+
+
+***
+
+##### User Story 9
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 10
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 11
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 12
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 13
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
+
+
+***
+
+##### User Story 14
+
+
+Story Points -
+
+Priorities  - 
+
+###### Acceptance Criteria
+
 
 
 ***
