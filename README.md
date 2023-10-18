@@ -344,8 +344,8 @@ Priorities  -
 ###### Acceptance Criteria
 
 - There should be a section or page dedicated to transaction history in the application.
--  The transaction history should be displayed in a list or table, with detailed information such as date, description, amount, and category.
-- The user should be able to filter transactions by date, category, or type (income or expense).
+- The transaction history should be displayed in a list or table, with detailed information such as date, description, amount, and category.
+- I should be able to filter transactions by date, category, or type (income or expense).
 
 
 ***
@@ -378,7 +378,7 @@ Priorities  -
 
 - There should be an option to view expenses grouped by category in the application.
 - Expenses should be presented in charts or tables, showing the amount spent in each category.
-- The user should be able to select a specific period for viewing expenses by category.
+- I should be able to select a specific period for viewing expenses by category.
 
 
 ***
@@ -417,30 +417,15 @@ For the project to be considered "successful" we must have:
   - Allows you to establish budgets/limits in certain areas
 
 
-
 ##### Risk List
 
-###### RSK1 Falta de Experiencia
-RSK1 – PxI: 4x5=20; All team members are making the chair for the first time - none have experience in this type of project.
-This can lead to delays in goals due to poorly calculated time estimates or communication failures.
 
-###### RSK2 Alterações constantes e conflitos
-RSK2 – PxI: 3x4=12; All projects undergo changes throughout their development.
-Constant changes to the project can cause complications or delays, mainly due to conflicts that may arise with each new change prepared simultaneously by the various team members.
-
-###### RSK3 Bugs e uso excessivo de recursos
-RSK3 – PxI: 4x=8; There is a high probability that the project has bugs; Taking into account that the group members are not professionals in the area of programming, they may write code that uses excessive resources of the machine where the program will be executed.
-Bugs that occur during the project will force us to spend more time than necessary, leading to possible delays. Excessive use of resources will have this same effect due to last minute changes aimed at reducing their use.
-
-###### RSK4 Segurança e privacidade
-RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy.
-As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software. Therefore, the implementation of strict security protocols, cryptology and compliance with data protection laws are essential.
-
-###### RSK5 Marketing
-RSK5 - PxI: 5x5=25; The software will be useless if it is not used.
-Another risk will be student adoption, in other words, the lack of knowledge about the software, as there are many financial applications. It is essential to form partnerships with institutions and adopt effective marketing measures.
-
-
+- RSK1 – PxI: 4x5=20; The team doesn't have any experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
+- RSK2 – PxI: 3x4=12; Constant changes to the project can cause complications or delays, mainly due to conflicts that may arise with each new change prepared simultaneously by the various team members.
+- RSK3 – PxI: 4x=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
+- RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy. As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software. 
+- RSK5 - PxI: 5x5=25; The software will be useless if it is not used. 
+- RSK 6 - PxI: 4*5=20; We have a limited amount of time, so we might not be able to finish all the features that we promised.
 
 ##### Mitigation Actions (threats>=20)
 - RSK1 - AS; Perform regular check-ins during sprints and meetings;
@@ -448,6 +433,7 @@ Another risk will be student adoption, in other words, the lack of knowledge abo
 - RSK3 - AS; Communicate with group members, so that they help keep the code consistent and bug-free;
 - RSK4 - CP; Hold meetings every week to check the progress of all members;
 - RSK5 - MS; Efficiently manage time among all members, in order to implement as many features as possible.
+- RSK6 - MS; COnstantly check the progress of the project, make regular meetings and keep the client updated in possible changes (features that won't be possible to make).
 
 ***
 
