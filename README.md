@@ -295,8 +295,12 @@ For the project to be considered "successful" we must have:
   - Task11 – Create Sprint 0 Board
   - Task12 – Write US in PB, estimate (SML), prioritize (MoSCoW), sort
   - Task13 – Create repository with “GPS Git” Workflow
+  - Task14 - Fix week 4 feedback problems
+  - Task15 - Create wiki page with weekly feedback
+  - Task16 - Create wiki page with meeting agenda
+  - Task17 - Plan sprint 1
 
-***
+  ***
 
 ## Release Plan
 
@@ -333,11 +337,22 @@ For the project to be considered "successful" we must have:
 - Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
 
 - To do:
+  - Task1: Create javafx GUIs
   - US1: As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.
+    - Task2: Create register/login code
+    - Task3: Create data verification method
   - US2: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
+    - Task4: Add expenses managing methods
+    - Task5: Create expenses validation methods
+    - Task6: After entry, expenses should be recorded and displayed in a list or panel in the application.
   - US3: As a user, I want to manage categories so that I can organize my expenses according to different types.
-  -US7: As a user, I want to set goals so that I can work for a specific objective.
-  -US8: As a user, I want to see the monthly budget so that I can make adjustments as needed.
+    - Task7: Add category managing methods
+    - Task8: Create category validation methods
+  - US7: As a user, I want to set goals so that I can work for a specific objective.
+    - Task9: Add goals managing methods
+  - US8: As a user, I want to see the monthly budget so that I can make adjustments as needed.
+    - Task10: Add budget managing methods
+    - Task11: Create budget validation methods
   
   
 - Story Points: 1XS + 3S + 1M
