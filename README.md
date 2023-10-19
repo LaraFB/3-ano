@@ -1,4 +1,4 @@
-# Project Title
+# Gestor de despesas
 
 ## Contents
 
@@ -41,32 +41,30 @@ Currently, the only way to control expenses is through bank statements, which be
 In an attempt to make it easier to read financial expenses, we sought to develop an Expense Manager - an intuitive and easy-to-use solution - that
 allows you to categorize and view a summary of expenses for the day, month or even the year.
 
+
 ##### Stakeholders
 
-###### Stakeholder Primário - Estudante 
+###### Students
 Students are the main beneficiaries of this software, as it directly affects their ability to manage their finances.
 
+###### Parents
+They may provide financial support to students and have an indirect interest in the efficiency of the software. It is in their interest that their financial contributions are used responsibly and that their child has financial stability and education.
 
-###### Interessados Secundários: Pais / Responsáveis
-They may provide financial support to students and have an indirect interest in the efficiency of the software. It is in your interest that your financial contributions are used responsibly and that your child has financial stability and education.
-
-
-###### Stakeholders Terceários - Instituições de Ensino 
+###### Educational Institutions
 Although they may not have a direct financial interest, they do have an interest in the general well-being of their students - it is an issue that can affect their academic performance and overall experience at the institution.
 There are also some institutions that offer scholarships to certain students, according to their performance or contribution to it.
 
 ##### Users
-Students(People who want to keep a detailed record of their expenses for better financial management. These expenses are distributed between living costs, personal expenses and additional one-off costs).
+Students (People who want to keep a detailed record of their expenses for better financial management. These expenses are distributed between living costs, personal expenses and additional one-off costs).
 
 ***
+
 
 #### Vision & Scope of the Solution
 
 ##### Vision statement
 
 We see Expense Manager as a catalyst for change, helping users take control of their money, reducing financial stress and helping to create and meet user-imposed goals.
-
-
 
 ##### List of features
 
@@ -80,8 +78,7 @@ Our main objectives are the following:
 - Notify the user when limits are close to being exceeded
 
 ##### Features that will not be developed
-##### Associar um cartão e uma conta bancária
-Since it requires permissions that we do not have (we intend to resolve this issue by creating a budget that is entered by the user and adds the same amount each month. It will require the user to take care to record all financial operations carried out.)
+Link a card and bank account- Since it requires permissions that we do not have (we intend to resolve this issue by creating a budget that is entered by the user and adds the same amount each month. It will require the user to take care to record all financial operations carried out.)
 
 
 ##### Assumptions
@@ -248,7 +245,7 @@ Priorities  -
 - There should be a report feature.
 - I should be able to select a specific time period for the report.
 - The report should include information on total spending, spending by category, and other relevant statistics.
-- I should be able to view and export the report in common formats, such as PDF or CSV.
+- I should be able to "visual helpers", like graphics.
 
 ***
 
@@ -303,6 +300,7 @@ Priorities  -
 
 ##### User Story 9
 
+As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses.
 
 Story Points -
 
@@ -310,12 +308,17 @@ Priorities  -
 
 ###### Acceptance Criteria
 
+- There should be an option to generate reports in PDF and Excel within the application.
+- The PDF reports should be formatted in a clear and legible manner.
+- Excel reports should be exported in a compatible format and structured in an organized manner.
+- The exported reports should include detailed information such as expenses, revenues, categories, and dates.
 
 
 ***
 
 ##### User Story 10
 
+As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control.
 
 Story Points -
 
@@ -323,12 +326,16 @@ Priorities  -
 
 ###### Acceptance Criteria
 
+- There should be a feature that allows the user to reset the monthly budget.
+- Upon resetting, the available amount for the month should be reset to the initial value configured by the user.
+- The transaction and expense history should be preserved and accessible in a separate history.
 
 
 ***
 
 ##### User Story 11
 
+As a student, I want to view the transaction history so that I can review my past financial activities.
 
 Story Points -
 
@@ -336,12 +343,16 @@ Priorities  -
 
 ###### Acceptance Criteria
 
+- There should be a section or page dedicated to transaction history in the application.
+- The transaction history should be displayed in a list or table, with detailed information such as date, description, amount, and category.
+- I should be able to filter transactions by date, category, or type (income or expense).
 
 
 ***
 
 ##### User Story 12
 
+As a student, I want to view the use of my wallet (or purse) so that I can keep track of wallet usage and decide on the best way to manage it.
 
 Story Points -
 
@@ -349,12 +360,15 @@ Priorities  -
 
 ###### Acceptance Criteria
 
+- There should be a section or panel that shows the current balance of the user's wallet (or purse).
+- The balance should be displayed clearly and updated in real-time, considering the registered transactions.
 
 
 ***
 
 ##### User Story 13
 
+As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money.
 
 Story Points -
 
@@ -362,12 +376,16 @@ Priorities  -
 
 ###### Acceptance Criteria
 
+- There should be an option to view expenses grouped by category in the application.
+- Expenses should be presented in charts or tables, showing the amount spent in each category.
+- I should be able to select a specific period for viewing expenses by category.
 
 
 ***
 
 ##### User Story 14
 
+As a user, I want to view progress towards goals so that I can track how close I am to achieving my financial objectives.
 
 Story Points -
 
@@ -375,6 +393,9 @@ Priorities  -
 
 ###### Acceptance Criteria
 
+- There should be a section in the application that displays progress toward financial goals set by the user.
+- The application should compare expenses and the current balance with the defined goals.
+- There should be a visual representation of progress, such as progress bars or charts, showing how close the user is to achieving their goals.
 
 
 ***
@@ -396,30 +417,15 @@ For the project to be considered "successful" we must have:
   - Allows you to establish budgets/limits in certain areas
 
 
-
 ##### Risk List
 
-###### RSK1 Falta de Experiencia
-RSK1 – PxI: 4x5=20; All team members are making the chair for the first time - none have experience in this type of project.
-This can lead to delays in goals due to poorly calculated time estimates or communication failures.
 
-###### RSK2 Alterações constantes e conflitos
-RSK2 – PxI: 3x4=12; All projects undergo changes throughout their development.
-Constant changes to the project can cause complications or delays, mainly due to conflicts that may arise with each new change prepared simultaneously by the various team members.
-
-###### RSK3 Bugs e uso excessivo de recursos
-RSK3 – PxI: 4x=8; There is a high probability that the project has bugs; Taking into account that the group members are not professionals in the area of programming, they may write code that uses excessive resources of the machine where the program will be executed.
-Bugs that occur during the project will force us to spend more time than necessary, leading to possible delays. Excessive use of resources will have this same effect due to last minute changes aimed at reducing their use.
-
-###### RSK4 Segurança e privacidade
-RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy.
-As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software. Therefore, the implementation of strict security protocols, cryptology and compliance with data protection laws are essential.
-
-###### RSK5 Marketing
-RSK5 - PxI: 5x5=25; The software will be useless if it is not used.
-Another risk will be student adoption, in other words, the lack of knowledge about the software, as there are many financial applications. It is essential to form partnerships with institutions and adopt effective marketing measures.
-
-
+- RSK1 – PxI: 4x5=20; The team doesn't have any experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
+- RSK2 – PxI: 3x4=12; Constant changes to the project can cause complications or delays, mainly due to conflicts that may arise with each new change prepared simultaneously by the various team members.
+- RSK3 – PxI: 4x=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
+- RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy. As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software. 
+- RSK5 - PxI: 5x5=25; The software will be useless if it is not used. 
+- RSK 6 - PxI: 4*5=20; We have a limited amount of time, so we might not be able to finish all the features that we promised.
 
 ##### Mitigation Actions (threats>=20)
 - RSK1 - AS; Perform regular check-ins during sprints and meetings;
@@ -427,6 +433,7 @@ Another risk will be student adoption, in other words, the lack of knowledge abo
 - RSK3 - AS; Communicate with group members, so that they help keep the code consistent and bug-free;
 - RSK4 - CP; Hold meetings every week to check the progress of all members;
 - RSK5 - MS; Efficiently manage time among all members, in order to implement as many features as possible.
+- RSK6 - MS; COnstantly check the progress of the project, make regular meetings and keep the client updated in possible changes (features that won't be possible to make).
 
 ***
 
@@ -440,7 +447,7 @@ Another risk will be student adoption, in other words, the lack of knowledge abo
 - Roles:
   - Product Owner: Francisco Costa
   - Scrum Master: Artur Yurchuck
-  - Developer: Lara Bizzarro
+  - Developer: Lara Bizarro
   	           Joana Ferrao
   	           Ana Sofia Silva
   
