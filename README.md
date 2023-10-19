@@ -54,7 +54,7 @@ They may provide financial support to students and have an indirect interest in 
 Although they may not have a direct financial interest, they do have an interest in the general well-being of their students - it is an issue that can affect their academic performance and overall experience at the institution.
 There are also some institutions that offer scholarships to certain students, according to their performance or contribution to it.
 
-##### Users
+#### Users
 Students (People who want to keep a detailed record of their expenses for better financial management. These expenses are distributed between living costs, personal expenses and additional one-off costs).
 
 ***
@@ -105,46 +105,114 @@ It is assumed:
 
 ![Sign up](imgs/login.png)
 
+ Figura 1: Login (US1)
+
 ![Painel Inicial](imgs/pagina_inicial.png)
+
+ Figura 2: Página Inicial 
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
 
+ Figura 3: Adicionar despesas (US2)
+
 ![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
+
+ Figura 4: Visualização da despesa adicionada (US2)
+
+![Historico depois de adicionar despesa](imgs/despesas_historico_dps_adicionar.png)
+
+ Figura 5: Histórico de despesas (US11)
 
 ![Despesas por categotia](imgs/despesas_compras.png)
 
+ Figura 6: Despesas por categoria (US13)
+
 ![Despesas](imgs/despesas.png)
+
+ Figura 7: Página inicial das despesas (US4)
 
 ![Gerir categorias](imgs/gerir_categorias.png)
 
+ Figura 8: Gerir categorias (adicionar e eliminar) (US3)
+
 ![Budget](imgs/guardar_montante.png)
+
+ Figura 9: Página inicial do Budget (US8, US14, US12, US10)
 
 ![Objetivos](imgs/objetivos.png)
 
+ Figura 10: Página inicial dos objetivos (US7)
+
 ![Relatorio](imgs/relatorio.png)
 
+ Figura 11: Resultado de gerar relatório (US5,US9)
+
 ![Reservar Montante](imgs/reservar_montantes.png)
+
+ Figura 12: Reservar Montantes (US6)
+
 ***
 
 ### User Stories
 
-- User story 1 (link to issue card)
-- User story 2 (link to issue card)
-- User story 3 (link to issue card)
-- User story 4 (link to issue card)
-- User story 5 (link to issue card)
-- User story 6 (link to issue card)
-- User story 7 (link to issue card)
-- User story 8 (link to issue card)
-- User story 9 (link to issue card)
-- User story 10 (link to issue card)
-- User story 11 (link to issue card)
-- User story 12 (link to issue card)
-- User story 13 (link to issue card)
-- User story 14 (link to issue card)
+- User story 1 (tp-gps-11/gps_g11#1)
+- User story 2 (tp-gps-11/gps_g11#2)
+- User story 3 (tp-gps-11/gps_g11#3)
+- User story 4 (tp-gps-11/gps_g11#7)
+- User story 5 (tp-gps-11/gps_g11#8)
+- User story 6 (tp-gps-11/gps_g11#9)
+- User story 7 (tp-gps-11/gps_g11#10)
+- User story 8 (tp-gps-11/gps_g11#11)
+- User story 9 (tp-gps-11/gps_g11#12)
+- User story 10 (tp-gps-11/gps_g11#13)
+- User story 11 (tp-gps-11/gps_g11#14)
+- User story 12 (tp-gps-11/gps_g11#15)
+- User story 13 (tp-gps-11/gps_g11#16)
+- User story 14 (tp-gps-11/gps_g11#17)
 
 ***
-
+##### User Story 1
+As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.
+***
+##### User Story 2
+As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
+***
+##### User Story 3
+As a user, I want to manage categories so that I can organize my expenses according to different types.
+***
+##### User Story 4
+As a student, I want to access expenses so that I can view all my recorded expenses.
+***
+##### User Story 5
+As a student, I want to generate reports so that I can analyze send them or analize them later.
+***
+##### User Story 6
+As a user, I want to reserve amounts for future expenses so that I can plan my budget.
+***
+##### User Story 7
+As a user, I want to set goals so that I can work for a specific objective.
+***
+##### User Story 8
+As a user, I want to see the monthly budget so that I can make adjustments as needed.
+***
+##### User Story 9
+As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses.
+***
+##### User Story 10
+As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control.
+***
+##### User Story 11
+As a student, I want to view the transaction history so that I can review my past financial activities.
+***
+##### User Story 12
+As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it.
+***
+##### User Story 13
+As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money.
+***
+##### User Story 14
+As a working student, I want to add money to my budget, so that I can keep the budget updated.
+***
 ## Definition of done
 
 (This section is already written, do not edit)
@@ -156,247 +224,6 @@ It is a collection of criteria that must be completed for a User Story to be con
 2. Acceptance tests passed
 3. Accepted by the client
 4. Code merged to main
-
-
-***
-
-##### User Story 1
-
-As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.
-
-Story Points - 2S
-
-Priorities  - Must have (M)
-
-###### Acceptance Criteria
-
-
-- When I open the software, I should see a clear and intuitive option to log in or register a new account.
-- During the registration process, I must be asked for my name, email address and create a secure password with verification.
-- After providing the required information, I should receive a verification email to confirm my account.
-- After clicking the verification link in the email, I should receive a confirmation message in the software indicating that my account is active.
-- I should not be able to access the software features until my account is verified.
-- If I encounter any problems during login, such as an invalid email or password, I should receive clear error messages guiding me on how to reset the password.
-
-***
-
-##### User Story 2
-
-As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- After logging in, I should have an initial panel.
-- Furthermore, the software must have a very visible entry to enter my expenses.
-- I should be able to enter the amount spent, the date, a optional description and choose an existing category (e.g. food, canteen meals, tuition fees, transport, gym) or create a new one. 
-- The system must validate if the mandatory fields are filled in correctly.
-- After entry, expenses should be recorded and displayed in a list or panel in the application.
-- It should be possible to edit or delete previously entered expenses.
-
-***
-
-##### User Story 3
-
-As a user, I want to manage categories so that I can organize my expenses according to different types.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a section in the application dedicated to category management.
-- The user should be able to create and delete categories.
-- The created categories should be applicable to the expenses entered in User Story 2.
-- It should be possible to assign a category to each expense during entry.
-
-***
-
-##### User Story 4
-
-As a student, I want to access expenses so that I can view all my recorded expenses.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a page or panel where I can view all recorded expenses.
-- Expenses should be displayed in a list or table, showing details such as date, amount, category, and description (if available).
-- I should be able to filter expenses by date, category, or amount.
-
-***
-
-##### User Story 5
-
-As a student, I want to generate reports so that I can analyze send them or analize them later.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a report feature.
-- I should be able to select a specific time period for the report.
-- The report should include information on total spending, spending by category, and other relevant statistics.
-- I should be able to "visual helpers", like graphics.
-
-***
-
-##### User Story 6
-
-As a user, I want to reserve amounts for future expenses so that I can plan my budget.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a feature to reserve amounts for future expenses in the application.
-- I should be able to create specific reservations for expense categories.
-- The system should track the reserved amount and automatically subtract it from future expenses in that category.
-
-***
-
-##### User Story 7
-
-As a user, I want to set budgets for specific expense categories so that I can control my spending.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a feature to set budgets for categories in the application.
-- I should be able to define a maximum budget for each category.
-- The system should provide notifications or alerts when the budget is close to being exceeded.
-
-***
-
-##### User Story 8
-
-As a user, I want to update the monthly budget so that I can make adjustments as needed.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a feature to update budget in the application.
-- I should be able to change the budget amount for each month.
-- The system should reflect the budget updates in the application's statistics and alerts.
-
-
-***
-
-##### User Story 9
-
-As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be an option to generate reports in PDF and Excel within the application.
-- The PDF reports should be formatted in a clear and legible manner.
-- Excel reports should be exported in a compatible format and structured in an organized manner.
-- The exported reports should include detailed information such as expenses, revenues, categories, and dates.
-
-
-***
-
-##### User Story 10
-
-As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a feature that allows the user to reset the monthly budget.
-- Upon resetting, the available amount for the month should be reset to the initial value configured by the user.
-- The transaction and expense history should be preserved and accessible in a separate history.
-
-
-***
-
-##### User Story 11
-
-As a student, I want to view the transaction history so that I can review my past financial activities.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a section or page dedicated to transaction history in the application.
-- The transaction history should be displayed in a list or table, with detailed information such as date, description, amount, and category.
-- I should be able to filter transactions by date, category, or type (income or expense).
-
-
-***
-
-##### User Story 12
-
-As a student, I want to view the use of my wallet (or purse) so that I can keep track of wallet usage and decide on the best way to manage it.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a section or panel that shows the current balance of the user's wallet (or purse).
-- The balance should be displayed clearly and updated in real-time, considering the registered transactions.
-
-
-***
-
-##### User Story 13
-
-As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be an option to view expenses grouped by category in the application.
-- Expenses should be presented in charts or tables, showing the amount spent in each category.
-- I should be able to select a specific period for viewing expenses by category.
-
-
-***
-
-##### User Story 14
-
-As a user, I want to view progress towards goals so that I can track how close I am to achieving my financial objectives.
-
-Story Points -
-
-Priorities  - 
-
-###### Acceptance Criteria
-
-- There should be a section in the application that displays progress toward financial goals set by the user.
-- The application should compare expenses and the current balance with the defined goals.
-- There should be a visual representation of progress, such as progress bars or charts, showing how close the user is to achieving their goals.
-
 
 ***
 
