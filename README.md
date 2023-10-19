@@ -260,7 +260,7 @@ For the project to be considered "successful" we must have:
 - RSK3 - AS; Communicate with group members, so that they help keep the code consistent and bug-free;
 - RSK4 - CP; Hold meetings every week to check the progress of all members;
 - RSK5 - MS; Efficiently manage time among all members, in order to implement as many features as possible.
-- RSK6 - MS; COnstantly check the progress of the project, make regular meetings and keep the client updated in possible changes (features that won't be possible to make).
+- RSK6 - MS; Constantly check the progress of the project, make regular meetings and keep the client updated in possible changes (features that won't be possible to make).
 
 ***
 
@@ -303,8 +303,8 @@ For the project to be considered "successful" we must have:
 ### Release 1
 
 - Goal: MVP -> 
-    - Acompanhamento,categorização, resumo e análise de despesas 
-    - permitir estabelecer budgets/limites em certas áreas
+    - Monitoring, Categorize, Resume and Analise expenses; 
+    - Allow the criation of limits/budgets, in certain areas;
 - Dates: [teams 0] 21-24/Nov | [teams1] 28-30/Nov
 - Release: V1.0
 
@@ -323,15 +323,13 @@ For the project to be considered "successful" we must have:
 ### Sprint 1
 ##### Sprint Plan
 
-- Goal: User Interface que permita ter um ideia inicial do projeto, com os metodos mais simples
-- Roles:
-  - Product Owner: name
-  - Scrum Master: name
-- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
+- Goal: User Interface that allows you to get an ideia of the inicial project, only with the simplest of methods.
 
 - Roles:
-  - Product Owner: name
-  - Scrum Master: name
+  - Product Owner: Lara Bizarro
+  - Scrum Master: Joana Ferrão
+
+- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
 
 - To do:
   - (list of US or Tasks from the PB)
@@ -375,11 +373,8 @@ For the project to be considered "successful" we must have:
 - Roles:
   - Product Owner: name
   - Scrum Master: name
-- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
 
-- Roles:
-  - Product Owner: name
-  - Scrum Master: name
+- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
 
 - To do:
   - (list of US or Tasks from the PB)
