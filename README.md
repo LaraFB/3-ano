@@ -303,7 +303,8 @@ For the project to be considered "successful" we must have:
 ### Release 1
 
 - Goal: MVP -> 
-    - Monitoring, Categorize, Resume and Analise expenses; 
+    - Track, Categorize and Analise expenses; 
+    - Expense Summary;
     - Allow the criation of limits/budgets, in certain areas;
 - Dates: [teams 0] 21-24/Nov | [teams1] 28-30/Nov
 - Release: V1.0
@@ -312,7 +313,7 @@ For the project to be considered "successful" we must have:
 
 ### Release 2
 
-- Goal: Final release – description​
+- Goal: Final release - Have a functional app with the missing features (Notifications). Corrected any errors from the last realease and add any features that our client might want to add.
 - Date: [teams 0+1] 12-15/Dec
 - Release: V2.0
 
@@ -332,11 +333,14 @@ For the project to be considered "successful" we must have:
 - Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
 
 - To do:
-  - (list of US or Tasks from the PB)
-  - US1: As … I want … so that …
-  - Task1: Some task
+  - US1: As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.
+  - US2: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
+  - US3: As a user, I want to manage categories so that I can organize my expenses according to different types.
+  -US7: As a user, I want to set goals so that I can work for a specific objective.
+  -US8: As a user, I want to see the monthly budget so that I can make adjustments as needed.
   
-- Story Points: 2S+3M+3X+2H
+  
+- Story Points: 1XS + 3S + 1M
 
 - Analysis: short analysis of the planning meeting
 
