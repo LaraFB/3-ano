@@ -105,51 +105,51 @@ It is assumed:
 
 ![Sign up](imgs/login.png)
 
- Figura 1: Login (US1)
+ Image 1: Login (US1)
 
 ![Painel Inicial](imgs/pagina_inicial.png)
 
- Figura 2: Homepage
+ Image 2: Homepage
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
 
- Figura 3: Add expense (US2)
+ Image 3: Add expense (US2)
 
 ![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
 
- Figura 4: Viewing the added expense (US2)
+ Image 4: Viewing the added expense (US2)
 
 ![Historico depois de adicionar despesa](imgs/despesas_historico_dps_adicionar.png)
 
- Figura 5: Expense history (US11)
+ Image 5: Expense history (US11)
 
 ![Despesas por categotia](imgs/despesas_compras.png)
 
- Figura 6: Expenses by category (US13)
+ Image 6: Expenses by category (US13)
 
 ![Despesas](imgs/despesas.png)
 
- Figura 7: Expenses Homepage (US4)
+ Image 7: Expenses Homepage (US4)
 
 ![Gerir categorias](imgs/gerir_categorias.png)
 
- Figura 8: Manage categories (add and delete) (US3)
+ Image 8: Manage categories (add and delete) (US3)
 
 ![Budget](imgs/guardar_montante.png)
 
- Figura 9: Budget homepage (US8, US14, US12, US10)
+ Image 9: Budget homepage (US8, US14, US12, US10)
 
 ![Objetivos](imgs/objetivos.png)
 
- Figura 10: Goals hompage (US7)
+ Image 10: Goals hompage (US7)
 
 ![Relatorio](imgs/relatorio.png)
 
- Figura 11: Result of generating report (US5,US9)
+ Image 11: Result of generating report (US5,US9)
 
 ![Reservar Montante](imgs/reservar_montantes.png)
 
- Figura 12: Reserve Amounts (US6)
+ Image 12: Reserve Amounts (US6)
 
 ***
 
