@@ -302,7 +302,9 @@ For the project to be considered "successful" we must have:
 
 ### Release 1
 
-- Goal: MVP - description -- Acompanhamento,categorização, resumo e análise de despesas, permitir estabelecer budgets/limites em certas áreas
+- Goal: MVP -> 
+    - Acompanhamento,categorização, resumo e análise de despesas 
+    - permitir estabelecer budgets/limites em certas áreas
 - Dates: [teams 0] 21-24/Nov | [teams1] 28-30/Nov
 - Release: V1.0
 
