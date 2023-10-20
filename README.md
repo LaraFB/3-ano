@@ -239,9 +239,9 @@ It is a collection of criteria that must be completed for a User Story to be con
 ## Risk Plan
 
 ##### Threshhold of Success
-For the project to be considered "successful" we must have:
+For the project to be considered "successful" we must have, by the second release date:
   - Expense Tracking
-  - categorization, summary and analysis of expenses
+  - Categorization, summary and analysis of expenses
   - Allows you to establish budgets/limits in certain areas
 
 
@@ -249,16 +249,13 @@ For the project to be considered "successful" we must have:
 
 
 - RSK1 – PxI: 4x5=20; The team doesn't have any experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-- RSK2 – PxI: 3x4=12; Constant changes to the project can cause complications or delays, mainly due to conflicts that may arise with each new change prepared simultaneously by the various team members.
-- RSK3 – PxI: 4x=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
-- RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy. As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software. 
-- RSK5 - PxI: 5x5=25; The software will be useless if it is not used. 
-- RSK 6 - PxI: 4*5=20; We have a limited amount of time, so we might not be able to finish all the features that we promised.
+- RSK2 – PxI: 3x4=12; There are constant simultaneous changes to the project,this can cause conflicts,complications or delays on the project. 
+- RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
+- RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy. As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software.  
+- RSK 5 - PxI: 4x5=20; We have a limited amount of time, so we might not be able to finish all the features that we promised.
 
 ##### Mitigation Actions (threats>=20)
 - RSK1 - AS; Perform regular check-ins during sprints and meetings;
-- RSK2 - AS; Pan the project well to avoid any future changes;
-- RSK3 - AS; Communicate with group members, so that they help keep the code consistent and bug-free;
 - RSK4 - CP; Hold meetings every week to check the progress of all members;
 - RSK5 - MS; Efficiently manage time among all members, in order to implement as many features as possible.
 - RSK6 - MS; Constantly check the progress of the project, make regular meetings and keep the client updated in possible changes (features that won't be possible to make).
