@@ -237,18 +237,15 @@ It is a collection of criteria that must be completed for a User Story to be con
 
 ## Risk Plan
 
-##### Threshhold of Success
-For the project to be considered "successful" we must have, by the second release date:
-  - Expense Tracking
-  - Categorization, summary and analysis of expenses
-  - Allows you to establish budgets/limits in certain areas
+##### Threshold of Success
+By the end of the second realease we must have all the user stories with "must" priorities.
 
 
 ##### Risk List
 
 
 - RSK1 – PxI: 4x5=20; The team doesn't have any experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-- RSK2 – PxI: 3x4=12; There are constant simultaneous changes to the project,this can cause conflicts,complications or delays on the project. 
+- RSK2 – PxI: 3x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
 - RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
 - RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy. As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software.  
 - RSK 5 - PxI: 4x5=20; We have a limited amount of time, so we might not be able to finish all the features that we promised.
@@ -271,9 +268,9 @@ For the project to be considered "successful" we must have, by the second releas
 - Roles:
   - Product Owner: Francisco Costa
   - Scrum Master: Artur Yurchuck
-  - Developer: Lara Bizarro
-  	           Joana Ferrao
-  	           Ana Sofia Silva
+  - Developer: Lara Bizarro, 
+  	           Joana Ferrao, 
+  	           Ana Sofia Silva.
 
 - Sprint 0 Backlog (don't edit this list):
   - Task1 – Write Team
@@ -311,7 +308,7 @@ For the project to be considered "successful" we must have, by the second releas
 
 ### Release 2
 
-- Goal: Final release - Have a functional app with the missing features (Notifications). Add any features that our client might want to add.
+- Goal: Final release - Have a functional app with the missing features (Notifications).
 - Date: [teams 0+1] 15/Dec
 - Release: V2.0
 
@@ -322,7 +319,7 @@ For the project to be considered "successful" we must have, by the second releas
 ### Sprint 1
 ##### Sprint Plan
 
-- Goal: User Interface that allows you to get an ideia of the inicial project, only with the simplest of methods.
+- Goal: User Interface that allows you to get an ideia of the inicial project, only with the simplest of methods as creation of new acounts, tracking and managing expenses, monthly budget and adding and categorize expenses.
 
 - Roles:
   - Product Owner: Lara Bizarro
