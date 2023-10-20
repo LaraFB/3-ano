@@ -65,17 +65,17 @@ Students (People who want to keep a detailed record of their expenses for better
 
 ##### Vision statement
 
-We see Expense Manager as a catalyst for change, helping users take control of their money, reducing financial stress and helping to create and meet user-imposed goals.
+We see Expense Manager as a catalyst for change, helping users take control of their money by having expenses summaries, analyses and tracking, alowing to establish monthly budgets/limits.
 
 ##### List of features
 
 Our main objectives are the following:
 
-- Track expenses
+- Track expenses both card and physical money
 - Categorize expenses (For example: Canteen meals, tuition fees, going out, expenses, etc.)
 - Expense summary
 - Expense analysis
-- Establish budgets/limits in certain areas (reserve or not allow the user to spend more)
+- Establish budgets/limits (reserve or not allow the user to spend more)
 - Notify the user when limits are close to being exceeded
 
 ##### Features that will not be developed
