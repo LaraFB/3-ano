@@ -275,9 +275,6 @@ For the project to be considered "successful" we must have, by the second releas
   - Developer: Lara Bizarro
   	           Joana Ferrao
   	           Ana Sofia Silva
-  
-- Story Points: 2S+3M+3X
-- Prioritize: MSC
 
 - Sprint 0 Backlog (don't edit this list):
   - Task1 – Write Team
@@ -315,7 +312,7 @@ For the project to be considered "successful" we must have, by the second releas
 
 ### Release 2
 
-- Goal: Final release - Have a functional app with the missing features (Notifications). Corrected any errors from the last realease and add any features that our client might want to add.
+- Goal: Final release - Have a functional app with the missing features (Notifications). Add any features that our client might want to add.
 - Date: [teams 0+1] 15/Dec
 - Release: V2.0
 
