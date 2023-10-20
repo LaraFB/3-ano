@@ -38,8 +38,9 @@
 ##### Project background
 
 Currently, the only way to control expenses is through bank statements, which becomes a tedious and complex job.
-In an attempt to make it easier to read financial expenses, we sought to develop an Expense Manager - an intuitive and easy-to-use solution - that
-allows you to categorize and view a summary of expenses for the day, month or even the year.
+For a student that started recently having their own expenses (rent ,university fees) and revenues (monthly allowances or salaries) can be hard to manage them in order to reach to the end of the month with some money left.
+
+
 
 
 ##### Stakeholders
