@@ -46,8 +46,7 @@ For a student that started recently having their own expenses (rent ,university 
 ##### Stakeholders
 
 ###### Students
-Students are the main beneficiaries of this software, as it directly affects their ability to manage their finances.
-
+People who want to keep a detailed record of their expenses for better financial management. These expenses are distributed between living costs, personal expenses and additional one-off costs.
 ###### Parents
 They may provide financial support to students and have an indirect interest in the efficiency of the software. It is in their interest that their financial contributions are used responsibly and that their child has financial stability and education.
 
@@ -56,7 +55,7 @@ Although they may not have a direct financial interest, they do have an interest
 There are also some institutions that offer scholarships to certain students, according to their performance or contribution to it.
 
 #### Users
-Students (People who want to keep a detailed record of their expenses for better financial management. These expenses are distributed between living costs, personal expenses and additional one-off costs).
+Students.
 
 ***
 
