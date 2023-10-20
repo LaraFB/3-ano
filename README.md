@@ -269,7 +269,7 @@ For the project to be considered "successful" we must have:
 
 - Goal: Plan the project, create an action plan and present the project to the client
 
-- Dates: from 10-13/Oct to 24-27/Oct, 2 weeks
+- Dates: from 13/Oct to 27/Oct, 2 weeks
 
 - Roles:
   - Product Owner: Francisco Costa
@@ -310,7 +310,7 @@ For the project to be considered "successful" we must have:
     - Track, Categorize and Analise expenses; 
     - Expense Summary;
     - Allow the criation of limits/budgets, in certain areas;
-- Dates: [teams 0] 21-24/Nov | [teams1] 28-30/Nov
+- Dates: [teams 0] 24/Nov | [teams1] 30/Nov
 - Release: V1.0
 
 ***
@@ -318,7 +318,7 @@ For the project to be considered "successful" we must have:
 ### Release 2
 
 - Goal: Final release - Have a functional app with the missing features (Notifications). Corrected any errors from the last realease and add any features that our client might want to add.
-- Date: [teams 0+1] 12-15/Dec
+- Date: [teams 0+1] 15/Dec
 - Release: V2.0
 
 ***
@@ -334,7 +334,7 @@ For the project to be considered "successful" we must have:
   - Product Owner: Lara Bizarro
   - Scrum Master: Joana Ferrão
 
-- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
+- Dates: from 27/Oct to 10/Nov | 17/Nov, 2 | 3 weeks
 
 - To do:
   - Task1: Create javafx GUIs
