@@ -1,0 +1,20 @@
+.MenuItem:hover{
+    -fx-background-color: #D6D6D6;
+
+}
+.slideItem:hover{
+    -fx-background-color:#DEEFFF;
+}
+.MenuItem{
+    -fx-border-color: #545454;
+    -fx-border-width: 1px;
+    -fx-background-color: WHITE;
+    -fx-border-radius: 70px;
+    -fx-background-radius: 70px;
+}
+.account{
+    -fx-border-width: 0px;
+}
+.slideItem{
+    -fx-background-color:  #9FCDFF;
+}
