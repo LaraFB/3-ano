@@ -326,24 +326,24 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - To do:
   - Task1: Create javafx GUIs
-  - US1: As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.[Story Points: S]
-    - Task2: Create register/login code
-    - Task3: Create data verification method
-  - US2: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: M]
+  - US2: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: S]
     - Task4: Add expenses managing methods
     - Task5: Create expenses validation methods
     - Task6: After entry, expenses should be recorded and displayed in a list or panel in the application.
-  - US3: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: XS]
-    - Task7: Add category managing methods
-    - Task8: Create category validation methods
-  - US7: As a user, I want to set goals so that I can work for a specific objective.[Story Points: S]
-    - Task9: Add goals managing methods
   - US8: As a user, I want to see the monthly budget so that I can make adjustments as needed. [Story Points: M]
     - Task10: Add budget managing methods
     - Task11: Create budget validation methods
+  - US3: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: M]
+    - Task7: Add category managing methods
+    - Task8: Create category validation methods
+  - US7: As a user, I want to set goals so that I can work for a specific objective.[Story Points: M]
+    - Task9: Add goals managing methods
+  - US1: As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.[Story Points: S]
+    - Task2: Create register/login code
+    - Task3: Create data verification method
   
   
-- Story Points: 1XS + 3S + 1M
+- Story Points: 2S + 3M
 
 - Analysis: short analysis of the planning meeting
 
