@@ -326,7 +326,7 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - To do:
   - Task1: Create javafx GUIs
-  - US2: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: S]
+  - US2: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: L]
     - Task4: Add expenses managing methods
     - Task5: Create expenses validation methods
     - Task6: After entry, expenses should be recorded and displayed in a list or panel in the application.
@@ -343,7 +343,7 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task3: Create data verification method
   
   
-- Story Points: 2S + 3M
+- Story Points: 1S + 3M + 1L
 
 - Analysis: short analysis of the planning meeting
 
