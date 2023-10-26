@@ -23,11 +23,11 @@
 
 ## Team
 
-- Francisco Costa - 2021146317
-- Artur Yurchuk - 2021130221
-- Lara Bizarro - 2021130066
-- Joana Ferrao - 2020131638
-- Ana Sofia Silva - 2021154586
+- Francisco Costa - 2021146317 - a2021146317@isec.pt
+- Artur Yurchuk - 2021130221 - a2021130221@isec.pt
+- Lara Bizarro - 2021130066 - a2021130066@isec.pt
+- Joana Ferrao - 2020131638 - a2020131638@isec.pt
+- Ana Sofia Silva - 2021154586 - a2021154586@isec.pt
 
 ***
 
@@ -39,9 +39,6 @@
 
 Currently, the only way to control expenses is through bank statements, which becomes a tedious and complex job.
 For a student that started recently having their own expenses (rent ,university fees) and revenues (monthly allowances or salaries) can be hard to manage them in order to reach to the end of the month with some money left.
-
-
-
 
 ##### Stakeholders
 
@@ -74,7 +71,7 @@ Our main objectives are the following:
 - Categorize expenses (For example: Canteen meals, tuition fees, going out, expenses, etc.)
 - Expense summary
 - Expense analysis
-- Establish budgets/limits (reserve or not allow the user to spend more)
+- Establish budgets/limits mothly (reserve or not allow the user to spend more)
 - Notify the user when limits are close to being exceeded
 
 ##### Features that will not be developed
