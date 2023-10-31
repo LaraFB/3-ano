@@ -100,116 +100,110 @@ It is assumed:
 
 ### Mockups
 
-![Sign up](imgs/login.png)
-
- Image 1: Login (US1)
-
 ![Painel Inicial](imgs/pagina_inicial.png)
 
- Image 2: Homepage
+ Image 1: Homepage
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
 
- Image 3: Add expense (US2)
+ Image 2: Add expense (US2)
 
 ![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
 
- Image 4: Viewing the added expense (US2)
+ Image 3: Viewing the added expense (US2)
 
 ![Historico depois de adicionar despesa](imgs/despesas_historico_dps_adicionar.png)
 
- Image 5: Expense history (US11)
+ Image 4: Expense history (US11)
 
 ![Despesas por categotia](imgs/despesas_compras.png)
 
- Image 6: Expenses by category (US13)
+ Image 5: Expenses by category (US13)
 
 ![Despesas](imgs/despesas.png)
 
- Image 7: Expenses Homepage (US4)
+ Image 6: Expenses Homepage (US4)
 
 ![Gerir categorias](imgs/gerir_categorias.png)
 
- Image 8: Manage categories (add and delete) (US3)
+ Image 7: Manage categories (add and delete) (US3)
 
 ![Budget](imgs/guardar_montante.png)
 
- Image 9: Budget homepage (US8, US14, US12, US10)
+ Image 8: Budget homepage (US8, US14, US12, US10)
 
 ![Objetivos](imgs/objetivos.png)
 
- Image 10: Goals hompage (US7)
+ Image 9: Goals hompage (US7)
 
 ![Relatorio](imgs/relatorio.png)
 
- Image 11: Result of generating report (US5,US9)
+ Image 10: Result of generating report (US5,US9)
 
 ![Reservar Montante](imgs/reservar_montantes.png)
 
- Image 12: Reserve Amounts (US6)
+ Image 11: Reserve Amounts (US6)
 
 ***
 
 ### User Stories
 
-- User story 1 (tp-gps-11/gps_g11#1)
-- User story 2 (tp-gps-11/gps_g11#2)
-- User story 3 (tp-gps-11/gps_g11#3)
-- User story 4 (tp-gps-11/gps_g11#7)
-- User story 5 (tp-gps-11/gps_g11#8)
-- User story 6 (tp-gps-11/gps_g11#9)
-- User story 7 (tp-gps-11/gps_g11#10)
-- User story 8 (tp-gps-11/gps_g11#11)
-- User story 9 (tp-gps-11/gps_g11#12)
-- User story 10 (tp-gps-11/gps_g11#13)
-- User story 11 (tp-gps-11/gps_g11#14)
-- User story 12 (tp-gps-11/gps_g11#15)
-- User story 13 (tp-gps-11/gps_g11#16)
-- User story 14 (tp-gps-11/gps_g11#17)
+- User story 1 (tp-gps-11/gps_g11#2)
+- User story 2 (tp-gps-11/gps_g11#3)
+- User story 3 (tp-gps-11/gps_g11#7)
+- User story 4 (tp-gps-11/gps_g11#8)
+- User story 5 (tp-gps-11/gps_g11#9)
+- User story 6 (tp-gps-11/gps_g11#10)
+- User story 7 (tp-gps-11/gps_g11#11)
+- User story 8 (tp-gps-11/gps_g11#12)
+- User story 9 (tp-gps-11/gps_g11#13)
+- User story 10 (tp-gps-11/gps_g11#14)
+- User story 11 (tp-gps-11/gps_g11#15)
+- User story 12 (tp-gps-11/gps_g11#16)
+- User story 13 (tp-gps-11/gps_g11#17)
 
 ***
 ##### User Story 1
-As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.
-***
-##### User Story 2
 As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
 ***
-##### User Story 3
+##### User Story 2
 As a user, I want to manage categories so that I can organize my expenses according to different types.
 ***
-##### User Story 4
+##### User Story 3
 As a student, I want to access expenses so that I can view all my recorded expenses.
 ***
-##### User Story 5
+##### User Story 4
 As a student, I want to generate reports so that I can analyze send them or analize them later.
 ***
-##### User Story 6
+##### User Story 5
 As a user, I want to reserve amounts for future expenses so that I can plan my budget.
 ***
-##### User Story 7
+##### User Story 6
 As a user, I want to set goals so that I can work for a specific objective.
 ***
-##### User Story 8
+##### User Story 7
 As a user, I want to see the monthly budget so that I can make adjustments as needed.
 ***
-##### User Story 9
+##### User Story 8
 As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses.
 ***
-##### User Story 10
+##### User Story 9
 As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control.
 ***
-##### User Story 11
+##### User Story 10
 As a student, I want to view the transaction history so that I can review my past financial activities.
 ***
-##### User Story 12
+##### User Story 11
 As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it.
 ***
-##### User Story 13
+##### User Story 12
 As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money.
 ***
-##### User Story 14
+##### User Story 13
 As a working student, I want to add money to my budget, so that I can keep the budget updated.
 ***
+
+
 ## Definition of done
 
 (This section is already written, do not edit)
@@ -244,14 +238,9 @@ By the end of the second realease we must have all the user stories with "must" 
 - RSK1 – PxI: 4x5=20; The team doesn't have any experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
 - RSK2 – PxI: 3x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
 - RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
-- RSK4 - PxI: 4x5=20; The group's members are inexperienced in the area of security and privacy. As we intend to work with sensitive information, we have a high risk of data or privacy breaches, which could jeopardize the fidelity of our software.  
-- RSK 5 - PxI: 4x5=20; We have a limited amount of time, so we might not be able to finish all the features that we promised.
 
 ##### Mitigation Actions (threats>=20)
-- RSK1 - AS; Perform regular check-ins during sprints and meetings;
-- RSK4 - CP; Hold meetings every week to check the progress of all members;
-- RSK5 - MS; Efficiently manage time among all members, in order to implement as many features as possible.
-- RSK6 - MS; Constantly check the progress of the project, make regular meetings and keep the client updated in possible changes (features that won't be possible to make).
+- RSK1 - AS; Perform regular check-ins twice a week during sprints and meetings;
 
 ***
 
@@ -298,7 +287,7 @@ By the end of the second realease we must have all the user stories with "must" 
     - Track, Categorize and Analise expenses; 
     - Expense Summary;
     - Allow the criation of limits/budgets, in certain areas;
-- Dates: [teams 0] 24/Nov | [teams1] 30/Nov
+- Dates:[teams1] 30/Nov
 - Release: V1.0
 
 ***
@@ -322,28 +311,37 @@ By the end of the second realease we must have all the user stories with "must" 
   - Product Owner: Lara Bizarro
   - Scrum Master: Joana Ferrão
 
-- Dates: from 27/Oct to 10/Nov | 17/Nov, 2 | 3 weeks
+- Dates: from 27/Oct to 10/Nov | 17/Nov, 3 weeks
 
-- To do:
-  - Task1: Create javafx GUIs
-  - US2: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: L]
-    - Task4: Add expenses managing methods
-    - Task5: Create expenses validation methods
-    - Task6: After entry, expenses should be recorded and displayed in a list or panel in the application.
-  - US8: As a user, I want to see the monthly budget so that I can make adjustments as needed. [Story Points: M]
-    - Task10: Add budget managing methods
-    - Task11: Create budget validation methods
-  - US3: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: M]
-    - Task7: Add category managing methods
-    - Task8: Create category validation methods
-  - US7: As a user, I want to set goals so that I can work for a specific objective.[Story Points: M]
-    - Task9: Add goals managing methods
-  - US1: As a new user, I want to be able to create a new account, So that I can start using it and mange my finances effectively.[Story Points: S]
-    - Task2: Create register/login code
-    - Task3: Create data verification method
+- To do (order by importance):
+
+  - US 7: As a user, I want to create the monthly budget so that I can make adjustments as needed. [Story Points: M]
+    - Task 1: Design user interface to allow budget entry
+    - Task 2: Add budget methods
+    - Task 3: Create budget validation methods
+    - Task 4: Create Unit tests and fix remaining bugs
+
+  - US 13: As a working student, I want to add money to my budget, so that I can keep the budget updated [Story Points: S]
+    - Task 1: Design user interface 
+    - Task 2: Add budget adding methods
+    - Task 3: Create budget validation methods
+    - Task 4: Create Unit tests and fix remaining bugs
+
+  - US 2: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: M]
+    - Task 1: Design user interface to allow category management
+    - Task 2: Add category managing methods
+    - Task 3: Create category validation methods
+    - Task 4: Create Unit tests and fix remaining bugs 
+
+  - US 1: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: L]
+    - Task 1: Design user interface to allow expense entry
+    - Task 2: Add expenses managing methods
+    - Task 3: Create expenses validation methods
+    - Task 4: Create a display of the expense
+    - Task 5: Create Unit tests and fix remaining bugs
   
   
-- Story Points: 1S + 3M + 1L
+- Story Points: 3M + 1L + 1S
 
 - Analysis: short analysis of the planning meeting
 
