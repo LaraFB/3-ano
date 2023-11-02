@@ -315,32 +315,32 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - To do (order by importance):
 
-  - US 7: As a user, I want to create the monthly budget so that I can make adjustments as needed. [Story Points: M]
+  - US 7: As a user, I want to create the monthly budget so that I can make adjustments as needed. [Story Points: L]
     - Task 1: Design user interface to allow budget entry
     - Task 2: Add budget methods
     - Task 3: Create budget validation methods
     - Task 4: Create Unit tests and fix remaining bugs
 
-  - US 13: As a working student, I want to add money to my budget, so that I can keep the budget updated [Story Points: S]
+  - US 13: As a working student, I want to add money to my budget, so that I can keep the budget updated [Story Points: L]
     - Task 1: Design user interface 
     - Task 2: Add budget adding methods
     - Task 3: Create budget validation methods
     - Task 4: Create Unit tests and fix remaining bugs
-
-  - US 2: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: M]
-    - Task 1: Design user interface to allow category management
-    - Task 2: Add category managing methods
-    - Task 3: Create category validation methods
-    - Task 4: Create Unit tests and fix remaining bugs 
-
+    
   - US 1: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: L]
     - Task 1: Design user interface to allow expense entry
     - Task 2: Add expenses managing methods
     - Task 3: Create expenses validation methods
     - Task 4: Create a display of the expense
     - Task 5: Create Unit tests and fix remaining bugs
-  
-  
+
+  - US 2: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: L]
+    - Task 1: Design user interface to allow category management
+    - Task 2: Add category managing methods
+    - Task 3: Create category validation methods
+    - Task 4: Create Unit tests and fix remaining bugs 
+
+
 - Story Points: 3M + 1L + 1S
 
 - Analysis: short analysis of the planning meeting
