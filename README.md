@@ -341,7 +341,7 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 4: Create Unit tests and fix remaining bugs 
 
 
-- Story Points: 3M + 1L + 1S
+- Story Points: 4L
 
 - Analysis: short analysis of the planning meeting
 
