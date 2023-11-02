@@ -3,7 +3,7 @@ stages:
   - test
 
 variables:
-  CI_REGISTRY_IMAGE: "mickaelfsantos/gitlabregistry"
+  CI_REGISTRY_IMAGE: "tp-gps-11/gps_g11"
   CI_REGISTRY: "registry.gitlab.com"
 
 build-job:
