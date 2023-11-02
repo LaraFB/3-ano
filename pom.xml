@@ -132,7 +132,7 @@
                         <manifest> 
                             <addClasspath>true</addClasspath> 
                             <classpathPrefix>lib/</classpathPrefix> 
-                            <mainClass>resources/com/example/gps_g11.hello-view.fxml</mainClass> 
+                            <mainClass>resources.com.example.gps_g11.hello-view.fxml</mainClass> 
                         </manifest> 
                     </archive> 
                 </configuration> 
