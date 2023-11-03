@@ -30,4 +30,4 @@ COPY javafx-sdk /app/javafx-sdk
 ENV CLASSPATH /app/target/GPS_G11-1.0-SNAPSHOT.jar:/app/javafx-sdk/lib/*
 
 # Run the JavaFX application
-CMD ["java", "--module-path", "/app/javafx-sdk/lib", "--add-modules", "javafx.controls,javafx.fxml", "com.example.gps_g11.GPS_G11.Main"]
+CMD ["java", "--module-path", "/app/javafx-sdk/lib", "--add-modules", "javafx.controls,javafx.fxml", "./javafx-sdk.GPS_G11.com.example.gps_g11/com.example.gps_g11.Main"]
