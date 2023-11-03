@@ -122,7 +122,13 @@
                 </configuration>
 
 
-            <plugin> 
+
+
+
+
+            </plugin>
+
+             <plugin> 
                 
                 <groupId>org.apache.maven.plugins</groupId> 
                 <artifactId>maven-jar-plugin</artifactId> 
@@ -132,7 +138,7 @@
                         <manifest> 
                             <addClasspath>true</addClasspath> 
                             <classpathPrefix>lib/</classpathPrefix> 
-                            <mainClass>resources.com.example.gps_g11.hello-view.fxml</mainClass> 
+                            <mainClass>com.example.gps_g11.Main.java</mainClass> 
                         </manifest> 
                     </archive> 
                 </configuration> 
@@ -140,9 +146,6 @@
             </plugin>   
 
 
-
-
-            </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
