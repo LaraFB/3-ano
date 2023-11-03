@@ -138,7 +138,7 @@
                         <manifest> 
                             <addClasspath>true</addClasspath> 
                             <classpathPrefix>lib/</classpathPrefix> 
-                            <mainClass>com.example.gps_g11.Main.java</mainClass> 
+                            <mainClass>com.example.gps_g11.Main</mainClass> 
                         </manifest> 
                     </archive> 
                 </configuration> 
