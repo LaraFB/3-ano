@@ -27,7 +27,7 @@ RUN mvn clean package
 COPY javafx-sdk /app/javafx-sdk
 
 # Set the classpath for the JavaFX application
-ENV CLASSPATH /app/target/<GPS_G11>-1.0-SNAPSHOT.jar:/app/javafx-sdk/lib/*
+ENV CLASSPATH /app/target/tp-gps-11/gps_g11-1.0-SNAPSHOT.jar:/app/javafx-sdk/lib/*
 
 # Run the JavaFX application
-CMD ["java", "--module-path", "/app/javafx-sdk/lib", "--add-modules", "javafx.controls,javafx.fxml", "resources.com.example.gps_g11.GPS_G11.hello-view.fxml"]
+CMD ["java", "--module-path", "/app/javafx-sdk/lib", "--add-modules", "javafx.controls,javafx.fxml", "resources.com.example.gps_g11.tp-gps-11/gps_g11.hello-view.fxml"]
