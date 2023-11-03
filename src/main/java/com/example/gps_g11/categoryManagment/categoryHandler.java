@@ -13,29 +13,52 @@ public class categoryHandler {
     public List<category> getCategories() { return categories; }
 
     //adicionar categoria
-    public void addCategory(category c){
+    public boolean addCategory(category c){
+        //validation:
+        for(category check : categories)
+            if(check.equals(c)) return false; //ja existe, n adiciona
+
         categories.add(c);
+        return true;
     }
-    public void addCategory(String name, String description){
+    public boolean addCategory(String name, String description){
+        //validation:
+        for(category check : categories)
+            if(check.getName().equals(name)) return false; //ja existe, n adiciona
+
         category c = new category(name,description);
         categories.add(c);
+        return true;
     }
-    public void addCategory(String name){
+    public boolean addCategory(String name){
+        //validation:
+        for(category check : categories)
+            if(check.getName().equals(name)) return false; //ja existe, n adiciona
+
         category c = new category(name);
         categories.add(c);
+        return true;
     }
 
     //remover categoria
     public boolean removeCategory(category c){
+        //validation:
+        if(c == null) return false;
+
         return categories.remove(c);
     }
     public boolean removeCategory(int i){
-        if(i>categories.size())
-            return false;
+        //validation:
+        if(i>categories.size() || i<0)
+            return false; //fora da lista
 
         return removeCategory(i);
     }
     public boolean removeCategory(String name){ //por nome
+        //validation:
+        if(name == null)
+            return false;
+
         for(category c : categories)
             if(c.getName().equals(name)) return removeCategory(c);
 
@@ -44,6 +67,9 @@ public class categoryHandler {
 
     //editar categoria
     public boolean editCategoryName(String oldName, String newName){ //por nome
+        //validation:
+        if(oldName == null || newName == null) return false;
+
         for(category c : categories)
             if(c.getName().equals(oldName)){
                 c.setName(newName);
@@ -53,6 +79,9 @@ public class categoryHandler {
     }
 
     public boolean editCategoryDescription(String name, String newDescription){ //por nome
+        //validation:
+        if(name == null || newDescription == null) return false;
+
         for(category c : categories)
             if(c.getName().equals(name)){
                 c.setDescription(newDescription);
@@ -62,7 +91,8 @@ public class categoryHandler {
     }
 
     public boolean editCategoryName(int i, String newName){ //por index
-        if(i>categories.size())
+        //validation:
+        if(i>categories.size() || i<0 || newName == null)
             return false;
 
         categories.get(i).setName(newName);
@@ -70,7 +100,8 @@ public class categoryHandler {
     }
 
     public boolean editCategoryDescription(int i, String newDescription){ //por index
-        if(i>categories.size())
+        //validation:
+        if(i>categories.size() || i<0 || newDescription == null)
             return false;
 
         categories.get(i).setDescription(newDescription);
