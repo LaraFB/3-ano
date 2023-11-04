@@ -31,6 +31,7 @@ public class Homepage_FXMLController implements Initializable {
     private Tab AddIncomePane,ExpenseTab;;
 
     //Pane Expenses
+    @FXML
     private AnchorPane AddExpensesPane;
     @FXML
     private Button   OkExpensesBtn,CancelExpensesBtn;
@@ -43,6 +44,7 @@ public class Homepage_FXMLController implements Initializable {
     private DatePicker DatePicker;
 
     //Pane Income
+    @FXML
     private AnchorPane IncomeTab;
     //Homepage
     @FXML
@@ -58,33 +60,59 @@ public class Homepage_FXMLController implements Initializable {
     @FXML
     private HBox Category_Bar;
 
+    //Category Pane
+    @FXML
+    private AnchorPane CategoryPane;
+
+    //Budget Pane
+    @FXML
+    private AnchorPane BudgetPane;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Category_Bar.setVisible(false);
+        CategoryPane.setVisible(false);
         tab.setVisible(false);
         CategoriaCheckbox.getItems().addAll(Categorias);
         DatePicker.setValue(LocalDate.now());
+        BudgetPane.setVisible(false);
 
         CategoryBtn.setOnMouseClicked(mouseEvent -> {
-            Category_Bar.setVisible(true);
+            CategoryPane.setVisible(true);
             HomepagePane.setVisible(false);
+            BudgetPane.setVisible(false);
             tab.setVisible(false);
         });
         HomepageBtn.setOnMouseClicked(mouseEvent -> {
             HomepagePane.setVisible(true);
-            Category_Bar.setVisible(false);
+            CategoryPane.setVisible(false);
+            BudgetPane.setVisible(false);
             tab.setVisible(false);
         });
         AddBtn.setOnMouseClicked(mouseEvent -> {
             HomepagePane.setVisible(false);
-            Category_Bar.setVisible(false);
+            CategoryPane.setVisible(false);
+            BudgetPane.setVisible(false);
             tab.setVisible(true);
         });
         AddExpenseBtn.setOnMouseClicked(mouseEvent -> {
             HomepagePane.setVisible(false);
-            Category_Bar.setVisible(false);
+            CategoryPane.setVisible(false);
+            BudgetPane.setVisible(false);
             tab.setVisible(true);
+        });
+        BudgetBtn.setOnMouseClicked(mouseEvent -> {
+            BudgetPane.setVisible(true);
+            HomepagePane.setVisible(false);
+            CategoryPane.setVisible(false);
+            tab.setVisible(false);
+        });
+        ViewBudgetBtn.setOnMouseClicked(mouseEvent -> {
+            BudgetPane.setVisible(true);
+            HomepagePane.setVisible(false);
+            CategoryPane.setVisible(false);
+            tab.setVisible(false);
         });
     }
 }
+
