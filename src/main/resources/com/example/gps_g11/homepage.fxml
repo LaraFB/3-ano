@@ -249,18 +249,22 @@
                               <TableColumn editable="false" minWidth="0.0" prefWidth="385.0" text="Pequena Descrição" />
                           </columns>
                         </TableView>
-                        <Button layoutX="803.0" layoutY="412.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-                        <Button layoutX="805.0" layoutY="470.0" mnemonicParsing="false" style="-fx-background-color: tranparent;" />
-                        <ImageView fitHeight="33.0" fitWidth="70.0" layoutX="949.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../image/Edit_icon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="70.0" layoutX="948.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../image/Trash_icon.png" />
-                           </image>
-                        </ImageView>
+                        <Button layoutX="945.0" layoutY="390.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/Edit_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button layoutX="944.0" layoutY="451.0" mnemonicParsing="false" style="-fx-background-color: tranparent;">
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/Trash_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="BudgetPane" layoutX="196.0" layoutY="-85.0" prefHeight="718.0" prefWidth="1011.0" visible="false">
