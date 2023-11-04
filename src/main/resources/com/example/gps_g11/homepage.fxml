@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,18 +18,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Homepage_FXMLController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: DEEFFF;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Homepage_FXMLController">
    <children>
-      <BorderPane layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ffffff;" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+      <BorderPane layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1200.0" style="-fx-background-color: DEEFFF;" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
          <top>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="1200.0" style="-fx-background-color: #F6F1F1;" BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="1200.0" style="-fx-background-color: DEEFFF;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="120.0" layoutY="-1.0" prefHeight="93.0" prefWidth="1082.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+                  <HBox fx:id="Category_Bar" layoutX="188.0" layoutY="-4.0" prefHeight="107.0" prefWidth="1012.0" style="-fx-background-color: #F6F1F1;" visible="false" AnchorPane.bottomAnchor="-5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button id="MenuItem" fx:id="Categoria_Propinas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@Style.css" text="Propinas" textAlignment="CENTER" textFill="#545454">
                            <HBox.margin>
-                              <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                              <Insets bottom="10.0" left="70.0" right="20.0" top="10.0" />
                            </HBox.margin>
                            <font>
                               <Font name="Times New Roman" size="18.0" />
@@ -40,7 +44,7 @@
                               <Font name="Times New Roman" size="18.0" />
                            </font>
                         </Button>
-                        <Button id="MenuItem" fx:id="Categoria_Cafes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@Style.css" text="Cafés" textFill="#545454">
+                        <Button id="MenuItem" fx:id="Categoria_Cafes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@Style.css" text="Cafés" textAlignment="CENTER" textFill="#545454">
                            <HBox.margin>
                               <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                            </HBox.margin>
@@ -72,154 +76,266 @@
                               <Font name="Times New Roman Bold" size="28.0" />
                            </font>
                         </Button>
-                        <Button fx:id="Account" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #F6F1F1;">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="30.0" right="20.0" top="10.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../image/account_icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                      </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </HBox>
-                  <Button fx:id="Menu" layoutX="23.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="77.0" style="-fx-background-color: #F6F1F1;">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../image/menu_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="MenuBack" layoutX="23.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="77.0" style="-fx-background-color: #F6F1F1;">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../image/menu_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                </children>
             </AnchorPane>
          </top>
-         <left>
-            <AnchorPane fx:id="SideBar" prefHeight="591.0" prefWidth="120.0" style="-fx-background-color: #9FCDFF;" BorderPane.alignment="CENTER">
+
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: DEEFFF;" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="10.0" layoutY="22.0" prefHeight="554.0" prefWidth="120.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
+                  <TabPane fx:id="tab" layoutX="193.0" layoutY="-84.0" prefHeight="716.0" prefWidth="1010.0" tabClosingPolicy="UNAVAILABLE" visible="false">
+                    <tabs>
+                      <Tab fx:id="ExpenseTab" text="Expenses">
+                           <content>
+                              <AnchorPane fx:id="AddExpensesPane" prefHeight="646.0" prefWidth="973.0">
+                                 <children>
+                                    <Label layoutX="76.0" layoutY="85.0" text="Valor" textFill="#545454">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="77.0" layoutY="215.0" prefHeight="28.0" prefWidth="62.0" text="Data" textFill="#545454">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="76.0" layoutY="333.0" text="Pequena Descrição" textFill="#545454">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="521.0" layoutY="215.0" prefHeight="28.0" prefWidth="136.0" text="Categoria" textFill="#545454">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="124.0" layoutY="212.0" prefHeight="35.0" prefWidth="16.0" text="*" textFill="#ff676a">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="617.0" layoutY="212.0" prefHeight="35.0" prefWidth="16.0" text="*" textFill="#ff676a">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField alignment="CENTER" layoutX="80.0" layoutY="130.0" prefHeight="40.0" prefWidth="315.0" promptText="€" style="-fx-background-color: white;">
+                                       <font>
+                                          <Font name="Times New Roman" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <DatePicker fx:id="DatePicker" layoutX="76.0" layoutY="252.0" prefHeight="40.0" prefWidth="315.0" style="-fx-background-color: #EFF7FF;" />
+                                    <CheckBox id="checkbox" layoutX="521.0" layoutY="130.0" minHeight="30.0" mnemonicParsing="false" prefWidth="300.0" stylesheets="@Style.css" text="Despesa recorrente (todos os meses)" textFill="#545454">
+                                       <font>
+                                          <Font name="Times New Roman" size="18.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <ChoiceBox fx:id="CategoriaCheckbox" layoutX="521.0" layoutY="257.0" prefHeight="30.0" prefWidth="300.0" />
+                                    <TextField alignment="CENTER" layoutX="76.0" layoutY="384.0" prefHeight="192.0" prefWidth="315.0" promptText="Escreva aqui detalhes" style="-fx-background-color: white;">
+                                       <font>
+                                          <Font name="Times New Roman" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button fx:id="OkExpensesBtn" layoutX="701.0" layoutY="532.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Ok" textFill="#545454">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="131.0" layoutY="82.0" prefHeight="35.0" prefWidth="16.0" text="*" textFill="#ff676a">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="CancelExpensesBtn" layoutX="521.0" layoutY="532.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" styleClass="CancelExpensesBtn" stylesheets="@Style.css" text="Cancel" textFill="#545454">
+                                       <font>
+                                          <Font name="Times New Roman" size="24.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                      <Tab fx:id="AddIncomePane" text="Income">
+                           <content>
+                              <AnchorPane fx:id="IncomeTab" prefHeight="666.0" prefWidth="939.0" />
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                  <AnchorPane fx:id="HomepagePane" layoutX="191.0" layoutY="-48.0" prefHeight="675.0" prefWidth="1007.0">
                      <children>
-                        <Button fx:id="Settings" mnemonicParsing="false" prefHeight="90.0" prefWidth="120.0" styleClass="slideItem" stylesheets="@Style.css" textFill="#545454">
-                           <font>
-                              <Font name="Times New Roman Bold" size="15.0" />
-                           </font>
+                        <Button fx:id="ViewBudgetBtn" contentDisplay="BOTTOM" layoutX="353.0" layoutY="16.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Total Budget  (for this month):" textFill="#545454">
                            <graphic>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../image/settings_icon.png" />
-                                 </image>
-                              </ImageView>
+                              <Text fx:id="TotalBudgetText" fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;0 €" textAlignment="CENTER" wrappingWidth="173.13671875">
+                                 <font>
+                                    <Font name="Times New Roman" size="20.0" />
+                                 </font>
+                              </Text>
                            </graphic>
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="Category" mnemonicParsing="false" prefHeight="90.0" prefWidth="120.0" styleClass="slideItem" stylesheets="@Style.css" textFill="#545454">
-                           <font>
-                              <Font name="Times New Roman Bold" size="15.0" />
-                           </font>
+                        <Button fx:id="ViewExpensesBtn" contentDisplay="BOTTOM" layoutX="47.0" layoutY="16.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Total Expenses (month):&#10;&#10;&#10;&#10;&#10;" textFill="#545454" textOverrun="CLIP">
                            <graphic>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../image/category_icon.png" />
-                                 </image>
-                              </ImageView>
+                              <Text fx:id="TotalExpenseText" fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;0 €" textAlignment="CENTER" wrappingWidth="130.469970703125">
+                                 <font>
+                                    <Font name="Times New Roman" size="20.0" />
+                                 </font>
+                              </Text>
                            </graphic>
+                           <font>
+                              <Font name="Times New Roman" size="20.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="Expenses" mnemonicParsing="false" prefHeight="90.0" prefWidth="120.0" styleClass="slideItem" stylesheets="@Style.css" textFill="#545454">
+                        <Button fx:id="AddExpenseBtn" layoutX="736.0" layoutY="308.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="216.0" styleClass="CancelExpensesBtn" stylesheets="@Style.css" text="+ Expense" textFill="#545454">
                            <font>
-                              <Font name="Times New Roman Bold" size="15.0" />
+                              <Font name="Times New Roman" size="20.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../image/expenses_icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                         </Button>
-                        <Button fx:id="SaveMoney" mnemonicParsing="false" prefHeight="90.0" prefWidth="120.0" styleClass="slideItem" stylesheets="@Style.css" textFill="#545454">
-                           <font>
-                              <Font name="Times New Roman Bold" size="15.0" />
-                           </font>
+                        <PieChart fx:id="BudgetChart" layoutX="51.0" layoutY="231.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="644.0" title="Budget" />
+                        <Button fx:id="ViewBalanceBtn" contentDisplay="BOTTOM" layoutX="696.0" layoutY="16.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Balance:" textFill="#545454">
                            <graphic>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../image/save_money_icon.png" />
-                                 </image>
-                              </ImageView>
+                              <Text fx:id="BalanceText" fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;0 €" textAlignment="CENTER" wrappingWidth="173.13671875">
+                                 <font>
+                                    <Font name="Times New Roman" size="20.0" />
+                                 </font>
+                              </Text>
                            </graphic>
+                           <font>
+                              <Font name="Times New Roman" size="20.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="Goals" mnemonicParsing="false" prefHeight="90.0" prefWidth="120.0" styleClass="slideItem" stylesheets="@Style.css" textFill="#545454">
+                        <Button fx:id="AddIncomeBtn" layoutX="736.0" layoutY="469.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="216.0" style="-fx-background-color: #00FF9D;" styleClass="btn" stylesheets="@Style.css" text="+ Income" textFill="#545454">
                            <font>
-                              <Font name="Times New Roman Bold" size="15.0" />
+                              <Font name="Times New Roman" size="20.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../image/goals_icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="AddExpenses" mnemonicParsing="false" prefHeight="90.0" prefWidth="120.0" styleClass="slideItem" stylesheets="@Style.css" textFill="#545454">
-                           <font>
-                              <Font name="Times New Roman Bold" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../image/add_icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                         </Button>
                      </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </left>
-         <center>
-            <AnchorPane fx:id="AddExpensesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-               <children>
-                  <Label layoutX="91.0" layoutY="85.0" text="Valor" />
-                  <Label layoutX="101.0" layoutY="128.0" prefHeight="0.0" prefWidth="28.0" text="Data" />
-                  <Label layoutX="101.0" layoutY="212.0" text="Pequena Descrição" />
-                  <Label layoutX="330.0" layoutY="145.0" prefHeight="17.0" prefWidth="56.0" text="Categoria" />
-                  <Button fx:id="OkExpensesBtn" layoutX="476.0" layoutY="354.0" mnemonicParsing="false" text="ok" />
-                  <Label layoutX="386.0" layoutY="136.0" prefHeight="35.0" prefWidth="16.0" text="*" textFill="#d70000">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="137.0" layoutY="76.0" prefHeight="35.0" prefWidth="16.0" text="*" textFill="#d70000">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="159.0" layoutY="119.0" prefHeight="35.0" prefWidth="16.0" text="*" textFill="#d70000">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <CheckBox layoutX="294.0" layoutY="77.0" mnemonicParsing="false" text="Despesa recorrente(todos os meses)" />
-                  <TextArea layoutX="75.0" layoutY="254.0" prefHeight="200.0" prefWidth="200.0" />
-                  <TextField layoutX="85.0" layoutY="99.0" />
-                  <DatePicker layoutX="73.0" layoutY="167.0" />
-                  <ChoiceBox layoutX="394.0" layoutY="217.0" prefWidth="150.0" />
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>
       </BorderPane>
+      <VBox fx:id="SideBar" alignment="CENTER" prefHeight="718.0" prefWidth="193.0" style="-fx-background-color: #9FCDFF;" AnchorPane.bottomAnchor="-18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1007.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="HomepageBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="190.0" styleClass="slideItem" stylesheets="@Style.css" text="Homepage" textAlignment="RIGHT" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/home_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="CategoryBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="190.0" styleClass="slideItem" stylesheets="@Style.css" text="Category" textAlignment="RIGHT" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/category_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="ExpensesBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="190.0" styleClass="slideItem" stylesheets="@Style.css" text="Expenses" textAlignment="RIGHT" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/expenses_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="BudgetBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="190.0" styleClass="slideItem" stylesheets="@Style.css" text="Budget" textAlignment="RIGHT" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/save_money_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="GoalsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="190.0" styleClass="slideItem" stylesheets="@Style.css" text="Goals" textAlignment="RIGHT" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/goals_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="AddBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="190.0" styleClass="slideItem" stylesheets="@Style.css" text="Add" textAlignment="RIGHT" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/add_icon.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="SettingsBtn" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="190.0" styleClass="slideItem" stylesheets="@Style.css" text="Settings" textAlignment="JUSTIFY" textFill="#545454" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/settings_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
