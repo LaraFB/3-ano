@@ -36,6 +36,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: DEEFFF;" BorderPane.alignment="CENTER">
                <children>
+
                   <TabPane fx:id="tab" layoutX="193.0" layoutY="-84.0" prefHeight="716.0" prefWidth="1010.0" tabClosingPolicy="UNAVAILABLE" visible="false">
                     <tabs>
                       <Tab fx:id="ExpenseTab" text="Expenses">
@@ -115,6 +116,7 @@
                         </Tab>
                     </tabs>
                   </TabPane>
+
                   <AnchorPane fx:id="HomepagePane" layoutX="191.0" layoutY="-48.0" prefHeight="675.0" prefWidth="1007.0">
                      <children>
                         <Button fx:id="ViewBudgetBtn" contentDisplay="BOTTOM" layoutX="353.0" layoutY="16.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Total Budget  (for this month):" textFill="#545454">

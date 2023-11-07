@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane prefHeight="700.0" tabClosingPolicy="UNAVAILABLE" prefWidth="1000.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.ExpenseTabController">
+    <tabs>
+        <Tab fx:id="ExpenseTab" text="Expenses">
+            <content>
+
+            </content>
+         <content>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="500.0">
+                      <Label text="Valor" textFill="#545454">
+                          <font>
+                              <Font name="Times New Roman" size="24.0" />
+                          </font>
+                        <VBox.margin>
+                           <Insets top="60.0" />
+                        </VBox.margin>
+                      </Label>
+                      <TextField alignment="CENTER" maxWidth="-Infinity" prefHeight="40.0" prefWidth="315.0" promptText="€" style="-fx-background-color: white;">
+                          <font>
+                              <Font name="Times New Roman" size="14.0" />
+                          </font>
+                        <VBox.margin>
+                           <Insets top="2.0" />
+                        </VBox.margin>
+                      </TextField>
+                      <Label prefHeight="28.0" prefWidth="62.0" text="Data" textFill="#545454">
+                          <font>
+                              <Font name="Times New Roman" size="24.0" />
+                          </font>
+                        <VBox.margin>
+                           <Insets top="70.0" />
+                        </VBox.margin>
+                      </Label>
+                      <DatePicker fx:id="DatePicker" prefHeight="40.0" prefWidth="315.0" style="-fx-background-color: #EFF7FF;" />
+                      <Label text="Pequena Descrição" textFill="#545454">
+                          <font>
+                              <Font name="Times New Roman" size="24.0" />
+                          </font>
+                        <VBox.margin>
+                           <Insets top="70.0" />
+                        </VBox.margin>
+                      </Label>
+                      <TextField alignment="CENTER" maxWidth="-Infinity" prefHeight="192.0" prefWidth="400.0" promptText="Escreva aqui detalhes" style="-fx-background-color: white;">
+                          <font>
+                              <Font name="Times New Roman" size="14.0" />
+                          </font>
+                        <VBox.margin>
+                           <Insets top="2.0" />
+                        </VBox.margin>
+                      </TextField>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="500.0">
+                      <CheckBox id="checkbox" minHeight="30.0" mnemonicParsing="false" prefWidth="300.0" stylesheets="@Style.css" text="Despesa recorrente (todos os meses)" textFill="#545454">
+                          <font>
+                              <Font name="Times New Roman" size="18.0" />
+                          </font>
+                        <VBox.margin>
+                           <Insets top="90.0" />
+                        </VBox.margin>
+                      </CheckBox>
+                      <Label prefHeight="28.0" prefWidth="136.0" text="Categoria" textFill="#545454">
+                          <font>
+                              <Font name="Times New Roman" size="24.0" />
+                          </font>
+                        <VBox.margin>
+                           <Insets top="80.0" />
+                        </VBox.margin>
+                      </Label>
+                      <ChoiceBox fx:id="CategoriaCheckbox" prefHeight="30.0" prefWidth="300.0">
+                        <VBox.margin>
+                           <Insets top="2.0" />
+                        </VBox.margin></ChoiceBox>
+                     <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
+                         <Button fx:id="CancelExpensesBtn" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" styleClass="CancelExpensesBtn" stylesheets="@Style.css" text="Cancel" textFill="#545454">
+                             <font>
+                                 <Font name="Times New Roman" size="24.0" />
+                             </font>
+                         </Button>
+                         <Button fx:id="OkExpensesBtn" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Ok" textFill="#545454">
+                             <font>
+                                 <Font name="Times New Roman" size="24.0" />
+                             </font>
+                         </Button>
+                        <VBox.margin>
+                           <Insets top="260.0" />
+                        </VBox.margin>
+                     </HBox>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
+        </Tab>
+        <Tab fx:id="AddIncomePane" text="Income">
+            <content>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>

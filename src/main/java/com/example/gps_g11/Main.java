@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try{
-        Parent root = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("SideBar.fxml"));
         Scene scene = new Scene(root, 1200, 700);
         stage.setTitle("Gestor de Despesas");
         stage.setScene(scene);
