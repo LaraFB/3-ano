@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane prefHeight="700.0" tabClosingPolicy="UNAVAILABLE" prefWidth="1000.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.ExpenseTabController">
+<TabPane prefHeight="700.0" tabClosingPolicy="UNAVAILABLE" prefWidth="1000.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.ExpenseTabController">
     <tabs>
         <Tab fx:id="ExpenseTab" text="Expenses">
             <content>
 
             </content>
          <content>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: DEEFFF;">
                <children>
                   <VBox prefHeight="200.0" prefWidth="500.0">
                       <Label text="Valor" textFill="#545454">

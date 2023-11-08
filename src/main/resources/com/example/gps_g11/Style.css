@@ -5,9 +5,17 @@
     -fx-border-radius: 70px;
     -fx-background-radius: 70px;
 }
+
+.active-button {
+    -fx-background-color: #DEEFFF;
+ }
+
+
 .MenuItem:hover{-fx-background-color: #D6D6D6;}
 .slideItem{-fx-background-color: #9FCDFF;}
 .slideItem:hover{-fx-background-color:#DEEFFF;}
+.slideItem1{-fx-background-color:#DEEFFF;}
+
 .CancelExpensesBtn{-fx-background-color: #ff676a;}
 .CancelExpensesBtn:hover{-fx-background-color: #EFA5A7;}
 .btn:hover{-fx-opacity:70%;}
@@ -90,3 +98,23 @@
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {-fx-background-color: transparent;}
 .table-view > .virtual-flow > .scroll-bar > .increment-button,
 .table-view > .virtual-flow > .scroll-bar > .decrement-button {-fx-opacity: 0;}
+
+.vBoxItem {
+    -fx-border-color: #545454;
+    -fx-border-width: 1px;
+    -fx-background-color: WHITE;
+    -fx-border-radius: 40px;
+    -fx-background-radius: 40px;
+}
+
+.category-add{
+    -fx-background-color: #4f4c4c;
+    -fx-text-fill: White;
+}
+.category-add:hover{-fx-background-color: #858181;}
+
+.categoory-delete{
+    -fx-background-color: #ff676a;;
+    -fx-text-fill: White;
+}
+.categoory-delete:hover{-fx-background-color: #EFA5A7;}

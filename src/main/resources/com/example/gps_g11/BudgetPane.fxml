@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.BudgetPaneController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.BudgetPaneController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" styleClass="vBoxItem" stylesheets="@Style.css">
          <children>
             <HBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -137,6 +137,9 @@
                 </children>
             </HBox>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </BorderPane.margin>
       </VBox>
    </center>
 </BorderPane>

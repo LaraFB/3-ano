@@ -1,5 +1,6 @@
-package com.example.gps_g11;
+package com.example.gps_g11.Controller;
 
+import com.example.gps_g11.SideBarController;
 import javafx.scene.control.ChoiceBox;
 
 public class ExpenseTabController {

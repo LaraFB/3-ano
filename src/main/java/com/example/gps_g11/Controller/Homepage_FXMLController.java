@@ -1,4 +1,4 @@
-package com.example.gps_g11;
+package com.example.gps_g11.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
