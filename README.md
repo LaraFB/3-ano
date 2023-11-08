@@ -106,43 +106,43 @@ It is assumed:
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
 
- Image 2: Add expense (US2)
+ Image 2: Add expense (US1)
 
 ![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
 
- Image 3: Viewing the added expense (US2)
+ Image 3: Viewing the added expense (US1)
 
 ![Historico depois de adicionar despesa](imgs/despesas_historico_dps_adicionar.png)
 
- Image 4: Expense history (US11)
+ Image 4: Expense history (US10)
 
 ![Despesas por categotia](imgs/despesas_compras.png)
 
- Image 5: Expenses by category (US13)
+ Image 5: Expenses by category (US12)
 
 ![Despesas](imgs/despesas.png)
 
- Image 6: Expenses Homepage (US4)
+ Image 6: Expenses Homepage (US3)
 
 ![Gerir categorias](imgs/gerir_categorias.png)
 
- Image 7: Manage categories (add and delete) (US3)
+ Image 7: Manage categories (add and delete) (US2)
 
 ![Budget](imgs/guardar_montante.png)
 
- Image 8: Budget homepage (US8, US14, US12, US10)
+ Image 8: Budget homepage (US7, US13, US11, US9)
 
 ![Objetivos](imgs/objetivos.png)
 
- Image 9: Goals hompage (US7)
+ Image 9: Goals hompage (US6)
 
 ![Relatorio](imgs/relatorio.png)
 
- Image 10: Result of generating report (US5,US9)
+ Image 10: Result of generating report (US4,US8)
 
 ![Reservar Montante](imgs/reservar_montantes.png)
 
- Image 11: Reserve Amounts (US6)
+ Image 11: Reserve Amounts (US5)
 
 ***
 
