@@ -13,7 +13,7 @@
 
 <BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.BudgetPaneController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" styleClass="vBoxItem" stylesheets="@Style.css">
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" styleClass="vBoxItem" stylesheets="@../Style.css">
          <children>
             <HBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -33,7 +33,7 @@
                         <graphic>
                             <ImageView fitHeight="62.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../image/saved_money_icon.png" />
+                                    <Image url="@../../../../image/saved_money_icon.png" />
                                 </image>
                             </ImageView>
                         </graphic>
@@ -48,7 +48,7 @@
                         <graphic>
                             <ImageView fitHeight="62.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../image/saved_money_icon.png" />
+                                    <Image url="@../../../../image/saved_money_icon.png" />
                                 </image>
                             </ImageView>
                         </graphic>
@@ -63,7 +63,7 @@
                         <graphic>
                             <ImageView fitHeight="62.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../image/saved_money_icon.png" />
+                                    <Image url="@../../../../image/saved_money_icon.png" />
                                 </image>
                             </ImageView>
                         </graphic>
@@ -78,7 +78,7 @@
                         <graphic>
                             <ImageView fitHeight="62.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../image/saved_money_icon.png" />
+                                    <Image url="@../../../../image/saved_money_icon.png" />
                                 </image>
                             </ImageView>
                         </graphic>
@@ -93,7 +93,7 @@
                         <graphic>
                             <ImageView fitHeight="62.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../image/saved_money_icon.png" />
+                                    <Image url="@../../../../image/saved_money_icon.png" />
                                 </image>
                             </ImageView>
                         </graphic>
@@ -108,7 +108,7 @@
                         <graphic>
                             <ImageView fitHeight="62.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../image/saved_money_icon.png" />
+                                    <Image url="@../../../../image/saved_money_icon.png" />
                                 </image>
                             </ImageView>
                         </graphic>
@@ -123,7 +123,7 @@
                         <graphic>
                             <ImageView fitHeight="85.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../image/save_money_env_icon.png" />
+                                    <Image url="@../../../../image/save_money_env_icon.png" />
                                 </image>
                             </ImageView>
                         </graphic>

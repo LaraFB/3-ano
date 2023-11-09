@@ -1,21 +1,21 @@
-package com.example.gps_g11.categoryManagment;
+package com.example.gps_g11.Data.categoryManagment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class categoryHandler {
-    private List<category> categories;
+public class CategoryHandler {
+    private List<Category> categories;
 
-    public categoryHandler(){
+    public CategoryHandler(){
         this.categories = new ArrayList<>();
     }
 
-    public List<category> getCategories() { return categories; }
+    public List<Category> getCategories() { return categories; }
 
     //adicionar categoria
-    public boolean addCategory(category c){
+    public boolean addCategory(Category c){
         //validation:
-        for(category check : categories)
+        for(Category check : categories)
             if(check.equals(c)) return false; //ja existe, n adiciona
 
         categories.add(c);
@@ -23,25 +23,25 @@ public class categoryHandler {
     }
     public boolean addCategory(String name, String description){
         //validation:
-        for(category check : categories)
+        for(Category check : categories)
             if(check.getName().equals(name)) return false; //ja existe, n adiciona
 
-        category c = new category(name,description);
+        Category c = new Category(name,description);
         categories.add(c);
         return true;
     }
     public boolean addCategory(String name){
         //validation:
-        for(category check : categories)
+        for(Category check : categories)
             if(check.getName().equals(name)) return false; //ja existe, n adiciona
 
-        category c = new category(name);
+        Category c = new Category(name);
         categories.add(c);
         return true;
     }
 
     //remover categoria
-    public boolean removeCategory(category c){
+    public boolean removeCategory(Category c){
         //validation:
         if(c == null) return false;
 
@@ -59,7 +59,7 @@ public class categoryHandler {
         if(name == null)
             return false;
 
-        for(category c : categories)
+        for(Category c : categories)
             if(c.getName().equals(name)) return removeCategory(c);
 
         return false; //se n encontrou
@@ -70,7 +70,7 @@ public class categoryHandler {
         //validation:
         if(oldName == null || newName == null) return false;
 
-        for(category c : categories)
+        for(Category c : categories)
             if(c.getName().equals(oldName)){
                 c.setName(newName);
                 return true;
@@ -82,7 +82,7 @@ public class categoryHandler {
         //validation:
         if(name == null || newDescription == null) return false;
 
-        for(category c : categories)
+        for(Category c : categories)
             if(c.getName().equals(name)){
                 c.setDescription(newDescription);
                 return true;
@@ -108,7 +108,7 @@ public class categoryHandler {
         return true;
     }
 
-    public category getCategory(int i){
+    public Category getCategory(int i){
         if(i>categories.size() || i<0)
             return null;
         else

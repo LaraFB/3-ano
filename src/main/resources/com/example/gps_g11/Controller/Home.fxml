@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.HomeController">
+<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.HomeController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="80.0">
                <children>
-                  <Button fx:id="ViewExpensesBtn" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Total Expenses (month):&#10;&#10;&#10;&#10;&#10;" textFill="#545454" textOverrun="CLIP">
+                  <Button fx:id="ViewExpensesBtn" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@../Style.css" text="Total Expenses (month):&#10;&#10;&#10;&#10;&#10;" textFill="#545454" textOverrun="CLIP">
                      <graphic>
                         <Text fx:id="TotalExpenseText" fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;0 €" textAlignment="CENTER" wrappingWidth="130.469970703125">
                            <font>
@@ -26,7 +26,7 @@
                         <Font name="Times New Roman" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="ViewBudgetBtn" onAction="#onBudget" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Total Budget  (for this month):" textFill="#545454">
+                  <Button fx:id="ViewBudgetBtn" onAction="#onBudget" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@../Style.css" text="Total Budget  (for this month):" textFill="#545454">
                      <graphic>
                         <Text fx:id="TotalBudgetText" fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;0 €" textAlignment="CENTER" wrappingWidth="173.13671875">
                            <font>
@@ -38,7 +38,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="ViewBalanceBtn" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Balance:" textFill="#545454">
+                  <Button fx:id="ViewBalanceBtn" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@../Style.css" text="Balance:" textFill="#545454">
                      <graphic>
                         <Text fx:id="BalanceText" fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;0 €" textAlignment="CENTER" wrappingWidth="173.13671875">
                            <font>
@@ -60,12 +60,12 @@
                   <PieChart fx:id="BudgetChart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="644.0" title="Budget" />
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="50.0">
                      <children>
-                        <Button onAction="#onExpense" fx:id="AddExpenseBtn" mnemonicParsing="false" prefHeight="102.0" prefWidth="216.0" styleClass="CancelExpensesBtn" stylesheets="@Style.css" text="+ Expense" textFill="#545454">
+                        <Button onAction="#onExpense" fx:id="AddExpenseBtn" mnemonicParsing="false" prefHeight="102.0" prefWidth="216.0" styleClass="CancelExpensesBtn" stylesheets="@../Style.css" text="+ Expense" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="AddIncomeBtn" mnemonicParsing="false" prefHeight="102.0" prefWidth="216.0" style="-fx-background-color: #00FF9D;" styleClass="btn" stylesheets="@Style.css" text="+ Income" textFill="#545454">
+                        <Button fx:id="AddIncomeBtn" mnemonicParsing="false" prefHeight="102.0" prefWidth="216.0" style="-fx-background-color: #00FF9D;" styleClass="btn" stylesheets="@../Style.css" text="+ Income" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="20.0" />
                            </font>

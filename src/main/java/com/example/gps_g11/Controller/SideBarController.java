@@ -1,8 +1,10 @@
-package com.example.gps_g11;
+package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Controller.BudgetPaneController;
+import com.example.gps_g11.Controller.CategoryController;
 import com.example.gps_g11.Controller.ExpenseTabController;
 import com.example.gps_g11.Controller.HomeController;
+import com.example.gps_g11.Data.Context;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +13,7 @@ import javafx.scene.layout.Pane;
 
 
 public class SideBarController {
+    private Context context;
     public Button HomepageBtn;
     public Button CategoryBtn;
     public Button ExpensesBtn;
@@ -42,6 +45,7 @@ public class SideBarController {
 
     public void onSettings(ActionEvent actionEvent) {
     }
+
 
     private void loadFXML(String fxmlFileName) {
         try {
@@ -102,18 +106,8 @@ public class SideBarController {
         }
     }
 
-    private void disableBackgroudndBtn() {
-        HomepageBtn.getStyleClass().remove("active-button");
-        CategoryBtn.getStyleClass().remove("active-button");
-        ExpensesBtn.getStyleClass().remove("active-button");
-        BudgetBtn.getStyleClass().remove("active-button");
-        GoalsBtn.getStyleClass().remove("active-button");
-        AddBtn.getStyleClass().remove("active-button");
-        SettingsBtn.getStyleClass().remove("active-button");
-
-    }
-
     public void initialize(){
+        context = Context.getInstance();
         loadFXML("Home.fxml");
     }
 

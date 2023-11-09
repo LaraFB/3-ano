@@ -1,9 +1,9 @@
-package com.example.gps_g11.categoryManagment;
+package com.example.gps_g11.Data.categoryManagment;
 
-public class category {
+public class Category {
     private String name, description;
 
-    public category(String name){
+    public Category(String name){
         //validation:
         if(name != null) this.name = name;
         else this.name = "";
@@ -11,7 +11,7 @@ public class category {
         this.description = "";
     }
 
-    public category(String name, String description){
+    public Category(String name, String description){
         //validation:
         if(name != null) this.name = name;
         else this.name = "";

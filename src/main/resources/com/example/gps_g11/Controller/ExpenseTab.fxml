@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane prefHeight="700.0" tabClosingPolicy="UNAVAILABLE" prefWidth="1000.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.ExpenseTabController">
+<TabPane prefHeight="700.0" tabClosingPolicy="UNAVAILABLE" prefWidth="1000.0" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.ExpenseTabController">
     <tabs>
         <Tab fx:id="ExpenseTab" text="Expenses">
             <content>
@@ -69,7 +69,7 @@
                      </padding>
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="500.0">
-                      <CheckBox id="checkbox" minHeight="30.0" mnemonicParsing="false" prefWidth="300.0" stylesheets="@Style.css" text="Despesa recorrente (todos os meses)" textFill="#545454">
+                      <CheckBox id="checkbox" minHeight="30.0" mnemonicParsing="false" prefWidth="300.0" stylesheets="@../Style.css" text="Despesa recorrente (todos os meses)" textFill="#545454">
                           <font>
                               <Font name="Times New Roman" size="18.0" />
                           </font>
@@ -90,12 +90,12 @@
                            <Insets top="2.0" />
                         </VBox.margin></ChoiceBox>
                      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-                         <Button fx:id="CancelExpensesBtn" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" styleClass="CancelExpensesBtn" stylesheets="@Style.css" text="Cancel" textFill="#545454">
+                         <Button fx:id="CancelExpensesBtn" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" styleClass="CancelExpensesBtn" stylesheets="@../Style.css" text="Cancel" textFill="#545454">
                              <font>
                                  <Font name="Times New Roman" size="24.0" />
                              </font>
                          </Button>
-                         <Button fx:id="OkExpensesBtn" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@Style.css" text="Ok" textFill="#545454">
+                         <Button fx:id="OkExpensesBtn" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #9FCDFF;" styleClass="btn" stylesheets="@../Style.css" text="Ok" textFill="#545454">
                              <font>
                                  <Font name="Times New Roman" size="24.0" />
                              </font>
