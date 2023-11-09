@@ -107,4 +107,29 @@ public class categoryHandler {
         categories.get(i).setDescription(newDescription);
         return true;
     }
+
+    public category getCategory(int i){
+        if(i>categories.size() || i<0)
+            return null;
+        else
+            return categories.get(i);
+    }
+    public String getCategoryName(int i){
+        if(i>categories.size() || i<0)
+            return null;
+        else
+            return categories.get(i).getName();
+    }
+    public String getCategoryDescription(int i){
+        if(i>categories.size() || i<0)
+            return null;
+        else
+            return categories.get(i).getDescription();
+    }
+
+    public boolean isEmpty(){
+        return categories.isEmpty();
+    }
+
+
 }

@@ -1,7 +1,6 @@
 package com.example.gps_g11;
 
 import com.example.gps_g11.Controller.BudgetPaneController;
-import com.example.gps_g11.Controller.CategoryController;
 import com.example.gps_g11.Controller.ExpenseTabController;
 import com.example.gps_g11.Controller.HomeController;
 import javafx.event.ActionEvent;
