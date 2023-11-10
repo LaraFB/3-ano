@@ -4,11 +4,13 @@ public class Bolsa {
     private String nome;
     private double valor;
     private String descricao;
+    private double valorGasto;
 
     public Bolsa(String nome, double valor, String descricao) {
         this.nome = nome;
-        this.valor = valor;
+        this.valor = valor-10;
         this.descricao = descricao;
+        valorGasto = 10;
     }
 
     public String getNome() {
@@ -42,5 +44,13 @@ public class Bolsa {
                 ", valor=" + valor +
                 ", descricao='" + descricao + '\'' +
                 '}';
+    }
+
+    public double getValorGasto() {
+        return valorGasto;
+    }
+
+    public void setValorGasto(double valorGasto) {
+        this.valorGasto = valorGasto;
     }
 }

@@ -1,18 +1,23 @@
 package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Data.Context;
+import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.ParsePosition;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import javafx.util.converter.NumberStringConverter;
 
 public class CategoryController implements Initializable {
     SideBarController sideBarController;
@@ -43,6 +48,7 @@ public class CategoryController implements Initializable {
     }
 
 
+
     //
     public void popUp(){
 
@@ -50,7 +56,7 @@ public class CategoryController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CategoryPopUp.fxml"));
             Node node = loader.load();
             Dialog dialog = new Dialog<>();
-            dialog.setTitle("Adicionar categoria");
+            dialog.setTitle("Adicionar Categoria");
             dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
             dialog.getDialogPane().setContent(node);
             dialog.show();
@@ -82,5 +88,9 @@ public class CategoryController implements Initializable {
                 HBox3.getChildren().add(newBtn);
                 i++;
             }
+    }
+
+    public void onAddBudget() {
+
     }
 }

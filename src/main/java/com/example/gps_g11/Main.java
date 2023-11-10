@@ -19,8 +19,6 @@ public class Main extends Application {
         stage.setScene(scene);
         scene.setRoot(loader.load());
 
-        stage.setWidth(1200);
-        stage.setHeight(700);
         stage.setTitle("Gestor de Despesas");
         stage.show();
 

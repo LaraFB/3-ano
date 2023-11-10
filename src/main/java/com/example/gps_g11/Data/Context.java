@@ -12,6 +12,7 @@ public class Context {
     private Context() {
         this.categoryHandler = new CategoryHandler();
         this.budget = new Budget(200);
+        budget.setBolsa(new Bolsa("ISEC",120,"Bolsa de estudo"));
     }
 
     public static Context getInstance() {
@@ -48,4 +49,20 @@ public class Context {
     public String getCategoryName(int i) {
         return categoryHandler.getCategoryName(i);
     }
+
+    public void addMontante(int montante){
+        budget.setBudgetRestante(budget.getBudgetRestante()+montante);
+    }
+
+    public String getNomeBolsa(){
+        return budget.getBolsa().getNome();
+    }
+    public double getValorBolsa(){
+        return budget.getBolsa().getValor();
+    }
+
+    public double getValorGastoBolsa(){
+        return budget.getBolsa().getValorGasto();
+    }
+
 }
