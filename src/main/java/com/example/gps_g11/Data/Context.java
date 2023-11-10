@@ -1,10 +1,20 @@
 package com.example.gps_g11.Data;
 
+import com.example.gps_g11.Data.Expenses.Expense;
+import com.example.gps_g11.Data.Expenses.ExpensesHistory;
 import com.example.gps_g11.Data.categoryManagment.Category;
 import com.example.gps_g11.Data.categoryManagment.CategoryHandler;
 
+import java.io.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class Context {
     private static Context instance;
+
+    private ExpensesHistory expensesHistory;
 
     private CategoryHandler categoryHandler;
     private Budget budget;
@@ -13,6 +23,8 @@ public class Context {
         this.categoryHandler = new CategoryHandler();
         this.budget = new Budget(200);
         budget.setBolsa(new Bolsa("ISEC",120,"Bolsa de estudo"));
+        expensesHistory = new ExpensesHistory();
+        expensesHistory.loadFromFile();
     }
 
     public static Context getInstance() {
@@ -63,6 +75,35 @@ public class Context {
 
     public double getValorGastoBolsa(){
         return budget.getBolsa().getValorGasto();
+    }
+
+
+    public void addExpense(String name, String category, String description, LocalDate date, float value, boolean recurring) {
+        expensesHistory.addExpense(name, category, description, date, value, recurring);
+    }
+
+    public double getTotalExpenses() {
+        return expensesHistory.getTotalExpenses();
+    }
+
+    public List<Expense> getExpensesByCategory(String targetCategory) {
+        return expensesHistory.getExpensesByCategory(targetCategory);
+    }
+
+    public List<Expense> getExpensesByDate(Date targetDate) {
+        return expensesHistory.getExpensesByDate(targetDate);
+    }
+
+    public void saveToFileExpenses() {
+        expensesHistory.saveToFile();
+    }
+
+    public void loadFromFileExpenses() {
+        expensesHistory.loadFromFile();
+    }
+
+    public String ExpensestoString() {
+        return expensesHistory.toString();
     }
 
 }

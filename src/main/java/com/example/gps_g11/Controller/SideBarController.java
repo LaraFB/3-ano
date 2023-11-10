@@ -5,6 +5,7 @@ import com.example.gps_g11.Controller.CategoryController;
 import com.example.gps_g11.Controller.ExpenseTabController;
 import com.example.gps_g11.Controller.HomeController;
 import com.example.gps_g11.Data.Context;
+import com.example.gps_g11.Data.Expenses.ExpensesHistory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
