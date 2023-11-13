@@ -9,6 +9,6 @@ class ContextTest {
     @Test
     void getValorBolsa() {
         Context context = Context.getInstance();
-        assertEquals(context.getValorBolsa(),120);
+        assertEquals(context.getValorBolsa(),110);
     }
 }

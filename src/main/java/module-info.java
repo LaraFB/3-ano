@@ -8,9 +8,7 @@ module com.example.gps_g11 {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-  //  requires eu.hansolo.tilesfx;
-    requires com.almasb.fxgl.all;
-
+    //requires eu.hansolo.tilesfx;
     opens com.example.gps_g11 to javafx.fxml;
     exports com.example.gps_g11;
     exports com.example.gps_g11.Controller;
