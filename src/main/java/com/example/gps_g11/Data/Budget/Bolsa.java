@@ -1,4 +1,4 @@
-package com.example.gps_g11.Data;
+package com.example.gps_g11.Data.Budget;
 
 public class Bolsa {
     private String nome;

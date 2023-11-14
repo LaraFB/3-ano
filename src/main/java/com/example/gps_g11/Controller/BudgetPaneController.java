@@ -4,12 +4,17 @@ import com.example.gps_g11.Data.Context;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
@@ -23,16 +28,44 @@ public class BudgetPaneController {
     public PieChart pieChartBudget;
     public PieChart pieChartBolsa;
     public BorderPane root;
+    public HBox dynamicHBox;
     SideBarController sideBarController;
     private Context context;
 
     public void initialize(){
         context = Context.getInstance();
         update();
-
+        for (int i = 0; i < 10; i++) {
+            Button button = createImageButton("Envelope " + (i + 1), "/image/saved_money_icon.png");
+            button.setMinSize(100, 150);
+            addToDynamicHBox(button);
+        }
     }
 
+    private Button createImageButton(String buttonText, String imageUrl) {
+        Button button = new Button(buttonText);
+        button.setContentDisplay(ContentDisplay.TOP);
+        button.setMnemonicParsing(false);
+        button.setStyle("-fx-background-color: transparent;");
 
+        Image image = new Image(getClass().getResource(imageUrl).toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(62.0);
+        imageView.setFitWidth(88.0);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
+
+        button.setGraphic(imageView);
+        button.setCursor(Cursor.HAND);
+        button.setFont(new Font("Times New Roman", 14.0));
+
+        // Adicione aqui a lógica do evento de clique, se necessário
+
+        return button;
+    }
+    private void addToDynamicHBox(Button button) {
+        dynamicHBox.getChildren().add(button);
+    }
 
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
