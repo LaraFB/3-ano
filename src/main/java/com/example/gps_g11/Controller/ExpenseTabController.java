@@ -3,6 +3,8 @@ package com.example.gps_g11.Controller;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Expenses.ExpensesHistory;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 
 public class ExpenseTabController {
@@ -16,12 +18,20 @@ public class ExpenseTabController {
     public Label lblResult;
     SideBarController sideBarController;
 
+    public TextField CategoryName;
+    public TextField CategoryDescription;
+    public Label errorMsg;
+    public Label sucessMsg;
+
     private Context context;
     private String[] categorias ={"Cafe","Compras","Propinas","Renda","Refeiçoes na Cantina","Outra"};
 
     public void initialize(){
         context = Context.getInstance();
         CategoriaCheckbox.getItems().setAll(categorias);
+
+        errorMsg.setVisible(false);
+        sucessMsg.setVisible(false);
 
     }
 
@@ -46,5 +56,29 @@ public class ExpenseTabController {
         Recurring.setSelected(false);
         CategoriaCheckbox.setValue(null);
         lblResult.setText("");
+    }
+
+    //category tab
+    public void AddCategory(ActionEvent actionEvent){
+        if(CategoryName.getText().isEmpty()){
+            errorMsg.setVisible(true);
+            return;
+        }
+
+        if(CategoryDescription.getText().isEmpty())
+            context.addCategory(CategoryName.getText());
+        else
+            context.addCategory(CategoryName.getText(),CategoryDescription.getText());
+
+        System.out.println(context.getCategory(0).getName());
+        CancelCategory(actionEvent);
+        sucessMsg.setVisible(true);
+    }
+
+    public void CancelCategory(ActionEvent actionEvent){
+        CategoryName.setText("");
+        CategoryDescription.setText("");
+        errorMsg.setVisible(false);
+        sucessMsg.setVisible(false);
     }
 }

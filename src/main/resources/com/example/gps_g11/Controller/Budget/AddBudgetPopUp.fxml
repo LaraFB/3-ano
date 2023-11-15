@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="141.0" prefWidth="498.0" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.BudgetPanePopUpController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="141.0" prefWidth="498.0" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Budget.BudgetPanePopUpController">
     <center>
         <VBox prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
             <padding>
@@ -40,7 +40,7 @@
                         <Insets right="110.0" />
                      </HBox.margin>
                       </Label>
-                      <Button mnemonicParsing="false" onAction="#onAddBudget" styleClass="MenuItem" text="Aicionar" />
+                      <Button mnemonicParsing="false" onAction="#onAddBudget" styleClass="MenuItem" text="Adicionar" />
                       <Button mnemonicParsing="false" text="Close" onAction="#onClose" styleClass="MenuItem"/>
                   </children>
               </HBox>

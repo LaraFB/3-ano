@@ -1,20 +1,19 @@
-    package com.example.gps_g11.Controller;
+    package com.example.gps_g11.Controller.Budget;
 
     import com.example.gps_g11.Data.Context;
+    import javafx.scene.control.Label;
     import javafx.scene.control.TextField;
     import javafx.scene.control.TextFormatter;
     import javafx.scene.layout.BorderPane;
     import javafx.stage.Stage;
     import javafx.util.converter.IntegerStringConverter;
-    import javafx.util.converter.NumberStringConverter;
 
-    import java.text.DecimalFormat;
-    import java.text.ParsePosition;
     import java.util.function.UnaryOperator;
     import java.util.regex.Pattern;
 
     public class BudgetPanePopUpController {
         public BorderPane root;
+        public Label LError;
         BudgetPaneController budgetPaneController;
 
         public TextField TFMontante;
@@ -32,12 +31,13 @@
         }
 
         public void onAddBudget() {
-            context.addMontante(Integer.parseInt(TFMontante.getText()));
-
-            Stage stage = (Stage) root.getScene().getWindow();
-            stage.close();
-
-            budgetPaneController.acaoAoFecharJanelaSecundaria();
+            if(TFMontante.getText().isEmpty() || TFMontante.getText().equals("0")){
+                LError.setVisible(true);
+                LError.setText("Preenche o campo com o valor");
+            }else{
+                context.addMontante(Integer.parseInt(TFMontante.getText()));
+                onClose();
+            }
         }
 
         public void onClose() {

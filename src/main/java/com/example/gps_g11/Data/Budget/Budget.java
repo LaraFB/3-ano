@@ -12,9 +12,7 @@ public class Budget {
     private List<Envelope> envelopes;
 
     public Budget(double budgetRestante) {
-        //Exemplo de valores
         this.budgetRestante = budgetRestante;
-        this.budgetGasto = 49;
         this.excedeuBudget = false;
         this.envelopes = new ArrayList<>();
     }
@@ -76,9 +74,6 @@ public class Budget {
         return envelopes;
     }
 
-    public void setEnvelopes(List<Envelope> envelopes) {
-        this.envelopes = envelopes;
-    }
     public void criarEnvelope(String finalidade, double valor) {
         if (valor <= this.budgetRestante) {
             Envelope envelope = new Envelope(finalidade, valor);
@@ -90,5 +85,16 @@ public class Budget {
         } else {
             System.out.println("Valor excede o orçamento restante. Envelope não criado.");
         }
+    }
+    public void setEnvelopes(List<Envelope> envelopes) {
+        this.envelopes = envelopes;
+    }
+
+    public double getBudgetGuardado() {
+        return budgetGuardado;
+    }
+
+    public void setBudgetGuardado(double budgetGuardado) {
+        this.budgetGuardado = budgetGuardado;
     }
 }
