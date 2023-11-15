@@ -62,17 +62,6 @@ public class CategoryController implements Initializable {
 
                         vBox.getChildren().add(new Label("Montante: " + expense.getValue()));
                         vBox.getChildren().add(new Label("Data: " + expense.getDate()));
-
-    public void update(){
-        int i=0;
-            while(context.getCategory(i) != null){
-                Button newBtn = new Button(context.getCategoryName(i));
-                HBox3.getChildren().add(newBtn);
-                i++;
-            }
-    }
-
-
                         vBox1.getChildren().add(new Label("Categoria"));
                         vBox1.getChildren().add(new Label(expense.getCategory()));
                         vBox1.setAlignment(Pos.CENTER);
@@ -86,15 +75,13 @@ public class CategoryController implements Initializable {
                         deleteImageView.setPreserveRatio(true);
                         deletebtn.setGraphic(deleteImageView);
 
-
                         VBox vBox2 = new VBox(deletebtn);
-
 
                         hBox.getChildren().addAll(vBox, vBox1, vBox2);
                         container.getChildren().add(hBox);
                     }
         }
-    }*/
+    }
 
     public void delete(Expense expense) {;
         context.deleteExpense(expense);

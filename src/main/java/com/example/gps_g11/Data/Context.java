@@ -103,9 +103,9 @@ public class Context {
         return expensesHistory.getExpenses();
     }
 
-    public void deleteExpense(Expense expense){
+    public void deleteExpense(Expense expense) {
         expensesHistory.deleteExpense(expense);
-
+    }
     public void criarEnvelope(String finalidade,double valor){
         budget.criarEnvelope(finalidade, valor);
     }

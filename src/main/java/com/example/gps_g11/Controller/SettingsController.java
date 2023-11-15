@@ -2,6 +2,7 @@ package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.*;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 
@@ -12,6 +13,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 public class SettingsController implements Initializable {
@@ -75,16 +78,15 @@ public class SettingsController implements Initializable {
         }
     }
 
-    public void update(){
-        int i=0;
-        if(!context.isEmpty())
-            while(context.getCategory(i) != null){
-                Button newBtn = new Button(context.getCategoryName(i));
-                HBox3.getChildren().add(newBtn);
-                i++;
-            }
-    }
+    public void update() {
+        int i = 0;
+        while (context.getCategory(i) != null) {
+            Button newBtn = new Button(context.getCategoryName(i));
+            HBox3.getChildren().add(newBtn);
+            i++;
+        }
 
+    }
     public void onAddBudget() {
 
     }
