@@ -1,96 +1,100 @@
 package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Data.Context;
+import com.example.gps_g11.Data.Expenses.Expense;
+import com.example.gps_g11.Data.categoryManagment.Category;
 import javafx.event.ActionEvent;
-import javafx.fxml.*;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-
-import java.io.IOException;
-import java.net.URL;
-import java.text.DecimalFormat;
-import java.text.ParsePosition;
-import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-import javafx.util.converter.NumberStringConverter;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class CategoryController implements Initializable {
-    SideBarController sideBarController;
-    @FXML
-    Button BtnAdc;
-    @FXML
-    HBox HBox3;
-    // Pop up:
-    @FXML
-    Button BtnAdcPopUp;
-    @FXML
-    TextField TFName;
-    @FXML
-    TextField TFDescription;
-    @FXML
-    Label LError;
-    private Context context;
 
+    SideBarController sideBarController;
+    Context context;
+
+    List<Expense> expenses;
+
+    @FXML VBox container;
+    @FXML TextField SearchName;
+    @FXML ChoiceBox SearchCategory;
+    @FXML DatePicker SearchDate;
+
+    private String[] categorias ={"","Cafe","Compras","Propinas","Renda","Refeiçoes na Cantina","Outra"};
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        context = Context.getInstance();
+        SearchCategory.getItems().setAll(categorias);
+        SearchCategory.setValue("");
+        initContainer();
+    }
 
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        context = Context.getInstance();
-        update();
-    }
+    public void initContainer(){
+        container.setPadding(new Insets(10,10,10,10));
+        container.getChildren().clear();
+        expenses = context.getExpensesHistory();
+        for (Expense expense : expenses) {
+            if(expense.getName().contains(SearchName.getText()) || expense.getName().isEmpty())
+                if (expense.getCategory().contains(SearchCategory.getValue().toString()) || SearchCategory.getValue().toString().isEmpty())
+                    if (expense.getDate().equals(SearchDate.getValue()) || SearchDate.getValue() == null) {
+                        HBox hBox = new HBox();
+                        hBox.getStylesheets().add(getClass().getResource("/com/example/gps_g11/Style.css").toExternalForm());
+                        hBox.getStyleClass().add("MenuItem");
+                        hBox.setPadding(new Insets(10, 10, 10, 10));
+                        VBox vBox = new VBox();
+                        VBox vBox1 = new VBox();
+
+                        vBox.getChildren().add(new Label("Montante: " + expense.getValue()));
+                        vBox.getChildren().add(new Label("Data: " + expense.getDate()));
 
 
 
-    //
-    public void popUp(){
+                        vBox1.getChildren().add(new Label("Categoria"));
+                        vBox1.getChildren().add(new Label(expense.getCategory()));
+                        vBox1.setAlignment(Pos.CENTER);
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CategoryPopUp.fxml"));
-            Node node = loader.load();
-            Dialog dialog = new Dialog<>();
-            dialog.setTitle("Adicionar Categoria");
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-            dialog.getDialogPane().setContent(node);
-            dialog.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+                        Button deletebtn = new Button();
+                        deletebtn.setOnAction(event -> delete(expense));
+                        Image deleteImage = new Image(getClass().getResourceAsStream("/image/Trash_icon.png"));
+                        ImageView deleteImageView = new ImageView(deleteImage);
+                        deleteImageView.setFitWidth(10);
+                        deleteImageView.setFitHeight(10);
+                        deleteImageView.setPreserveRatio(true);
+                        deletebtn.setGraphic(deleteImageView);
+
+
+                        VBox vBox2 = new VBox(deletebtn);
+
+
+                        hBox.getChildren().addAll(vBox, vBox1, vBox2);
+                        container.getChildren().add(hBox);
+                    }
         }
-        update();
+    }
+
+    public void delete(Expense expense) {;
+        context.deleteExpense(expense);
+        initContainer();
     }
 
 
-    //popup
-    public void addItem(){
-        if(TFName.getText() == null || TFName.getText().isEmpty()){
-            LError.setVisible(true);
-        }
-        else {
-            if (TFName.getText() == null || TFDescription.getText().isEmpty())
-                context.addCategory(TFName.getText());
-            else
-                context.addCategory(TFName.getText(), TFDescription.getText());
-        }
-    }
-
-    public void update(){
-        int i=0;
-        if(!context.isEmpty())
-            while(context.getCategory(i) != null){
-                Button newBtn = new Button(context.getCategoryName(i));
-                HBox3.getChildren().add(newBtn);
-                i++;
-            }
-    }
-
-    public void onAddBudget() {
-
+    public void Search(ActionEvent actionEvent) {
+        initContainer();
     }
 }

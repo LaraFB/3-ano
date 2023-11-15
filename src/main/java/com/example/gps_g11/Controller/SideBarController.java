@@ -1,11 +1,6 @@
 package com.example.gps_g11.Controller;
 
-import com.example.gps_g11.Controller.BudgetPaneController;
-import com.example.gps_g11.Controller.CategoryController;
-import com.example.gps_g11.Controller.ExpenseTabController;
-import com.example.gps_g11.Controller.HomeController;
 import com.example.gps_g11.Data.Context;
-import com.example.gps_g11.Data.Expenses.ExpensesHistory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -45,6 +40,7 @@ public class SideBarController {
     }
 
     public void onSettings(ActionEvent actionEvent) {
+        loadFXML("Settings.fxml");
     }
 
 
@@ -59,10 +55,10 @@ public class SideBarController {
                         homeController.setSideBar(this);
                         putBtnActive(HomepageBtn);
                         break;
-                    case "Category.fxml":
-                        CategoryController categoryController = loader.getController();
-                        categoryController.setSideBar(this);
-                        putBtnActive(CategoryBtn);
+                    case "Settings.fxml":
+                        SettingsController settingsController = loader.getController();
+                        settingsController.setSideBar(this);
+                        putBtnActive(SettingsBtn);
                         break;
                     case "BudgetPane.fxml":
                         BudgetPaneController budgetPaneController = loader.getController();
@@ -73,6 +69,11 @@ public class SideBarController {
                         ExpenseTabController expenseTabController = loader.getController();
                         expenseTabController.setSideBar(this);
                         putBtnActive(AddBtn);
+                        break;
+                    case  "Category.fxml":
+                        CategoryController categoryController = loader.getController();
+                        categoryController.setSideBar(this);
+                        putBtnActive(CategoryBtn);
                         break;
                 }
             }
