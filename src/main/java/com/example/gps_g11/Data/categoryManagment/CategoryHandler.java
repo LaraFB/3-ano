@@ -52,7 +52,7 @@ public class CategoryHandler {
         if(i>categories.size() || i<0)
             return false; //fora da lista
 
-        return removeCategory(i);
+        return removeCategory(categories.get(i));
     }
     public boolean removeCategory(String name){ //por nome
         //validation:

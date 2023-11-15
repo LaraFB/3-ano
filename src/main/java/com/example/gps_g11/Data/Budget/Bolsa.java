@@ -39,7 +39,7 @@ public class Bolsa {
 
     @Override
     public String toString() {
-        return "Scholarship{" +
+        return "Bolsa{" +
                 "nome='" + nome + '\'' +
                 ", valor=" + valor +
                 ", descricao='" + descricao + '\'' +
