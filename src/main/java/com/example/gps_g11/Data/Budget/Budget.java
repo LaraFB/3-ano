@@ -91,4 +91,12 @@ public class Budget {
             System.out.println("Valor excede o orçamento restante. Envelope não criado.");
         }
     }
+
+    public double getBudgetGuardado() {
+        return budgetGuardado;
+    }
+
+    public void setBudgetGuardado(double budgetGuardado) {
+        this.budgetGuardado = budgetGuardado;
+    }
 }

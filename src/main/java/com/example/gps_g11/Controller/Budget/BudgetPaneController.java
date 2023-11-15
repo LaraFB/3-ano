@@ -1,11 +1,11 @@
-package com.example.gps_g11.Controller;
+package com.example.gps_g11.Controller.Budget;
 
+import com.example.gps_g11.Controller.SideBarController;
+import com.example.gps_g11.Data.Budget.Envelope;
 import com.example.gps_g11.Data.Context;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
@@ -17,36 +17,27 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.converter.NumberStringConverter;
-
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.ParsePosition;
-import java.util.function.UnaryOperator;
 
 public class BudgetPaneController {
     public PieChart pieChartBudget;
     public PieChart pieChartBolsa;
     public BorderPane root;
     public HBox dynamicHBox;
+    public ScrollPane scrollPane;
     SideBarController sideBarController;
     private Context context;
 
     public void initialize(){
         context = Context.getInstance();
         update();
-        for (int i = 0; i < 10; i++) {
-            Button button = createImageButton("Envelope " + (i + 1), "/image/saved_money_icon.png");
-            button.setMinSize(100, 150);
-            addToDynamicHBox(button);
-        }
     }
 
-    private Button createImageButton(String buttonText, String imageUrl) {
-        Button button = new Button(buttonText);
+    private Button createImageButton(String imageUrl,Envelope envelope) {
+        Button button = new Button(envelope.getFinalidade());
         button.setContentDisplay(ContentDisplay.TOP);
         button.setMnemonicParsing(false);
         button.setStyle("-fx-background-color: transparent;");
+        button.setOnAction(event -> onEnvelopeButtonClicked(envelope));
 
         Image image = new Image(getClass().getResource(imageUrl).toExternalForm());
         ImageView imageView = new ImageView(image);
@@ -63,6 +54,29 @@ public class BudgetPaneController {
 
         return button;
     }
+
+    private void onEnvelopeButtonClicked(Envelope envelope) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SeeSavedMoney.fxml"));
+            Pane secondaryPane = loader.load();
+
+            Stage secondaryStage = new Stage();
+            secondaryStage.initModality(Modality.WINDOW_MODAL);
+            secondaryStage.initOwner(root.getScene().getWindow());
+            Scene secondaryScene = new Scene(secondaryPane);
+
+            SavedMovneyPopUpToSeeController savedMovneyPopUpToSeeController = loader.getController();
+            savedMovneyPopUpToSeeController.setBudgetPane(this,envelope);
+
+            secondaryStage.setScene(secondaryScene);
+            secondaryStage.setTitle("Save Money");
+            secondaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private void addToDynamicHBox(Button button) {
         dynamicHBox.getChildren().add(button);
     }
@@ -94,34 +108,72 @@ public class BudgetPaneController {
     }
 
     private void update() {
+        dynamicHBox.getChildren().clear();
         PieChart.Data slice1 = new PieChart.Data("Budget restante", context.getBudgetRestante());
         PieChart.Data slice2 = new PieChart.Data("Budget gasto", context.getBudgetGasto());
+        PieChart.Data slice5 = new PieChart.Data("Budget guardado", context.getBudgetGuardado());
 
-        slice1.setName("Budget restante: " + context.getBudgetRestante() + "€");
+        slice1.setName("Restante: " + context.getBudgetRestante() + "€");
         slice1.setPieValue(context.getBudgetRestante());
 
-        slice2.setName("Budget gasto: " +context.getBudgetGasto()+"€");
+        slice2.setName("Gasto: " +context.getBudgetGasto()+"€");
         slice2.setPieValue(context.getBudgetGasto());
 
-        pieChartBudget.setLabelsVisible(false);
-        pieChartBudget.getData().setAll(slice1, slice2);
+        slice5.setName("Guardado: " +context.getBudgetGuardado()+"€");
+        slice5.setPieValue(context.getBudgetGuardado());
 
-        PieChart.Data slice3 = new PieChart.Data("Bolsa restabte: ", context.getValorBolsa());
+        pieChartBudget.setLabelsVisible(false);
+        pieChartBudget.setTitle("Budget");
+        pieChartBudget.getData().setAll(slice1, slice2,slice5);
+
+        PieChart.Data slice3 = new PieChart.Data("Bolsa restante: ", context.getValorBolsa());
         PieChart.Data slice4 = new PieChart.Data("Bolsa gasto: ", context.getValorGastoBolsa());
 
-        slice3.setName("Bolsa restante: " + context.getValorBolsa() + "€");
+        slice3.setName("Restante: " + context.getValorBolsa() + "€");
         slice3.setPieValue(context.getValorBolsa());
 
-
-        slice4.setName("Bolsa gasto: " + context.getValorGastoBolsa() + "€");
+        slice4.setName("Gasto: " + context.getValorGastoBolsa() + "€");
         slice4.setPieValue(context.getValorGastoBolsa());
 
-        pieChartBolsa.setTitle(context.getNomeBolsa());
+        pieChartBolsa.setTitle("Bolsa - " + context.getNomeBolsa());
         pieChartBolsa.setLabelsVisible(false);
         pieChartBolsa.getData().setAll(slice3,slice4);
+
+        if(context.getEnvelopes().isEmpty()){
+            scrollPane.setVisible(false);
+        }else{
+            scrollPane.setVisible(true);
+            for (Envelope envelope : context.getEnvelopes()) {
+                Button button = createImageButton( "/image/saved_money_icon.png",envelope);
+                button.setMinSize(100, 150);
+                addToDynamicHBox(button);
+            }
+        }
+
     }
 
     public void acaoAoFecharJanelaSecundaria() {
         update();
+    }
+
+    public void onSavedMoney(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddSavedMoney.fxml"));
+            Pane secondaryPane = loader.load();
+
+            Stage secondaryStage = new Stage();
+            secondaryStage.initModality(Modality.WINDOW_MODAL);
+            secondaryStage.initOwner(root.getScene().getWindow());
+            Scene secondaryScene = new Scene(secondaryPane);
+
+            SavedMoneyPopUpToAddController savedMoneyPopUpToAddController = loader.getController();
+            savedMoneyPopUpToAddController.setBudgetPane(this);
+
+            secondaryStage.setScene(secondaryScene);
+            secondaryStage.setTitle("Save Money");
+            secondaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

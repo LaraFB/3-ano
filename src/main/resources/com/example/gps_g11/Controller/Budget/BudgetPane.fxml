@@ -29,9 +29,9 @@
 </font>
 </Button>-->
 
-<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.BudgetPaneController">
+<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Budget.BudgetPaneController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="vBoxItem" stylesheets="@../Style.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="vBoxItem" stylesheets="@../../Style.css" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -47,16 +47,16 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="280.0" prefWidth="200.0" spacing="15.0">
                 <children>
-                    <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="170">
+                    <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" maxHeight="170">
                         <HBox fx:id="dynamicHBox" spacing="15">
                             <!-- Botões dinâmicos serão adicionados dinamicamente aqui -->
                         </HBox>
                     </ScrollPane>
-                    <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="181.0" style="-fx-background-color: transparent;" text="Guarda&#10;Dinheiro">
+                    <Button fx:id="savedMoney" onAction="#onSavedMoney" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="181.0" style="-fx-background-color: transparent;" text="Guarda&#10;Dinheiro">
                         <graphic>
                             <ImageView fitHeight="85.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../../image/save_money_env_icon.png" />
+                                    <Image url="@../../../../../image/save_money_env_icon.png" />
                                 </image>
                             </ImageView>
                         </graphic>
@@ -79,7 +79,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onAddBudget" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #2370ff;" styleClass="btn" stylesheets="@../Style.css" text="Add Budget" textFill="#545454" BorderPane.alignment="TOP_RIGHT">
+      <Button mnemonicParsing="false" onAction="#onAddBudget" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #2370ff;" styleClass="btn" stylesheets="@../../Style.css" text="Add Budget" textFill="#545454" BorderPane.alignment="TOP_RIGHT">
           <font>
               <Font name="Times New Roman" size="16.0" />
           </font>

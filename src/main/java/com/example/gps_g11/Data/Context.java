@@ -2,6 +2,7 @@ package com.example.gps_g11.Data;
 
 import com.example.gps_g11.Data.Budget.Bolsa;
 import com.example.gps_g11.Data.Budget.Budget;
+import com.example.gps_g11.Data.Budget.Envelope;
 import com.example.gps_g11.Data.Expenses.Expense;
 import com.example.gps_g11.Data.Expenses.ExpensesHistory;
 import com.example.gps_g11.Data.categoryManagment.Category;
@@ -13,9 +14,7 @@ import java.util.List;
 
 public class Context {
     private static Context instance;
-
     private ExpensesHistory expensesHistory;
-
     private CategoryHandler categoryHandler;
     private Budget budget;
 
@@ -80,6 +79,7 @@ public class Context {
 
     public void addExpense(String name, String category, String description, LocalDate date, float value, boolean recurring) {
         expensesHistory.addExpense(name, category, description, date, value, recurring);
+        budget.adicionarAoBudgetGasto(value);
     }
 
     public double getTotalExpenses() {
@@ -106,4 +106,15 @@ public class Context {
         return expensesHistory.toString();
     }
 
+    public void criarEnvelope(String finalidade,double valor){
+        budget.criarEnvelope(finalidade, valor);
+    }
+
+    public double getBudgetGuardado() {
+        return budget.getBudgetGuardado();
+    }
+
+    public List<Envelope> getEnvelopes(){
+        return budget.getEnvelopes();
+    }
 }
