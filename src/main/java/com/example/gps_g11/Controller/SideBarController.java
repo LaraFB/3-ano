@@ -41,6 +41,7 @@ public class SideBarController {
     }
 
     public void onSettings(ActionEvent actionEvent) {
+        loadFXML("Settings.fxml");
     }
 
 
@@ -55,10 +56,10 @@ public class SideBarController {
                         homeController.setSideBar(this);
                         putBtnActive(HomepageBtn);
                         break;
-                    case "Category.fxml":
-                        CategoryController categoryController = loader.getController();
-                        categoryController.setSideBar(this);
-                        putBtnActive(CategoryBtn);
+                    case "Settings.fxml":
+                        SettingsController settingsController = loader.getController();
+                        settingsController.setSideBar(this);
+                        putBtnActive(SettingsBtn);
                         break;
                     case "BudgetPane.fxml":
                         BudgetPaneController budgetPaneController = loader.getController();
@@ -69,6 +70,11 @@ public class SideBarController {
                         ExpenseTabController expenseTabController = loader.getController();
                         expenseTabController.setSideBar(this);
                         putBtnActive(AddBtn);
+                        break;
+                    case  "Category.fxml":
+                        CategoryController categoryController = loader.getController();
+                        categoryController.setSideBar(this);
+                        putBtnActive(CategoryBtn);
                         break;
                 }
             }

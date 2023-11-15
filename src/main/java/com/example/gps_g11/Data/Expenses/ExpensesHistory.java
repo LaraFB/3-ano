@@ -76,4 +76,12 @@ public class ExpensesHistory {
         }
         return sb.toString();
     }
+
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+
+    public void deleteExpense(Expense expense) {
+        expenses.remove(expense);
+    }
 }

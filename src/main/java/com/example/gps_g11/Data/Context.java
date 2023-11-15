@@ -86,13 +86,6 @@ public class Context {
         return expensesHistory.getTotalExpenses();
     }
 
-    public List<Expense> getExpensesByCategory(String targetCategory) {
-        return expensesHistory.getExpensesByCategory(targetCategory);
-    }
-
-    public List<Expense> getExpensesByDate(Date targetDate) {
-        return expensesHistory.getExpensesByDate(targetDate);
-    }
 
     public void saveToFileExpenses() {
         expensesHistory.saveToFile();
@@ -105,6 +98,13 @@ public class Context {
     public String ExpensestoString() {
         return expensesHistory.toString();
     }
+
+    public List<Expense> getExpensesHistory() {
+        return expensesHistory.getExpenses();
+    }
+
+    public void deleteExpense(Expense expense){
+        expensesHistory.deleteExpense(expense);
 
     public void criarEnvelope(String finalidade,double valor){
         budget.criarEnvelope(finalidade, valor);
