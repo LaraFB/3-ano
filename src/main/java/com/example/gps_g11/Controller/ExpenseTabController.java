@@ -16,12 +16,18 @@ public class ExpenseTabController {
     public Label lblResult;
     SideBarController sideBarController;
 
+    public TextField CategoryName;
+    public TextField CategoryDescription;
+    public Label errorMsg;
+
     private Context context;
     private String[] categorias ={"Cafe","Compras","Propinas","Renda","Refeiçoes na Cantina","Outra"};
 
     public void initialize(){
         context = Context.getInstance();
         CategoriaCheckbox.getItems().setAll(categorias);
+
+        errorMsg.setVisible(false);
 
     }
 
@@ -46,5 +52,25 @@ public class ExpenseTabController {
         Recurring.setSelected(false);
         CategoriaCheckbox.setValue(null);
         lblResult.setText("");
+    }
+
+    //category tab
+    public void AddCategory(ActionEvent actionEvent){
+        if(CategoryName.getText().isEmpty()){
+            errorMsg.setVisible(true);
+            return;
+        }
+
+        if(CategoryDescription.getText().isEmpty())
+            context.addCategory(CategoryName.getText());
+        else
+            context.addCategory(CategoryName.getText(),CategoryDescription.getText());
+
+    }
+
+    public void CancelCategory(ActionEvent actionEvent){
+        CategoryName.setText("");
+        CategoryDescription.setText("");
+        errorMsg.setVisible(false);
     }
 }

@@ -36,6 +36,9 @@ public class CategoryController implements Initializable {
     Label LError;
     private Context context;
 
+    public HBox HBox1;
+    public HBox HBox2;
+
 
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
@@ -49,7 +52,7 @@ public class CategoryController implements Initializable {
 
 
 
-    //
+    /*
     public void popUp(){
 
         try {
@@ -65,9 +68,6 @@ public class CategoryController implements Initializable {
         }
         update();
     }
-
-
-    //popup
     public void addItem(){
         if(TFName.getText() == null || TFName.getText().isEmpty()){
             LError.setVisible(true);
@@ -78,19 +78,22 @@ public class CategoryController implements Initializable {
             else
                 context.addCategory(TFName.getText(), TFDescription.getText());
         }
-    }
+    }*/
 
     public void update(){
         int i=0;
         if(!context.isEmpty())
             while(context.getCategory(i) != null){
                 Button newBtn = new Button(context.getCategoryName(i));
-                HBox3.getChildren().add(newBtn);
+                if(i+1%1==0)
+                    HBox1.getChildren().add(newBtn);
+                if(i+1%2==0)
+                    HBox2.getChildren().add(newBtn);
+                if(i+1%3==0)
+                    HBox3.getChildren().add(newBtn);
                 i++;
             }
     }
 
-    public void onAddBudget() {
 
-    }
 }
