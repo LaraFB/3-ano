@@ -50,6 +50,15 @@ public class CategoryController implements Initializable {
         update();
     }
 
+    public void update(){
+        int i=0;
+            while(context.getCategory(i) != null){
+                Button newBtn = new Button(context.getCategoryName(i));
+                HBox3.getChildren().add(newBtn);
+                i++;
+            }
+    }
+
 
 
     /*
@@ -79,21 +88,5 @@ public class CategoryController implements Initializable {
                 context.addCategory(TFName.getText(), TFDescription.getText());
         }
     }*/
-
-    public void update(){
-        int i=0;
-        if(!context.isEmpty())
-            while(context.getCategory(i) != null){
-                Button newBtn = new Button(context.getCategoryName(i));
-                if(i+1%1==0)
-                    HBox1.getChildren().add(newBtn);
-                if(i+1%2==0)
-                    HBox2.getChildren().add(newBtn);
-                if(i+1%3==0)
-                    HBox3.getChildren().add(newBtn);
-                i++;
-            }
-    }
-
 
 }

@@ -101,7 +101,7 @@
                         </HBox>
                         <HBox fx:id="HBox3" alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="50.0">
                            <children>
-                              <Button fx:id="BtnAdc" mnemonicParsing="false" onAction="#popUp" prefHeight="80.0" prefWidth="180.0" styleClass="category-add,MenuItem" stylesheets="@../Style.css" text="Acidiconar nova categoria" textAlignment="CENTER" textFill="#545454" wrapText="true">
+                              <Button fx:id="BtnAdc" mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="category-add,MenuItem" stylesheets="@../Style.css" text="Acidiconar nova categoria" textAlignment="CENTER" textFill="#545454" wrapText="true">
                                  <font>
                                     <Font size="20.0" />
                                  </font></Button>

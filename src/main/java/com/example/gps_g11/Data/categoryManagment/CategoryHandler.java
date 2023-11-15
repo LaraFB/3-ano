@@ -49,7 +49,7 @@ public class CategoryHandler {
     }
     public boolean removeCategory(int i){
         //validation:
-        if(i>categories.size() || i<0)
+        if(i>=categories.size() || i<0)
             return false; //fora da lista
 
         return removeCategory(categories.get(i));
@@ -92,7 +92,7 @@ public class CategoryHandler {
 
     public boolean editCategoryName(int i, String newName){ //por index
         //validation:
-        if(i>categories.size() || i<0 || newName == null)
+        if(i>=categories.size() || i<0 || newName == null)
             return false;
 
         categories.get(i).setName(newName);
@@ -101,7 +101,7 @@ public class CategoryHandler {
 
     public boolean editCategoryDescription(int i, String newDescription){ //por index
         //validation:
-        if(i>categories.size() || i<0 || newDescription == null)
+        if(i>=categories.size() || i<0 || newDescription == null)
             return false;
 
         categories.get(i).setDescription(newDescription);
@@ -109,19 +109,19 @@ public class CategoryHandler {
     }
 
     public Category getCategory(int i){
-        if(i>categories.size() || i<0)
+        if(i>=categories.size() || i<0)
             return null;
         else
             return categories.get(i);
     }
     public String getCategoryName(int i){
-        if(i>categories.size() || i<0)
+        if(i>=categories.size() || i<0)
             return null;
         else
             return categories.get(i).getName();
     }
     public String getCategoryDescription(int i){
-        if(i>categories.size() || i<0)
+        if(i>=categories.size() || i<0)
             return null;
         else
             return categories.get(i).getDescription();
