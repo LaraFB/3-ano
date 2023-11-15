@@ -339,6 +339,10 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 2: Add category managing methods
     - Task 3: Create category validation methods
     - Task 4: Create Unit tests and fix remaining bugs 
+  
+  -US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
+    -Task 1: Design user interface to show trasaction history
+    -Task 2: Create methods to view trasaction history
 
 
 - Story Points: 4L
