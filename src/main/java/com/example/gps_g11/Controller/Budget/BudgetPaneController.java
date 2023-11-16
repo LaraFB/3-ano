@@ -24,11 +24,14 @@ public class BudgetPaneController {
     public BorderPane root;
     public HBox dynamicHBox;
     public ScrollPane scrollPane;
+    public Button savedMoney;
     SideBarController sideBarController;
     private Context context;
 
     public void initialize(){
         context = Context.getInstance();
+        savedMoney.setOnMouseEntered(event -> savedMoney.setStyle("-fx-background-color: #e0e0e0;"));
+        savedMoney.setOnMouseExited(event -> savedMoney.setStyle("-fx-background-color: transparent;"));
         update();
     }
 
@@ -38,6 +41,9 @@ public class BudgetPaneController {
         button.setMnemonicParsing(false);
         button.setStyle("-fx-background-color: transparent;");
         button.setOnAction(event -> onEnvelopeButtonClicked(envelope));
+
+        button.setOnMouseEntered(event -> button.setStyle("-fx-background-color: #e0e0e0;"));
+        button.setOnMouseExited(event -> button.setStyle("-fx-background-color: transparent;"));
 
         Image image = new Image(getClass().getResource(imageUrl).toExternalForm());
         ImageView imageView = new ImageView(image);
@@ -145,7 +151,7 @@ public class BudgetPaneController {
             scrollPane.setVisible(true);
             for (Envelope envelope : context.getEnvelopes()) {
                 Button button = createImageButton( "/image/saved_money_icon.png",envelope);
-                button.setMinSize(100, 150);
+                button.setMinSize(88.0, 150);
                 addToDynamicHBox(button);
             }
         }

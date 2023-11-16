@@ -103,7 +103,7 @@
             <graphic>
                 <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../image/Edit_icon.png" />
+                        <Image url="@../../../image/edit_icon.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -111,7 +111,7 @@
             <graphic>
                 <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../image/Trash_icon.png" />
+                        <Image url="@../../../image/trash_icon.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -197,7 +197,7 @@
                               <graphic>
                                   <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                       <image>
-                                          <Image url="@../../../../image/Edit_icon.png" />
+                                          <Image url="@../../../../image/edit_icon.png" />
                                       </image>
                                   </ImageView>
                               </graphic></Button>
@@ -205,7 +205,7 @@
                               <graphic>
                                   <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                       <image>
-                                          <Image url="@../../../../image/Trash_icon.png" />
+                                          <Image url="@../../../../image/trash_icon.png" />
                                       </image>
                                   </ImageView>
                               </graphic>

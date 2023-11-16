@@ -106,6 +106,13 @@
     -fx-border-radius: 40px;
     -fx-background-radius: 40px;
 }
+.vBoxItemCategory{
+    -fx-border-color: #545454;
+    -fx-border-width: 1px;
+    -fx-background-color: WHITE;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
 
 .category-add{
     -fx-background-color: #4f4c4c;
