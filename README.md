@@ -408,7 +408,7 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 1: Create methods to track the academic scholarship, alocate a specific amount
     - Task 2: Create methods to notify the user  of low funds
 
-  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+- US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
     - Task 1: Design user interface
     - Task 2: Implement methods to allow creation and editing of goals
     - Task 3: Create methods to allow goal organization 
