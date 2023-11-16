@@ -406,7 +406,6 @@ By the end of the second realease we must have all the user stories with "must" 
 
   - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
     - Task 1: Create methods to track the academic scholarship, alocate a specific amount
-    - Task 2: Create methods to notify the user  of low funds
 
   - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
     - Task 1: Design user interface
