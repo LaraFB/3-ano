@@ -348,10 +348,10 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Sprint Review
 
 - Analysis: what was not done or what was added (Link to US or Task from the PB)
-  -Added:
-    -US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
-      -Task 1: Design user interface to show trasaction history
-      -Task 2: Create methods to view trasaction history
+  - Added:
+    - US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
+      - Task 1: Design user interface to show trasaction history
+      - Task 2: Create methods to view trasaction history
 
 - Story Points: 2S+1M+2X+2H
 
