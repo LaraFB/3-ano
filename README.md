@@ -340,11 +340,7 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 3: Create category validation methods
     - Task 4: Create Unit tests and fix remaining bugs 
   
-  -US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
-    -Task 1: Design user interface to show trasaction history
-    -Task 2: Create methods to view trasaction history
-
-
+  
 - Story Points: 4L
 
 - Analysis: short analysis of the planning meeting
@@ -352,6 +348,10 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Sprint Review
 
 - Analysis: what was not done or what was added (Link to US or Task from the PB)
+  -Added:
+      -US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
+        -Task 1: Design user interface to show trasaction history
+        -Task 2: Create methods to view trasaction history
 
 - Story Points: 2S+1M+2X+2H
 
@@ -377,41 +377,43 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Sprint Plan
 
 
-- Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation.
+- Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
 
 - Roles:
-  - Product Owner: 
-  - Scrum Master: 
+  - Product Owner: Ana Sofia Silva
+  - Scrum Master: Francisco Costa
 
 - Dates: from 17/Nov to 1/Dez, 2 weeks
 
 - To do:
 
   - US 9: As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control. [Story Points: S]
-    - Task 1: Create feature(button?) to allow budget reset
+    - Task 1: Create feature to allow budget reset
     - Task 2: Create budget reseting methods
-    - Task 3: Create method transaction preserve transaction and expense history in a separate history section
     
   - US 12: As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money. [Story Points: L]
     - Task 1: Design interface to allow viewing of expenses grouped by category  
     - Task 2: Create methods to filter the expenses to a certain time period
 
-  - US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
-    - Task 1: Design user interface to view trasaction history
-    - Task 2: Create methods to filter transactions (date, category or type)
-
-  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
-    - Task 1: Design user intreface
-    - Task 2: Implement methods to allow creation and editing of goals
-    - Task 3: Create methods to allow goal organization
-    - Task 4: Create notifications methods
-
   - US 5: As a user, I want to reserve amounts for future expenses so that I can plan my budget. [Story Points: M]
     - Task 1: Design user interface to allow amount reservation
     - Task 2: Add reservation methods 
-    - Task 3: Create methods to subtract the amount reserved for a certain category form future expenses
-           
-- Story Points: 1L + 3M + 1S
+    - Task 3: Create methods to subtract the amount reserved for a certain category from future expenses
+
+  - US 3: As a student, I want to access expenses so that I can view all my recorded expenses. [Story Points: M]
+    - Task 1: Design user interface
+    - Task 2: Create methods to filter expenses
+
+- US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
+    - Task 1: Create methods to track the academic scholarship, alocate a specific amount
+    - Task 2: Create methods to notify the user  of low funds
+
+- US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+    - Task 1: Design user interface
+    - Task 2: Implement methods to allow creation and editing of goals
+    - Task 3: Create methods to allow goal organization 
+
+- Story Points: 1L + 4M + 1S
 
 - Analysis: short analysis of the planning meeting
 
@@ -452,23 +454,18 @@ By the end of the second realease we must have all the user stories with "must" 
 
 
 - To do:
+
+  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+    - Task 4: Create notifications methods
+
+  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
+    - Task 2: Create methods to notify the user of low funds  
+
   - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
     - Task 1:
     - Task 2: 
     - Task 3: 
-    - Task 4:
-
-  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
-    - Task 1:
-    - Task 2: 
-    - Task 3: 
     - Task 4:  
-
-  - US 3: As a student, I want to access expenses so that I can view all my recorded expenses. [Story Points: M]
-    - Task 1:
-    - Task 2: 
-    - Task 3: 
-    - Task 4:   
 
   - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
     - Task 1:
