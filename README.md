@@ -390,7 +390,6 @@ By the end of the second realease we must have all the user stories with "must" 
   - US 9: As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control. [Story Points: S]
     - Task 1: Create feature to allow budget reset
     - Task 2: Create budget reseting methods
-    - Task 3: Create method transaction preserve transaction and expense history in a separate history section
     
   - US 12: As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money. [Story Points: L]
     - Task 1: Design interface to allow viewing of expenses grouped by category  
