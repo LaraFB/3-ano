@@ -377,7 +377,7 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Sprint Plan
 
 
-- Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation.
+- Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
 
 - Roles:
   - Product Owner: 
