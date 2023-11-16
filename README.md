@@ -404,11 +404,11 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 1: Design user interface
     - Task 2: Create methods to filter expenses
 
-- US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
+  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
     - Task 1: Create methods to track the academic scholarship, alocate a specific amount
     - Task 2: Create methods to notify the user  of low funds
 
-- US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
     - Task 1: Design user interface
     - Task 2: Implement methods to allow creation and editing of goals
     - Task 3: Create methods to allow goal organization 
@@ -462,16 +462,13 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 2: Create methods to notify the user of low funds  
 
   - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
-    - Task 1:
-    - Task 2: 
-    - Task 3: 
-    - Task 4:  
+   - Task 1: Implement feature to allow generation of a report
+    - Task 2: Create methods to generate report
+     
 
   - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
-    - Task 1:
-    - Task 2: 
-    - Task 3: 
-    - Task 4:    
+    - Task 1: Create feature to generate a PDF or Excel report
+    - Task 2: Create methods to export reports
   
 - Story Points: 1L + 3M
 
