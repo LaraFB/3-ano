@@ -349,9 +349,9 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - Analysis: what was not done or what was added (Link to US or Task from the PB)
   -Added:
-      -US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
-        -Task 1: Design user interface to show trasaction history
-        -Task 2: Create methods to view trasaction history
+    -US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
+      -Task 1: Design user interface to show trasaction history
+      -Task 2: Create methods to view trasaction history
 
 - Story Points: 2S+1M+2X+2H
 
@@ -461,10 +461,9 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 2: Create methods to notify the user of low funds  
 
   - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
-   - Task 1: Implement feature to allow generation of a report
+    - Task 1: Implement feature to allow generation of a report
     - Task 2: Create methods to generate report
      
-
   - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
     - Task 1: Create feature to generate a PDF or Excel report
     - Task 2: Create methods to export reports
