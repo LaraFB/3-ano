@@ -125,4 +125,8 @@ public class Context {
     public List<Envelope> getEnvelopes(){
         return budget.getEnvelopes();
     }
+
+    public void editExpense(Expense expense, float value, LocalDate date, String descripton) {
+        expensesHistory.editExpense(expense,value,date,descripton);
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.gps_g11.Controller;
+package com.example.gps_g11.Controller.Settings;
 
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.Initializable;
@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CategoryPopUpController implements Initializable {
+public class SettingsPopUpController implements Initializable {
     private Context context;
     public Label message;
     public TextField TFName;

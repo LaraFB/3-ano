@@ -1,5 +1,6 @@
-package com.example.gps_g11.Controller;
+package com.example.gps_g11.Controller.Settings;
 
+import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -19,6 +20,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 public class SettingsController implements Initializable {
+    public VBox vboxCategories;
+    public ScrollPane scrollPane;
     SideBarController sideBarController;
     @FXML
     Button BtnAdc;
@@ -46,28 +49,38 @@ public class SettingsController implements Initializable {
 
     public void update() {
         int i = 0;
+        int buttonsPerHBox = 4;
+        HBox currentHBox = null;
+
         while (context.getCategory(i) != null) {
             Button newBtn = new Button(context.getCategoryName(i));
             newBtn.getStylesheets().add("../Style.css");
             newBtn.getStyleClass().add("MenuItem");
-
             newBtn.setStyle("-fx-font-size: 20px");
             newBtn.setPrefWidth(180);
             newBtn.setPrefHeight(80);
 
-            if(counter<4)
-                HBox1.getChildren().add(newBtn);
-            else{
-                if(counter < 8)
-                    HBox2.getChildren().add(newBtn);
-                else
-                    HBox3.getChildren().add(newBtn);
+            if (counter % buttonsPerHBox == 0) {
+                currentHBox = new HBox();
+                currentHBox.setAlignment(Pos.CENTER);
+                currentHBox.setPrefHeight(150);
+                currentHBox.setPrefWidth(200);
+                currentHBox.setSpacing(50);
+                vboxCategories.getChildren().add(currentHBox);
             }
+
+            currentHBox.getChildren().add(newBtn);
+
             counter++;
             i++;
         }
-
+        if (vboxCategories.getChildren().size() <= 4) {
+            scrollPane.setFitToHeight(true);
+        } else {
+            scrollPane.setFitToHeight(false);
+        }
     }
+
 
     public void onAdd(ActionEvent actionEvent) throws IOException {
         sideBarController.onAdd(actionEvent);
@@ -75,7 +88,7 @@ public class SettingsController implements Initializable {
 
     public void onRemove(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CategoryPopUp.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SettingsPopUp.fxml"));
             Node node = loader.load();
             Dialog dialog = new Dialog<>();
             dialog.setTitle("Adicionar Categoria");

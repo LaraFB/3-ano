@@ -15,14 +15,14 @@
     <left>
         <VBox fx:id="SideBar" alignment="CENTER" prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" AnchorPane.bottomAnchor="-18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1007.0" AnchorPane.topAnchor="0.0" xmlns:fx="http://javafx.com/fxml">
             <children>
-                <Button fx:id="HomepageBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onHomePage" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@Style.css" text="Homepage" textAlignment="RIGHT" textFill="#545454">
+                <Button fx:id="HomepageBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onHomePage" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Homepage" textAlignment="RIGHT" textFill="#545454">
                     <font>
                         <Font name="Times New Roman" size="20.0" />
                     </font>
                     <graphic>
                         <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../image/home_icon.png" />
+                                <Image url="@../../../../image/home_icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -33,14 +33,14 @@
                         <Insets left="30.0" />
                     </padding>
                 </Button>
-                <Button fx:id="CategoryBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onCategory" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@Style.css" text="Category" textAlignment="RIGHT" textFill="#545454">
+                <Button fx:id="CategoryBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onCategory" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Category" textAlignment="RIGHT" textFill="#545454">
                     <font>
                         <Font name="Times New Roman" size="20.0" />
                     </font>
                     <graphic>
                         <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../image/category_icon.png" />
+                                <Image url="@../../../../image/category_icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -48,14 +48,14 @@
                         <Insets left="30.0" />
                     </padding>
                 </Button>
-                <Button fx:id="ExpensesBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@Style.css" text="Expenses" textAlignment="RIGHT" textFill="#545454">
+                <Button fx:id="ExpensesBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Expenses" textAlignment="RIGHT" textFill="#545454">
                     <font>
                         <Font name="Times New Roman" size="20.0" />
                     </font>
                     <graphic>
                         <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../image/expenses_icon.png" />
+                                <Image url="@../../../../image/expenses_icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -63,14 +63,14 @@
                         <Insets left="30.0" />
                     </padding>
                 </Button>
-                <Button fx:id="BudgetBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onBudget" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@Style.css" text="Budget" textAlignment="RIGHT" textFill="#545454">
+                <Button fx:id="BudgetBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onBudget" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Budget" textAlignment="RIGHT" textFill="#545454">
                     <font>
                         <Font name="Times New Roman" size="20.0" />
                     </font>
                     <graphic>
                         <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../image/save_money_icon.png" />
+                                <Image url="@../../../../image/save_money_icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -78,14 +78,14 @@
                         <Insets left="30.0" />
                     </padding>
                 </Button>
-                <Button fx:id="GoalsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onGoals" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@Style.css" text="Goals" textAlignment="RIGHT" textFill="#545454">
+                <Button fx:id="GoalsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onGoals" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Goals" textAlignment="RIGHT" textFill="#545454">
                     <font>
                         <Font name="Times New Roman" size="20.0" />
                     </font>
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../image/goals_icon.png" />
+                                <Image url="@../../../../image/goals_icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -93,14 +93,14 @@
                         <Insets left="30.0" />
                     </padding>
                 </Button>
-                <Button fx:id="AddBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onAdd" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@Style.css" text="Add" textAlignment="RIGHT" textFill="#545454">
+                <Button fx:id="AddBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onAdd" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Add" textAlignment="RIGHT" textFill="#545454">
                     <font>
                         <Font name="Times New Roman" size="20.0" />
                     </font>
                     <graphic>
                         <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../image/add_icon.png" />
+                                <Image url="@../../../../image/add_icon.png" />
                             </image>
                             <viewport>
                                 <Rectangle2D />
@@ -111,14 +111,14 @@
                         <Insets left="30.0" />
                     </padding>
                 </Button>
-                <Button fx:id="SettingsBtn" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onSettings" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@Style.css" text="Settings" textAlignment="JUSTIFY" textFill="#545454" textOverrun="CLIP">
+                <Button fx:id="SettingsBtn" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onSettings" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Settings" textAlignment="JUSTIFY" textFill="#545454" textOverrun="CLIP">
                     <font>
                         <Font name="Times New Roman" size="20.0" />
                     </font>
                     <graphic>
                         <ImageView fitHeight="34.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../image/settings_icon.png" />
+                                <Image url="@../../../../image/settings_icon.png" />
                             </image>
                         </ImageView>
                     </graphic>

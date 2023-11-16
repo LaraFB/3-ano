@@ -1,5 +1,6 @@
-package com.example.gps_g11.Controller;
+package com.example.gps_g11.Controller.Expenses;
 
+import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Expenses.ExpensesHistory;
 import javafx.event.ActionEvent;

@@ -19,7 +19,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Scene scene = new Scene(new Pane());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBar.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Controller/SideBar.fxml"));
         stage.setScene(scene);
         scene.setRoot(loader.load());
 

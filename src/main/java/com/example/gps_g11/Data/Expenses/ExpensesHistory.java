@@ -84,4 +84,16 @@ public class ExpensesHistory {
     public void deleteExpense(Expense expense) {
         expenses.remove(expense);
     }
+
+    public boolean editExpense(Expense expense,float value,LocalDate date,String descripton){
+        for (Expense expens : expenses) {
+            if(expens == expense){
+                expens.setValue(value);
+                expens.setDate(date);
+                expens.setDescription(descripton);
+                return true;
+            }
+        }
+        return false;
+    }
 }

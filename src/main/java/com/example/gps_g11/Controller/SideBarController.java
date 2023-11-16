@@ -1,6 +1,9 @@
 package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Controller.Budget.BudgetPaneController;
+import com.example.gps_g11.Controller.Category.CategoryController;
+import com.example.gps_g11.Controller.Expenses.ExpenseTabController;
+import com.example.gps_g11.Controller.Settings.SettingsController;
 import com.example.gps_g11.Data.Context;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +28,7 @@ public class SideBarController {
     }
 
     public void onCategory(ActionEvent actionEvent) {
-        loadFXML("Category.fxml");
+        loadFXML("Category/Category.fxml");
     }
 
     public void onBudget(ActionEvent actionEvent) {
@@ -33,7 +36,7 @@ public class SideBarController {
     }
 
     public void onAdd(ActionEvent actionEvent) {
-        loadFXML("ExpenseTab.fxml");
+        loadFXML("Expenses/ExpenseTab.fxml");
     }
 
 
@@ -41,7 +44,7 @@ public class SideBarController {
     }
 
     public void onSettings(ActionEvent actionEvent) {
-        loadFXML("Settings.fxml");
+        loadFXML("Settings/Settings.fxml");
     }
 
 
