@@ -380,8 +380,8 @@ By the end of the second realease we must have all the user stories with "must" 
 - Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
 
 - Roles:
-  - Product Owner: 
-  - Scrum Master: 
+  - Product Owner: Ana Sofia Silva
+  - Scrum Master: Francisco Costa
 
 - Dates: from 17/Nov to 1/Dez, 2 weeks
 
