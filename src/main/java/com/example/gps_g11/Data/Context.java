@@ -57,8 +57,16 @@ public class Context {
         return categoryHandler.getCategory(i);
     }
 
+    public Category getCategory(String name) {
+        return categoryHandler.getCategory(name);
+    }
+
     public String getCategoryName(int i) {
         return categoryHandler.getCategoryName(i);
+    }
+
+    public boolean deleteCategory(String name){
+        return categoryHandler.removeCategory(name);
     }
 
     public void addMontante(int montante){

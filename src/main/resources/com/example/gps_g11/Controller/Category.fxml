@@ -10,24 +10,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <StackPane prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.CategoryController">
 
     <HBox alignment="TOP_CENTER" spacing="20">
-        <Label text="Name" />
-        <TextField fx:id="SearchName" />
+        <Label stylesheets="@../Style.css" text="Name" />
+        <TextField fx:id="SearchName" stylesheets="@../Style.css" />
         <Label text="Category" />
-        <ChoiceBox fx:id="SearchCategory" />
+        <ChoiceBox fx:id="SearchCategory" styleClass="MenuItem" stylesheets="@../Style.css" />
         <Label text="Date" />
-        <DatePicker fx:id="SearchDate" />
-        <Button onAction="#Search" text="Search" />
+        <DatePicker fx:id="SearchDate" stylesheets="@../Style.css" />
+        <Button styleClass="MenuItem" stylesheets="@../Style.css" text="Search" />
         <StackPane.margin>
             <Insets top="20" />
         </StackPane.margin>
     </HBox>
 
-    <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="600" maxWidth="900" style="-fx-background-color: none;" StackPane.alignment="CENTER">
+    <ScrollPane fx:id="SCCategories" fitToHeight="true" fitToWidth="true" maxHeight="600" maxWidth="900" style="-fx-background-color: none;" StackPane.alignment="CENTER">
         <VBox fx:id="container" spacing="10" style="-fx-border-radius:40; -fx-background-color: #DEEFFF">
          <children>
 

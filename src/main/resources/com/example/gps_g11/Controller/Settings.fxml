@@ -58,54 +58,15 @@
                               <Insets top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <HBox fx:id="HBox1" alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="50.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="MenuItem" stylesheets="@../Style.css" text="Propinas" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Button>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="MenuItem" stylesheets="@../Style.css" text="Going Out" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Button>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="MenuItem" stylesheets="@../Style.css" text="Combustivel" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Button>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="MenuItem" stylesheets="@../Style.css" text="Papelaria" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </HBox>
-                        <HBox fx:id="HBox2" alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="50.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="MenuItem" stylesheets="@../Style.css" text="Compras" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Button>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="MenuItem" stylesheets="@../Style.css" text="Renda" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Button>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="MenuItem" stylesheets="@../Style.css" text="Jantares" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Button>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="MenuItem" stylesheets="@../Style.css" text="Lanche" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Button>
-                           </children>
-                        </HBox>
+                        <HBox fx:id="HBox1" alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="50.0" />
+                        <HBox fx:id="HBox2" alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="50.0" />
                         <HBox fx:id="HBox3" alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="50.0">
                            <children>
-                              <Button fx:id="BtnAdc" mnemonicParsing="false" onAction="#popUp" prefHeight="80.0" prefWidth="180.0" styleClass="category-add,MenuItem" stylesheets="@../Style.css" text="Acidiconar nova categoria" textAlignment="CENTER" textFill="#545454" wrapText="true">
+                              <Button fx:id="BtnAdc" mnemonicParsing="false" onAction="#onAdd" prefHeight="80.0" prefWidth="180.0" styleClass="category-add,MenuItem" stylesheets="@../Style.css" text="Acidiconar nova categoria" textAlignment="CENTER" textFill="#545454" wrapText="true">
                                  <font>
                                     <Font size="20.0" />
                                  </font></Button>
-                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="CancelExpensesBtn,MenuItem" stylesheets="@../Style.css" text="Eliminar" textAlignment="CENTER" textFill="#525252" wrapText="true">
+                              <Button mnemonicParsing="false" onAction="#onRemove" prefHeight="80.0" prefWidth="180.0" styleClass="CancelExpensesBtn,MenuItem" stylesheets="@../Style.css" text="Eliminar" textAlignment="CENTER" textFill="#525252" wrapText="true">
                                  <font>
                                     <Font size="20.0" />
                                  </font></Button>

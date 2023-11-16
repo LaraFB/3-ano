@@ -8,6 +8,16 @@ public class CategoryHandler {
 
     public CategoryHandler(){
         this.categories = new ArrayList<>();
+
+        //populate initial array (temporary for sprint 1)
+        addCategory("Propinas","Pagamento mensal de propinas.");
+        addCategory("Renda","Pagamento mensal da renda.");
+        addCategory("Mercearias","Compra de mercearias.");
+        addCategory("Saídas","Saídas com amigos.");
+        addCategory("Cantina");
+        addCategory("Bar");
+        addCategory("Material Escolar");
+
     }
 
     public List<Category> getCategories() { return categories; }
@@ -131,5 +141,14 @@ public class CategoryHandler {
         return categories.isEmpty();
     }
 
+    public Category getCategory(String name){ //por nome
+        //validation:
+        if(name == null)
+            return null;
 
+        for(Category c : categories)
+            if(c.getName().equals(name)) return c;
+
+        return null; //se n encontrou
+    }
 }

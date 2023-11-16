@@ -24,11 +24,15 @@ public class ExpenseTabController {
     public Label sucessMsg;
 
     private Context context;
-    private String[] categorias ={"Cafe","Compras","Propinas","Renda","Refeiçoes na Cantina","Outra"};
+    //private String[] categorias ={"Cafe","Compras","Propinas","Renda","Refeiçoes na Cantina","Outra"};
 
     public void initialize(){
         context = Context.getInstance();
-        CategoriaCheckbox.getItems().setAll(categorias);
+        int i=0;
+        while(context.getCategory(i) != null){
+            CategoriaCheckbox.getItems().add(context.getCategoryName(i));
+            i++;
+        }
 
         errorMsg.setVisible(false);
         sucessMsg.setVisible(false);

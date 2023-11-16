@@ -1,6 +1,7 @@
 package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Data.Context;
+import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -22,17 +23,15 @@ public class SettingsController implements Initializable {
     @FXML
     Button BtnAdc;
     @FXML
-    HBox HBox3;
-    // Pop up:
-    @FXML
-    Button BtnAdcPopUp;
-    @FXML
     TextField TFName;
     @FXML
     TextField TFDescription;
     @FXML
     Label LError;
     private Context context;
+
+    public HBox HBox1, HBox2, HBox3;
+    private int counter = 0;
 
 
     public void setSideBar(SideBarController sideBarController) {
@@ -45,11 +44,36 @@ public class SettingsController implements Initializable {
         update();
     }
 
+    public void update() {
+        int i = 0;
+        while (context.getCategory(i) != null) {
+            Button newBtn = new Button(context.getCategoryName(i));
+            newBtn.getStylesheets().add("../Style.css");
+            newBtn.getStyleClass().add("MenuItem");
 
+            newBtn.setStyle("-fx-font-size: 20px");
+            newBtn.setPrefWidth(180);
+            newBtn.setPrefHeight(80);
 
-    //
-    public void popUp(){
+            if(counter<4)
+                HBox1.getChildren().add(newBtn);
+            else{
+                if(counter < 8)
+                    HBox2.getChildren().add(newBtn);
+                else
+                    HBox3.getChildren().add(newBtn);
+            }
+            counter++;
+            i++;
+        }
 
+    }
+
+    public void onAdd(ActionEvent actionEvent) throws IOException {
+        sideBarController.onAdd(actionEvent);
+    }
+
+    public void onRemove(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CategoryPopUp.fxml"));
             Node node = loader.load();
@@ -61,33 +85,5 @@ public class SettingsController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        update();
-    }
-
-
-    //popup
-    public void addItem(){
-        if(TFName.getText() == null || TFName.getText().isEmpty()){
-            LError.setVisible(true);
-        }
-        else {
-            if (TFName.getText() == null || TFDescription.getText().isEmpty())
-                context.addCategory(TFName.getText());
-            else
-                context.addCategory(TFName.getText(), TFDescription.getText());
-        }
-    }
-
-    public void update() {
-        int i = 0;
-        while (context.getCategory(i) != null) {
-            Button newBtn = new Button(context.getCategoryName(i));
-            HBox3.getChildren().add(newBtn);
-            i++;
-        }
-
-    }
-    public void onAddBudget() {
-
     }
 }
