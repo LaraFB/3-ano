@@ -13,6 +13,7 @@ public class SettingsPopUpController implements Initializable {
     private Context context;
     public Label message;
     public TextField TFName;
+    private SettingsController settingsController;
 
 
     @Override
@@ -43,5 +44,9 @@ public class SettingsPopUpController implements Initializable {
                 }
             }
         }
+    }
+
+    public void setData(SettingsController settingsController) {
+        this.settingsController = settingsController;
     }
 }

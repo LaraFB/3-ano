@@ -1,58 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Category.CategoryController">
 
-    <HBox alignment="TOP_CENTER" spacing="20">
-        <!--<Label stylesheets="@../Style.css" text="Name:">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <HBox.margin>
-            <Insets top="5.0" />
-         </HBox.margin></Label>
-        <TextField fx:id="SearchName" stylesheets="@../Style.css">
-         <HBox.margin>
-            <Insets top="5.0" />
-         </HBox.margin></TextField>-->
-        <Label text="Category:">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <HBox.margin>
-            <Insets top="5.0" />
-         </HBox.margin></Label>
-        <ChoiceBox fx:id="SearchCategory" prefWidth="200.0" styleClass="MenuItem" stylesheets="@../../Style.css">
-         <HBox.margin>
-            <Insets top="5.0" />
-         </HBox.margin></ChoiceBox>
-        <Label text="Date:">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <HBox.margin>
-            <Insets top="5.0" />
-         </HBox.margin></Label>
-        <DatePicker fx:id="SearchDate" stylesheets="@../../Style.css">
-         <HBox.margin>
-            <Insets top="5.0" />
-         </HBox.margin></DatePicker>
-        <Button onAction="#onSearch" prefHeight="30.0" styleClass="MenuItem" stylesheets="@../../Style.css" text="Search" />
-        <StackPane.margin>
-            <Insets top="20" />
-        </StackPane.margin>
-    </HBox>
+<StackPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Category.CategoryController">
+    <HBox fx:id="hBoxSearch" alignment="TOP_CENTER" spacing="20">
+      <children>
+         <Label text="Todas as despesas">
+            <HBox.margin>
+               <Insets top="10.0" />
+            </HBox.margin>
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+      </children></HBox>
+
 
     <ScrollPane fx:id="SCCategories" fitToHeight="true" fitToWidth="true" maxHeight="600" maxWidth="900" style="-fx-background-color: none;" StackPane.alignment="CENTER">
         <VBox fx:id="container" spacing="10" style="-fx-border-radius:40; -fx-background-color: #DEEFFF">
@@ -65,3 +34,46 @@
     </ScrollPane>
 
 </StackPane>
+
+
+
+
+        <!--<HBox alignment="TOP_CENTER" spacing="20" fx:id="hBoxSearch">
+        &lt;!&ndash;<Label stylesheets="@../Style.css" text="Name:">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <HBox.margin>
+            <Insets top="5.0" />
+         </HBox.margin></Label>
+        <TextField fx:id="SearchName" stylesheets="@../Style.css">
+         <HBox.margin>
+            <Insets top="5.0" />
+         </HBox.margin></TextField>&ndash;&gt;
+        <Label text="Category:">
+            <font>
+                <Font size="18.0" />
+            </font>
+            <HBox.margin>
+                <Insets top="5.0" />
+            </HBox.margin></Label>
+        <ChoiceBox fx:id="SearchCategory" prefWidth="200.0" styleClass="MenuItem" stylesheets="@../../Style.css">
+            <HBox.margin>
+                <Insets top="5.0" />
+            </HBox.margin></ChoiceBox>
+        <Label text="Date:">
+            <font>
+                <Font size="18.0" />
+            </font>
+            <HBox.margin>
+                <Insets top="5.0" />
+            </HBox.margin></Label>
+        <DatePicker fx:id="SearchDate" stylesheets="@../../Style.css">
+            <HBox.margin>
+                <Insets top="5.0" />
+            </HBox.margin></DatePicker>
+        <Button onAction="#onSearch" prefHeight="30.0" styleClass="MenuItem" stylesheets="@../../Style.css" text="Search" />
+        <StackPane.margin>
+            <Insets top="20" />
+        </StackPane.margin>
+        </HBox>-->

@@ -11,12 +11,12 @@ import javafx.scene.control.*;
 public class ExpenseTabController {
 
     public TextField Value;
-    public TextField Description;
     public TextField Name;
     public DatePicker DatePicker;
     public CheckBox Recurring;
     public ChoiceBox CategoriaCheckbox;
     public Label lblResult;
+    public TextArea Descripton;
     SideBarController sideBarController;
 
     public TextField CategoryName;
@@ -48,7 +48,7 @@ public class ExpenseTabController {
         if(Name.getText().isEmpty() || Value.getText().isEmpty() || CategoriaCheckbox.getValue().toString().isEmpty() || DatePicker.getValue().toString().isEmpty())
             lblResult.setText("Preencha todos os campos");
         else{
-            context.addExpense(Name.getText(), CategoriaCheckbox.getValue().toString(), Description.getText(), DatePicker.getValue(), Float.parseFloat(Value.getText()), Recurring.isSelected());
+            context.addExpense(Name.getText(), CategoriaCheckbox.getValue().toString(), Descripton.getText(), DatePicker.getValue(), Float.parseFloat(Value.getText()), Recurring.isSelected());
             lblResult.setText("Despesa adicionada com sucesso");
         }
     }
@@ -56,7 +56,7 @@ public class ExpenseTabController {
     public void CancelExpense(ActionEvent actionEvent) {
         Name.setText("");
         Value.setText("");
-        Description.setText("");
+        Descripton.setText("");
         DatePicker.setValue(null);
         Recurring.setSelected(false);
         CategoriaCheckbox.setValue(null);

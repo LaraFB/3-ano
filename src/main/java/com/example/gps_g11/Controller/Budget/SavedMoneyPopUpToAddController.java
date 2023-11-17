@@ -42,7 +42,7 @@ public class SavedMoneyPopUpToAddController {
                 LError.setVisible(true);
                 LError.setText("Preenche o campo com o valor!");
             }else{
-                context.criarEnvelope(TFFinalidade.getText(), Double.parseDouble(TFValor.getText()));
+                //context.criarEnvelope(TFFinalidade.getText(), Double.parseDouble(TFValor.getText()));
                 onClose();
             }
         }

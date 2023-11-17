@@ -3,13 +3,13 @@ package com.example.gps_g11.Data.Expenses;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-public class ExpensesHistory {
+public class ExpensesHistory implements Serializable{
     private List<Expense> expenses;
 
-    static final String fileName = "DataBase.dat";
 
     public ExpensesHistory() {
         expenses = new ArrayList<>();
@@ -18,6 +18,7 @@ public class ExpensesHistory {
     public void addExpense(String name, String category, String description, LocalDate date, float value, boolean recurring) {
         Expense expense = new Expense(name, category, description, date, value, recurring);
         expenses.add(expense);
+        sortExpensesByDate();
 
     }
 
@@ -49,7 +50,7 @@ public class ExpensesHistory {
         return result;
     }
 
-    public void saveToFile() {
+   /* public void saveToFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
             oos.writeObject(expenses);
             System.out.println("Expenses saved to " + fileName);
@@ -67,7 +68,7 @@ public class ExpensesHistory {
         }catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -95,5 +96,9 @@ public class ExpensesHistory {
             }
         }
         return false;
+    }
+
+    public void sortExpensesByDate() {
+        Collections.sort(expenses, (expense1, expense2) -> expense1.getDate().compareTo(expense2.getDate()));
     }
 }

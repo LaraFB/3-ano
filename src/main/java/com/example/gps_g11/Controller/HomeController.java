@@ -4,12 +4,15 @@ import com.example.gps_g11.Data.Context;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 
 
 import java.io.IOException;
 
 public class HomeController {
     public Button ViewBudgetBtn;
+    public Text BalanceText;
+    public Text TotalExpenseText;
     private Context context;
 
     public BorderPane root;
@@ -30,5 +33,7 @@ public class HomeController {
 
     public void initialize(){
         context = Context.getInstance();
+        BalanceText.setText(String.valueOf(context.getBudgetRestante()) + " €");
+        TotalExpenseText.setText(String.valueOf(context.getBudgetGasto()) + " €");
     }
 }

@@ -13,17 +13,13 @@ import java.util.Date;
 import java.util.List;
 
 public class Context {
+    static final String fileName = "DataBase.dat";
     private static Context instance;
-    private ExpensesHistory expensesHistory;
-    private CategoryHandler categoryHandler;
-    private Budget budget;
+    private ContextData contextData;
 
     private Context() {
-        this.categoryHandler = new CategoryHandler();
-        this.budget = new Budget(200);
-        budget.setBolsa(new Bolsa("ISEC",120,"Bolsa de estudo"));
-        expensesHistory = new ExpensesHistory();
-        expensesHistory.loadFromFile();
+        contextData = new ContextData();
+        loadFromFile();
     }
 
     public static Context getInstance() {
@@ -34,99 +30,110 @@ public class Context {
     }
 
     public double getBudgetRestante() {
-        return budget.getBudgetRestante();
+        return contextData.getBudget().getBudgetRestante();
     }
 
     public double getBudgetGasto() {
-        return budget.getBudgetGasto();
+        return contextData.getBudget().getBudgetGasto();
     }
 
     public void addCategory(String name) {
-        categoryHandler.addCategory(name);
+        contextData.getCategoryHandler().addCategory(name);
     }
 
     public void addCategory(String name, String descripton) {
-        categoryHandler.addCategory(name,descripton);
+        contextData.getCategoryHandler().addCategory(name,descripton);
     }
 
     public boolean isEmpty() {
-        return categoryHandler.isEmpty();
+        return contextData.getCategoryHandler().isEmpty();
     }
 
     public Category getCategory(int i) {
-        return categoryHandler.getCategory(i);
+        return contextData.getCategoryHandler().getCategory(i);
     }
 
     public Category getCategory(String name) {
-        return categoryHandler.getCategory(name);
+        return contextData.getCategoryHandler().getCategory(name);
     }
 
     public String getCategoryName(int i) {
-        return categoryHandler.getCategoryName(i);
+        return contextData.getCategoryHandler().getCategoryName(i);
     }
 
     public boolean deleteCategory(String name){
-        return categoryHandler.removeCategory(name);
+        return contextData.getCategoryHandler().removeCategory(name);
     }
 
     public void addMontante(int montante){
-        budget.setBudgetRestante(budget.getBudgetRestante()+montante);
+        contextData.getBudget().setBudgetRestante(contextData.getBudget().getBudgetRestante()+montante);
     }
 
-    public String getNomeBolsa(){
-        return budget.getBolsa().getNome();
+    /*public String getNomeBolsa(){
+        return contextData.getBudget().getBolsa().getNome();
     }
     public double getValorBolsa(){
-        return budget.getBolsa().getValor();
+        return contextData.getBudget().getBolsa().getValor();
     }
 
     public double getValorGastoBolsa(){
-        return budget.getBolsa().getValorGasto();
-    }
+        return contextData.getBudget().getBolsa().getValorGasto();
+    }*/
 
 
     public void addExpense(String name, String category, String description, LocalDate date, float value, boolean recurring) {
-        expensesHistory.addExpense(name, category, description, date, value, recurring);
-        budget.adicionarAoBudgetGasto(value);
+        contextData.getExpensesHistory().addExpense(name, category, description, date, value, recurring);
+        contextData.getBudget().adicionarAoBudgetGasto(value);
     }
 
     public double getTotalExpenses() {
-        return expensesHistory.getTotalExpenses();
+        return contextData.getExpensesHistory().getTotalExpenses();
     }
 
 
-    public void saveToFileExpenses() {
-        expensesHistory.saveToFile();
+    /*public void saveToFileExpenses() {
+        contextData.getExpensesHistory().saveToFile();
     }
 
     public void loadFromFileExpenses() {
-        expensesHistory.loadFromFile();
-    }
+        contextData.getExpensesHistory().loadFromFile();
+    }*/
 
     public String ExpensestoString() {
-        return expensesHistory.toString();
+        return contextData.getCategoryHandler().toString();
     }
 
     public List<Expense> getExpensesHistory() {
-        return expensesHistory.getExpenses();
+        return contextData.getExpensesHistory().getExpenses();
     }
 
     public void deleteExpense(Expense expense) {
-        expensesHistory.deleteExpense(expense);
+        contextData.getExpensesHistory().deleteExpense(expense);
     }
-    public void criarEnvelope(String finalidade,double valor){
-        budget.criarEnvelope(finalidade, valor);
-    }
+   /* public void criarEnvelope(String finalidade,double valor){
+        contextData.getBudget().criarEnvelope(finalidade, valor);
+    }*/
 
     public double getBudgetGuardado() {
-        return budget.getBudgetGuardado();
+        return contextData.getBudget().getBudgetGuardado();
     }
 
-    public List<Envelope> getEnvelopes(){
-        return budget.getEnvelopes();
-    }
+    /*public List<Envelope> getEnvelopes(){
+        return contextData.getBudget().getEnvelopes();
+    }*/
 
     public void editExpense(Expense expense, float value, LocalDate date, String descripton) {
-        expensesHistory.editExpense(expense,value,date,descripton);
+        contextData.getExpensesHistory().editExpense(expense,value,date,descripton);
+    }
+
+
+    public void saveToFile() {
+        if (contextData != null) {
+            contextData.saveToFile(fileName);
+        }
+    }
+
+    private void loadFromFile() {
+        contextData = ContextData.loadFromFile(fileName);
     }
 }

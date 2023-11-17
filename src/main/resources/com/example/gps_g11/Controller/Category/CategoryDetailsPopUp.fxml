@@ -57,7 +57,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextArea fx:id="textArea" prefHeight="110.0" prefWidth="200.0">
+                  <TextArea fx:id="textArea" prefHeight="110.0" prefWidth="200.0" wrapText="true">
                      <VBox.margin>
                         <Insets left="15.0" right="15.0" top="10.0" />
                      </VBox.margin>

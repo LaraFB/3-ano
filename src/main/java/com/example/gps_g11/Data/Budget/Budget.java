@@ -1,20 +1,21 @@
 package com.example.gps_g11.Data.Budget;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Budget {
+public class Budget implements Serializable {
     private double budgetRestante;
     private double budgetGasto;
     private double budgetGuardado;
     private boolean excedeuBudget;
-    private Bolsa bolsa;
-    private List<Envelope> envelopes;
+    /*private Bolsa bolsa;
+    private List<Envelope> envelopes;*/
 
     public Budget(double budgetRestante) {
         this.budgetRestante = budgetRestante;
         this.excedeuBudget = false;
-        this.envelopes = new ArrayList<>();
+        //this.envelopes = new ArrayList<>();
     }
 
     public double getBudgetRestante() {
@@ -42,13 +43,13 @@ public class Budget {
     }
 
 
-    public Bolsa getBolsa() {
+   /* public Bolsa getBolsa() {
         return bolsa;
     }
 
     public void setBolsa(Bolsa bolsa) {
         this.bolsa = bolsa;
-    }
+    }*/
 
     public void adicionarAoBudgetGasto(double valor) {
         this.budgetGasto += valor;
@@ -70,11 +71,11 @@ public class Budget {
         this.budgetRestante += valor;
     }
 
-    public List<Envelope> getEnvelopes() {
+   /* public List<Envelope> getEnvelopes() {
         return envelopes;
-    }
+    }*/
 
-    public void criarEnvelope(String finalidade, double valor) {
+    /*public void criarEnvelope(String finalidade, double valor) {
         if (valor <= this.budgetRestante) {
             Envelope envelope = new Envelope(finalidade, valor);
             this.envelopes.add(envelope);
@@ -85,10 +86,10 @@ public class Budget {
         } else {
             System.out.println("Valor excede o orçamento restante. Envelope não criado.");
         }
-    }
-    public void setEnvelopes(List<Envelope> envelopes) {
+    }*/
+   /* public void setEnvelopes(List<Envelope> envelopes) {
         this.envelopes = envelopes;
-    }
+    }*/
 
     public double getBudgetGuardado() {
         return budgetGuardado;

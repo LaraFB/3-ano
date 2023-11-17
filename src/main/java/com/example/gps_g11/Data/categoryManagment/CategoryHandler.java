@@ -1,9 +1,12 @@
 package com.example.gps_g11.Data.categoryManagment;
 
+import javafx.scene.Scene;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryHandler {
+public class CategoryHandler implements Serializable {
     private List<Category> categories;
 
     public CategoryHandler(){

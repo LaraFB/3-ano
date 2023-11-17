@@ -129,10 +129,10 @@ public class BudgetPaneController {
         slice5.setPieValue(context.getBudgetGuardado());
 
         pieChartBudget.setLabelsVisible(false);
-        pieChartBudget.setTitle("Budget");
+        pieChartBudget.setTitle("Montante");
         pieChartBudget.getData().setAll(slice1, slice2,slice5);
 
-        PieChart.Data slice3 = new PieChart.Data("Bolsa restante: ", context.getValorBolsa());
+       /* PieChart.Data slice3 = new PieChart.Data("Bolsa restante: ", context.getValorBolsa());
         PieChart.Data slice4 = new PieChart.Data("Bolsa gasto: ", context.getValorGastoBolsa());
 
         slice3.setName("Restante: " + context.getValorBolsa() + "€");
@@ -143,9 +143,9 @@ public class BudgetPaneController {
 
         pieChartBolsa.setTitle("Bolsa - " + context.getNomeBolsa());
         pieChartBolsa.setLabelsVisible(false);
-        pieChartBolsa.getData().setAll(slice3,slice4);
+        pieChartBolsa.getData().setAll(slice3,slice4);*/
 
-        if(context.getEnvelopes().isEmpty()){
+        /*if(context.getEnvelopes().isEmpty()){
             scrollPane.setVisible(false);
         }else{
             scrollPane.setVisible(true);
@@ -154,8 +154,8 @@ public class BudgetPaneController {
                 button.setMinSize(88.0, 150);
                 addToDynamicHBox(button);
             }
-        }
-
+        }*/
+        scrollPane.setVisible(false);
     }
 
     public void acaoAoFecharJanelaSecundaria() {
@@ -163,7 +163,7 @@ public class BudgetPaneController {
     }
 
     public void onSavedMoney(ActionEvent actionEvent) {
-        try {
+        /*try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AddSavedMoney.fxml"));
             Pane secondaryPane = loader.load();
 
@@ -180,6 +180,6 @@ public class BudgetPaneController {
             secondaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

@@ -32,27 +32,19 @@ import java.util.ResourceBundle;
 public class CategoryController implements Initializable {
 
     public StackPane root;
+    public HBox hBoxSearch;
     SideBarController sideBarController;
     Context context;
 
     List<Expense> expenses;
 
     @FXML VBox container;
-    @FXML ChoiceBox<String> SearchCategory;
-    @FXML DatePicker SearchDate;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         context = Context.getInstance();
-        int i=0;
-        SearchCategory.getItems().add("No Filter");
-        while(context.getCategory(i) != null){
-            SearchCategory.getItems().add(context.getCategoryName(i));
-            i++;
-        }
-        SearchCategory.setValue("No Filter");
+
         initContainer();
         container.setVgrow(container, Priority.ALWAYS);
     }
@@ -66,16 +58,10 @@ public class CategoryController implements Initializable {
         container.getChildren().clear();
         expenses = context.getExpensesHistory();
 
-        String selectedCategory = SearchCategory.getSelectionModel().getSelectedItem();
-        LocalDate selectedDate = SearchDate.getValue();
 
         for (Expense expense : expenses) {
-            // Verificar se os valores estão vazios ou se coincidem com o Expense
-            if ((selectedCategory.equals("No Filter") || expense.getCategory().equals(selectedCategory))
-                    && (selectedDate == null || expense.getDate().isEqual(selectedDate))) {
                 Button button = createExpenseButton(expense);
                 container.getChildren().add(button);
-            }
         }
     }
 
@@ -210,8 +196,7 @@ public class CategoryController implements Initializable {
         initContainer();
     }
 
-
-    public void onSearch(ActionEvent actionEvent) {
+    public void onSearch() {
         initContainer();
     }
 
@@ -223,3 +208,29 @@ public class CategoryController implements Initializable {
         context.editExpense(expense,value,date,descripton);
     }
 }
+
+/*
+
+    @FXML ChoiceBox<String> SearchCategory;
+    @FXML DatePicker SearchDate;
+
+    int i=0;
+        SearchCategory.getItems().add("No Filter");
+                while(context.getCategory(i) != null){
+                SearchCategory.getItems().add(context.getCategoryName(i));
+                i++;
+                }
+                SearchCategory.setValue("No Filter");
+
+
+                String selectedCategory = SearchCategory.getSelectionModel().getSelectedItem();
+                LocalDate selectedDate = SearchDate.getValue();
+
+                for (Expense expense : expenses) {
+                // Verificar se os valores estão vazios ou se coincidem com o Expense
+                if ((selectedCategory.equals("No Filter") || expense.getCategory().equals(selectedCategory))
+                && (selectedDate == null || expense.getDate().isEqual(selectedDate))) {
+                Button button = createExpenseButton(expense);
+                container.getChildren().add(button);
+                }
+                }*/

@@ -59,22 +59,22 @@ public class SideBarController {
                         homeController.setSideBar(this);
                         putBtnActive(HomepageBtn);
                         break;
-                    case "Settings.fxml":
+                    case "Settings/Settings.fxml":
                         SettingsController settingsController = loader.getController();
                         settingsController.setSideBar(this);
                         putBtnActive(SettingsBtn);
                         break;
-                    case "BudgetPane.fxml":
+                    case "Budget/BudgetPane.fxml":
                         BudgetPaneController budgetPaneController = loader.getController();
                         budgetPaneController.setSideBar(this);
                         putBtnActive(BudgetBtn);
                         break;
-                    case "ExpenseTab.fxml":
+                    case "Expenses/ExpenseTab.fxml":
                         ExpenseTabController expenseTabController = loader.getController();
                         expenseTabController.setSideBar(this);
                         putBtnActive(AddBtn);
                         break;
-                    case  "Category.fxml":
+                    case  "Category/Category.fxml":
                         CategoryController categoryController = loader.getController();
                         categoryController.setSideBar(this);
                         putBtnActive(CategoryBtn);
