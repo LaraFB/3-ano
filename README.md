@@ -106,43 +106,43 @@ It is assumed:
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
 
- Image 2: Add expense (US2)
+ Image 2: Add expense (US1)
 
 ![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
 
- Image 3: Viewing the added expense (US2)
+ Image 3: Viewing the added expense (US1)
 
 ![Historico depois de adicionar despesa](imgs/despesas_historico_dps_adicionar.png)
 
- Image 4: Expense history (US11)
+ Image 4: Expense history (US10)
 
 ![Despesas por categotia](imgs/despesas_compras.png)
 
- Image 5: Expenses by category (US13)
+ Image 5: Expenses by category (US12)
 
 ![Despesas](imgs/despesas.png)
 
- Image 6: Expenses Homepage (US4)
+ Image 6: Expenses Homepage (US3)
 
 ![Gerir categorias](imgs/gerir_categorias.png)
 
- Image 7: Manage categories (add and delete) (US3)
+ Image 7: Manage categories (add and delete) (US2)
 
 ![Budget](imgs/guardar_montante.png)
 
- Image 8: Budget homepage (US8, US14, US12, US10)
+ Image 8: Budget homepage (US7, US13, US11, US9)
 
 ![Objetivos](imgs/objetivos.png)
 
- Image 9: Goals hompage (US7)
+ Image 9: Goals hompage (US6)
 
 ![Relatorio](imgs/relatorio.png)
 
- Image 10: Result of generating report (US5,US9)
+ Image 10: Result of generating report (US4,US8)
 
 ![Reservar Montante](imgs/reservar_montantes.png)
 
- Image 11: Reserve Amounts (US6)
+ Image 11: Reserve Amounts (US5)
 
 ***
 
@@ -311,7 +311,7 @@ By the end of the second realease we must have all the user stories with "must" 
   - Product Owner: Lara Bizarro
   - Scrum Master: Joana Ferrão
 
-- Dates: from 27/Oct to 10/Nov | 17/Nov, 3 weeks
+- Dates: from 27/Oct to 17/Nov, 3 weeks
 
 - To do (order by importance):
 
@@ -340,7 +340,11 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 3: Create category validation methods
     - Task 4: Create Unit tests and fix remaining bugs 
 
-
+  - US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
+    - Task 1: Design user interface to show trasaction history
+    - Task 2: Create methods to view trasaction history
+  
+  
 - Story Points: 4L
 
 - Analysis: short analysis of the planning meeting
@@ -373,20 +377,42 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Sprint Plan
 
 
-- Goal: Metodos mais complexos, melhorando e adicionando alguns aspetos de user interface 
+- Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
 
 - Roles:
-  - Product Owner: name
-  - Scrum Master: name
+  - Product Owner: Ana Sofia Silva
+  - Scrum Master: Francisco Costa
 
-- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
+- Dates: from 17/Nov to 1/Dez, 2 weeks
 
 - To do:
-  - (list of US or Tasks from the PB)
-  - US1: As … I want … so that …
-  - Task1: Some task
-  
-- Story Points: 2S+3M+3X+2H
+
+  - US 9: As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control. [Story Points: S]
+    - Task 1: Create feature to allow budget reset
+    - Task 2: Create budget reseting methods
+    
+  - US 12: As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money. [Story Points: L]
+    - Task 1: Design interface to allow viewing of expenses grouped by category  
+    - Task 2: Create methods to filter the expenses to a certain time period
+
+  - US 5: As a user, I want to reserve amounts for future expenses so that I can plan my budget. [Story Points: M]
+    - Task 1: Design user interface to allow amount reservation
+    - Task 2: Add reservation methods 
+    - Task 3: Create methods to subtract the amount reserved for a certain category from future expenses
+
+  - US 3: As a student, I want to access expenses so that I can view all my recorded expenses. [Story Points: M]
+    - Task 1: Design user interface
+    - Task 2: Create methods to filter expenses
+
+  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
+    - Task 1: Create methods related the scholarship
+
+  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+    - Task 1: Design user interface
+    - Task 2: Implement methods to allow creation and editing of goals
+    - Task 3: Create methods to allow goal organization 
+
+- Story Points: 1L + 4M + 1S
 
 - Analysis: short analysis of the planning meeting
 
@@ -421,20 +447,28 @@ By the end of the second realease we must have all the user stories with "must" 
 - Goal: User Interfeca aperfeiçoada, terminar todos os metodos em falta, e corrigir bugs que possam existir 
 
 - Roles:
-  - Product Owner: name
-  - Scrum Master: name
-- Dates: from 24-27/Oct to 7-10/Nov | 14-17/Nov, 2 | 3 weeks
+  - Product Owner: 
+  - Scrum Master: 
+- Dates: from 1/Dez to 15/Dez, 2 weeks
 
-- Roles:
-  - Product Owner: name
-  - Scrum Master: name
 
 - To do:
-  - (list of US or Tasks from the PB)
-  - US1: As … I want … so that …
-  - Task1: Some task
+
+  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+    - Task 4: Create notifications methods
+
+  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
+    - Task 2: Create methods to notify the user of low funds  
+
+  - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
+    - Task 1: Implement feature to allow generation of a report
+    - Task 2: Create methods to generate report
+     
+  - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
+    - Task 1: Create feature to generate a PDF or Excel report
+    - Task 2: Create methods to export reports
   
-- Story Points: 2S+3M+3X+2H
+- Story Points: 1L + 3M
 
 - Analysis: short analysis of the planning meeting
 
