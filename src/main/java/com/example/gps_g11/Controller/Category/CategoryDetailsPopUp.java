@@ -3,6 +3,7 @@ package com.example.gps_g11.Controller.Category;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Expenses.Expense;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -29,6 +30,7 @@ public class CategoryDetailsPopUp {
 
         lblCategoria.setText(expense.getCategory());
 
+
         tfMontante.setEditable(isEdit);
         tfMontante.setText(String.valueOf(expense.getValue()));
         textArea.setEditable(isEdit);
@@ -39,6 +41,22 @@ public class CategoryDetailsPopUp {
     }
     public void initialize(){
         context = Context.getInstance();
+        tfMontante.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                onDone();
+            }
+        });
+        textArea.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                onDone();
+            }
+        });
+        dataPicker.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                onDone();
+            }
+        });
+
     }
 
 

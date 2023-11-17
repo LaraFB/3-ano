@@ -164,7 +164,10 @@ public class CategoryController implements Initializable {
 
             secondaryStage.setScene(secondaryScene);
             secondaryStage.setTitle("Detalhes Despesas");
-            secondaryStage.show();
+            secondaryStage.setOnHidden(event -> {
+                initContainer();
+            });
+            secondaryStage.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -149,7 +149,7 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
                            <children>
-                              <Label text="Name         " textFill="#545454">
+                              <Label text="Name" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>

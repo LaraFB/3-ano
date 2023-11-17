@@ -81,9 +81,13 @@ public class Context {
     }*/
 
 
-    public void addExpense(String name, String category, String description, LocalDate date, float value, boolean recurring) {
-        contextData.getExpensesHistory().addExpense(name, category, description, date, value, recurring);
-        contextData.getBudget().adicionarAoBudgetGasto(value);
+    public boolean addExpense(String name, String category, String description, LocalDate date, float value, boolean recurring) {
+        if(value < contextData.getBudget().getBudgetRestante()){
+            contextData.getExpensesHistory().addExpense(name, category, description, date, value, recurring);
+            contextData.getBudget().adicionarAoBudgetGasto(value);
+            return true;
+        }
+        return false;
     }
 
     public double getTotalExpenses() {
@@ -109,6 +113,7 @@ public class Context {
 
     public void deleteExpense(Expense expense) {
         contextData.getExpensesHistory().deleteExpense(expense);
+        contextData.getBudget().retirarDoBudgetGasto(expense.getValue());
     }
    /* public void criarEnvelope(String finalidade,double valor){
         contextData.getBudget().criarEnvelope(finalidade, valor);
@@ -123,6 +128,7 @@ public class Context {
     }*/
 
     public void editExpense(Expense expense, float value, LocalDate date, String descripton) {
+        contextData.getBudget().adicionarAoBudgetGasto(value-expense.getValue());
         contextData.getExpensesHistory().editExpense(expense,value,date,descripton);
     }
 

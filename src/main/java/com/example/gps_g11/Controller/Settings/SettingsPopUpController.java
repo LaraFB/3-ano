@@ -4,6 +4,7 @@ import com.example.gps_g11.Data.Context;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 
 import java.net.URL;
@@ -20,6 +21,11 @@ public class SettingsPopUpController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         context = Context.getInstance();
         message.setVisible(false);
+        TFName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+               onDelete();
+            }
+        });
     }
 
     public void onDelete() {
