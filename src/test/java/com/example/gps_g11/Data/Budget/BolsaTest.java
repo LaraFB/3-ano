@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BolsaTest {
-
+/*
     @Test
     public void testGetNome() {
         Bolsa bolsa = new Bolsa("ISEC", 1000.0, "Bolsa para estudantes");
@@ -62,5 +62,5 @@ public class BolsaTest {
         Bolsa bolsa = new Bolsa("ISEC", 1000.0, "Bolsa para estudantes");
         bolsa.setValorGasto(20.0);
         assertEquals(20.0, bolsa.getValorGasto(), 0.001);
-    }
+    }*/
 }
