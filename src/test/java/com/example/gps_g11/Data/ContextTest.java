@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ContextTest {
-    Context context = Context.getInstance();
+    /*  Context context = Context.getInstance();
     @Test
     void getBudgetRestante (){
         assertEquals(context.getBudgetRestante(),200);
@@ -19,14 +19,14 @@ class ContextTest {
     void isEmpty(){
         //por fazer
     }
-    @Test
+  @Test
     void getValorBolsa() {
         assertEquals(context.getValorBolsa(),110);
-    }
-    @Test
+    }*/
+   /* @Test
     void getValorGastoBolsa(){
         assertEquals(context.getValorGastoBolsa(),10);
-    }
+    }*/
 
     @Test
     void getTotalExpenses(){

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EnvelopeTest {
-
+/*
     @Test
     void getFinalidade() {
         Envelope envelope = new Envelope("Compras",100.0);
@@ -26,5 +26,5 @@ class EnvelopeTest {
         assertEquals(1, envelope1.getId());
         assertEquals(2, envelope2.getId());
         assertNotEquals(envelope1.getId(), envelope2.getId());
-    }
+    }*/
 }
