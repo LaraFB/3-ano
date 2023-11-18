@@ -151,11 +151,6 @@
                     <target>17</target>
                 </configuration>
 
-
-
-
-
-
             </plugin>
 
              <plugin> 
@@ -168,7 +163,7 @@
                         <manifest> 
                             <addClasspath>true</addClasspath> 
                             <classpathPrefix>lib/</classpathPrefix> 
-                            <mainClass>com.example.gps_g11.Main</mainClass> 
+                            <mainClass>com.example.gps_g11/com.example.gps_g11.Main</mainClass>
                         </manifest> 
                     </archive> 
                 </configuration> 
