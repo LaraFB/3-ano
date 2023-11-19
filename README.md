@@ -106,19 +106,19 @@ It is assumed:
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
 
- Image 2: Add expense (US1)
+ Image 2: Add entrada (US1)
 
 ![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
 
- Image 3: Viewing the added expense (US1)
+ Image 3: Viewing the added entrada (US1)
 
-![Historico depois de adicionar despesa](imgs/despesas_historico_dps_adicionar.png)
+![Historico depois de adicionar entrada](imgs/despesas_historico_dps_adicionar.png)
 
  Image 4: Expense history (US10)
 
 ![Despesas por categotia](imgs/despesas_compras.png)
 
- Image 5: Expenses by category (US12)
+ Image 5: Expenses by categoria (US12)
 
 ![Despesas](imgs/despesas.png)
 
@@ -197,7 +197,7 @@ As a student, I want to view the transaction history so that I can review my pas
 As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it.
 ***
 ##### User Story 12
-As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money.
+As a user, I want to view expenses by categoria, so that I can understand in which categories I spend the most money.
 ***
 ##### User Story 13
 As a working student, I want to add money to my budget, so that I can keep the budget updated.
@@ -328,16 +328,16 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 4: Create Unit tests and fix remaining bugs
     
   - US 1: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: L]
-    - Task 1: Design user interface to allow expense entry
+    - Task 1: Design user interface to allow entrada entry
     - Task 2: Add expenses managing methods
     - Task 3: Create expenses validation methods
-    - Task 4: Create a display of the expense
+    - Task 4: Create a display of the entrada
     - Task 5: Create Unit tests and fix remaining bugs
 
   - US 2: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: L]
-    - Task 1: Design user interface to allow category management
-    - Task 2: Add category managing methods
-    - Task 3: Create category validation methods
+    - Task 1: Design user interface to allow categoria management
+    - Task 2: Add categoria managing methods
+    - Task 3: Create categoria validation methods
     - Task 4: Create Unit tests and fix remaining bugs 
 
   - US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
@@ -377,7 +377,7 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Sprint Plan
 
 
-- Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
+- Goal: Monthly budget reseting, entrada display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
 
 - Roles:
   - Product Owner: Ana Sofia Silva
@@ -391,14 +391,14 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 1: Create feature to allow budget reset
     - Task 2: Create budget reseting methods
     
-  - US 12: As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money. [Story Points: L]
-    - Task 1: Design interface to allow viewing of expenses grouped by category  
+  - US 12: As a user, I want to view expenses by categoria, so that I can understand in which categories I spend the most money. [Story Points: L]
+    - Task 1: Design interface to allow viewing of expenses grouped by categoria  
     - Task 2: Create methods to filter the expenses to a certain time period
 
   - US 5: As a user, I want to reserve amounts for future expenses so that I can plan my budget. [Story Points: M]
     - Task 1: Design user interface to allow amount reservation
     - Task 2: Add reservation methods 
-    - Task 3: Create methods to subtract the amount reserved for a certain category from future expenses
+    - Task 3: Create methods to subtract the amount reserved for a certain categoria from future expenses
 
   - US 3: As a student, I want to access expenses so that I can view all my recorded expenses. [Story Points: M]
     - Task 1: Design user interface

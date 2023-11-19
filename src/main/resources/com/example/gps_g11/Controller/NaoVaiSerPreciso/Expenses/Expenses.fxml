@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!--
+<AnchorPane fx:id="CategoryPane" xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: DEEFFF;" stylesheets="@Style.css" prefHeight="718.0" prefWidth="1010.0" visible="false">
+    <children>
+        <HBox fx:id="Category_Bar" prefHeight="116.0" prefWidth="1012.0" style="-fx-background-color: #F6F1F1;" AnchorPane.bottomAnchor="602.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button id="MenuItem" fx:id="Categoria_Propinas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@Style.css" text="Propinas" textAlignment="CENTER" textFill="#545454">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="70.0" right="20.0" top="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Times New Roman" size="18.0" />
+                    </font>
+                </Button>
+                <Button id="MenuItem" fx:id="Categoria_Compras" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@Style.css" text="Compras" textFill="#545454">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Times New Roman" size="18.0" />
+                    </font>
+                </Button>
+                <Button id="MenuItem" fx:id="Categoria_Cafes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@Style.css" text="Cafés" textAlignment="CENTER" textFill="#545454">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Times New Roman" size="18.0" />
+                    </font>
+                </Button>
+                <Button id="MenuItem" fx:id="Categoria_Renda" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@Style.css" text="Renda" textFill="#545454">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Times New Roman" size="18.0" />
+                    </font>
+                </Button>
+                <Button id="MenuItem" fx:id="Categoria_Refeicoes_Cantina" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="212.0" styleClass="MenuItem" stylesheets="@Style.css" text="Refeições na Cantina" textFill="#545454">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Times New Roman" size="18.0" />
+                    </font>
+                </Button>
+                <Button id="MenuItem" fx:id="Categoria_More" alignment="TOP_CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@Style.css" text="..." textAlignment="CENTER" textFill="#545454">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Times New Roman Bold" size="28.0" />
+                    </font>
+                </Button>
+            </children>
+            <padding>
+                <Insets top="25.0" />
+            </padding>
+        </HBox>
+        <LineChart fx:id="CategoyCHart" layoutX="65.0" layoutY="131.0" prefHeight="242.0" prefWidth="483.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" />
+            </yAxis>
+        </LineChart>
+        <Text fill="#545454" layoutX="707.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sugestões">
+            <font>
+                <Font name="Times New Roman" size="24.0" />
+            </font>
+        </Text>
+        <Text fx:id="SugestoesTxt" layoutX="596.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" textAlignment="CENTER" wrappingWidth="333.6552734375">
+            <font>
+                <Font name="Times New Roman" size="14.0" />
+            </font>
+        </Text>
+        <TableView layoutX="79.0" layoutY="390.0" prefHeight="306.0" prefWidth="857.0" styleClass="tabela" stylesheets="@Style.css">
+            <columns>
+                <TableColumn editable="false" prefWidth="127.0" text="id" />
+                <TableColumn editable="false" prefWidth="160.0" text="Montante (€)" />
+                <TableColumn editable="false" prefWidth="184.0" text="Date" />
+                <TableColumn editable="false" minWidth="0.0" prefWidth="385.0" text="Pequena Descrição" />
+            </columns>
+        </TableView>
+        <Button layoutX="945.0" layoutY="390.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/edit_icon.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button layoutX="944.0" layoutY="451.0" mnemonicParsing="false" style="-fx-background-color: tranparent;">
+            <graphic>
+                <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/trash_icon.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+    </children>
+</AnchorPane>
+-->
+
+<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@../../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0" spacing="40.0" style="-fx-background-color: #F6F1F1;">
+                <children>
+                    <Button id="MenuItem" fx:id="Categoria_Propinas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@../../../Style.css" text="Propinas" textAlignment="CENTER" textFill="#545454">
+                        <font>
+                            <Font name="Times New Roman" size="18.0" />
+                        </font>
+                    </Button>
+                    <Button id="MenuItem" fx:id="Categoria_Compras" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@../../../Style.css" text="Compras" textFill="#545454">
+                        <font>
+                            <Font name="Times New Roman" size="18.0" />
+                        </font>
+                    </Button>
+                    <Button id="MenuItem" fx:id="Categoria_Cafes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@../../../Style.css" text="Cafés" textAlignment="CENTER" textFill="#545454">
+                        <font>
+                            <Font name="Times New Roman" size="18.0" />
+                        </font>
+                    </Button>
+                    <Button id="MenuItem" fx:id="Categoria_Renda" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@../../../Style.css" text="Renda" textFill="#545454">
+                        <font>
+                            <Font name="Times New Roman" size="18.0" />
+                        </font>
+                    </Button>
+                    <Button id="MenuItem" fx:id="Categoria_Refeicoes_Cantina" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="212.0" styleClass="MenuItem" stylesheets="@../../../Style.css" text="Refeições na Cantina" textFill="#545454">
+                        <font>
+                            <Font name="Times New Roman" size="18.0" />
+                        </font>
+                    </Button>
+                    <Button id="MenuItem" fx:id="Categoria_More" alignment="TOP_CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="MenuItem" stylesheets="@../../../Style.css" text="..." textAlignment="CENTER" textFill="#545454">
+                        <font>
+                            <Font name="Times New Roman Bold" size="28.0" />
+                        </font>
+                    </Button>
+                </children>
+            </HBox>
+            <HBox prefHeight="250.0" prefWidth="200.0">
+                <children>
+                    <LineChart fx:id="CategoyCHart" prefHeight="242.0" prefWidth="483.0">
+                        <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis side="LEFT" />
+                        </yAxis>
+                    </LineChart>
+                    <Text fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="Sugestões">
+                        <font>
+                            <Font name="Times New Roman" size="24.0" />
+                        </font>
+                     <HBox.margin>
+                        <Insets left="170.0" />
+                     </HBox.margin>
+                    </Text>
+                </children>
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="320.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="200.0" prefWidth="900.0" styleClass="tabela" stylesheets="@../../../Style.css">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="id" />
+                      <TableColumn prefWidth="188.8000030517578" text="Montante (€)" />
+                        <TableColumn prefWidth="218.39996337890625" text="Date" />
+                        <TableColumn prefWidth="407.20003051757817" text="Pequena Descrição" />
+                    </columns>
+                  </TableView>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="0.0" spacing="15.0">
+                      <children>
+
+                          <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                              <graphic>
+                                  <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@../../../../../../image/edit_icon.png" />
+                                      </image>
+                                  </ImageView>
+                              </graphic></Button>
+                          <Button mnemonicParsing="false" style="-fx-background-color: tranparent;">
+                              <graphic>
+                                  <ImageView fitHeight="33.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@../../../../../../image/trash_icon.png" />
+                                      </image>
+                                  </ImageView>
+                              </graphic>
+                          </Button>
+                      </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

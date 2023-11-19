@@ -1,15 +1,9 @@
 package com.example.gps_g11.Data;
 
-import com.example.gps_g11.Data.Budget.Bolsa;
-import com.example.gps_g11.Data.Budget.Budget;
-import com.example.gps_g11.Data.Budget.Envelope;
-import com.example.gps_g11.Data.Expenses.Expense;
-import com.example.gps_g11.Data.Expenses.ExpensesHistory;
-import com.example.gps_g11.Data.categoryManagment.Category;
-import com.example.gps_g11.Data.categoryManagment.CategoryHandler;
+import com.example.gps_g11.Data.Transacao.Transacao;
+import com.example.gps_g11.Data.Categoria.Categoria;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class Context {
@@ -29,45 +23,8 @@ public class Context {
         return instance;
     }
 
-    public double getBudgetRestante() {
-        return contextData.getBudget().getBudgetRestante();
-    }
 
-    public double getBudgetGasto() {
-        return contextData.getBudget().getBudgetGasto();
-    }
 
-    public void addCategory(String name) {
-        contextData.getCategoryHandler().addCategory(name);
-    }
-
-    public void addCategory(String name, String descripton) {
-        contextData.getCategoryHandler().addCategory(name,descripton);
-    }
-
-    public boolean isEmpty() {
-        return contextData.getCategoryHandler().isEmpty();
-    }
-
-    public Category getCategory(int i) {
-        return contextData.getCategoryHandler().getCategory(i);
-    }
-
-    public Category getCategory(String name) {
-        return contextData.getCategoryHandler().getCategory(name);
-    }
-
-    public String getCategoryName(int i) {
-        return contextData.getCategoryHandler().getCategoryName(i);
-    }
-
-    public boolean deleteCategory(String name){
-        return contextData.getCategoryHandler().removeCategory(name);
-    }
-
-    public void addMontante(int montante){
-        contextData.getBudget().setBudgetRestante(contextData.getBudget().getBudgetRestante()+montante);
-    }
 
     /*public String getNomeBolsa(){
         return contextData.getBudget().getBolsa().getNome();
@@ -80,66 +37,117 @@ public class Context {
         return contextData.getBudget().getBolsa().getValorGasto();
     }*/
 
+    /**Categorias*/
+    public List<Categoria> getCategoriasList(){
+        return contextData.getListaCategorias().getCategorias();
+    }
+    public Categoria getCategoriaPorIndex(int i) {
+        return contextData.getListaCategorias().getCategoriaPorIndex(i);
+    }
+    public Categoria getCategoriaPorNome(String name) {
+        return contextData.getListaCategorias().getCategoriaPorNome(name);
+    }
+    public String getCategoriaNomePorIndex(int i) {
+        return contextData.getListaCategorias().getCategoriaNomePorIndex(i);
+    }
+    public boolean removerCategoriaPorNome(String name){
+        return contextData.getListaCategorias().removeCategoriaNome(name);
+    }
+    public void adicionarCategoriaPorNome(String name,boolean isAberto) {
+        contextData.getListaCategorias().adicionarCateogiraNome(name,isAberto);
+    }
+    public void adicionarCategoriaNomeDescricao(String name, String descripton,boolean isAberto) {
+        contextData.getListaCategorias().adicionarCategoriaNomeDescricao(name,descripton,isAberto);
+    }
+    public boolean isEmpty() {
+        return contextData.getListaCategorias().isEmpty();
+    }
 
-    public boolean addExpense(String name, String category, String description, LocalDate date, float value, boolean recurring) {
+
+
+    /**Budget*/
+    public void addMontante(int montante){
+        contextData.getBudget().setBudgetRestante(contextData.getBudget().getBudgetRestante()+montante);
+    }
+    public double getBudgetRestante() {
+        return contextData.getBudget().getBudgetRestante();
+    }
+    public double getBudgetGasto() {
+        return contextData.getBudget().getBudgetGasto();
+    }
+    public double getBudgetGuardado() {
+        return contextData.getBudget().getBudgetGuardado();
+    }
+
+
+    /**Historico de transacoes*/
+    public void adicionarTransacao(String tipo, String descricao,Categoria categoria, LocalDate date,float montante){
+        contextData.getHistoricoTransacoes().adicionarTransacao(new Transacao(tipo,descricao,categoria,date,montante));
+    }
+    public List<Transacao> getTransacoes(){
+        return contextData.getHistoricoTransacoes().buscarTodasTransacoes();
+    }
+   /* *//**Historico de Despesas*//*
+    public boolean addExpense(String category, String description, LocalDate date, float value, boolean recurring) {
         if(value < contextData.getBudget().getBudgetRestante()){
-            contextData.getExpensesHistory().addExpense(name, category, description, date, value, recurring);
+            contextData.getHistoricoTransacoes().adicionarDespesa(category, description, date, value, recurring);
             contextData.getBudget().adicionarAoBudgetGasto(value);
             return true;
         }
         return false;
     }
-
     public double getTotalExpenses() {
-        return contextData.getExpensesHistory().getTotalExpenses();
+        return contextData.getHistoricoTransacoes().getTotalDespesas();
+    }
+    public String despesaToString() {
+        return contextData.getHistoricoTransacoes().toString();
+    }
+    public List<Transacao> getHistoricoDespesas() {
+        return contextData.getHistoricoTransacoes().getDespesas();
+    }
+    public void deleteExpense(Transacao despesa) {
+        contextData.getHistoricoTransacoes().eliminarDespesa(despesa);
+        contextData.getBudget().retirarDoBudgetGasto(despesa.getMontante());
+    }
+    public void editExpense(Despesa despesa, float value, LocalDate date, String descripton) {
+        contextData.getBudget().adicionarAoBudgetGasto(value- despesa.getMontante());
+        contextData.getHistoricoDespesas().editarDespesa(despesa,value,date,descripton);
     }
 
-
-    /*public void saveToFileExpenses() {
-        contextData.getExpensesHistory().saveToFile();
+    *//**Historico de entradas*//*
+    public boolean aicionarEntrada(String descricao, LocalDate data, float montante) {
+        contextData.getHistoricoEntradas().adicionarEntrada(descricao, data, montante);
+        contextData.getBudget().adicionarAoBudgetRestante(montante);
+        return true;
     }
-
-    public void loadFromFileExpenses() {
-        contextData.getExpensesHistory().loadFromFile();
+    public double getTotalEntradas() {
+        return contextData.getHistoricoEntradas().getTotalDespesas();
+    }
+    public String entradasToString() {
+        return contextData.getHistoricoEntradas().toString();
+    }
+    public List<Entrada> getHistroicoEntradas() {
+        return contextData.getHistoricoEntradas().getEntradas();
     }*/
 
-    public String ExpensestoString() {
-        return contextData.getCategoryHandler().toString();
-    }
-
-    public List<Expense> getExpensesHistory() {
-        return contextData.getExpensesHistory().getExpenses();
-    }
-
-    public void deleteExpense(Expense expense) {
-        contextData.getExpensesHistory().deleteExpense(expense);
-        contextData.getBudget().retirarDoBudgetGasto(expense.getValue());
-    }
-   /* public void criarEnvelope(String finalidade,double valor){
-        contextData.getBudget().criarEnvelope(finalidade, valor);
-    }*/
-
-    public double getBudgetGuardado() {
-        return contextData.getBudget().getBudgetGuardado();
-    }
-
-    /*public List<Envelope> getEnvelopes(){
-        return contextData.getBudget().getEnvelopes();
-    }*/
-
-    public void editExpense(Expense expense, float value, LocalDate date, String descripton) {
-        contextData.getBudget().adicionarAoBudgetGasto(value-expense.getValue());
-        contextData.getExpensesHistory().editExpense(expense,value,date,descripton);
-    }
-
-
+    /**Guardar Ficheiro*/
     public void saveToFile() {
         if (contextData != null) {
             contextData.saveToFile(fileName);
         }
     }
-
     private void loadFromFile() {
         contextData = ContextData.loadFromFile(fileName);
     }
+
+    public List<Transacao> realizarPesquisa(String tipoTransacao, String filtroAvancado, String categoria,LocalDate data, String ordenacao) {
+       return contextData.getHistoricoTransacoes().realizarPesquisa(tipoTransacao,filtroAvancado,categoria,data,ordenacao);
+    }
+
+    /* public void criarEnvelope(String finalidade,double valor){
+        contextData.getBudget().criarEnvelope(finalidade, valor);
+    }*/
+    /*public List<Envelope> getEnvelopes(){
+        return contextData.getBudget().getEnvelopes();
+    }*/
 }

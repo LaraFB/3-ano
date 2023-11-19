@@ -9,8 +9,7 @@ public class Budget implements Serializable {
     private double budgetGasto;
     private double budgetGuardado;
     private boolean excedeuBudget;
-    /*private Bolsa bolsa;
-    private List<Envelope> envelopes;*/
+    private Bolsa bolsa;
 
     public Budget(double budgetRestante) {
         this.budgetRestante = budgetRestante;
@@ -43,13 +42,13 @@ public class Budget implements Serializable {
     }
 
 
-   /* public Bolsa getBolsa() {
+    public Bolsa getBolsa() {
         return bolsa;
     }
 
     public void setBolsa(Bolsa bolsa) {
         this.bolsa = bolsa;
-    }*/
+    }
 
     public void adicionarAoBudgetGasto(double valor) {
         this.budgetGasto += valor;
@@ -70,6 +69,10 @@ public class Budget implements Serializable {
         this.budgetGuardado -= valor;
         this.budgetRestante += valor;
     }
+    public void adicionarAoBudgetRestante(double valor) {
+        this.budgetRestante += valor;
+    }
+
 
    /* public List<Envelope> getEnvelopes() {
         return envelopes;

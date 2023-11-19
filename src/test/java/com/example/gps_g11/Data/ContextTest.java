@@ -1,6 +1,5 @@
 package com.example.gps_g11.Data;
 
-import com.example.gps_g11.Data.categoryManagment.CategoryHandler;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,6 +18,7 @@ class ContextTest {
     void isEmpty(){
         //por fazer
     }
+/*
     @Test
     void getValorBolsa() {
         assertEquals(context.getValorBolsa(),110);
@@ -27,6 +27,7 @@ class ContextTest {
     void getValorGastoBolsa(){
         assertEquals(context.getValorGastoBolsa(),10);
     }
+*/
 
     @Test
     void getTotalExpenses(){
