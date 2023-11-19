@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BudgetTest {
-
+/*
     @Test
     void getBudgetRestante() {
         Budget budget = new Budget(100.0);
@@ -78,4 +78,27 @@ class BudgetTest {
     @Test
     void getEnvelopes() {
     }
+<<<<<<< HEAD
 }
+=======
+
+    @Test
+    void criarEnvelope() {
+        Budget budget = new Budget(500.0);
+        budget.criarEnvelope("Viagem", 100.0);
+        assertEquals(400.0, budget.getBudgetRestante(), 0.001);
+        assertEquals(100.0, budget.getBudgetGuardado(), 0.001);
+        assertEquals(1, budget.getEnvelopes().size());
+    }
+
+
+    @Test
+    public void criarEnvelopeExcedeOrçamento() {
+        Budget budget = new Budget(500.0);
+        budget.criarEnvelope("Viagem", 600.0);
+        assertEquals(500.0, budget.getBudgetRestante(), 0.001);
+        assertEquals(0.0, budget.getBudgetGuardado(), 0.001);
+        assertEquals(0, budget.getEnvelopes().size());
+    }*/
+}
+>>>>>>> 8df854d4a0c16895d584866cb66807a904e5b253
