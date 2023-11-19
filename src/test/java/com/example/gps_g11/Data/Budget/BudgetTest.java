@@ -101,4 +101,3 @@ class BudgetTest {
         assertEquals(0, budget.getEnvelopes().size());
     }*/
 }
->>>>>>> 8df854d4a0c16895d584866cb66807a904e5b253

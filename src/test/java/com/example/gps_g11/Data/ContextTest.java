@@ -32,9 +32,9 @@ class ContextTest {
         assertEquals(context.getValorGastoBolsa(),10);
 <<<<<<< HEAD
     }
-*/
+
 =======
-    }*/
+
 >>>>>>> 8df854d4a0c16895d584866cb66807a904e5b253
 
     @Test
@@ -52,5 +52,5 @@ class ContextTest {
     @Test
     void ExpensestoString(){
         //por fazer
-    }
+    }*/
 }
