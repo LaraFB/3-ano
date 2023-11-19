@@ -8,9 +8,7 @@ public class Bolsa {
 
     public Bolsa(String nome, double valor, String descricao) {
         this.nome = nome;
-        this.valor = valor-10;
         this.descricao = descricao;
-        valorGasto = 10;
     }
 
     public String getNome() {

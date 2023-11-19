@@ -1,8 +1,6 @@
 package com.example.gps_g11;
 
-import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
-import com.example.gps_g11.Data.Expenses.ExpensesHistory;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

@@ -78,6 +78,9 @@ class BudgetTest {
     @Test
     void getEnvelopes() {
     }
+<<<<<<< HEAD
+}
+=======
 
     @Test
     void criarEnvelope() {

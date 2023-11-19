@@ -1,11 +1,12 @@
 package com.example.gps_g11.Controller;
 
-import com.example.gps_g11.Controller.Budget.BudgetPaneController;
-import com.example.gps_g11.Controller.Category.CategoryController;
-import com.example.gps_g11.Controller.Expenses.ExpenseTabController;
-import com.example.gps_g11.Controller.Settings.SettingsController;
+import com.example.gps_g11.Controller.Envelope.EnvelopeController;
+import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
+import com.example.gps_g11.Controller.Historico.HistoricoController;
+import com.example.gps_g11.Controller.Home.HomeController;
+import com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController;
+import com.example.gps_g11.Controller.Home.HomePageAdicionarSaldoController;
 import com.example.gps_g11.Data.Context;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -13,40 +14,34 @@ import javafx.scene.layout.Pane;
 
 
 public class SideBarController {
+    public Button btnHomePage;
+    public Button bntHistorico;
+    public Button btnEnvelope;
+    public Button btnObjetivos;
+    public Button btnEstatistica;
     private Context context;
-    public Button HomepageBtn;
-    public Button CategoryBtn;
-    public Button ExpensesBtn;
-    public Button BudgetBtn;
-    public Button GoalsBtn;
-    public Button AddBtn;
-    public Button SettingsBtn;
     public Pane ContentPane;
 
-    public void onHomePage(ActionEvent actionEvent) {
-        loadFXML("Home.fxml");
+    public void onHomePage(){
+        loadFXML("Home/HomePage.fxml");
     }
 
-    public void onCategory(ActionEvent actionEvent) {
-        loadFXML("Category/Category.fxml");
+    public void onHistorico(){
+        loadFXML("Historico/Historico.fxml");
+
     }
 
-    public void onBudget(ActionEvent actionEvent) {
-        loadFXML("Budget/BudgetPane.fxml");
+    public void onEnvelope(){
+        loadFXML("Envelope/Envelope.fxml");
     }
 
-    public void onAdd(ActionEvent actionEvent) {
-        loadFXML("Expenses/ExpenseTab.fxml");
+    public void onObjetivos(){
+
     }
 
+    public void onEstatisticas(){
 
-    public void onGoals(ActionEvent actionEvent) {
     }
-
-    public void onSettings(ActionEvent actionEvent) {
-        loadFXML("Settings/Settings.fxml");
-    }
-
 
     private void loadFXML(String fxmlFileName) {
         try {
@@ -54,31 +49,37 @@ public class SideBarController {
             Node node = loader.load();
             if (loader != null) {
                 switch (fxmlFileName){
-                    case "Home.fxml":
+                    case "Home/HomePage.fxml":
                         HomeController homeController = loader.getController();
                         homeController.setSideBar(this);
-                        putBtnActive(HomepageBtn);
+                        putBtnActive(btnHomePage);
                         break;
-                    case "Settings/Settings.fxml":
-                        SettingsController settingsController = loader.getController();
-                        settingsController.setSideBar(this);
-                        putBtnActive(SettingsBtn);
+                    case "Historico/Historico.fxml":
+                        HistoricoController historicoController = loader.getController();
+                        historicoController.setSideBar(this);
+                        putBtnActive(bntHistorico);
                         break;
-                    case "Budget/BudgetPane.fxml":
-                        BudgetPaneController budgetPaneController = loader.getController();
-                        budgetPaneController.setSideBar(this);
-                        putBtnActive(BudgetBtn);
+                    case "Envelope/Envelope.fxml":
+                        EnvelopeController envelopeController = loader.getController();
+                        envelopeController.setSideBar(this);
+                        putBtnActive(btnEnvelope);
                         break;
-                    case "Expenses/ExpenseTab.fxml":
-                        ExpenseTabController expenseTabController = loader.getController();
-                        expenseTabController.setSideBar(this);
-                        putBtnActive(AddBtn);
+                    case "Envelope/EnvelopeCriaEnvelope.fxml":
+                        EnvelopeCriaEnvelopeController envelopeCriaEnvelopeController = loader.getController();
+                        envelopeCriaEnvelopeController.setSideBar(this);
+                        putBtnActive(btnEnvelope);
                         break;
-                    case  "Category/Category.fxml":
-                        CategoryController categoryController = loader.getController();
-                        categoryController.setSideBar(this);
-                        putBtnActive(CategoryBtn);
+                    case "Home/HomePageAdicionarDivida.fxml":
+                        HomePageAdicionarDividaController homePageAdicionarDividaController = loader.getController();
+                        homePageAdicionarDividaController.setSideBar(this);
+                        putBtnActive(btnEnvelope);
                         break;
+                    case "Home/HomePageAdicionarSaldo.fxml":
+                        HomePageAdicionarSaldoController homePageAdicionarSaldoController = loader.getController();
+                        homePageAdicionarSaldoController.setSideBar(this);
+                        putBtnActive(btnEnvelope);
+                        break;
+                    default:
                 }
             }
             ContentPane.getChildren().setAll(node);
@@ -88,36 +89,33 @@ public class SideBarController {
     }
 
     private void putBtnActive(Button btn) {
-        HomepageBtn.getStyleClass().remove("slideItem1");
-        CategoryBtn.getStyleClass().remove("slideItem1");
-        ExpensesBtn.getStyleClass().remove("slideItem1");
-        BudgetBtn.getStyleClass().remove("slideItem1");
-        GoalsBtn.getStyleClass().remove("slideItem1");
-        AddBtn.getStyleClass().remove("slideItem1");
-        SettingsBtn.getStyleClass().remove("slideItem1");
-        if (btn.equals(HomepageBtn)) {
-            HomepageBtn.getStyleClass().add("slideItem1");
-        }else if (btn.equals(CategoryBtn)) {
-            CategoryBtn.getStyleClass().add("slideItem1");
-        }else if (btn.equals(ExpensesBtn)) {
-            ExpensesBtn.getStyleClass().add("slideItem1");
-        }else if (btn.equals(BudgetBtn)) {
-            BudgetBtn.getStyleClass().add("slideItem1");
-        }else if (btn.equals(GoalsBtn)) {
-            GoalsBtn.getStyleClass().add("slideItem1");
-        }else if (btn.equals(AddBtn)) {
-            AddBtn.getStyleClass().add("slideItem1");
-        }else if (btn.equals(SettingsBtn)) {
-            SettingsBtn.getStyleClass().add("slideItem1");
+        btnHomePage.getStyleClass().remove("slideItem1");
+        bntHistorico.getStyleClass().remove("slideItem1");
+        btnEnvelope.getStyleClass().remove("slideItem1");
+        if (btn.equals(btnHomePage)) {
+            btnHomePage.getStyleClass().add("slideItem1");
+        }else if (btn.equals(bntHistorico)) {
+            bntHistorico.getStyleClass().add("slideItem1");
+        }else if (btn.equals(btnEnvelope)) {
+            btnEnvelope.getStyleClass().add("slideItem1");
         }
     }
 
     public void initialize(){
         context = Context.getInstance();
-        loadFXML("Home.fxml");
+        onHomePage();
     }
 
+    public void criarEnvelopesPane(){
+        loadFXML("Envelope/EnvelopeCriaEnvelope.fxml");
+    }
+    public void adicionarDespesa(){
+        loadFXML("Home/HomePageAdicionarDivida.fxml");
+    }
 
+    public void adicionarSaldo() {
+        loadFXML("Home/HomePageAdicionarSaldo.fxml");
+    }
 }
 
 
