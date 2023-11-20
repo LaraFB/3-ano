@@ -37,7 +37,7 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></Button>
-                              <Button mnemonicParsing="false" onAction="#onRemove" prefHeight="80.0" prefWidth="180.0" styleClass="CancelExpensesBtn,MenuItem" stylesheets="@../../../Style.css" text="Eliminar" textAlignment="CENTER" textFill="#525252" wrapText="true">
+                              <Button mnemonicParsing="false" onAction="#onRemove" prefHeight="80.0" prefWidth="180.0" styleClass="CancelBtn,MenuItem" stylesheets="@../../../Style.css" text="Eliminar" textAlignment="CENTER" textFill="#525252" wrapText="true">
                                  <font>
                                     <Font size="20.0" />
                                  </font></Button>

@@ -21,7 +21,7 @@
                <children>
                   <Label fx:id="lblCategoria" text="Label">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Times New Roman" size="18.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -31,13 +31,13 @@
                      <children>
                         <Label text="Montante:">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Times New Roman" size="18.0" />
                            </font>
                         </Label>
                         <TextField fx:id="tfMontante" />
                         <Label text="Data:">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Times New Roman" size="18.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="5.0" />
@@ -51,7 +51,7 @@
                   </HBox>
                   <Label text="Pequena descrição:">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Times New Roman" size="18.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -81,7 +81,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnDelete" onAction="#onDelete" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="buttonCategory" stylesheets="@../../Style.css">
+                  <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#onDelete" prefHeight="30.0" prefWidth="30.0" styleClass="buttonCategory" stylesheets="@../../Style.css">
                      <graphic>
                         <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -90,7 +90,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnDone" onAction="#onDone" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="buttonCategory" stylesheets="@../../Style.css">
+                  <Button fx:id="btnDone" mnemonicParsing="false" onAction="#onDone" prefHeight="30.0" prefWidth="30.0" styleClass="buttonCategory" stylesheets="@../../Style.css">
                      <graphic>
                         <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -125,7 +125,7 @@
             <Insets top="-25.0" />
          </BorderPane.margin>
          <font>
-            <Font size="14.0" />
+            <Font name="Times New Roman" size="18.0" />
          </font>
       </Label>
    </bottom>

@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -21,6 +22,7 @@ public class Main extends Application {
         stage.setScene(scene);
         scene.setRoot(loader.load());
 
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/Icon_App.png"))));
         stage.setTitle("Gestor de Despesas");
         stage.setResizable(false);
 

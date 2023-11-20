@@ -21,9 +21,14 @@
 .slideItem:hover{-fx-background-color:#DEEFFF;}
 .slideItem1{-fx-background-color:#DEEFFF;}
 
-.CancelExpensesBtn{-fx-background-color: #ff676a;}
-.CancelExpensesBtn:hover{-fx-background-color: #EFA5A7;}
+.CancelBtn{-fx-background-color: #ff676a;}
+.CancelBtn:hover{-fx-background-color: #EFA5A7;}
 .btn:hover{-fx-opacity:70%;}
+.btn {-fx-background-color:#DEEFFF; }
+.btn:selected{-fx-background-color: #9FCDFF;}
+.btn_history{-fx-background-color:#9FCDFF;}
+.btn_history:hover{-fx-opacity: 70%;}
+.btn_history:selected{-fx-background-color:#63A7F1; }
 
 .check-box .box {
     -fx-background-color: white;
@@ -55,7 +60,7 @@
 }
 
 .choice-box {
-    -fx-background-color: white;
+    -fx-background-color: #DEEFFF;
     -fx-mark-color: #545454;
 }
 .choice-box .context-menu {
@@ -140,3 +145,5 @@
     -fx-text-fill: White;
 }
 .categoory-delete:hover{-fx-background-color: #EFA5A7;}
+
+
