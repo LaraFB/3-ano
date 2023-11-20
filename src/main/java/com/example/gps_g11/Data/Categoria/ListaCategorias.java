@@ -9,8 +9,6 @@ public class ListaCategorias implements Serializable {
 
     public ListaCategorias(){
         this.categorias = new ArrayList<>();
-
-
     }
 
     public List<Categoria> getCategorias() { return categorias; }
