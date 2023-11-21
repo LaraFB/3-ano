@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeController">
+<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #DEEFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeController">
    <center>
       <HBox fx:id="hbox" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../Style.css" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
                      </padding></VBox>
                </content>
             </ScrollPane>
-            <Button fx:id="btnCriarEnvelope" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onCriarEnvelope" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Criar&#10;Envelope" textAlignment="CENTER">
+            <Button fx:id="btnCriarEnvelope" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onCriarEnvelope" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" styleClass="btn" stylesheets="@../../Style.css" text="Criar&#10;Envelope" textAlignment="CENTER">
                <HBox.margin>
                   <Insets left="18.0" top="30.0" />
                </HBox.margin>

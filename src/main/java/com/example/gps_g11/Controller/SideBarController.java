@@ -2,10 +2,13 @@ package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Controller.Envelope.EnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
+import com.example.gps_g11.Controller.Estatistica.EstatisticaController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
 import com.example.gps_g11.Controller.Home.HomeController;
 import com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController;
 import com.example.gps_g11.Controller.Home.HomePageAdicionarSaldoController;
+import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
+
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -36,12 +39,10 @@ public class SideBarController {
     }
 
     public void onObjetivos(){
-
+        loadFXML("Objetivo/Objetivo.fxml");
     }
 
-    public void onEstatisticas(){
-
-    }
+    public void onEstatisticas(){ loadFXML("Estatisticas/Estatisticas.fxml");}
 
     private void loadFXML(String fxmlFileName) {
         try {
@@ -79,6 +80,15 @@ public class SideBarController {
                         homePageAdicionarSaldoController.setSideBar(this);
                         putBtnActive(btnEnvelope);
                         break;
+                    case "Objetivo/Objetivo.fxml":
+                        ObjetivoController objetivoController = loader.getController();
+                        objetivoController.setSideBar(this);
+                        putBtnActive(btnObjetivos);
+                        break;
+                    case "Estatisticas/Estatisticas.fxml":
+                        EstatisticaController estatitcaController = loader.getController();
+                        estatitcaController.setSideBar(this);
+                        putBtnActive(btnEstatistica);
                     default:
                 }
             }
@@ -92,12 +102,19 @@ public class SideBarController {
         btnHomePage.getStyleClass().remove("slideItem1");
         bntHistorico.getStyleClass().remove("slideItem1");
         btnEnvelope.getStyleClass().remove("slideItem1");
+        btnObjetivos.getStyleClass().remove("slideItem1");
+        btnEstatistica.getStyleClass().remove("slideItem1");
+
         if (btn.equals(btnHomePage)) {
             btnHomePage.getStyleClass().add("slideItem1");
         }else if (btn.equals(bntHistorico)) {
             bntHistorico.getStyleClass().add("slideItem1");
         }else if (btn.equals(btnEnvelope)) {
             btnEnvelope.getStyleClass().add("slideItem1");
+        }else if(btn.equals(btnObjetivos)){
+            btnObjetivos.getStyleClass().add("slideItem1");
+        }else if(btn.equals(btnEstatistica)){
+            btnEstatistica.getStyleClass().add("slideItem1");
         }
     }
 
@@ -115,6 +132,9 @@ public class SideBarController {
 
     public void adicionarSaldo() {
         loadFXML("Home/HomePageAdicionarSaldo.fxml");
+    }
+
+    public void adicionarObjetivos() {
     }
 }
 

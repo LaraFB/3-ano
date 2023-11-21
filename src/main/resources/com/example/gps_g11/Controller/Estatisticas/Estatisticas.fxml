@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Estatistica.EstatisticaController">
+   <top>
+      <HBox prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #F4F9FF;" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="30.0" prefWidth="63.0" text="Filtros:" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="50.0" />
+               </HBox.margin>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="30.0" text="De:" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="datai" prefHeight="30.0" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </DatePicker>
+            <Label prefHeight="30.0" prefWidth="40.0" text="Até:" textFill="#545454">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dataf" prefHeight="30.0" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets right="50.0" />
+               </HBox.margin>
+            </DatePicker>
+            <ChoiceBox fx:id="cbenvelope" prefHeight="30.0" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ChoiceBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="40.0" top="40.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <LineChart fx:id="graphicdespesas" title="Despesas">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+               <HBox.margin>
+                  <Insets bottom="60.0" left="40.0" top="60.0" />
+               </HBox.margin>
+            </LineChart>
+            <PieChart fx:id="graphicenvelope" prefHeight="300.0" prefWidth="400.0" title="Envelopes">
+               <HBox.margin>
+                  <Insets bottom="60.0" left="40.0" right="60.0" top="60.0" />
+               </HBox.margin>
+            </PieChart>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
