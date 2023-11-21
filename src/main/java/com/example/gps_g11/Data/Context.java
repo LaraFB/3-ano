@@ -1,5 +1,7 @@
 package com.example.gps_g11.Data;
 
+import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
+import com.example.gps_g11.Data.Objetivo.Objetivo;
 import com.example.gps_g11.Data.Transacao.Transacao;
 import com.example.gps_g11.Data.Categoria.Categoria;
 
@@ -63,7 +65,7 @@ public class Context {
         return contextData.getListaCategorias().isEmpty();
     }
 
-
+    public ListaObjetivos getListaObjetivos(){return contextData.getListaObjetivos();}
 
     /**Budget*/
     public void addMontante(int montante){

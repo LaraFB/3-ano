@@ -23,4 +23,6 @@ public class ObjetivoController {
     public void setSideBar(SideBarController sideBarController) {this.sideBarController = sideBarController;}
 
     public void onAddObjective(ActionEvent actionEvent) {sideBarController.adicionarObjetivos();}
+    public void onEditObjective(ActionEvent actionEvent) {sideBarController.editarObjetivos();}
+
 }

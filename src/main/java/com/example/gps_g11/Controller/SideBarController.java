@@ -9,6 +9,8 @@ import com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController;
 import com.example.gps_g11.Controller.Home.HomePageAdicionarSaldoController;
 import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
 
+import com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController;
+import com.example.gps_g11.Controller.Objetivo.editarObjetivoController;
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -85,6 +87,16 @@ public class SideBarController {
                         objetivoController.setSideBar(this);
                         putBtnActive(btnObjetivos);
                         break;
+                    case "Objetivo/adicionarObjetivo.fxml":
+                        adicionarObjetivoController adcObjetivoController = loader.getController();
+                        adcObjetivoController.setSideBar(this);
+                        putBtnActive(btnObjetivos);
+                        break;
+                    case "Objetivo/editarObjetivo.fxml":
+                        editarObjetivoController editObjetivoController = loader.getController();
+                        editObjetivoController.setSideBar(this);
+                        putBtnActive(btnObjetivos);
+                        break;
                     case "Estatisticas/Estatisticas.fxml":
                         EstatisticaController estatitcaController = loader.getController();
                         estatitcaController.setSideBar(this);
@@ -134,8 +146,8 @@ public class SideBarController {
         loadFXML("Home/HomePageAdicionarSaldo.fxml");
     }
 
-    public void adicionarObjetivos() {
-    }
+    public void adicionarObjetivos() { loadFXML("Objetivo/adicionarObjetivo.fxml");}
+    public void editarObjetivos() { loadFXML("Objetivo/editarObjetivo.fxml");}
 }
 
 
