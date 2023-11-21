@@ -4,10 +4,9 @@ import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPanePopUpCon
 import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Categoria.Categoria;
-import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -26,6 +25,7 @@ public class EnvelopeController implements Initializable {
     public HBox hbox;
     public BorderPane root;
     public Button btnCriarEnvelope;
+    public Button btnGuardaDinheiro;
     private SideBarController sideBarController;
     private Context context;
     public void update() {
@@ -128,9 +128,7 @@ public class EnvelopeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         context = Context.getInstance();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        btnCriarEnvelope.setStyle("-fx-background-color: transparent;");
-        btnCriarEnvelope.setOnMouseEntered(event -> btnCriarEnvelope.setStyle("-fx-background-color: #e0e0e0;"));
-        btnCriarEnvelope.setOnMouseExited(event -> btnCriarEnvelope.setStyle("-fx-background-color: transparent;"));
+
         update();
     }
 
@@ -142,4 +140,5 @@ public class EnvelopeController implements Initializable {
         sideBarController.criarEnvelopesPane();
     }
 
+    public void onGuardaDinheiro() {sideBarController.adicionaDinheiroEnvelope(); }
 }

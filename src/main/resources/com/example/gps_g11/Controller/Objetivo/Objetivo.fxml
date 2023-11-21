@@ -7,8 +7,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.ObjetivoController">
+<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.ObjetivoController">
    <top>
       <HBox prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
@@ -60,21 +61,37 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </PieChart>
-            <Button fx:id="addObj" mnemonicParsing="false" onAction="#onAddObjective" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../image/add_alt_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets top="270.0" />
-               </HBox.margin>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <Button fx:id="editObj" mnemonicParsing="false" onAction="#onEditObjective" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/edit_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="addObj" mnemonicParsing="false" onAction="#onAddObjective" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/add_alt_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                  </Button>
+               </children>
                <padding>
-                  <Insets right="30.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
-            </Button>
+            </VBox>
          </children>
       </HBox>
    </left>

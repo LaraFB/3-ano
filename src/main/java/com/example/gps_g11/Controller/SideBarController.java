@@ -2,6 +2,7 @@ package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Controller.Envelope.EnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
+import com.example.gps_g11.Controller.Envelope.EnvelopeGuardaDinheiroController;
 import com.example.gps_g11.Controller.Estatistica.EstatisticaController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
 import com.example.gps_g11.Controller.Home.HomeController;
@@ -9,6 +10,8 @@ import com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController;
 import com.example.gps_g11.Controller.Home.HomePageAdicionarSaldoController;
 import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
 
+import com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController;
+import com.example.gps_g11.Controller.Objetivo.editarObjetivoController;
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -29,10 +32,7 @@ public class SideBarController {
         loadFXML("Home/HomePage.fxml");
     }
 
-    public void onHistorico(){
-        loadFXML("Historico/Historico.fxml");
-
-    }
+    public void onHistorico(){loadFXML("Historico/Historico.fxml");}
 
     public void onEnvelope(){
         loadFXML("Envelope/Envelope.fxml");
@@ -70,6 +70,11 @@ public class SideBarController {
                         envelopeCriaEnvelopeController.setSideBar(this);
                         putBtnActive(btnEnvelope);
                         break;
+                    case "Envelope/EnvelopeGuardarDinheiro.fxml":
+                        EnvelopeGuardaDinheiroController envelopeGuardaDinheiroController =loader.getController();
+                        envelopeGuardaDinheiroController.setSideBar(this);
+                        putBtnActive(btnEnvelope);
+                        break;
                     case "Home/HomePageAdicionarDivida.fxml":
                         HomePageAdicionarDividaController homePageAdicionarDividaController = loader.getController();
                         homePageAdicionarDividaController.setSideBar(this);
@@ -83,6 +88,16 @@ public class SideBarController {
                     case "Objetivo/Objetivo.fxml":
                         ObjetivoController objetivoController = loader.getController();
                         objetivoController.setSideBar(this);
+                        putBtnActive(btnObjetivos);
+                        break;
+                    case "Objetivo/adicionarObjetivo.fxml":
+                        adicionarObjetivoController adcObjetivoController = loader.getController();
+                        adcObjetivoController.setSideBar(this);
+                        putBtnActive(btnObjetivos);
+                        break;
+                    case "Objetivo/editarObjetivo.fxml":
+                        editarObjetivoController editObjetivoController = loader.getController();
+                        editObjetivoController.setSideBar(this);
                         putBtnActive(btnObjetivos);
                         break;
                     case "Estatisticas/Estatisticas.fxml":
@@ -126,6 +141,7 @@ public class SideBarController {
     public void criarEnvelopesPane(){
         loadFXML("Envelope/EnvelopeCriaEnvelope.fxml");
     }
+    public void adicionaDinheiroEnvelope(){loadFXML("Envelope/EnvelopeGuardarDinheiro.fxml");}
     public void adicionarDespesa(){
         loadFXML("Home/HomePageAdicionarDivida.fxml");
     }
@@ -134,8 +150,8 @@ public class SideBarController {
         loadFXML("Home/HomePageAdicionarSaldo.fxml");
     }
 
-    public void adicionarObjetivos() {
-    }
+    public void adicionarObjetivos() { loadFXML("Objetivo/adicionarObjetivo.fxml");}
+    public void editarObjetivos() { loadFXML("Objetivo/editarObjetivo.fxml");}
 }
 
 
