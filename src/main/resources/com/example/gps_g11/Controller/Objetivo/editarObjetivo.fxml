@@ -14,34 +14,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.editarObjetivoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.editarObjetivoController">
    <right>
-      <Button fx:id="btnNext" mnemonicParsing="false" onAction="#onNext" prefHeight="599.0" prefWidth="102.0" styleClass="btn" text="&gt;" BorderPane.alignment="CENTER">
+      <Button fx:id="btnNext" mnemonicParsing="false" onAction="#onNext" prefHeight="100.0" prefWidth="100.0" styleClass="btn" text="&gt;" textFill="#545454" BorderPane.alignment="CENTER">
          <font>
-            <Font size="50.0" />
+            <Font name="Times New Roman Bold" size="40.0" />
          </font>
       </Button>
    </right>
    <left>
-      <Button fx:id="btnPrev" mnemonicParsing="false" onAction="#onPrevious" prefHeight="599.0" prefWidth="102.0" styleClass="btn" text="&lt;" BorderPane.alignment="CENTER">
+      <Button fx:id="btnPrev" mnemonicParsing="false" onAction="#onPrevious" prefHeight="100.0" prefWidth="100.0" styleClass="btn" text="&lt;" textFill="#545454" BorderPane.alignment="CENTER">
          <font>
-            <Font size="50.0" />
+            <Font name="Times New Roman Bold" size="40.0" />
          </font>
       </Button>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="450.0" maxWidth="800.0" prefHeight="450.0" prefWidth="800.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lTitulo" alignment="CENTER" contentDisplay="CENTER" text="Objetivo" textAlignment="CENTER">
+            <Label fx:id="lTitulo" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="780.0" text="Objetivo" textAlignment="CENTER" textFill="#545454">
                <font>
-                  <Font name="Times New Roman Bold" size="34.0" />
+                  <Font name="Times New Roman Bold" size="30.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="780.0" spacing="5.0">
                <children>
-                  <Label text="Nome">
+                  <Label text="Nome:" textFill="#545454">
                      <font>
-                        <Font name="Times New Roman" size="26.0" />
+                        <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="lblError1" text="*" textFill="#ff676a">
@@ -49,59 +49,94 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tfNome" maxWidth="368.0" prefHeight="46.0" prefWidth="368.0" style="-fx-background-color: #DEEFFF;">
+                  <TextField fx:id="tfNome" maxHeight="30.0" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #DEEFFF;">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Times New Roman" size="14.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </TextField>
-                  <Label text="Valor">
+                  <Label text="Valor:" textFill="#545454">
                      <font>
-                        <Font name="Times New Roman" size="26.0" />
+                        <Font name="Times New Roman" size="18.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
                   </Label>
                   <Label fx:id="lblError11" text="*" textFill="#ff676a">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tfValor" maxWidth="180.0" prefHeight="30.0" promptText="€" style="-fx-background-color: #DEEFFF;">
+                  <TextField fx:id="tfValor" maxWidth="180.0" prefHeight="30.0" prefWidth="180.0" promptText="€" style="-fx-background-color: #DEEFFF;">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Times New Roman" size="14.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </TextField>
                </children>
                <padding>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="50.0" top="10.0" />
                </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
-            <VBox alignment="TOP_CENTER" spacing="15.0">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" spacing="5.0">
                <children>
-                  <Label prefHeight="28.0" prefWidth="974.0" text="Descrição">
+                  <Label text="Descrição:" textFill="#545454">
                      <font>
-                        <Font name="Times New Roman" size="26.0" />
+                        <Font name="Times New Roman" size="18.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets right="650.0" />
+                     </VBox.margin>
                   </Label>
-                  <TextArea fx:id="taDescricao" prefHeight="147.0" prefWidth="980.0" promptText="Escreva aqui detalhes ">
+                  <TextArea fx:id="taDescricao" maxHeight="150.0" maxWidth="670.0" prefHeight="150.0" prefWidth="670.0" promptText="Escreva aqui detalhes ">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Times New Roman" size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets right="70.0" top="5.0" />
+                     </VBox.margin>
                   </TextArea>
                </children>
                <padding>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets bottom="10.0" left="50.0" top="10.0" />
                </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </VBox>
-            <ProgressBar fx:id="pbObjetivo" opacity="0.4" prefHeight="37.0" prefWidth="766.0" progress="0.39" />
+            <ProgressBar fx:id="pbObjetivo" opacity="0.4" prefHeight="20.0" prefWidth="660.0" progress="0.39">
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin></ProgressBar>
+            <Label fx:id="msgError" prefHeight="20.0" prefWidth="150.0" text="Mensagem de Erro" textAlignment="JUSTIFY" textFill="#ff676a">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="300.0" />
+               </VBox.margin>
+            </Label>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </VBox>
    </center>
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="53.0" prefWidth="245.0" styleClass="btn" text="Back to HomePage">
+            <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Back to HomePage" textFill="#545454">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -113,45 +148,43 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="Times New Roman" size="22.0" />
+                  <Font name="Times New Roman" size="14.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="5.0" top="-50.0" />
+               </HBox.margin>
             </Button>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
       </HBox>
    </top>
    <bottom>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" prefHeight="125.0" prefWidth="1000.0" spacing="15.0" BorderPane.alignment="CENTER">
          <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="70.0" left="10.0" right="300.0" top="10.0" />
          </padding>
          <children>
-            <Label fx:id="msgError" prefHeight="28.0" prefWidth="501.0" text="Mensagem de Erro" textFill="#ff676a">
+            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#onBackToObjetivos" prefHeight="40.0" prefWidth="100.0" styleClass="btn_history" text="Cancelar" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman" size="24.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#onBackToObjetivos" prefHeight="50.0" prefWidth="150.0" styleClass="CancelBtn" text="Cancelar">
-               <font>
-                  <Font name="Times New Roman" size="22.0" />
+                  <Font name="Times New Roman" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnCancelar1" mnemonicParsing="false" onAction="#onDelete" prefHeight="50.0" prefWidth="150.0" styleClass="category-delete" text="Eliminar">
+            <Button fx:id="btnCancelar1" mnemonicParsing="false" onAction="#onDelete" prefHeight="40.0" prefWidth="100.0" styleClass="category-delete" text="Eliminar">
                <font>
-                  <Font name="Times New Roman" size="22.0" />
+                  <Font name="Times New Roman" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onGuardar" prefHeight="50.0" prefWidth="201.0" styleClass="btn" text="Salvar Alterações">
+            <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onGuardar" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Salvar Alterações">
                <font>
-                  <Font name="Times New Roman" size="22.0" />
+                  <Font name="Times New Roman" size="18.0" />
                </font>
             </Button>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </HBox>
    </bottom>
 </BorderPane>
