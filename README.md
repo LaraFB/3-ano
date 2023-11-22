@@ -144,7 +144,7 @@ It is assumed:
 
  Image 11: Manage Objective (US6)
 
-![Estasticas](img/estatiticas.png)
+![Estasticas](imgs/estatiticas.png)
 
  Image 12: Statistic(US4,US8)
 
@@ -156,7 +156,7 @@ It is assumed:
 
  Image 14: View Academic Scholarship (US11)
 
-![Relatorio](img/relatorio.png)
+![Relatorio](imgs/relatorio.png)
 
  Image 15: Reports (US4,US8)
 
