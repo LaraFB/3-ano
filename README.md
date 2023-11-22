@@ -108,41 +108,58 @@ It is assumed:
 
  Image 2: Add entrada (US1)
 
-![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
+![Adicionar Saldo](imgs/adicionar_saldo.png)
 
- Image 3: Viewing the added entrada (US1)
+ Image 3: Add budget/money (US7?,US13)
 
-![Historico depois de adicionar entrada](imgs/despesas_historico_dps_adicionar.png)
+![A pagar](imgs/adicionar_tarefas.png)
 
- Image 4: Expense history (US10)
+ Image 4: Add To pay task
 
-![Despesas por categotia](imgs/despesas_compras.png)
+![Historico](imgs/historico.png)
 
- Image 5: Expenses by categoria (US12)
+ Image 5: History (Expenses and payments) (US10,US12,US3)
 
-![Despesas](imgs/despesas.png)
+![Gerir Envelopes](imgs/gerir_envelopes.png)
 
- Image 6: Expenses Homepage (US3)
+ Image 6: Budget homepage (US2)
 
-![Gerir categorias](imgs/gerir_categorias.png)
+![Adicionar Envelopes](imgs/adicionar_envelopes.png)
 
- Image 7: Manage categories (add and delete) (US2)
+ Image 7: Manage budget (US2)
 
-![Budget](imgs/guardar_montante.png)
+![Guardar Dinheiro](imgs/guardar_dinheiro.png)
 
- Image 8: Budget homepage (US7, US13, US11, US9)
+ Image 8: Reserve amounts (US5)
 
 ![Objetivos](imgs/objetivos.png)
 
- Image 9: Goals hompage (US6)
+ Image 9: Objective Homepage (US6)
 
-![Relatorio](imgs/relatorio.png)
+![Adicionar Objetivos](imgs/adicionar_objetivos.png)
 
- Image 10: Result of generating report (US4,US8)
+ Image 10: Add Objective (US6)
 
-![Reservar Montante](imgs/reservar_montantes.png)
+![Reservar Montante](imgs/editar_objetivos.png)
 
- Image 11: Reserve Amounts (US5)
+ Image 11: Manage Objective (US6)
+
+![Estasticas](img/estatiticas.png)
+
+ Image 12: Statistic(US4,US8)
+
+![Reset Budget]()
+ 
+ Image 13: Reset Budget (US9)
+
+![Bolsa]()
+
+ Image 14: View Academic Scholarship (US11)
+
+![Relatorio](img/relatorio.png)
+
+ Image 15: Reports (US4,US8)
+
 
 ***
 
