@@ -362,30 +362,34 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 2: Create methods to view trasaction history
   
   
-- Story Points: 4L
-
-- Analysis: short analysis of the planning meeting
+- Story Points: 4L + 1M
 
 ##### Sprint Review
 
-- Analysis: what was not done or what was added (Link to US or Task from the PB)
+- Analysis: All requirements were met (us 7,13,1,2,10). However, there was a disagreement regarding the budget, as it did not correspond to the client's idealization.
 
-- Story Points: 2S+1M+2X+2H
+- Story Points: 4L+ 1M
 
 - Version: 0.1 
 
-- Client analysis: client feedback
+- Client analysis: "Todas as tarefas feitas. Objetivo: despesas, entradas, categorias, histórico de despesas. Houve entendimento errado sobre orçamento. Está tudo feito de acordo com a sprint.A pipeline não está a funcionar "
 
-- Conclusions: what to add/review
+- Conclusions:For the next sprint we'll have to adapt the tasks we have planned, as we will have to correct the budget according to the client's vision.
 
 ##### Sprint Retrospective
 
 - What we did well:
-    - A
+    - Manage to work within the time estimated (tasks have all been completed).
+    - Communication between members was effective.
+    - Good project base that allows you to get an ideia of the inicial project, tracking and managing expenses and categorize expenses.
+
 - What we did less well:
-    - B
+    - Misunderstanding with tracking and managing monthly budget.
+    - Only carried out unit tests after all tasks were completed,.
+
 - How to improve to the next sprint:
-    - C
+    - We should comunicate more with the client so by the end of the sprint we are on the same page as them, this will save the time of correcting the design and functionalities of our software.
+    - We should do unit test after each task developed (according to the need), so as not to run the risk of codig on fallible code
 
 ***
 
@@ -403,6 +407,9 @@ By the end of the second realease we must have all the user stories with "must" 
 - Dates: from 17/Nov to 1/Dez, 2 weeks
 
 - To do:
+
+  - US7 and US13 (from last sprint, budget)[Story Points:S]
+    - Task 1: Corrections regarding budget
 
   - US 9: As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control. [Story Points: S]
     - Task 1: Create feature to allow budget reset
@@ -429,7 +436,7 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 2: Implement methods to allow creation and editing of goals
     - Task 3: Create methods to allow goal organization 
 
-- Story Points: 1L + 4M + 1S
+- Story Points: 1L + 4M + 2S
 
 - Analysis: short analysis of the planning meeting
 
