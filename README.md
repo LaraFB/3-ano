@@ -389,7 +389,7 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - How to improve to the next sprint:
     - We should comunicate more with the client so by the end of the sprint we are on the same page as them, this will save the time of correcting the design and functionalities of our software.
-    - We should do unit test after each task developed (according to the need), so as not to run the risk of codig on fallible code
+    - We should do unit test after each task developed (according to the need), so as not to run the risk of coding on fallible code
 
 ***
 
