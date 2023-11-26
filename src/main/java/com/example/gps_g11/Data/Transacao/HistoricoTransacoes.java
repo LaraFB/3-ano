@@ -24,7 +24,7 @@ public class HistoricoTransacoes implements Serializable {
         transacoes.removeIf(t -> t.getId() == id);
     }
 
-    public void editarTransacao(int id, String novaDescricao, LocalDate novaData, float novoMontante, Categoria categoria, boolean novaRecorrencia) {
+    public void editarTransacao(int id, String novaDescricao, LocalDate novaData, double novoMontante, Categoria categoria, boolean novaRecorrencia) {
         for (Transacao transacao : transacoes) {
             if (transacao.getId() == id && "Despesa".equals(transacao.getTipo())) {
                 transacao.setDescricao(novaDescricao);

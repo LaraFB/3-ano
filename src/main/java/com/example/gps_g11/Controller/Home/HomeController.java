@@ -11,9 +11,9 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class HomeController {
-    public Button ViewBudgetBtn;
-    public Text BalanceText;
-    public Text TotalExpenseText;
+    public Text saldoRealText;
+    public Text saldoDisponivelText;
+    public Text totalDespesasText;
     private Context context;
 
     public BorderPane root;
@@ -29,8 +29,10 @@ public class HomeController {
 
     public void initialize(){
         context = Context.getInstance();
-        BalanceText.setText(String.valueOf(context.getBudgetRestante()) + " €");
-        TotalExpenseText.setText(String.valueOf(context.getBudgetGasto()) + " €");
+        saldoRealText.setText(String.valueOf(context.getSaldoReal()));
+        saldoDisponivelText.setText(String.valueOf(context.getSaldoDisponivel()));
+        /*BalanceText.setText(String.valueOf(context.getBudgetRestante()) + " €");
+        TotalExpenseText.setText(String.valueOf(context.getBudgetGasto()) + " €");*/
     }
 
     public void onAdicionarDespesa(){

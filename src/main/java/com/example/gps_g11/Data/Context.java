@@ -1,7 +1,6 @@
 package com.example.gps_g11.Data;
 
 import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
-import com.example.gps_g11.Data.Objetivo.Objetivo;
 import com.example.gps_g11.Data.Transacao.Transacao;
 import com.example.gps_g11.Data.Categoria.Categoria;
 
@@ -68,22 +67,18 @@ public class Context {
     public ListaObjetivos getListaObjetivos(){return contextData.getListaObjetivos();}
 
     /**Budget*/
-    public void addMontante(int montante){
-        contextData.getBudget().setBudgetRestante(contextData.getBudget().getBudgetRestante()+montante);
+    public void addSaldo(double valor){
+        contextData.getBudget().addSaldo(valor);
     }
-    public double getBudgetRestante() {
-        return contextData.getBudget().getBudgetRestante();
+    public double getSaldoReal(){
+        return contextData.getBudget().getSaldoReal();
     }
-    public double getBudgetGasto() {
-        return contextData.getBudget().getBudgetGasto();
+    public double getSaldoDisponivel(){
+        return contextData.getBudget().getSaldoDisponivel();
     }
-    public double getBudgetGuardado() {
-        return contextData.getBudget().getBudgetGuardado();
-    }
-
 
     /**Historico de transacoes*/
-    public void adicionarTransacao(String tipo, String descricao,Categoria categoria, LocalDate date,float montante){
+    public void adicionarTransacao(String tipo, String descricao,Categoria categoria, LocalDate date,double montante){
         contextData.getHistoricoTransacoes().adicionarTransacao(new Transacao(tipo,descricao,categoria,date,montante));
     }
     public List<Transacao> getTransacoes(){

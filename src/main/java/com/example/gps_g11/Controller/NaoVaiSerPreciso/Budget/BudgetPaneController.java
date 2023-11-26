@@ -111,7 +111,7 @@ public class BudgetPaneController {
             }
     }
 
-    private void update() {
+    private void update() {/*
         dynamicHBox.getChildren().clear();
         PieChart.Data slice1 = new PieChart.Data("Budget restante", context.getBudgetRestante());
         PieChart.Data slice2 = new PieChart.Data("Budget gasto", context.getBudgetGasto());
@@ -128,7 +128,7 @@ public class BudgetPaneController {
 
         pieChartBudget.setLabelsVisible(false);
         pieChartBudget.setTitle("Montante");
-        pieChartBudget.getData().setAll(slice1, slice2,slice5);
+        pieChartBudget.getData().setAll(slice1, slice2,slice5);*/
 
        /* PieChart.Data slice3 = new PieChart.Data("Bolsa restante: ", context.getValorBolsa());
         PieChart.Data slice4 = new PieChart.Data("Bolsa gasto: ", context.getValorGastoBolsa());
