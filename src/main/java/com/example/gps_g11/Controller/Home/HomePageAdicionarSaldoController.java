@@ -79,8 +79,15 @@ public class HomePageAdicionarSaldoController {
             lblError3.setVisible(false);
             lblError.setText("Saldo adicionao com sucesso");
             lblError.setTextFill(Color.GREEN);
-            context.addSaldo(Double.parseDouble(tfValor.getText()));
-            context.adicionarTransacao("Entrada",taDescricao.getText(),null,selectedDate, Double.parseDouble(tfValor.getText()));
+            context.adicionarTransacao("Entrada",taDescricao.getText(),selectedDate, Double.parseDouble(tfValor.getText()));
+            resetCampos();
         }
+
+    }
+
+    private void resetCampos() {
+        tfValor.clear();
+        taDescricao.clear();
+        dataPicker.setValue(null);
     }
 }

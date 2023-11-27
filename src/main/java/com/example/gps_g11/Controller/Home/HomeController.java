@@ -4,11 +4,16 @@ import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.util.converter.DoubleStringConverter;
 
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 public class HomeController {
     public Text saldoRealText;
@@ -29,10 +34,15 @@ public class HomeController {
 
     public void initialize(){
         context = Context.getInstance();
-        saldoRealText.setText(String.valueOf(context.getSaldoReal()));
-        saldoDisponivelText.setText(String.valueOf(context.getSaldoDisponivel()));
+        saldoRealText.setText(formatarNumero(context.getSaldoReal()));
+        saldoDisponivelText.setText(formatarNumero(context.getSaldoDisponivel()));
         /*BalanceText.setText(String.valueOf(context.getBudgetRestante()) + " €");
         TotalExpenseText.setText(String.valueOf(context.getBudgetGasto()) + " €");*/
+    }
+
+    private String formatarNumero(double numero) {
+        DecimalFormat formato = new DecimalFormat("#,##0.00");
+        return formato.format(numero);
     }
 
     public void onAdicionarDespesa(){

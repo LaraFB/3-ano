@@ -22,21 +22,21 @@ public class ListaCategorias implements Serializable {
         categorias.add(c);
         return true;
     }
-    public boolean adicionarCategoriaNomeDescricao(String nome,String descricao,boolean isAberto){
+    public boolean adicionarCategoriaNomeDescricao(double valor,String nome,String descricao,boolean isAberto){
         //validation:
         for(Categoria check : categorias)
             if(check.getNome().equals(nome)) return false; //ja existe, n adiciona
 
-        Categoria c = new Categoria(nome,descricao,isAberto);
+        Categoria c = new Categoria(valor,nome,descricao,isAberto);
         categorias.add(c);
         return true;
     }
-    public boolean adicionarCateogiraNome(String nome,boolean isAberto){
+    public boolean adicionarCateogiraNome(double valor,String nome,boolean isAberto){
         //validation:
         for(Categoria check : categorias)
             if(check.getNome().equals(nome)) return false; //ja existe, n adiciona
 
-        Categoria c = new Categoria(nome,isAberto);
+        Categoria c = new Categoria(valor,nome,isAberto);
         categorias.add(c);
         return true;
     }

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Adicionar dinheiro em um envelope" textAlignment="CENTER">
+               <font>
+                  <Font name="Times New Roman Bold" size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="30.0" top="-70.0" />
+               </VBox.margin>
+            </Label>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="500.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Valor">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="lblError1" text="*" textFill="#ff676a">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets right="200.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <TextField fx:id="tfValor" maxWidth="250.0" prefHeight="30.0" prefWidth="250.0" promptText="€" style="-fx-background-color: #DEEFFF;">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </TextField>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets right="170.0" top="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label text="Envelope">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="lblError2" text="*" textFill="#ff676a">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ChoiceBox id="MenuItem" fx:id="cbEnvelope" prefHeight="30.0" prefWidth="250.0" stylesheets="@../../Style.css">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ChoiceBox>
+                  <Label fx:id="lblError" alignment="CENTER" prefHeight="20.0" prefWidth="250.0" text="Mensagem de Erro" textFill="#ff676a">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="40.0" prefWidth="100.0" styleClass="btn" stylesheets="@../../Style.css" text="OK">
+                           <HBox.margin>
+                              <Insets left="150.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" prefWidth="150.0" styleClass="btn" stylesheets="@../../Style.css" text="Back to Envelope" BorderPane.alignment="TOP_LEFT">
+         <BorderPane.margin>
+            <Insets left="5.0" top="5.0" />
+         </BorderPane.margin>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../image/back_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Button>
+   </top>
+</BorderPane>

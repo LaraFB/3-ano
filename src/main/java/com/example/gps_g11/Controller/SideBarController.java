@@ -2,7 +2,7 @@ package com.example.gps_g11.Controller;
 
 import com.example.gps_g11.Controller.Envelope.EnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
-import com.example.gps_g11.Controller.Envelope.EnvelopeGuardaDinheiroController;
+import com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController;
 import com.example.gps_g11.Controller.Estatistica.EstatisticaController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
 import com.example.gps_g11.Controller.Home.HomeController;
@@ -70,8 +70,8 @@ public class SideBarController {
                         envelopeCriaEnvelopeController.setSideBar(this);
                         putBtnActive(btnEnvelope);
                         break;
-                    case "Envelope/EnvelopeGuardarDinheiro.fxml":
-                        EnvelopeGuardaDinheiroController envelopeGuardaDinheiroController =loader.getController();
+                    case "Envelope/EnvelopeAdicionaDinheiro.fxml":
+                        EnvelopeAdicionaDinheiroController envelopeGuardaDinheiroController =loader.getController();
                         envelopeGuardaDinheiroController.setSideBar(this);
                         putBtnActive(btnEnvelope);
                         break;
@@ -141,7 +141,7 @@ public class SideBarController {
     public void criarEnvelopesPane(){
         loadFXML("Envelope/EnvelopeCriaEnvelope.fxml");
     }
-    public void adicionaDinheiroEnvelope(){loadFXML("Envelope/EnvelopeGuardarDinheiro.fxml");}
+    public void adicionaDinheiroEnvelope(){loadFXML("Envelope/EnvelopeAdicionaDinheiro.fxml");}
     public void adicionarDespesa(){
         loadFXML("Home/HomePageAdicionarDivida.fxml");
     }
