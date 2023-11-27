@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -24,8 +23,36 @@
                  <Insets top="5.0" />
               </StackPane.margin>
             </ScrollPane>-->
+<!--
 
-<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Historico.HistoricoController">
+<VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="220.0">
+<children>
+   <Button fx:id="btnRemoverFiltros" mnemonicParsing="false" onAction="#onRemoverFiltros" prefHeight="40.0" prefWidth="130.0" styleClass="CancelBtn" stylesheets="@../../Style.css" text="Remover Filtros" textAlignment="CENTER" wrapText="true">
+      <VBox.margin>
+         <Insets right="40.0" />
+      </VBox.margin>
+      <font>
+         <Font name="Times New Roman" size="16.0" />
+      </font>
+   </Button>
+   <Button fx:id="btnPesquisa" mnemonicParsing="false" onAction="#onPesquisar" prefHeight="40.0" prefWidth="130.0" styleClass="btn_history" stylesheets="@../../Style.css" text="Pesquisar">
+      <VBox.margin>
+         <Insets right="40.0" top="10.0" />
+      </VBox.margin>
+      <font>
+         <Font name="Times New Roman" size="16.0" />
+      </font>
+   </Button>
+</children>
+<HBox.margin>
+   <Insets />
+</HBox.margin>
+<padding>
+   <Insets bottom="15.0" top="15.0" />
+</padding>
+</VBox>-->
+
+<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Historico.HistoricoController">
    <center>
       <VBox prefHeight="636.0" prefWidth="1000.0" BorderPane.alignment="TOP_CENTER">
          <children>
@@ -54,9 +81,9 @@
                         <Insets top="5.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="260.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="480.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="200.0" text="Opções de Filtros Avançados:">
+                        <Label prefHeight="30.0" prefWidth="200.0" text="Opções de Filtros Avançados">
                            <font>
                               <Font name="Times New Roman" size="16.0" />
                            </font>
@@ -64,21 +91,32 @@
                               <Insets left="10.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <ChoiceBox fx:id="cbFiltrosAvancados" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css">
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                              <Label text="Envelopes:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="-33.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ChoiceBox fx:id="cbEnvelopes" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css" />
+                           </children>
                            <VBox.margin>
-                              <Insets left="10.0" top="10.0" />
+                              <Insets />
                            </VBox.margin>
-                        </ChoiceBox>
-                        <ChoiceBox fx:id="cbEnvelopes" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css">
-                           <VBox.margin>
-                              <Insets left="10.0" top="10.0" />
-                           </VBox.margin>
-                        </ChoiceBox>
-                        <DatePicker fx:id="dpDate" prefWidth="200.0">
-                           <VBox.margin>
-                              <Insets left="10.0" top="10.0" />
-                           </VBox.margin>
-                        </DatePicker>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                              <Label text="Data:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="dpDate" prefWidth="200.0" />
+                           </children>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets left="20.0" top="5.0" />
@@ -99,7 +137,7 @@
                         </Label>
                         <ChoiceBox fx:id="cbOrdenar" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css">
                            <VBox.margin>
-                              <Insets left="15.0" top="10.0" />
+                              <Insets left="15.0" top="5.0" />
                            </VBox.margin>
                         </ChoiceBox>
                      </children>
@@ -110,40 +148,15 @@
                         <Insets left="20.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="220.0">
-                     <children>
-                        <Button fx:id="btnRemoverFiltros" mnemonicParsing="false" onAction="#onRemoverFiltros" prefHeight="40.0" prefWidth="130.0" styleClass="CancelBtn" stylesheets="@../../Style.css" text="Remover Filtros" textAlignment="CENTER" wrapText="true">
-                           <VBox.margin>
-                              <Insets right="40.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="Times New Roman" size="16.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnPesquisa" mnemonicParsing="false" onAction="#onPesquisar" prefHeight="40.0" prefWidth="130.0" styleClass="btn_history" stylesheets="@../../Style.css" text="Pesquisar">
-                           <VBox.margin>
-                              <Insets right="40.0" top="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="Times New Roman" size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <padding>
-                        <Insets bottom="15.0" top="15.0" />
-                     </padding>
-                  </VBox>
                </children>
             </HBox>
             <TableView fx:id="tableView" prefHeight="435.0" prefWidth="920.0" stylesheets="@../../Style.css">
               <columns>
+                  <TableColumn fx:id="tcTransação" minWidth="20.0" prefWidth="100.0" text="Transação" />
                 <TableColumn fx:id="tcMontante" prefWidth="120.0" text="Montante" />
                   <TableColumn fx:id="tfData" prefWidth="130.0" text="Data" />
                   <TableColumn fx:id="tfEnvelope" prefWidth="230.0" text="Envelope" />
-                  <TableColumn fx:id="tfDescricao" prefWidth="438.0" text="Descrição" />
+                  <TableColumn fx:id="tfDescricao" prefWidth="338.0" text="Descrição" />
               </columns>
                <VBox.margin>
                   <Insets left="40.0" right="40.0" top="40.0" />

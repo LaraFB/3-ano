@@ -36,6 +36,7 @@ public class HomeController {
         context = Context.getInstance();
         saldoRealText.setText(formatarNumero(context.getSaldoReal()));
         saldoDisponivelText.setText(formatarNumero(context.getSaldoDisponivel()));
+        totalDespesasText.setText(formatarNumero(context.getTotalDespesas()));
         /*BalanceText.setText(String.valueOf(context.getBudgetRestante()) + " €");
         TotalExpenseText.setText(String.valueOf(context.getBudgetGasto()) + " €");*/
     }

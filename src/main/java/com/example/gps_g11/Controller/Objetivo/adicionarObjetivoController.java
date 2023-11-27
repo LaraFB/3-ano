@@ -69,7 +69,7 @@ public class adicionarObjetivoController implements Initializable {
     }
 
     public void onBackToObjetivos(){ sideBarController.onObjetivos();}
-    public void onBackToHomePage(){ sideBarController.onHomePage();}
+    //public void onBackToHomePage(){ sideBarController.onHomePage();}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

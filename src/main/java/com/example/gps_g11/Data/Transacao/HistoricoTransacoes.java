@@ -61,22 +61,16 @@ public class HistoricoTransacoes implements Serializable {
         return transacoes.stream().filter(transacao -> transacao.getCategoria().equals(categoria)).collect(Collectors.toList());
     }
 
-    public List<Transacao> realizarPesquisa(String tipoTransacao, String filtroAvancado, String categoria, LocalDate data, String ordenacao) {
+    public List<Transacao> realizarPesquisa(String tipoTransacao, String categoria, LocalDate data, String ordenacao) {
         List<Transacao> resultadoPesquisa = new ArrayList<>(transacoes);
         if (!"Sem filtro".equals(tipoTransacao)) {
             resultadoPesquisa = resultadoPesquisa.stream().filter(transacao -> tipoTransacao.equals(transacao.getTipo() + "s")).collect(Collectors.toList());
         }
-        if (!"Sem filtro".equals(filtroAvancado)) {
-            if ("Categoria".equals(filtroAvancado)) {
-                resultadoPesquisa = resultadoPesquisa.stream()
-                        .filter(transacao -> {
-                            Categoria transacaoCategoria = transacao.getCategoria();
-                            return transacaoCategoria != null && categoria.equals(transacaoCategoria.getNome());
-                        })
-                        .collect(Collectors.toList());
-            } else if ("Data".equals(filtroAvancado)) {
-                resultadoPesquisa = resultadoPesquisa.stream().filter(transacao -> transacao.getData().isEqual(data)).collect(Collectors.toList());
-            }
+        if (!"Sem filtro".equals(categoria)) {
+            resultadoPesquisa = resultadoPesquisa.stream().filter(transacao -> categoria.equals(transacao.getCategoria().getNome())).collect(Collectors.toList());
+        }
+        if (data != null) {
+            resultadoPesquisa = resultadoPesquisa.stream().filter(transacao -> data.equals(transacao.getData())).collect(Collectors.toList());
         }
         if (!"Sem filtro".equals(ordenacao)) {
             resultadoPesquisa = ordenarTransacoes(resultadoPesquisa, ordenacao);
@@ -85,6 +79,9 @@ public class HistoricoTransacoes implements Serializable {
     }
 
     private List<Transacao> ordenarTransacoes(List<Transacao> transacoes, String ordenacao) {
+        if(ordenacao == null){
+            return transacoes;
+        }
         switch (ordenacao) {
             case "Categoria por ordem alfabética":
                 return transacoes.stream().sorted(Comparator.comparing(transacao -> transacao.getCategoria().getNome())).collect(Collectors.toList());

@@ -37,7 +37,7 @@ public class editarObjetivoController implements Initializable{
     }
 
     public void onBackToObjetivos(){ sideBarController.onObjetivos();}
-    public void onBackToHomePage(){ sideBarController.onHomePage();}
+    //public void onBackToHomePage(){ sideBarController.onHomePage();}
     public void onGuardar(){
         if(tfNome.getText().isEmpty() ){
             msgError.setVisible(true);

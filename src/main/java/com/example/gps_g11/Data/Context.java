@@ -28,6 +28,7 @@ public class Context {
 
 
 
+
     /*public String getNomeBolsa(){
         return contextData.getBudget().getBolsa().getNome();
     }
@@ -38,7 +39,6 @@ public class Context {
     public double getValorGastoBolsa(){
         return contextData.getBudget().getBolsa().getValorGasto();
     }*/
-
     /**Categorias*/
     public List<Categoria> getCategoriasList(){
         return contextData.getListaCategorias().getCategorias();
@@ -94,6 +94,9 @@ public class Context {
     public double getSaldoDisponivel(){
         return contextData.getBudget().getSaldoDisponivel();
     }
+    public double getTotalDespesas() {
+        return contextData.getBudget().getTotalDespesas();
+    }
 
     /**Historico de transacoes*/
     public int adicionarTransacao(String tipo, String descricao,String nomeCategoria, LocalDate date,double montante){
@@ -124,7 +127,7 @@ public class Context {
     public List<Transacao> getTransacoes(){
         return contextData.getHistoricoTransacoes().buscarTodasTransacoes();
     }
-   /* *//**Historico de Despesas*//*
+    /* *//**Historico de Despesas*//*
     public boolean addExpense(String category, String description, LocalDate date, float value, boolean recurring) {
         if(value < contextData.getBudget().getBudgetRestante()){
             contextData.getHistoricoTransacoes().adicionarDespesa(category, description, date, value, recurring);
@@ -167,18 +170,20 @@ public class Context {
         return contextData.getHistoricoEntradas().getEntradas();
     }*/
 
+
     /**Guardar Ficheiro*/
     public void saveToFile() {
         if (contextData != null) {
             contextData.saveToFile(fileName);
         }
     }
+
     private void loadFromFile() {
         contextData = ContextData.loadFromFile(fileName);
     }
 
-    public List<Transacao> realizarPesquisa(String tipoTransacao, String filtroAvancado, String categoria,LocalDate data, String ordenacao) {
-       return contextData.getHistoricoTransacoes().realizarPesquisa(tipoTransacao,filtroAvancado,categoria,data,ordenacao);
+    public List<Transacao> realizarPesquisa(String tipoTransacao, String categoria,LocalDate data, String ordenacao) {
+       return contextData.getHistoricoTransacoes().realizarPesquisa(tipoTransacao,categoria,data,ordenacao);
     }
 
 

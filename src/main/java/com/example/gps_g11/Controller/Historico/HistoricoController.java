@@ -32,21 +32,18 @@ public class HistoricoController implements Initializable {
     private static final String FILTER_MONTANTE_CRESCENTE = "Montante por ordem crescente";
     private static final String FILTER_MONTANTE_DESCRESCENTE = "Montante por ordem decrescente";
 
-
-
     public BorderPane root;
     public ChoiceBox<String> cbTransacao;
     public ChoiceBox<String> cbFiltrosAvancados;
     public ChoiceBox<String> cbEnvelopes;
     public DatePicker dpDate;
     public ChoiceBox<String> cbOrdenar;
-    public Button btnRemoverFiltros;
-    public Button btnPesquisa;
     public TableView<Transacao> tableView;
     public TableColumn<Transacao, Float> tcMontante;
     public TableColumn<Transacao, LocalDate> tfData;
     public TableColumn<Transacao, String> tfEnvelope;
     public TableColumn<Transacao, String> tfDescricao;
+    public TableColumn<Transacao, String> tcTransação;
     private SideBarController sideBarController;
     private Context context;
     private ObservableList<Transacao> transacaos = FXCollections.observableArrayList();
@@ -54,10 +51,6 @@ public class HistoricoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         context = Context.getInstance();
-        /*context.adicionarTransacao("Despesa","Descricao",new Categoria("Propinas"), LocalDate.of(2023, 11, 16),100);
-        context.adicionarTransacao("Entrada","Descricao1",null, LocalDate.of(2023, 11, 15),200);
-        context.adicionarTransacao("Despesa","Descricao2",new Categoria("Renda"), LocalDate.of(2024, 11, 15),300);
-        context.adicionarTransacao("Entrada","Descricao3",null, LocalDate.of(2023, 12, 15),400);*/
         configurarTabela();
         configurarChoiceBoxs();
         configurarListeners();
@@ -68,9 +61,6 @@ public class HistoricoController implements Initializable {
         ObservableList<String> parametrosTransacao = FXCollections.observableArrayList(
             NO_FILTER,FILTER_DESPESAS,FILTER_ENTRADAS
         );
-        ObservableList<String> parametrosFiltros = FXCollections.observableArrayList(
-            NO_FILTER,FILTER_CATEGORIA,FILTER_DATA
-        );
         ObservableList<String> parametrosOrdenacao = FXCollections.observableArrayList(
             NO_FILTER,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_MONTANTE_DESCRESCENTE
         );
@@ -78,61 +68,54 @@ public class HistoricoController implements Initializable {
         ObservableList<String> parametrosCategorias = FXCollections.observableArrayList(
                 NO_FILTER
         );
-        for (Categoria categoria : context.getCategoriasList()) {
-            parametrosCategorias.add(categoria.getNome());
-        }
-
-
+        parametrosCategorias.addAll(context.getCategoriaNomes());
 
         cbTransacao.setItems(parametrosTransacao);
         cbTransacao.setValue(NO_FILTER);
-
-        cbFiltrosAvancados.setItems(parametrosFiltros);
-        cbFiltrosAvancados.setValue(NO_FILTER);
 
         cbOrdenar.setItems(parametrosOrdenacao);
         cbOrdenar.setValue(NO_FILTER);
 
         cbEnvelopes.setItems(parametrosCategorias);
         cbEnvelopes.setValue(NO_FILTER);
+        /*
         mostrarDatePicker(false);
-        mostrarChoiceBox(false);
+        mostrarChoiceBox(false);*/
     }
 
     private void configurarListeners() {
-        cbFiltrosAvancados.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            dpDate.setValue(null);
-            if (FILTER_DATA.equals(newValue)) {
-                mostrarDatePicker(true);
-                mostrarChoiceBox(false);
-            } else if (FILTER_CATEGORIA.equals(newValue)) {
-                mostrarDatePicker(false);
-                mostrarChoiceBox(true);
-            } else {
-                mostrarDatePicker(false);
-                mostrarChoiceBox(false);
-            }
+        cbEnvelopes.valueProperty().addListener((observable,oldValue,newValue) -> {
+            update();
         });
 
         cbTransacao.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             atualizarEscolhasOrdenar(newValue);
         });
 
+        cbOrdenar.valueProperty().addListener((observable,oldValue,newValue) -> {
+            update();
+        });
+        dpDate.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
+            System.out.println("Here");
+            update();
+        }));
+
     }
     private void atualizarEscolhasOrdenar(String tipoTransacao) {
         ObservableList<String> escolhasOrdenar;
         if ("Despesas".equals(tipoTransacao)) {
+            cbEnvelopes.setDisable(false);
             escolhasOrdenar = FXCollections.observableArrayList(NO_FILTER,FILTER_CATEGORIA_ORDEM_ALFABETICA,FILTER_CATEGORIA_ORDEM_INVERSA_ALFABETICA
             ,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_DATA_DECRESCENTE);
         }else {
+            cbEnvelopes.setDisable(true);
             escolhasOrdenar = FXCollections.observableArrayList(NO_FILTER,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_DATA_DECRESCENTE);
         }
-
         cbOrdenar.setItems(escolhasOrdenar);
-        cbOrdenar.setValue(escolhasOrdenar.isEmpty() ? null : escolhasOrdenar.get(0));  // Define o primeiro valor, se disponível
+        cbOrdenar.setValue(NO_FILTER);  // Define o primeiro valor, se disponível
     }
 
-    private void mostrarDatePicker(boolean mostrar) {
+    /*private void mostrarDatePicker(boolean mostrar) {
         dpDate.setVisible(mostrar);
         dpDate.setManaged(mostrar);
     }
@@ -140,8 +123,8 @@ public class HistoricoController implements Initializable {
     private void mostrarChoiceBox(boolean mostrar) {
         cbEnvelopes.setVisible(mostrar);
         cbEnvelopes.setManaged(mostrar);
-    }
-    private void limparFiltros() {
+    }*/
+    /*private void limparFiltros() {
         dpDate.setValue(null);
         cbTransacao.setValue(NO_FILTER);
         cbFiltrosAvancados.setValue(NO_FILTER);
@@ -150,15 +133,20 @@ public class HistoricoController implements Initializable {
         mostrarDatePicker(false);
         mostrarChoiceBox(false);
         update();
-    }
-    public void onRemoverFiltros(){
+    }*/
+    /*public void onRemoverFiltros(){
         limparFiltros();
-    }
+    }*/
 
     private void update(){
-        tableView.getItems().clear();
+        String tipoTransacao = cbTransacao.getValue();
+        String categoria = cbEnvelopes.getValue();
+        LocalDate date = dpDate.getValue();
+        String ordenacao = cbOrdenar.getValue();
+
         transacaos.clear();
-        transacaos.addAll(context.getTransacoes());
+        tableView.getItems().clear();
+        transacaos.addAll(context.realizarPesquisa(tipoTransacao, categoria,date, ordenacao));
         tableView.setItems(transacaos);
     }
 
@@ -166,27 +154,19 @@ public class HistoricoController implements Initializable {
         this.sideBarController = sideBarController;
     }
     private void configurarTabela() {
+        tcTransação.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         tcMontante.setCellValueFactory(new PropertyValueFactory<>("montante"));
         tfData.setCellValueFactory(new PropertyValueFactory<>("data"));
         tfDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
 
         tfEnvelope.setCellValueFactory(cellData -> {
             Categoria categoria = cellData.getValue().getCategoria();
-            return new SimpleStringProperty(categoria != null ? categoria.getNome() : "Não existe categoria para esta transação");
+            return new SimpleStringProperty(categoria != null ? categoria.getNome() : "");
         });
     }
 
     public void onPesquisar(){
-        String tipoTransacao = cbTransacao.getValue();
-        String filtroAvancado = cbFiltrosAvancados.getValue();
-        String categoria = cbEnvelopes.getValue();
-        LocalDate date = dpDate.getValue();
-        String ordenacao = cbOrdenar.getValue();
 
-        transacaos.clear();
-        tableView.getItems().clear();
-        transacaos.addAll(context.realizarPesquisa(tipoTransacao, filtroAvancado, categoria,date, ordenacao));
-        tableView.setItems(transacaos);
     }
 
 
