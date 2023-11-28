@@ -13,10 +13,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class EnvelopeController implements Initializable {
@@ -106,12 +108,17 @@ public class EnvelopeController implements Initializable {
 
         Label legendaLabel = new Label(categoria.getNome());
         legendaLabel.setAlignment(Pos.CENTER);
+        legendaLabel.setFont(new Font(14));
         legendaLabel.setMaxWidth(Double.MAX_VALUE);
         VBox.setVgrow(legendaLabel, Priority.ALWAYS);
 
-        VBox vbox = new VBox(imageView, legendaLabel);
-        vbox.setAlignment(Pos.CENTER);
-        vbox.setSpacing(5);
+        Label saldoLabel = new Label(formatarNumero(categoria.getValor()) + " €");
+        saldoLabel.setAlignment(Pos.CENTER);
+        saldoLabel.setMaxWidth(Double.MAX_VALUE);
+        VBox.setVgrow(saldoLabel, Priority.ALWAYS);
+
+        VBox vbox = new VBox(imageView, legendaLabel,saldoLabel);
+        vbox.setAlignment(Pos.TOP_CENTER);
 
         button.setGraphic(vbox);
 
@@ -120,6 +127,10 @@ public class EnvelopeController implements Initializable {
         return button;
     }
 
+    private String formatarNumero(double numero) {
+        DecimalFormat formato = new DecimalFormat("#,##0.00");
+        return formato.format(numero);
+    }
     private void handleCategoriaButtonClick(Categoria categoria) {
         // Adicione a lógica de manipulação do botão aqui
     }
