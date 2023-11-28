@@ -488,7 +488,7 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 2: Create methods to notify the user of low funds  
 
   - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
-    - Task 3: Create methods to generate and export reports in PDF and Excel formats
+    - Task 1: Create methods to generate and export reports in PDF and Excel formats
   
 - Story Points: 1L + 3M
 
