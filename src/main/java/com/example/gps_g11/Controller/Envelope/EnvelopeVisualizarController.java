@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class EnvelopeVisualizarController implements Initializable {
+public class EnvelopeVisualizarController{
     private SideBarController sideBarController;
     private Categoria categoria;
     private Context context;
@@ -40,14 +40,6 @@ public class EnvelopeVisualizarController implements Initializable {
 
     public void setCategoria(Categoria categoria){
         this.categoria = categoria;
-        System.out.println("fun"+categoria.getNome());
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //System.out.println("init"+categoria.getNome());
-
         if(categoria == null){
             lblError.setText("Erro ao carregar categoria");
             lblError.setVisible(true);
@@ -56,6 +48,7 @@ public class EnvelopeVisualizarController implements Initializable {
         reset();
         context = Context.getInstance();
     }
+
 
     public void onEditar(){
         tfValor.setDisable(false);
@@ -86,6 +79,13 @@ public class EnvelopeVisualizarController implements Initializable {
             btnGuardar.setDisable(newValue.trim().isEmpty());
             lblError.setVisible(newValue.trim().isEmpty());
         });
+
+        tbtnEnvelopeAberto.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            tbtnEnvelopeFechado.setSelected(!newValue);
+        });
+        tbtnEnvelopeFechado.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            tbtnEnvelopeAberto.setSelected(!newValue);
+        });
     }
 
     private boolean isNumber(String text){
@@ -101,6 +101,10 @@ public class EnvelopeVisualizarController implements Initializable {
         categoria.setNome(tfNome.getText());
         categoria.setDescricao(taDescricao.getText());
         categoria.setValor(Double.parseDouble(tfValor.getText()));
+
+        if(tbtnEnvelopeAberto.isSelected())categoria.setAberto(true);
+        else categoria.setAberto(false);
+
         reset();
     }
 
@@ -115,8 +119,8 @@ public class EnvelopeVisualizarController implements Initializable {
         tfNome.setDisable(true);
         taDescricao.setDisable(true);
 
-        if(categoria.isAberto()) tbtnEnvelopeAberto.getStyleClass().add("btn_history");
-        else tbtnEnvelopeFechado.getStyleClass().add("btn_history");
+        if(categoria.isAberto()) tbtnEnvelopeAberto.setSelected(true);
+        else tbtnEnvelopeFechado.setSelected(true);
 
         tbtnEnvelopeAberto.setDisable(true);
         tbtnEnvelopeFechado.setDisable(true);
