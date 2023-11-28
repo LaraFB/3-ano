@@ -252,12 +252,11 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Risk List
 
 
-- RSK1 – PxI: 4x5=20; The team doesn't have any experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-- RSK2 – PxI: 3x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
+- RSK1 – PxI: 3x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
+- RSK2 – PxI: 2x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
 - RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
 
 ##### Mitigation Actions (threats>=20)
-- RSK1 - AS; Perform regular check-ins twice a week during sprints and meetings;
 
 ***
 
