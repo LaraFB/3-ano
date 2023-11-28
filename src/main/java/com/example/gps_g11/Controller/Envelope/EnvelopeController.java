@@ -132,7 +132,9 @@ public class EnvelopeController implements Initializable {
         return formato.format(numero);
     }
     private void handleCategoriaButtonClick(Categoria categoria) {
-        // Adicione a lógica de manipulação do botão aqui
+        sideBarController.verEnvelope(categoria);
+        System.out.println("envelopes"+categoria.getNome());
+
     }
 
     @Override
@@ -152,4 +154,5 @@ public class EnvelopeController implements Initializable {
     }
 
     public void onGuardaDinheiro() {sideBarController.adicionaDinheiroEnvelope(); }
+
 }

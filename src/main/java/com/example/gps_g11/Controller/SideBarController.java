@@ -3,6 +3,7 @@ package com.example.gps_g11.Controller;
 import com.example.gps_g11.Controller.Envelope.EnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController;
+import com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController;
 import com.example.gps_g11.Controller.Estatistica.EstatisticaController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
 import com.example.gps_g11.Controller.Home.HomeController;
@@ -12,6 +13,7 @@ import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
 
 import com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController;
 import com.example.gps_g11.Controller.Objetivo.editarObjetivoController;
+import com.example.gps_g11.Data.Categoria.Categoria;
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,6 +29,8 @@ public class SideBarController {
     public Button btnEstatistica;
     private Context context;
     public Pane ContentPane;
+
+    private Categoria c;
 
     public void onHomePage(){
         loadFXML("Home/HomePage.fxml");
@@ -73,6 +77,13 @@ public class SideBarController {
                     case "Envelope/EnvelopeAdicionaDinheiro.fxml":
                         EnvelopeAdicionaDinheiroController envelopeGuardaDinheiroController =loader.getController();
                         envelopeGuardaDinheiroController.setSideBar(this);
+                        putBtnActive(btnEnvelope);
+                        break;
+                    case "Envelope/EnvelopeVisualizar.fxml":
+                        EnvelopeVisualizarController envelopeVisualizarController =loader.getController();
+                        envelopeVisualizarController.setSideBar(this);
+                        System.out.println("sidebar-loadfml"+c.getNome());
+                        envelopeVisualizarController.setCategoria(c);
                         putBtnActive(btnEnvelope);
                         break;
                     case "Home/HomePageAdicionarDivida.fxml":
@@ -144,6 +155,11 @@ public class SideBarController {
     public void adicionaDinheiroEnvelope(){loadFXML("Envelope/EnvelopeAdicionaDinheiro.fxml");}
     public void adicionarDespesa(){
         loadFXML("Home/HomePageAdicionarDivida.fxml");
+    }
+    public void verEnvelope(Categoria c){
+        this.c = c;
+        System.out.println("sidebarcontroller"+c.getNome());
+        loadFXML("Envelope/EnvelopeVisualizar.fxml");
     }
 
     public void adicionarSaldo() {

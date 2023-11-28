@@ -87,14 +87,14 @@ public class EnvelopeCriaEnvelopeController {
             lblError.setText("Saldo adicionao com sucesso");
             lblError.setTextFill(Color.GREEN);
             if(taDescricao.getText().isEmpty()){
-                if( context.adicionarCategoriaPorNome(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),toggleButtonAtivo == tbtnEnvelopeFechado) == -1){
+                if( context.adicionarCategoriaPorNome(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),toggleButtonAtivo == tbtnEnvelopeAberto) == -1){
                     lblError.setText("Saldo insuficiente");
                     lblError.setTextFill(Color.RED);
                 }else{
                     resetCampos();
                 }
             }else{
-                if(context.adicionarCategoriaNomeDescricao(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeFechado) == -1){
+                if(context.adicionarCategoriaNomeDescricao(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto) == -1){
                     lblError.setText("Saldo insuficiente");
                     lblError.setTextFill(Color.RED);
                 }else{
