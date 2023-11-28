@@ -5,11 +5,16 @@ import com.example.gps_g11.Data.Categoria.Categoria;
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.util.Pair;
 
 import java.net.URL;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 
 public class EnvelopeVisualizarController{
     private SideBarController sideBarController;
@@ -32,6 +37,8 @@ public class EnvelopeVisualizarController{
     private Button btnGuardar;
     @FXML
     private Label lblError;
+    @FXML
+    private Button btnAdcDinheiro;
 
 
     public void setSideBar(SideBarController sideBarController) {
@@ -127,10 +134,26 @@ public class EnvelopeVisualizarController{
         btnGuardar.setVisible(false);
 
         lblError.setVisible(false);
+
+        //if(!categoria.isAberto())
+        //    btnAdcDinheiro.setVisible(false);
+        //else btnAdcDinheiro.setVisible(true);
     }
 
     public void onEliminar(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setGraphic(null);
+        alert.setHeaderText(null);
+        alert.setTitle("Confirmar eliminação");
+        alert.setContentText("Tem a certeza que deseja eliminar o envelope " + categoria.getNome() +"?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (!(result.get() == ButtonType.OK)){
+            return;
+        }
+
         try {
+            context.adicionarTransacao("Envelope eliminado","Saldo reposto do envelope " + categoria.getNome(), LocalDate.now(),categoria.getValor());
             context.getCategoriasList().remove(categoria);
         }catch (Exception e){
             lblError.setText("Erro ao eliminar envelope...");
@@ -152,9 +175,113 @@ public class EnvelopeVisualizarController{
         btnGuardar.setVisible(false);
 
         lblError.setVisible(false);
+        sideBarController.onEnvelope();
     }
 
     public void onBackToEnvelope(){
         sideBarController.onEnvelope();
+    }
+
+    public void onAdcDinheiro(){
+        if(context.getCategoriasList().size() == 1){ //se so ha esta categoria
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText(null);
+            alert.setGraphic(null);
+            alert.setTitle("Aviso");
+            alert.setContentText("Não existem envelopes de onde retirar dinheiro.");
+            alert.showAndWait();
+            return;
+        }
+        boolean haAbertos = false;
+        for (int x = 0; x < context.getCategoriasList().size(); x++)
+            if (context.getCategoriasList().get(x).isAberto() && context.getCategoriasList().get(x).getNome().compareTo(categoria.getNome()) != 0) {
+                haAbertos = true;
+                break;
+            }
+        //se saiu e n ha+ envelopes abertos
+        if(haAbertos == false){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText(null);
+            alert.setGraphic(null);
+            alert.setTitle("Aviso");
+            alert.setContentText("Não existem envelopes de onde retirar dinheiro.");
+            alert.showAndWait();
+            return;
+        }
+
+        //pop up:
+        Dialog<Pair<String, Integer>> popUp = new Dialog<>();
+        popUp.setHeaderText(null);
+        popUp.setGraphic(null);
+        popUp.setTitle("Adicionar dinheiro de outro envelope");
+
+        popUp.getDialogPane().getStylesheets().add("@../../Style.css");
+
+        ButtonType btnOkType = new ButtonType("Adicionar", ButtonBar.ButtonData.OK_DONE);
+        popUp.getDialogPane().getButtonTypes().addAll(btnOkType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        //escolher envelope
+        ChoiceBox<String> envelopes = new ChoiceBox<>();
+        for(int i=0; i<context.getCategoriasList().size(); i++)
+            if(context.getCategoriasList().get(i).isAberto() && context.getCategoriasList().get(i).getNome().compareTo(categoria.getNome()) != 0) {
+                envelopes.getItems().add(context.getCategoriasList().get(i).getNome());
+                if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasList().get(i).getNome());
+            }
+
+        envelopes.setStyle("-fx-background-color:  #9FCDFF");
+
+        //escolher valor
+        TextField valor = new TextField();
+        valor.setPromptText("");
+        valor.setStyle("-fx-background-color:  #DEEFFF");
+
+        grid.add(new Label("Envelope:"), 0, 0);
+        grid.add(envelopes, 1, 0);
+        Label lValor = new Label("Valor (entre 0 e " + context.getCategoriaByName(envelopes.getValue()).getValor() + "):      ");
+        grid.add(lValor, 0, 1);
+        grid.add(valor, 1, 1);
+
+        Node btnOk = popUp.getDialogPane().lookupButton(btnOkType);
+        btnOk.setDisable(true);
+        btnOk.getStyleClass().add("btn");
+
+        valor.textProperty().addListener((observable, oldValue, newValue) -> {
+            btnOk.setDisable(!isNumber(newValue));
+            btnOk.setDisable(newValue.trim().isEmpty());
+            btnOk.setDisable(Double.parseDouble(newValue) <= 0);
+            btnOk.setDisable(Double.parseDouble(newValue) > context.getCategoriaByName(envelopes.getValue()).getValor());
+
+        });
+
+        envelopes.valueProperty().addListener((observable, oldValue, newValue) -> {
+            lValor.setText("Valor (entre 0 e " + context.getCategoriaByName(newValue).getValor() + "): ");
+            //btnOk.setDisable(envelopes.getValue().trim().isEmpty());
+            if(!valor.getText().isEmpty())
+                btnOk.setDisable(Double.parseDouble(valor.getText()) > context.getCategoriaByName(newValue).getValor());
+        });
+
+        popUp.getDialogPane().setContent(grid);
+        popUp.showAndWait();
+
+        //fechou o popup: temos os valores:
+        double valoraretirar = Double.parseDouble(valor.getText());
+        String envelopearetirar = envelopes.getValue();
+
+        //retira dinheiro do envelope
+        context.getCategoriaByName(envelopearetirar).setValor(
+                context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
+        );
+
+        //coloca neste envelope
+        categoria.setValor(
+                categoria.getValor() + valoraretirar
+        );
+
+        reset();
     }
 }

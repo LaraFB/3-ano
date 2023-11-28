@@ -4,17 +4,18 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.ObjetivoController">
+<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.ObjetivoController">
    <top>
       <HBox prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <PieChart fx:id="graph" labelLineLength="16.0" prefHeight="200.0" prefWidth="500.0" stylesheets="@../../Style.css" title="Dinheiro poupado poupado ">
+            <PieChart fx:id="pieObtido" labelLineLength="16.0" prefHeight="200.0" prefWidth="500.0" styleClass="chart-pie" stylesheets="@../../Style.css" title="Dinheiro obtido">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -22,7 +23,7 @@
                   <Insets top="20.0" />
                </HBox.margin>
             </PieChart>
-            <PieChart fx:id="graph1" labelLineLength="16.0" prefHeight="200.0" prefWidth="500.0" stylesheets="@../../Style.css" title=" Dinheiro poupado em compras">
+            <PieChart fx:id="pieEmfalta" labelLineLength="0.0" prefHeight="200.0" prefWidth="500.0" styleClass="chart-pie" stylesheets="@../../Style.css" title="Dinheiro que falta">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -36,32 +37,14 @@
    <left>
       <HBox prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <PieChart fx:id="graph2" labelLineLength="16.0" prefHeight="200.0" prefWidth="230.0" title="Budget do mês">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
+            <ScrollPane fx:id="spObjetivos" prefHeight="350.0" prefWidth="936.0" style="-fx-background-color: #DEEFFF;">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
-            </PieChart>
-            <PieChart fx:id="graph3" labelLineLength="16.0" prefHeight="200.0" prefWidth="230.0" title="Despesas pagas">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </PieChart>
-            <PieChart fx:id="graph4" labelLineLength="16.0" prefHeight="100.0" prefWidth="230.0" title="Menos jantares">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </PieChart>
-            <PieChart fx:id="graph5" labelLineLength="16.0" prefHeight="100.0" prefWidth="230.0" stylesheets="@../../Style.css" title="Propinas pagas">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </PieChart>
+               <content>
+                  <VBox fx:id="vBoxObjetivos" prefHeight="145.0" prefWidth="906.0" />
+               </content>
+            </ScrollPane>
             <VBox alignment="BOTTOM_CENTER" prefHeight="350.0" prefWidth="80.0" spacing="20.0">
                <children>
                   <Button fx:id="editObj" maxHeight="50.0" maxWidth="50.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEditObjective" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">

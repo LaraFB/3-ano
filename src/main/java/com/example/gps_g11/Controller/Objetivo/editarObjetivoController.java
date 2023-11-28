@@ -190,7 +190,6 @@ public class editarObjetivoController implements Initializable{
     }
 
     public void onAdcDinheiro(){
-
         if(context.getCategoriasList().isEmpty()){ //se n houverem envelopes mostra um aviso e sai
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
@@ -239,7 +238,7 @@ public class editarObjetivoController implements Initializable{
         for(int i=0; i<context.getCategoriasList().size(); i++)
             if(context.getCategoriasList().get(i).isAberto()) {
                 envelopes.getItems().add(context.getCategoriasList().get(i).getNome());
-                if(envelopes.getValue().trim().isEmpty()) envelopes.setValue(context.getCategoriasList().get(i).getNome());
+                if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasList().get(i).getNome());
             }
 
         envelopes.setStyle("-fx-background-color:  #9FCDFF");
@@ -268,9 +267,13 @@ public class editarObjetivoController implements Initializable{
         });
 
         envelopes.valueProperty().addListener((observable, oldValue, newValue) -> {
-            lValor.setText("Valor (entre 0 e " + context.getCategoriaByName(newValue).getValor() + "): ");
+            if(context.getListaObjetivos().getObjetivo(index).getMissingValue() < context.getCategoriaByName(newValue).getValor()) //se precisa de menos dinheiro q o envelope tem
+                lValor.setText("Valor (entre 0 e " + context.getListaObjetivos().getObjetivo(index).getMissingValue() + "): ");
+            else //>=
+                lValor.setText("Valor (entre 0 e " + context.getCategoriaByName(newValue).getValor() + "): ");
             //btnOk.setDisable(envelopes.getValue().trim().isEmpty());
-            btnOk.setDisable(Double.parseDouble(valor.getText()) > context.getCategoriaByName(newValue).getValor());
+            if(!valor.getText().isEmpty())
+                btnOk.setDisable(Double.parseDouble(valor.getText()) > context.getCategoriaByName(newValue).getValor());
         });
 
         popUp.getDialogPane().setContent(grid);
@@ -279,6 +282,16 @@ public class editarObjetivoController implements Initializable{
         //fechou o popup: temos os valores:
         double valoraretirar = Double.parseDouble(valor.getText());
         String envelopearetirar = envelopes.getValue();
+
+        //retira o valor do envelope:
+        context.getCategoriaByName(envelopearetirar).setValor(
+                context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
+        );
+
+        //coloca no objetivo
+        context.getListaObjetivos().getObjetivo(index).addToGoal(valoraretirar);
+
+        update();
     }
 
 
