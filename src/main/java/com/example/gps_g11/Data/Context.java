@@ -44,6 +44,10 @@ public class Context {
         return contextData.getListaCategorias().getCategorias();
     }
 
+    public Categoria getCategoriaByName(String nome){
+        return contextData.getListaCategorias().getCategoriaPorNome(nome);
+    }
+
     public List<String> getCategoriaNomes() {
         List<String> list = new ArrayList<>();
         for (Categoria categoria : contextData.getListaCategorias().getCategorias()) {

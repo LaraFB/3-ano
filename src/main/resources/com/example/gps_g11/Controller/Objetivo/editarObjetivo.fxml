@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.editarObjetivoController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.editarObjetivoController">
    <right>
       <Button fx:id="btnNext" mnemonicParsing="false" onAction="#onNext" prefHeight="100.0" prefWidth="100.0" styleClass="btn" text="&gt;" textFill="#545454" BorderPane.alignment="CENTER">
          <font>
@@ -112,18 +112,24 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <ProgressBar fx:id="pbObjetivo" opacity="0.4" prefHeight="20.0" prefWidth="660.0" progress="0.39">
+            <ProgressBar fx:id="pbObjetivo" opacity="0.4" prefHeight="29.0" prefWidth="660.0" progress="0.39">
                <VBox.margin>
                   <Insets left="50.0" />
                </VBox.margin></ProgressBar>
-            <Label fx:id="msgError" prefHeight="20.0" prefWidth="150.0" text="Mensagem de Erro" textAlignment="JUSTIFY" textFill="#ff676a">
-               <font>
-                  <Font name="Times New Roman" size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="300.0" />
-               </VBox.margin>
-            </Label>
+            <HBox alignment="CENTER_RIGHT" prefHeight="48.0" prefWidth="780.0" spacing="5.0">
+               <children>
+                  <Label fx:id="msgError" alignment="TOP_LEFT" prefHeight="20.0" prefWidth="571.0" text="Mensagem de Erro" textAlignment="JUSTIFY" textFill="#ff676a">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAdcDinheiro" mnemonicParsing="false" onAction="#onAdcDinheiro" prefHeight="40.0" prefWidth="184.0" styleClass="btn" text="Adicionar dinheiro">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -171,12 +177,12 @@
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnCancelar1" mnemonicParsing="false" onAction="#onDelete" prefHeight="40.0" prefWidth="100.0" styleClass="category-delete" text="Eliminar">
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#onDelete" prefHeight="40.0" prefWidth="100.0" styleClass="category-delete" text="Eliminar">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onGuardar" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Salvar Alterações">
+            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#onGuardar" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Salvar Alterações">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
