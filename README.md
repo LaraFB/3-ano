@@ -468,15 +468,18 @@ By the end of the second realease we must have all the user stories with "must" 
 
 ##### Sprint Plan
 
-- Goal: User Interfeca aperfeiçoada, terminar todos os metodos em falta, e corrigir bugs que possam existir 
+- Goal: Notifications for goals or low funds, report generation and exportation to PDF
 
 - Roles:
-  - Product Owner: 
-  - Scrum Master: 
+  - Product Owner: Artur Yurchuck
+  - Scrum Master: Lara Bizarro
 - Dates: from 1/Dez to 15/Dez, 2 weeks
 
-
 - To do:
+
+  - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
+    - Task 1: Implement feature to allow generation of a report
+    - Task 2: Create methods to generate report
 
   - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
     - Task 4: Create notifications methods
@@ -484,10 +487,6 @@ By the end of the second realease we must have all the user stories with "must" 
   - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
     - Task 2: Create methods to notify the user of low funds  
 
-  - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
-    - Task 1: Implement feature to allow generation of a report
-    - Task 2: Create methods to generate report
-     
   - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
     - Task 1: Create feature to generate a PDF or Excel report
     - Task 2: Create methods to export reports
