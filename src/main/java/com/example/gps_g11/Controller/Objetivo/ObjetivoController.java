@@ -59,7 +59,7 @@ public class ObjetivoController implements Initializable {
             return;
 
         int i = 0;
-        int buttonsPerHBox = 3;
+        int buttonsPerHBox = 4;
         vBoxObjetivos.getChildren().clear();
         HBox currentHBox = null;
 
@@ -87,14 +87,16 @@ public class ObjetivoController implements Initializable {
         }
 
         PieChart.Data totalValor = new PieChart.Data("Dinheiro necessário", somaValorTotal);
+        PieChart.Data totalValor2 = new PieChart.Data("Dinheiro necessário", somaValorTotal);
         PieChart.Data totalObtido = new PieChart.Data("Dinheiro total obtido", somaObtido);
         PieChart.Data totalEmFalta = new PieChart.Data("Dinheiro total que falta", somaEmFalta);
+
 
         pieEmfalta.getData().add(totalValor);
         pieEmfalta.getData().add(totalEmFalta);
         pieEmfalta.setLabelsVisible(false);
 
-        pieObtido.getData().add(totalValor);
+        pieObtido.getData().add(totalValor2);
         pieObtido.getData().add(totalObtido);
         pieObtido.setLabelsVisible(false);
     }
@@ -108,10 +110,10 @@ public class ObjetivoController implements Initializable {
         pie.getData().add(emFalta);
 
         pie.setLabelsVisible(false);
-        pie.setLegendVisible(true);
         pie.setTitle(o.getNome());
 
         pie.getStyleClass().add("chart-pie");
+        pie.setPrefSize(200,300);
 
         return pie;
     }
