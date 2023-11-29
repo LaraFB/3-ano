@@ -151,6 +151,8 @@
 .chart{
     -fx-font-family: "Times New Roman";
     -fx-fill: white;
+    -fx-background-color: none;
+    -fx-border-color: none;
 }
 .chart-pie-label-line {
     -fx-stroke: #545454;

@@ -15,7 +15,7 @@
    <top>
       <HBox prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <PieChart fx:id="pieObtido" labelLineLength="16.0" prefHeight="200.0" prefWidth="500.0" styleClass="chart-pie" stylesheets="@../../Style.css" title="Dinheiro obtido">
+            <PieChart fx:id="pieObtido" labelLineLength="16.0" prefHeight="200.0" prefWidth="500.0" styleClass="chart-pie, chart" stylesheets="@../../Style.css" title="Dinheiro obtido">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -23,7 +23,7 @@
                   <Insets top="20.0" />
                </HBox.margin>
             </PieChart>
-            <PieChart fx:id="pieEmfalta" labelLineLength="0.0" prefHeight="200.0" prefWidth="500.0" styleClass="chart-pie" stylesheets="@../../Style.css" title="Dinheiro que falta">
+            <PieChart fx:id="pieEmfalta" labelLineLength="16.0" prefHeight="200.0" prefWidth="500.0" styleClass="chart-pie, chart" stylesheets="@../../Style.css" title="Dinheiro que falta">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -38,11 +38,12 @@
       <HBox prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
             <ScrollPane fx:id="spObjetivos" prefHeight="350.0" prefWidth="936.0" style="-fx-background-color: #DEEFFF;">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
                <content>
-                  <VBox fx:id="vBoxObjetivos" prefHeight="145.0" prefWidth="906.0" />
+                  <VBox fx:id="vBoxObjetivos" alignment="CENTER">
+                     <padding>
+                        <Insets left="50.0" right="10.0"/>
+                     </padding>
+                  </VBox>
                </content>
             </ScrollPane>
             <VBox alignment="BOTTOM_CENTER" prefHeight="350.0" prefWidth="80.0" spacing="20.0">
