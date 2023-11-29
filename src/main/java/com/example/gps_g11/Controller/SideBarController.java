@@ -9,6 +9,7 @@ import com.example.gps_g11.Controller.Historico.HistoricoController;
 import com.example.gps_g11.Controller.Home.HomeController;
 import com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController;
 import com.example.gps_g11.Controller.Home.HomePageAdicionarSaldoController;
+import com.example.gps_g11.Controller.Home.HomeResetController;
 import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
 
 import com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController;
@@ -115,6 +116,12 @@ public class SideBarController {
                         EstatisticaController estatitcaController = loader.getController();
                         estatitcaController.setSideBar(this);
                         putBtnActive(btnEstatistica);
+                        break;
+                    case "Home/HomePageReset.fxml":
+                        HomeResetController homeResetController =loader.getController();
+                        homeResetController.setSideBar(this);
+                        putBtnActive(btnHomePage);
+                        break;
                     default:
                 }
             }
@@ -167,6 +174,9 @@ public class SideBarController {
     }
 
     public void adicionarObjetivos() { loadFXML("Objetivo/adicionarObjetivo.fxml");}
+
+    public void resetbudget(){loadFXML("Home/HomePageReset.fxml");}
+
     public void editarObjetivos() { loadFXML("Objetivo/editarObjetivo.fxml");}
 }
 

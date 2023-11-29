@@ -3,6 +3,7 @@ package com.example.gps_g11.Data;
 import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
 import com.example.gps_g11.Data.Transacao.Transacao;
 import com.example.gps_g11.Data.Categoria.Categoria;
+import javafx.scene.paint.Color;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -189,7 +190,56 @@ public class Context {
     public List<Transacao> realizarPesquisa(String tipoTransacao, String categoria,LocalDate data, String ordenacao) {
        return contextData.getHistoricoTransacoes().realizarPesquisa(tipoTransacao,categoria,data,ordenacao);
     }
+    public void ResetAutomatico(){
+        LocalDate hoje = LocalDate.now();
+        int diaHoje = hoje.getDayOfMonth();
 
+        if(diaHoje==1){
+            contextData.getBudget().LimpaBudget();
+        }
+    }
+    public void AdicionaDataReset(int dia, int nvezes,String cald,LocalDate hoje){
+        contextData.getBudget().setNvezes(nvezes);
+        contextData.getBudget().setDiaReset(dia);
+        contextData.getBudget().setCald(cald);
+        contextData.getBudget().setHoje(hoje);
+    }
+    private void CalculaProxData(){
+
+        LocalDate hoje = LocalDate.now();
+        int diaHoje = hoje.getDayOfMonth();
+
+        int diah;
+        int mesh = contextData.getBudget().getHoje().getMonth().getValue();
+        int anoh = contextData.getBudget().getHoje().getYear();
+
+        if(contextData.getBudget().getDiaReset() != 0)
+            diah = contextData.getBudget().getDiaReset();
+        else
+            diah = contextData.getBudget().getHoje().getDayOfMonth();
+
+        int nvezes = contextData.getBudget().getNvezes();
+        switch (contextData.getBudget().getCald()) {
+            case "ano":
+                anoh += nvezes;
+                break;
+            case "mes":
+                mesh += nvezes;
+                if(mesh == 13){
+                    anoh ++;
+                    mesh = 1;
+                }
+                break;
+            case "dia":
+                diah += nvezes;
+                //verificar c date picker more easy
+                //verifica diaq
+                break;
+            default:
+        }
+        LocalDate dataSeguinte = LocalDate.of(anoh, mesh, diah);
+        contextData.getBudget().setHoje(dataSeguinte);
+    }
 
 
 
