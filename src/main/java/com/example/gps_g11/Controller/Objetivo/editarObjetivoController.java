@@ -275,23 +275,27 @@ public class editarObjetivoController implements Initializable{
             if(!valor.getText().isEmpty())
                 btnOk.setDisable(Double.parseDouble(valor.getText()) > context.getCategoriaByName(newValue).getValor());
         });
+        ((Button) btnOk).setOnAction(event -> {
+
+            //fechou o popup: temos os valores:
+            double valoraretirar = Double.parseDouble(valor.getText());
+            String envelopearetirar = envelopes.getValue();
+
+            //retira o valor do envelope:
+            context.getCategoriaByName(envelopearetirar).setValor(
+                    context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
+            );
+
+            //coloca no objetivo
+            context.getListaObjetivos().getObjetivo(index).addToGoal(valoraretirar);
+
+            update();
+        });
+
 
         popUp.getDialogPane().setContent(grid);
         popUp.showAndWait();
 
-        //fechou o popup: temos os valores:
-        double valoraretirar = Double.parseDouble(valor.getText());
-        String envelopearetirar = envelopes.getValue();
-
-        //retira o valor do envelope:
-        context.getCategoriaByName(envelopearetirar).setValor(
-                context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
-        );
-
-        //coloca no objetivo
-        context.getListaObjetivos().getObjetivo(index).addToGoal(valoraretirar);
-
-        update();
     }
 
 

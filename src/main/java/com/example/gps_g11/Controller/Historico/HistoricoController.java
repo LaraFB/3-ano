@@ -78,6 +78,7 @@ public class HistoricoController implements Initializable {
 
         cbEnvelopes.setItems(parametrosCategorias);
         cbEnvelopes.setValue(NO_FILTER);
+        cbEnvelopes.setDisable(true);
         /*
         mostrarDatePicker(false);
         mostrarChoiceBox(false);*/
@@ -96,7 +97,6 @@ public class HistoricoController implements Initializable {
             update();
         });
         dpDate.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
-            System.out.println("Here");
             update();
         }));
 
@@ -108,6 +108,7 @@ public class HistoricoController implements Initializable {
             escolhasOrdenar = FXCollections.observableArrayList(NO_FILTER,FILTER_CATEGORIA_ORDEM_ALFABETICA,FILTER_CATEGORIA_ORDEM_INVERSA_ALFABETICA
             ,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_DATA_DECRESCENTE);
         }else {
+            cbEnvelopes.setValue(NO_FILTER);
             cbEnvelopes.setDisable(true);
             escolhasOrdenar = FXCollections.observableArrayList(NO_FILTER,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_DATA_DECRESCENTE);
         }
