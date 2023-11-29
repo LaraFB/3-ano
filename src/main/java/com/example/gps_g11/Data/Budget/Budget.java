@@ -1,6 +1,7 @@
 package com.example.gps_g11.Data.Budget;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,10 @@ public class Budget implements Serializable {
     private double totalDespesas; //Total de despesas gastas
     private double saldoGuardado;
     private boolean excedeuSaldo;
+    private int DiaReset;
+    private int nvezes;
+    private String cald;
+    private LocalDate hoje;
     private Bolsa bolsa;
 
     public Budget(double saldo) {
@@ -18,6 +23,8 @@ public class Budget implements Serializable {
         totalDespesas = 0;
         excedeuSaldo = false;
     }
+
+    public void LimpaBudget (){totalDespesas = 0;}
 
     public double getSaldoReal() {
         return saldoReal;
@@ -70,7 +77,39 @@ public class Budget implements Serializable {
         this.saldoDisponivel += valor;
     }
 
-   /* public List<Envelope> getEnvelopes() {
+    public int getDiaReset() {
+        return DiaReset;
+    }
+
+    public void setDiaReset(int diaReset) {
+        DiaReset = diaReset;
+    }
+
+    public int getNvezes() {
+        return nvezes;
+    }
+
+    public void setNvezes(int nvezes) {
+        this.nvezes = nvezes;
+    }
+
+    public String getCald() {
+        return cald;
+    }
+
+    public void setCald(String cald) {
+        this.cald = cald;
+    }
+
+    public LocalDate getHoje() {
+        return hoje;
+    }
+
+    public void setHoje(LocalDate hoje) {
+        this.hoje = hoje;
+    }
+
+    /* public List<Envelope> getEnvelopes() {
         return envelopes;
     }*/
 

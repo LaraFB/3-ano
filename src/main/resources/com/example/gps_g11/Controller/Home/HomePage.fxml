@@ -106,6 +106,11 @@
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="288.0" spacing="50.0">
                      <children>
+                        <Button fx:id="ResetBudget" mnemonicParsing="false" onAction="#onResetBudget" prefHeight="100.0" prefWidth="200.0" styleClass="btn_history" stylesheets="@../../Style.css" text="Reiniciar (budget)" textFill="#fff8f8">
+                           <font>
+                              <Font name="Times New Roman" size="20.0" />
+                           </font>
+                        </Button>
                         <Button fx:id="AddExpenseBtn" mnemonicParsing="false" onAction="#onAdicionarDespesa" prefHeight="100.0" prefWidth="200.0" styleClass="CancelBtn" stylesheets="@../../Style.css" text="- Despesas" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="20.0" />

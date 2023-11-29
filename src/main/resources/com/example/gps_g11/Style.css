@@ -31,7 +31,7 @@
 .btn_history:selected{-fx-background-color:#63A7F1; }
 
 .check-box .box {
-    -fx-background-color: white;
+    -fx-background-color: #DEEFFF;
     -fx-border-radius: 0px;
 }
 .check-box:selected .mark {-fx-background-color: #545454;}

@@ -20,17 +20,12 @@ public class HomeController {
     public Text saldoDisponivelText;
     public Text totalDespesasText;
     private Context context;
-
     public BorderPane root;
-
     private SideBarController sideBarController;
-
 
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
-
-
 
     public void initialize(){
         context = Context.getInstance();
@@ -50,7 +45,9 @@ public class HomeController {
         sideBarController.adicionarDespesa();
     }
 
-    public void onAdicionarSaldo(ActionEvent actionEvent) {
+    public void onAdicionarSaldo() {
         sideBarController.adicionarSaldo();
     }
+
+    public void onResetBudget(){sideBarController.resetbudget();}
 }
