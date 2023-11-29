@@ -38,11 +38,12 @@
       <HBox prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
             <ScrollPane fx:id="spObjetivos" prefHeight="350.0" prefWidth="936.0" style="-fx-background-color: #DEEFFF;">
-               <padding>
-                  <Insets left="400.0" right="10.0"/>
-               </padding>
                <content>
-                  <VBox fx:id="vBoxObjetivos" alignment="CENTER"/>
+                  <VBox fx:id="vBoxObjetivos" alignment="CENTER">
+                     <padding>
+                        <Insets left="50.0" right="10.0"/>
+                     </padding>
+                  </VBox>
                </content>
             </ScrollPane>
             <VBox alignment="BOTTOM_CENTER" prefHeight="350.0" prefWidth="80.0" spacing="20.0">
