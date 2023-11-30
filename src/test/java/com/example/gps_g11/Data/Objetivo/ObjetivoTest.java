@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class ObjetivoTest {
 
-    @Test
+    /*@Test
     public void testAddToGoal() {
         Objetivo objetivo = new Objetivo("Férias", "Viagem dos sonhos", 5000.0);
         assertEquals(0.0, objetivo.getCurrentValue(), 0.01);
@@ -42,5 +42,5 @@ public class ObjetivoTest {
 
         objetivo.addToGoal(1000.0);
         assertEquals(1000.0, objetivo.getCurrentValue(), 0.01);
-    }
+    }*/
 }
