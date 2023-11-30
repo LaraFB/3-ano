@@ -3,11 +3,13 @@ package com.example.gps_g11.Data;
 import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
 import com.example.gps_g11.Data.Transacao.Transacao;
 import com.example.gps_g11.Data.Categoria.Categoria;
+import javafx.scene.control.DatePicker;
 import javafx.scene.paint.Color;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Context {
     static final String fileName = "DataBase.dat";
@@ -17,6 +19,14 @@ public class Context {
     private Context() {
         contextData = new ContextData();
         loadFromFile();
+
+        //verifica se é a data do reset
+        if(contextData.getBudget().getHoje()!= null) {
+            if (Objects.equals(contextData.getBudget().getHoje(), LocalDate.now()))
+                CalculaProxData();
+        }
+        else
+            ResetAutomatico();
     }
 
     public static Context getInstance() {
@@ -25,11 +35,6 @@ public class Context {
         }
         return instance;
     }
-
-
-
-
-
     /*public String getNomeBolsa(){
         return contextData.getBudget().getBolsa().getNome();
     }
@@ -190,6 +195,8 @@ public class Context {
     public List<Transacao> realizarPesquisa(String tipoTransacao, String categoria,LocalDate data, String ordenacao) {
        return contextData.getHistoricoTransacoes().realizarPesquisa(tipoTransacao,categoria,data,ordenacao);
     }
+
+    /**se n há data, reset automatico*/
     public void ResetAutomatico(){
         LocalDate hoje = LocalDate.now();
         int diaHoje = hoje.getDayOfMonth();
@@ -198,17 +205,18 @@ public class Context {
             contextData.getBudget().LimpaBudget();
         }
     }
+
+    /**Budget se clicar no reset*/
     public void AdicionaDataReset(int dia, int nvezes,String cald,LocalDate hoje){
         contextData.getBudget().setNvezes(nvezes);
         contextData.getBudget().setDiaReset(dia);
         contextData.getBudget().setCald(cald);
         contextData.getBudget().setHoje(hoje);
+        CalculaProxData();
     }
+
+    /**Calcula próxima data e atualiza no budget*/
     private void CalculaProxData(){
-
-        LocalDate hoje = LocalDate.now();
-        int diaHoje = hoje.getDayOfMonth();
-
         int diah;
         int mesh = contextData.getBudget().getHoje().getMonth().getValue();
         int anoh = contextData.getBudget().getHoje().getYear();
@@ -219,30 +227,24 @@ public class Context {
             diah = contextData.getBudget().getHoje().getDayOfMonth();
 
         int nvezes = contextData.getBudget().getNvezes();
+        LocalDate dataSeguinte = LocalDate.of(anoh, mesh, diah);
+        DatePicker datePicker = new DatePicker();
+        datePicker.setValue(dataSeguinte);
+
         switch (contextData.getBudget().getCald()) {
             case "ano":
-                anoh += nvezes;
+                dataSeguinte= datePicker.getValue().plusYears(nvezes);
                 break;
             case "mes":
-                mesh += nvezes;
-                if(mesh == 13){
-                    anoh ++;
-                    mesh = 1;
-                }
+                dataSeguinte= datePicker.getValue().plusMonths(nvezes);
                 break;
             case "dia":
-                diah += nvezes;
-                //verificar c date picker more easy
-                //verifica diaq
+                dataSeguinte= datePicker.getValue().plusDays(nvezes);
                 break;
             default:
         }
-        LocalDate dataSeguinte = LocalDate.of(anoh, mesh, diah);
         contextData.getBudget().setHoje(dataSeguinte);
     }
-
-
-
 
     /* public void criarEnvelope(String finalidade,double valor){
         contextData.getBudget().criarEnvelope(finalidade, valor);

@@ -15,7 +15,6 @@ public class HomeResetController {
     public CheckBox dia;
     public CheckBox mes;
     public Label lblError;
-    public Label lblError2;
     public Label lblError3;
     public TextField diames;
     public TextField freq;
@@ -23,9 +22,9 @@ public class HomeResetController {
     private Context context;
     private String cald;
     public void initialize(){context = Context.getInstance();}
-    public void onBackToHomePage(ActionEvent event) { sideBarController.onHomePage();}
+    public void onBackToHomePage() { sideBarController.onHomePage();}
     public void setSideBar(SideBarController sideBarController) {this.sideBarController = sideBarController;}
-    public void onOk(ActionEvent event) {
+    public void onOk() throws InterruptedException {
         String auxerror = "";
         int checkGroup = verificaCheckBox();
         LocalDate hoje = LocalDate.now();
@@ -34,35 +33,34 @@ public class HomeResetController {
         if(!freq.getText().isEmpty()) {
             if (checkGroup == 1) {
                 lblError.setVisible(true);
-                lblError2.setVisible(false);
                 lblError3.setVisible(false);
                 if (!diames.getText().isEmpty()) {
-                    if (VerificaValido())
+                    if (!VerificaValido())
                         return;
                    Dia = Integer.parseInt(diames.getText());
                 }
 
                 int vezes = Integer.parseInt(freq.getText());
 
-                if(vezes > 0) {
+                if(vezes <= 0) {
                     lblError.setText("Número de vezes inválido");
                     lblError.setTextFill(Color.RED);
                     return;
                 }
 
-
-                lblError.setText("Realizado com sucesso");
+                lblError.setText("Realizado com sucesso!");
                 lblError.setTextFill(Color.GREEN);
                 context.AdicionaDataReset(Dia,vezes,cald,hoje);
 
                 resetCampos();
+                //onBackToHomePage();
                 return;
             }
         }
         if (checkGroup > 1)
-            auxerror = "várias checkboxes selecionadas";
+            auxerror = ", várias checkboxes selecionadas";
         if (checkGroup == 0)
-            auxerror = "nenhuma checkbox selecionada";
+            auxerror = ", nenhuma checkbox selecionada";
         msgErro(auxerror);
     }
     private boolean VerificaValido(){
@@ -75,6 +73,7 @@ public class HomeResetController {
         }
         return true;
     }
+
     private int verificaCheckBox() {
         int count = 0;
         if (dia.isSelected()){
@@ -94,10 +93,9 @@ public class HomeResetController {
 
     private void msgErro(String auxerror) {
         lblError.setVisible(true);
-        lblError2.setVisible(true);
         lblError3.setVisible(true);
         lblError.setTextFill(Color.RED);
-        lblError.setText("Preencha os espaços obrigatórios " + auxerror);
+        lblError.setText("Preencha os espaços obrigatórios" + auxerror);
     }
 
     private void resetCampos() {
@@ -108,29 +106,3 @@ public class HomeResetController {
         ano.setSelected(false);
     }
 }
-
-
-/*
-if(diames.getText().isEmpty() || freq.getText().isEmpty()){
-            if((mes.isSelected() && dia.isSelected() && ano.isSelected()) ||
-               (mes.isSelected() && dia.isSelected()) ||
-               (mes.isSelected() && ano.isSelected()) ||
-               (dia.isSelected() && ano.isSelected())){
-                    auxerror = "várias checkboxes selecionadas";
-            }
-            lblError.setVisible(true);
-            lblError2.setVisible(true);
-            lblError3.setVisible(true);
-            lblError.setTextFill(Color.RED);
-            lblError.setText("Preencha os espaços obrigatórios " + auxerror);
-        }else{
-            lblError.setVisible(true);
-            lblError2.setVisible(false);
-            lblError3.setVisible(false);
-
-            lblError.setText("Realizado com sucesso");
-            lblError.setTextFill(Color.GREEN);
-            resetCampos();
-        }
-    }
- */
