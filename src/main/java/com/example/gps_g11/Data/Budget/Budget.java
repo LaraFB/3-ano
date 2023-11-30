@@ -57,10 +57,6 @@ public class Budget implements Serializable {
         this.excedeuSaldo = excedeuSaldo;
     }
 
-    public void addSaldo(double valor){
-        this.saldoReal += valor;
-        this.saldoDisponivel += valor;
-    }
 
     public int getDiaReset() {
         return DiaReset;

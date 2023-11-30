@@ -82,7 +82,7 @@ public class ListaCategorias implements Serializable {
 
     public boolean editarCategoriaNomeIndex(int i, String nome){ //por index
         //validation:
-        if(i>categorias.size() || i<0 || nome == null)
+        if(i>=categorias.size() || i<0 || nome == null)
             return false;
 
         categorias.get(i).setNome(nome);
