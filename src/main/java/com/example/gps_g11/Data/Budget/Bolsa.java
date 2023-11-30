@@ -1,6 +1,8 @@
 package com.example.gps_g11.Data.Budget;
 
-public class Bolsa {
+import java.io.Serializable;
+
+public class Bolsa  implements Serializable {
     private String nome;
     private double valorReal;
     private double valorDisponivel;

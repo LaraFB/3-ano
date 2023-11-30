@@ -84,7 +84,7 @@
                <VBox.margin>
                   <Insets right="20.0" top="5.0" />
                </VBox.margin></TextArea>
-            <Label fx:id="msgError" prefHeight="25.0" prefWidth="160.0" text="Mensagem de Erro" textFill="#ff676a">
+            <Label fx:id="msgError" alignment="CENTER" prefHeight="25.0" prefWidth="250.0" text="Mensagem de Erro" textFill="#ff676a">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>

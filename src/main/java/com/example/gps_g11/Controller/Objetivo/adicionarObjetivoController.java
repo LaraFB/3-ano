@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -62,6 +63,10 @@ public class adicionarObjetivoController implements Initializable {
                 context.getListaObjetivos().addObjetivo(tfNome.getText(),taDescricao.getText(),Double.parseDouble(tfValor.getText()));
             else
                 context.getListaObjetivos().addObjetivo(tfNome.getText(),Double.parseDouble(tfValor.getText()));
+            msgError.setVisible(true);
+            msgError.setTextFill(Color.GREEN);
+            msgError.setText("Objetivo adicionado com sucesso!");
+
         }catch (Exception e){
             msgError.setVisible(true);
             msgError.setText("Falha ao inserir objetivo...");
