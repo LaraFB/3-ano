@@ -123,7 +123,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAdcDinheiro" mnemonicParsing="false" onAction="#onAdcDinheiro" prefHeight="40.0" prefWidth="184.0" styleClass="btn" text="Adicionar dinheiro">
+                  <Button fx:id="btnAdcDinheiro" mnemonicParsing="false" onAction="#onAdcDinheiro" prefHeight="40.0" prefWidth="184.0" styleClass="btn" text="Adicionar dinheiro" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -182,7 +182,7 @@
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#onGuardar" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Salvar Alterações">
+            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#onGuardar" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Salvar Alterações" textFill="#545454">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>

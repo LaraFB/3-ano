@@ -19,7 +19,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Criar um envelope para as tuas despesas" textAlignment="CENTER">
+            <Label text="Criar um envelope para as tuas despesas" textAlignment="CENTER" textFill="#545454">
                <font>
                   <Font name="Times New Roman Bold" size="30.0" />
                </font>
@@ -33,7 +33,7 @@
                      <children>
                         <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="200.0">
                            <children>
-                              <Label text="Valor">
+                              <Label text="Valor" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -61,20 +61,20 @@
                                     <Font name="Times New Roman" size="16.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="180.0" />
+                                    <Insets left="190.0" />
                                  </HBox.margin>
                               </TextField>
-                              <CheckBox fx:id="checkBox" mnemonicParsing="false" text="Bolsa">
+                              <CheckBox fx:id="checkBox" mnemonicParsing="false" stylesheets="@../../Style.css" text="Bolsa" textFill="#545454">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font name="Times New Roman" size="18.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="5.0" />
+                                    <Insets left="20.0" />
                                  </HBox.margin>
                               </CheckBox>
                            </children>
                         </HBox>
-                        <Label text="Pequena Descrição">
+                        <Label text="Pequena Descrição" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="30.0" />
                            </VBox.margin>
@@ -96,7 +96,7 @@
                      <children>
                         <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="200.0">
                            <children>
-                              <Label text="Nome">
+                              <Label text="Nome" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -125,7 +125,7 @@
                               <Font name="Times New Roman" size="16.0" />
                            </font>
                         </TextField>
-                        <ToggleButton fx:id="tbtnEnvelopeFechado" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Fechado">
+                        <ToggleButton fx:id="tbtnEnvelopeFechado" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Fechado" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="60.0" />
                            </VBox.margin>
@@ -146,7 +146,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </ToggleButton>
-                        <ToggleButton fx:id="tbtnEnvelopeAberto" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Aberto">
+                        <ToggleButton fx:id="tbtnEnvelopeAberto" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Aberto" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="20.0" />
                            </VBox.margin>
@@ -181,7 +181,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="40.0" prefWidth="110.0" styleClass="btn" stylesheets="@../../Style.css" text="OK">
+                  <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="40.0" prefWidth="110.0" styleClass="btn" stylesheets="@../../Style.css" text="OK" textFill="#545454">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>
@@ -198,7 +198,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Voltar ao Envelope" BorderPane.alignment="TOP_LEFT">
+      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Voltar ao Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets left="5.0" top="5.0" />
          </BorderPane.margin>

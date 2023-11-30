@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" prefHeight="350.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Historico.CategoryDetailsPopUp">
+<BorderPane fx:id="root" prefHeight="350.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Historico.CategoryDetailsPopUp">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" styleClass="vBoxItem" stylesheets="@../../Style.css" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="510.0">
                <children>
-                  <Label fx:id="lblCategoria" text="Label">
+                  <Label fx:id="lblCategoria" alignment="CENTER" prefHeight="20.0" prefWidth="463.0" text="Label" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -29,13 +29,13 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="12.0">
                      <children>
-                        <Label text="Montante:">
+                        <Label text="Montante:" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="18.0" />
                            </font>
                         </Label>
                         <TextField fx:id="tfMontante" />
-                        <Label text="Data:">
+                        <Label text="Data:" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="18.0" />
                            </font>
@@ -46,10 +46,10 @@
                         <DatePicker fx:id="dataPicker" />
                      </children>
                      <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets left="20.0" right="10.0" top="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label text="Pequena descrição:">
+                  <Label text="Pequena descrição:" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -57,9 +57,9 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextArea fx:id="textArea" prefHeight="110.0" prefWidth="200.0" wrapText="true">
+                  <TextArea fx:id="textArea" prefHeight="135.0" prefWidth="480.0" wrapText="true">
                      <VBox.margin>
-                        <Insets left="15.0" right="15.0" top="10.0" />
+                        <Insets left="20.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextArea>
                </children>
@@ -120,7 +120,7 @@
       </HBox>
    </center>
    <bottom>
-      <Label fx:id="lblError" text="Label" textFill="#ff2b2b" BorderPane.alignment="CENTER">
+      <Label fx:id="lblError" alignment="CENTER" prefHeight="20.0" prefWidth="299.0" text="Label" textFill="#ff2b2b" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="-25.0" />
          </BorderPane.margin>

@@ -60,7 +60,7 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="260.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="200.0" text="Tipo de Transação:">
+                        <Label prefHeight="30.0" prefWidth="200.0" text="Tipo de Transação:" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="16.0" />
                            </font>
@@ -83,7 +83,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="480.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="200.0" text="Opções de Filtros Avançados">
+                        <Label prefHeight="30.0" prefWidth="200.0" text="Opções de Filtros Avançados" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="16.0" />
                            </font>
@@ -93,9 +93,9 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                            <children>
-                              <Label text="Envelopes:">
+                              <Label text="Envelopes:" textFill="#545454">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font name="Times New Roman" size="16.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets left="-33.0" />
@@ -109,9 +109,9 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                            <children>
-                              <Label text="Data:">
+                              <Label text="Data:" textFill="#545454">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font name="Times New Roman" size="16.0" />
                                  </font>
                               </Label>
                               <DatePicker fx:id="dpDate" prefWidth="200.0" />
@@ -127,7 +127,7 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="260.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="200.0" text="Ordenar Transações">
+                        <Label prefHeight="30.0" prefWidth="200.0" text="Ordenar Transações" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="16.0" />
                            </font>

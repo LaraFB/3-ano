@@ -18,7 +18,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Adicionar Saldo" textAlignment="CENTER">
+            <Label text="Adicionar Saldo" textAlignment="CENTER" textFill="#545454">
                <font>
                   <Font name="Times New Roman Bold" size="30.0" />
                </font>
@@ -32,7 +32,7 @@
                      <children>
                         <HBox alignment="TOP_CENTER" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
                            <children>
-                              <Label text="Valor">
+                              <Label text="Valor" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -63,7 +63,7 @@
                         </TextField>
                         <HBox alignment="TOP_CENTER" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
                            <children>
-                              <Label text="Data de Pagamento">
+                              <Label text="Data de Pagamento" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -93,7 +93,7 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="500.0">
                      <children>
-                        <Label text="Pequena Descrição">
+                        <Label text="Pequena Descrição" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="30.0" />
                            </VBox.margin>
@@ -123,7 +123,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="30.0" prefWidth="80.0" styleClass="btn" text="OK">
+                  <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="30.0" prefWidth="80.0" styleClass="btn" text="OK" textFill="#545454">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>
@@ -137,38 +137,39 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="40.0" prefWidth="155.0" styleClass="btn" text="Voltar ao Home" BorderPane.alignment="TOP_LEFT">
+      <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="5.0" top="5.0" />
          </BorderPane.margin>
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../image/back_icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="Times New Roman" size="14.0" />
-         </font>
-      </Button>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="40.0" prefWidth="155.0" styleClass="btn" text="Voltar ao Home" textFill="#545454">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../image/back_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onAdicionarBolsa" prefHeight="40.0" prefWidth="155.0" styleClass="btn_history" text="Adicionar Bolsa" textFill="#545454">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="680.0" right="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </top>
-
-   <bottom>
-      <Button mnemonicParsing="false" onAction="#onAdicionarBolsa" prefHeight="40.0" prefWidth="155.0" styleClass="btn" text="Adicionar Bolsa" BorderPane.alignment="TOP_RIGHT">
-         <BorderPane.margin>
-            <Insets bottom="5.0" right="5.0" />
-         </BorderPane.margin>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="Times New Roman" size="14.0" />
-         </font>
-      </Button>
-   </bottom>
 
 </BorderPane>

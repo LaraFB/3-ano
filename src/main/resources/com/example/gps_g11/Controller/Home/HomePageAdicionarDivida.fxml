@@ -19,7 +19,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Dividas por pagar" textAlignment="CENTER">
+            <Label text="Dividas por pagar" textAlignment="CENTER" textFill="#545454">
                <font>
                   <Font name="Times New Roman Bold" size="30.0" />
                </font>
@@ -33,7 +33,7 @@
                      <children>
                         <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="200.0">
                            <children>
-                              <Label text="Valor">
+                              <Label text="Valor" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -59,7 +59,7 @@
                               <Insets left="150.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label text="Pequena Descrição">
+                        <Label text="Pequena Descrição" textFill="#545454">
                            <VBox.margin>
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
@@ -71,6 +71,9 @@
                            <VBox.margin>
                               <Insets left="150.0" top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Times New Roman" size="14.0" />
+                           </font>
                         </TextArea>
                      </children>
                      <HBox.margin>
@@ -81,7 +84,7 @@
                      <children>
                         <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="200.0">
                            <children>
-                              <Label text="Envelope">
+                              <Label text="Envelope" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -109,7 +112,7 @@
                         </ChoiceBox>
                         <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="200.0">
                            <children>
-                              <Label text="Data de Pagamento">
+                              <Label text="Data de Pagamento" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -149,7 +152,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="30.0" prefWidth="80.0" styleClass="btn" text="OK">
+                  <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="30.0" prefWidth="80.0" styleClass="btn" text="OK" textFill="#545454">
                      <HBox.margin>
                         <Insets right="250.0" />
                      </HBox.margin>
@@ -163,7 +166,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="40.0" styleClass="btn" text="Voltar ao Home" BorderPane.alignment="TOP_LEFT">
+      <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="40.0" styleClass="btn" text="Voltar ao Home" textFill="#545454" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets left="5.0" top="5.0" />
          </BorderPane.margin>

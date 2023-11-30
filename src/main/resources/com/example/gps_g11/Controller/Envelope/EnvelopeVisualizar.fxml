@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label fx:id="lTitulo" text="Envelope" textAlignment="CENTER">
+            <Label fx:id="lTitulo" text="Envelope" textAlignment="CENTER" textFill="#545454">
                <font>
                   <Font name="Times New Roman Bold" size="30.0" />
                </font>
@@ -29,7 +29,7 @@
                      <children>
                         <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="200.0">
                            <children>
-                              <Label text="Valor">
+                              <Label text="Valor" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -58,7 +58,7 @@
                               <Font name="Times New Roman" size="16.0" />
                            </font>
                         </TextField>
-                        <Label text="Pequena Descrição">
+                        <Label text="Pequena Descrição" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="30.0" />
                            </VBox.margin>
@@ -80,7 +80,7 @@
                      <children>
                         <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="200.0">
                            <children>
-                              <Label text="Nome">
+                              <Label text="Nome" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -109,7 +109,7 @@
                               <Font name="Times New Roman" size="16.0" />
                            </font>
                         </TextField>
-                        <ToggleButton fx:id="tbtnEnvelopeFechado" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Fechado">
+                        <ToggleButton fx:id="tbtnEnvelopeFechado" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Fechado" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="60.0" />
                            </VBox.margin>
@@ -130,7 +130,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </ToggleButton>
-                        <ToggleButton fx:id="tbtnEnvelopeAberto" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Aberto">
+                        <ToggleButton fx:id="tbtnEnvelopeAberto" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Aberto" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="20.0" />
                            </VBox.margin>
@@ -155,14 +155,14 @@
                   </VBox>
                </children>
             </HBox>
-            <Label fx:id="lblError" prefHeight="20.0" prefWidth="280.0" text="Mensagem de Erro" textAlignment="CENTER" textFill="#ff676a">
+            <Label fx:id="lblError" alignment="CENTER" prefHeight="20.0" prefWidth="562.0" text="Mensagem de Erro" textAlignment="CENTER" textFill="#ff676a">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER_RIGHT" prefHeight="71.0" prefWidth="940.0" spacing="10.0">
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="940.0" spacing="15.0">
                <children>
-                  <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#onGuardar" prefHeight="40.0" prefWidth="161.0" styleClass="btn" stylesheets="@../../Style.css" text="Salvar Alterações">
+                  <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#onGuardar" prefHeight="40.0" prefWidth="161.0" styleClass="btn" stylesheets="@../../Style.css" text="Salvar Alterações" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -170,7 +170,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnAdcDinheiro" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onAdcDinheiro" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Adicionar dinheiro de outro envelope">
+                  <Button fx:id="btnAdcDinheiro" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onAdcDinheiro" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Adicionar dinheiro de outro envelope" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -178,7 +178,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnEditar" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onEditar" prefHeight="40.0" prefWidth="110.0" styleClass="btn" stylesheets="@../../Style.css" text="Editar">
+                  <Button fx:id="btnEditar" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onEditar" prefHeight="40.0" prefWidth="110.0" styleClass="btn" stylesheets="@../../Style.css" text="Editar" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -188,7 +188,7 @@
                   </Button>
                   <Button fx:id="btnEliminar" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onEliminar" prefHeight="40.0" prefWidth="110.0" styleClass="CancelBtn" stylesheets="@../../Style.css" text="Eliminar" textFill="WHITE">
                      <HBox.margin>
-                        <Insets right="200.0" />
+                        <Insets />
                      </HBox.margin>
                      <font>
                         <Font name="Times New Roman" size="18.0" />
@@ -199,17 +199,20 @@
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </HBox>
          </children>
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" top="20.0" />
          </BorderPane.margin>
+         <padding>
+            <Insets top="60.0" />
+         </padding>
       </VBox>
    </center>
    <top>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Voltar ao Envelope" BorderPane.alignment="TOP_LEFT">
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Voltar ao Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>

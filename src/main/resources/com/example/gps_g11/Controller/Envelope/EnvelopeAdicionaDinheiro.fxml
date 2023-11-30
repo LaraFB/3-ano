@@ -17,7 +17,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Adicionar dinheiro em um envelope" textAlignment="CENTER">
+            <Label text="Adicionar dinheiro em um envelope" textAlignment="CENTER" textFill="#545454">
                <font>
                   <Font name="Times New Roman Bold" size="30.0" />
                </font>
@@ -29,7 +29,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Valor">
+                        <Label text="Valor" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="18.0" />
                            </font>
@@ -60,7 +60,7 @@
                         <Insets right="170.0" top="20.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Envelope">
+                        <Label text="Envelope" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="18.0" />
                            </font>
@@ -96,7 +96,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                      <children>
-                        <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="40.0" prefWidth="100.0" styleClass="btn" stylesheets="@../../Style.css" text="OK">
+                        <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="40.0" prefWidth="100.0" styleClass="btn" stylesheets="@../../Style.css" text="OK" textFill="#545454">
                            <HBox.margin>
                               <Insets left="150.0" />
                            </HBox.margin>
@@ -118,7 +118,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Voltar ao Envelope" BorderPane.alignment="TOP_LEFT">
+      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Voltar ao Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets left="5.0" top="5.0" />
          </BorderPane.margin>
