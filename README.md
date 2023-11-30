@@ -258,6 +258,8 @@ By the end of the second realease we must have all the user stories with "must" 
 - RSK1 – PxI: 3x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
 - RSK2 – PxI: 2x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
 - RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
+- RSK3 – PxI: 4x4=16; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
+
 
 ##### Mitigation Actions (threats>=20)
 
@@ -496,7 +498,7 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 1: Design user interface
     - Task 2: Create methods track automatically reserved amounts from expenses
     - Task 3: Create methods track automatically reserved amounts from envelopes
-    - Task 2: Create methods to implement the tasks list fearure
+    - Task 4: Create methods to implement the tasks list fearure
   
 - Story Points: 1L + 3M
 
