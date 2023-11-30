@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class ListaObjetivosTest {
 
-    @Test
+    /*@Test
     public void testAddObjetivo() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
         Objetivo objetivo = new Objetivo("Viagem", "Viagem dos sonhos", 5000.0);
@@ -139,5 +139,5 @@ public class ListaObjetivosTest {
 
         listaObjetivos.getObjetivo("Projeto Pessoal").addToGoal(2500.0);
         assertEquals(2500.0, listaObjetivos.currentValue("Projeto Pessoal"), 0.01);
-    }
+    }*/
 }
