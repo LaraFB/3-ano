@@ -4,9 +4,7 @@ import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
@@ -22,6 +20,12 @@ public class adicionarObjetivoController implements Initializable {
     private TextArea taDescricao;
     @FXML
     private Label msgError;
+    @FXML
+    private Slider sPrioridade;
+    @FXML
+    private DatePicker dpData;
+    @FXML
+    private Label lPrioridade;
 
     public void setSideBar(SideBarController sideBarController) {this.sideBarController = sideBarController;}
 
@@ -60,9 +64,19 @@ public class adicionarObjetivoController implements Initializable {
 
         try{
             if(!taDescricao.getText().isEmpty()) //tem descricao
-                context.getListaObjetivos().addObjetivo(tfNome.getText(),taDescricao.getText(),Double.parseDouble(tfValor.getText()));
-            else
-                context.getListaObjetivos().addObjetivo(tfNome.getText(),Double.parseDouble(tfValor.getText()));
+            {
+                if(dpData.getValue() == null)
+                    context.getListaObjetivos().addObjetivo(tfNome.getText(),taDescricao.getText(),Double.parseDouble(tfValor.getText()),(int)sPrioridade.getValue());
+                else
+                    context.getListaObjetivos().addObjetivo(tfNome.getText(),taDescricao.getText(),Double.parseDouble(tfValor.getText()),(int)sPrioridade.getValue(),dpData.getValue());
+
+            }
+            else {
+                if(dpData.getValue() == null)
+                    context.getListaObjetivos().addObjetivo(tfNome.getText(), Double.parseDouble(tfValor.getText()),(int)sPrioridade.getValue());
+                else
+                    context.getListaObjetivos().addObjetivo(tfNome.getText(), Double.parseDouble(tfValor.getText()),(int) sPrioridade.getValue(),dpData.getValue());
+            }
             msgError.setVisible(true);
             msgError.setTextFill(Color.GREEN);
             msgError.setText("Objetivo adicionado com sucesso!");
@@ -80,5 +94,9 @@ public class adicionarObjetivoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         context = Context.getInstance();
         msgError.setVisible(false);
+
+        sPrioridade.valueProperty().addListener((observable, oldValue, newValue) -> {
+            lPrioridade.setText(newValue.intValue()+"/10");
+        });
     }
 }

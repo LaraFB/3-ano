@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="RootBorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.SideBarController">
+<BorderPane fx:id="RootBorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.SideBarController">
     <left>
         <VBox fx:id="SideBar" alignment="CENTER_LEFT" prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" AnchorPane.bottomAnchor="-18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1007.0" AnchorPane.topAnchor="0.0" xmlns:fx="http://javafx.com/fxml">
             <children>
