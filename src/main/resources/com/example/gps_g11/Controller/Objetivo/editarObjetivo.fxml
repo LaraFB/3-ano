@@ -142,7 +142,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onBackToObjetivos" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Back to Objetivos" textFill="#545454">
+            <Button mnemonicParsing="false" onAction="#onBackToObjetivos" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Voltar aos Objetivos" textFill="#545454">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>

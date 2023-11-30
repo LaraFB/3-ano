@@ -21,6 +21,10 @@ public class ContextData implements Serializable {
         this.budget = new Budget(0);
         this.historicoTransacoes = new HistoricoTransacoes();
         this.listaObjetivos = new ListaObjetivos();
+        budget.setSaldoDisponivel(100);
+        budget.setSaldoReal(100);
+        budget.getBolsa().setValorDisponivel(200);
+        budget.getBolsa().setValorReal(200);
     }
 
     public HistoricoTransacoes getHistoricoTransacoes() {

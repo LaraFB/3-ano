@@ -2,13 +2,16 @@ package com.example.gps_g11.Data.Budget;
 
 public class Bolsa {
     private String nome;
-    private double valor;
+    private double valorReal;
+    private double valorDisponivel;
+    private double totalDespesas; //Total de despesas gastas
     private String descricao;
     private double valorGasto;
 
     public Bolsa(String nome, double valor, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
+        this.valorReal = this.valorDisponivel = valor;
     }
 
     public String getNome() {
@@ -19,14 +22,6 @@ public class Bolsa {
         this.nome = nome;
     }
 
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -35,13 +30,28 @@ public class Bolsa {
         this.descricao = descricao;
     }
 
-    @Override
-    public String toString() {
-        return "Bolsa{" +
-                "nome='" + nome + '\'' +
-                ", valor=" + valor +
-                ", descricao='" + descricao + '\'' +
-                '}';
+    public double getValorReal() {
+        return valorReal;
+    }
+
+    public void setValorReal(double valorReal) {
+        this.valorReal = valorReal;
+    }
+
+    public double getValorDisponivel() {
+        return valorDisponivel;
+    }
+
+    public void setValorDisponivel(double valorDisponivel) {
+        this.valorDisponivel = valorDisponivel;
+    }
+
+    public double getTotalDespesas() {
+        return totalDespesas;
+    }
+
+    public void setTotalDespesas(double totalDespesas) {
+        this.totalDespesas = totalDespesas;
     }
 
     public double getValorGasto() {

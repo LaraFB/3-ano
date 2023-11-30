@@ -9,7 +9,6 @@ public class Budget implements Serializable {
     private double saldoReal; //Saldo que existe mesmo
     private double saldoDisponivel; //Saldo que existe menos o saldo que vai ser gasto posteriormente
     private double totalDespesas; //Total de despesas gastas
-    private double saldoGuardado;
     private boolean excedeuSaldo;
     private int DiaReset;
     private int nvezes;
@@ -19,9 +18,9 @@ public class Budget implements Serializable {
 
     public Budget(double saldo) {
         this.saldoReal = this.saldoDisponivel = saldo;
-        saldoGuardado = 0;
         totalDespesas = 0;
         excedeuSaldo = false;
+        bolsa = new Bolsa("Bolsa",0,"Bolsa de estudo");
     }
 
     public void LimpaBudget (){totalDespesas = 0;}
@@ -50,26 +49,12 @@ public class Budget implements Serializable {
         this.totalDespesas = totalDespesas;
     }
 
-    public double getSaldoGuardado() {
-        return saldoGuardado;
-    }
-
-    public void setSaldoGuardado(double saldoGuardado) {
-        this.saldoGuardado = saldoGuardado;
-    }
     public boolean isExcedeuSaldo() {
         return excedeuSaldo;
     }
 
     public void setExcedeuBudget(boolean excedeuSaldo) {
         this.excedeuSaldo = excedeuSaldo;
-    }
-    public Bolsa getBolsa() {
-        return bolsa;
-    }
-
-    public void setBolsa(Bolsa bolsa) {
-        this.bolsa = bolsa;
     }
 
     public void addSaldo(double valor){
@@ -128,4 +113,12 @@ public class Budget implements Serializable {
    /* public void setEnvelopes(List<Envelope> envelopes) {
         this.envelopes = envelopes;
     }*/
+    public Bolsa getBolsa() {
+        return bolsa;
+    }
+
+    public void setBolsa(Bolsa bolsa) {
+        this.bolsa = bolsa;
+    }
+
 }

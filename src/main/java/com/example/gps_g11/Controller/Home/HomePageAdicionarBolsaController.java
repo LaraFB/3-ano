@@ -7,16 +7,13 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.util.StringConverter;
 
-import java.text.DecimalFormat;
-import java.text.ParsePosition;
 import java.time.LocalDate;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
-public class HomePageAdicionarSaldoController {
+public class HomePageAdicionarBolsaController {
     public TextField tfValor;
     public DatePicker dataPicker;
-    public TextArea taDescricao;
     public Label lblError3;
     public Label lblError1;
     public Label lblError;
@@ -26,13 +23,10 @@ public class HomePageAdicionarSaldoController {
         this.sideBarController = sideBarController;
     }
 
-    public void onBackToHomePage(ActionEvent actionEvent) {
-        sideBarController.onHomePage();
+    public void onBackToAdicionarSaldo(ActionEvent actionEvent) {
+        sideBarController.adicionarSaldo();
     }
 
-    public void onAdicionarBolsa(){
-        sideBarController.adicionarBolsa();
-    }
 
     public void initialize(){
         context = Context.getInstance();
@@ -82,9 +76,9 @@ public class HomePageAdicionarSaldoController {
             lblError3.setVisible(false);
             lblError.setText("Saldo adicionao com sucesso");
             lblError.setTextFill(Color.GREEN);
-            context.adicionarTransacao("Entrada",taDescricao.getText(),selectedDate,Double.parseDouble(tfValor.getText()) );
-            context.getBudget().setSaldoReal(context.getBudget().getSaldoReal()+Double.parseDouble(tfValor.getText()));
-            context.getBudget().setSaldoDisponivel(context.getBudget().getSaldoDisponivel()+Double.parseDouble(tfValor.getText()));
+            context.adicionarTransacao("Entrada","",selectedDate, Double.parseDouble(tfValor.getText()));
+            context.getBolsa().setValorDisponivel(context.getBolsa().getValorDisponivel()+Double.parseDouble(tfValor.getText()));
+            context.getBolsa().setValorReal(context.getBolsa().getValorReal()+Double.parseDouble(tfValor.getText()));
             resetCampos();
         }
 
@@ -92,7 +86,6 @@ public class HomePageAdicionarSaldoController {
 
     private void resetCampos() {
         tfValor.clear();
-        taDescricao.clear();
         dataPicker.setValue(null);
     }
 }

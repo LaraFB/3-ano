@@ -6,10 +6,7 @@ import com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroControlle
 import com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController;
 import com.example.gps_g11.Controller.Estatistica.EstatisticaController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
-import com.example.gps_g11.Controller.Home.HomeController;
-import com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController;
-import com.example.gps_g11.Controller.Home.HomePageAdicionarSaldoController;
-import com.example.gps_g11.Controller.Home.HomeResetController;
+import com.example.gps_g11.Controller.Home.*;
 import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
 
 import com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController;
@@ -90,12 +87,17 @@ public class SideBarController {
                     case "Home/HomePageAdicionarDivida.fxml":
                         HomePageAdicionarDividaController homePageAdicionarDividaController = loader.getController();
                         homePageAdicionarDividaController.setSideBar(this);
-                        putBtnActive(btnEnvelope);
+                        putBtnActive(btnHomePage);
                         break;
                     case "Home/HomePageAdicionarSaldo.fxml":
                         HomePageAdicionarSaldoController homePageAdicionarSaldoController = loader.getController();
                         homePageAdicionarSaldoController.setSideBar(this);
-                        putBtnActive(btnEnvelope);
+                        putBtnActive(btnHomePage);
+                        break;
+                        case "Home/HomePageAdicionarBolsa.fxml":
+                        HomePageAdicionarBolsaController homePageAdicionarBolsaController = loader.getController();
+                        homePageAdicionarBolsaController.setSideBar(this);
+                        putBtnActive(btnHomePage);
                         break;
                     case "Objetivo/Objetivo.fxml":
                         ObjetivoController objetivoController = loader.getController();
@@ -171,6 +173,9 @@ public class SideBarController {
 
     public void adicionarSaldo() {
         loadFXML("Home/HomePageAdicionarSaldo.fxml");
+    }
+    public void adicionarBolsa() {
+        loadFXML("Home/HomePageAdicionarBolsa.fxml");
     }
 
     public void adicionarObjetivos() { loadFXML("Objetivo/adicionarObjetivo.fxml");}

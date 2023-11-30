@@ -199,10 +199,11 @@ public class EnvelopeVisualizarController{
         }
         boolean haAbertos = false;
         for (int x = 0; x < context.getCategoriasList().size(); x++)
-            if (context.getCategoriasList().get(x).isAberto() && context.getCategoriasList().get(x).getNome().compareTo(categoria.getNome()) != 0) {
+            if (context.getCategoriasList().get(x).isAberto() && context.getCategoriasList().get(x).getNome().compareTo(categoria.getNome()) != 0 && context.getCategoriasList().get(x).isPagarBolsa() == categoria.isPagarBolsa()) {
                 haAbertos = true;
                 break;
             }
+
         //se saiu e n ha+ envelopes abertos
         if(haAbertos == false){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -213,6 +214,7 @@ public class EnvelopeVisualizarController{
             alert.showAndWait();
             return;
         }
+
 
         //pop up:
         Dialog<Pair<String, Integer>> popUp = new Dialog<>();
@@ -233,7 +235,7 @@ public class EnvelopeVisualizarController{
         //escolher envelope
         ChoiceBox<String> envelopes = new ChoiceBox<>();
         for(int i=0; i<context.getCategoriasList().size(); i++)
-            if(context.getCategoriasList().get(i).isAberto() && context.getCategoriasList().get(i).getNome().compareTo(categoria.getNome()) != 0) {
+            if(context.getCategoriasList().get(i).isAberto() && context.getCategoriasList().get(i).getNome().compareTo(categoria.getNome()) != 0 && context.getCategoriasList().get(i).isPagarBolsa() == categoria.isPagarBolsa()) {
                 envelopes.getItems().add(context.getCategoriasList().get(i).getNome());
                 if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasList().get(i).getNome());
             }

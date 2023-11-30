@@ -19,12 +19,11 @@ public class EnvelopeCriaEnvelopeController {
     public TextField tfValor;
 
     public TextArea taDescricao;
-    public ChoiceBox cbEnvelope;
     public ToggleButton tbtnEnvelopeFechado;
     public ToggleButton tbtnEnvelopeAberto;
-    public Button btnCancelar;
     public Button btnOk;
     public TextField nomeEnvelope;
+    public CheckBox checkBox;
     private SideBarController sideBarController;
     private ToggleGroup envelopeToggleGroup;
     private Context context;
@@ -87,14 +86,14 @@ public class EnvelopeCriaEnvelopeController {
             lblError.setText("Saldo adicionao com sucesso");
             lblError.setTextFill(Color.GREEN);
             if(taDescricao.getText().isEmpty()){
-                if( context.adicionarCategoriaPorNome(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),toggleButtonAtivo == tbtnEnvelopeAberto) == -1){
+                if( context.adicionarCategoriaPorNome(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkBox.isSelected()) == -1){
                     lblError.setText("Saldo insuficiente");
                     lblError.setTextFill(Color.RED);
                 }else{
                     resetCampos();
                 }
             }else{
-                if(context.adicionarCategoriaNomeDescricao(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto) == -1){
+                if(context.adicionarCategoriaNomeDescricao(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkBox.isSelected()) == -1){
                     lblError.setText("Saldo insuficiente");
                     lblError.setTextFill(Color.RED);
                 }else{

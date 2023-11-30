@@ -7,23 +7,25 @@ public class Categoria implements Serializable {
     private String descricao;
     private double valor;
     private boolean isAberto;
-
-    public Categoria(double valor,String nome,boolean isAberto){
+    private boolean pagarBolsa;
+    public Categoria(double valor,String nome,boolean isAberto,boolean pagarBolsa){
         //validation:
         if(nome != null) this.nome = nome;
         else this.nome = "";
         this.valor = valor;
         this.descricao = "";
         this.isAberto = isAberto;
+        this.pagarBolsa = pagarBolsa;
     }
 
-    public Categoria(double valor,String nome, String descricao,boolean isAberto){
+    public Categoria(double valor,String nome, String descricao,boolean isAberto,boolean pagarBolsa){
         if(nome != null) this.nome = nome;
         else this.nome = "";
         this.valor = valor;
         if(descricao != null) this.descricao = descricao;
         else this.descricao = "";
         this.isAberto = isAberto;
+        this.pagarBolsa = pagarBolsa;
     }
 
     public void setNome(String nome) {
@@ -51,4 +53,13 @@ public class Categoria implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public boolean isPagarBolsa() {
+        return pagarBolsa;
+    }
+
+    public void setPagarBolsa(boolean pagarBolsa) {
+        this.pagarBolsa = pagarBolsa;
+    }
+
 }

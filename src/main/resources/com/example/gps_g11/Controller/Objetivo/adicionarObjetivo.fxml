@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController">
    <center>
       <VBox alignment="TOP_CENTER" maxHeight="500.0" maxWidth="800.0" prefHeight="500.0" prefWidth="800.0" spacing="15.0" BorderPane.alignment="TOP_CENTER">
          <children>
@@ -98,7 +98,7 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onBackToObjetivos" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Back to Objetivos" textFill="#545454">
+            <Button mnemonicParsing="false" onAction="#onBackToObjetivos" prefHeight="40.0" prefWidth="160.0" styleClass="btn" text="Voltar aos Objetivos" textFill="#545454">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>

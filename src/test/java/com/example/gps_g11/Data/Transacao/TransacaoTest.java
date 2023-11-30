@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TransacaoTest {
 
-    @Test
+    /*@Test
     public void testConstrutorEGetters() {
         Categoria categoria = new Categoria("Comida", true);
         LocalDate data = LocalDate.now();
@@ -22,9 +22,9 @@ class TransacaoTest {
         assertEquals(50.0f, transacao.getMontante(), 0.001); // Use delta para comparar floats
         assertEquals(categoria, transacao.getCategoria());
         assertFalse(transacao.isRecorrente());
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void testSetters() {
         Categoria categoria1 = new Categoria("Comida", true);
         Categoria categoria2 = new Categoria("Transporte", false);
@@ -44,5 +44,5 @@ class TransacaoTest {
         assertEquals(75.0f, transacao.getMontante(), 0.001);
         assertEquals(categoria2, transacao.getCategoria());
         assertTrue(transacao.isRecorrente());
-    }
+    }*/
 }

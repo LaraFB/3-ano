@@ -118,7 +118,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" prefWidth="150.0" styleClass="btn" stylesheets="@../../Style.css" text="Back to Envelope" BorderPane.alignment="TOP_LEFT">
+      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Voltar ao Envelope" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets left="5.0" top="5.0" />
          </BorderPane.margin>

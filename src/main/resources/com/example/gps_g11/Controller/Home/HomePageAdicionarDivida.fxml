@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -149,7 +149,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnOk" onAction="#onOk" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="btn" text="OK">
+                  <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="30.0" prefWidth="80.0" styleClass="btn" text="OK">
                      <HBox.margin>
                         <Insets right="250.0" />
                      </HBox.margin>
@@ -163,7 +163,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="40.0" prefWidth="155.0" styleClass="btn" text="Back to HomePage" BorderPane.alignment="TOP_LEFT">
+      <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="40.0" styleClass="btn" text="Voltar ao Home" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets left="5.0" top="5.0" />
          </BorderPane.margin>

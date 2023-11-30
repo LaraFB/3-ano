@@ -1,5 +1,7 @@
 package com.example.gps_g11.Data;
 
+import com.example.gps_g11.Data.Budget.Bolsa;
+import com.example.gps_g11.Data.Budget.Budget;
 import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
 import com.example.gps_g11.Data.Transacao.Transacao;
 import com.example.gps_g11.Data.Categoria.Categoria;
@@ -74,20 +76,28 @@ public class Context {
         }
         return -2; //Não existe essa categoria
     }
-    public int adicionarCategoriaPorNome(double valor, String name,boolean isAberto) {
+    public int adicionarCategoriaPorNome(double valor, String name,boolean isAberto,boolean pagarBolsa) {
         if(contextData.getBudget().getSaldoDisponivel()-valor < 0){
             return -1; //Não existe saldo para adicionar algo ao envelope
         }
-        contextData.getListaCategorias().adicionarCateogiraNome(valor,name,isAberto);
-        contextData.getBudget().setSaldoDisponivel(getSaldoDisponivel()-valor);
+        contextData.getListaCategorias().adicionarCateogiraNome(valor,name,isAberto,pagarBolsa);
+        if(pagarBolsa){
+            contextData.getBudget().getBolsa().setValorDisponivel(getBolsa().getValorDisponivel()-valor);
+        }else{
+            contextData.getBudget().setSaldoDisponivel(getSaldoDisponivel()-valor);
+        }
         return 0;
     }
-    public int adicionarCategoriaNomeDescricao(double valor, String name, String descripton,boolean isAberto) {
+    public int adicionarCategoriaNomeDescricao(double valor, String name, String descripton,boolean isAberto,boolean pagarBolsa) {
         if(contextData.getBudget().getSaldoDisponivel()-valor < 0){
             return -1; //Não existe saldo para adicionar algo ao envelope
         }
-        contextData.getListaCategorias().adicionarCategoriaNomeDescricao(valor,name,descripton,isAberto);
-        contextData.getBudget().setSaldoDisponivel(getSaldoDisponivel()-valor);
+        contextData.getListaCategorias().adicionarCategoriaNomeDescricao(valor,name,descripton,isAberto,pagarBolsa);
+        if(pagarBolsa){
+            contextData.getBudget().getBolsa().setValorDisponivel(getBolsa().getValorDisponivel()-valor);
+        }else{
+            contextData.getBudget().setSaldoDisponivel(getSaldoDisponivel()-valor);
+        }
         return 0;
     }
     public boolean isEmpty() {
@@ -98,6 +108,12 @@ public class Context {
     public ListaObjetivos getListaObjetivos(){return contextData.getListaObjetivos();}
 
     /**Budget*/
+    public Budget getBudget() {
+        return contextData.getBudget();
+    }
+    public Bolsa getBolsa(){
+        return contextData.getBudget().getBolsa();
+    }
     public double getSaldoReal(){
         return contextData.getBudget().getSaldoReal();
     }
@@ -123,15 +139,21 @@ public class Context {
         if(categoria.getValor() < montante){
             return -1; //Se não houver saldo suficiente nesse envelope
         }
-        contextData.getHistoricoTransacoes().adicionarTransacao(new Transacao(tipo,descricao,categoria,date,montante));
-        contextData.getBudget().setSaldoReal(contextData.getBudget().getSaldoReal()-montante);
-        contextData.getBudget().setTotalDespesas(contextData.getBudget().getTotalDespesas()+montante);
+        Transacao transacao = new Transacao(tipo,descricao,categoria,date,montante);
+        contextData.getHistoricoTransacoes().adicionarTransacao(transacao);
+        if(categoria.isPagarBolsa()){
+            contextData.getBudget().getBolsa().setValorReal(contextData.getBudget().getBolsa().getValorReal()-montante);
+            contextData.getBudget().getBolsa().setTotalDespesas(contextData.getBudget().getBolsa().getTotalDespesas()+montante);
+            transacao.setDescricao("Despesa feita com dinhero da bolsa" + "\n" + transacao.getDescricao());
+        }else{
+            contextData.getBudget().setSaldoReal(contextData.getBudget().getSaldoReal()-montante);
+            contextData.getBudget().setTotalDespesas(contextData.getBudget().getTotalDespesas()+montante);
+            transacao.setDescricao("Despesa feita com dinhero do saldo" + "\n" + transacao.getDescricao());
+        }
         return 0;
     }
     public int adicionarTransacao(String tipo, String descricao, LocalDate date,double montante){
         contextData.getHistoricoTransacoes().adicionarTransacao(new Transacao(tipo,descricao,null,date,montante));
-        contextData.getBudget().setSaldoReal(contextData.getBudget().getSaldoReal()+montante);
-        contextData.getBudget().setSaldoDisponivel(contextData.getBudget().getSaldoDisponivel()+montante);
         return 0;
     }
     public List<Transacao> getTransacoes(){
@@ -245,6 +267,7 @@ public class Context {
         }
         contextData.getBudget().setHoje(dataSeguinte);
     }
+
 
     /* public void criarEnvelope(String finalidade,double valor){
         contextData.getBudget().criarEnvelope(finalidade, valor);
