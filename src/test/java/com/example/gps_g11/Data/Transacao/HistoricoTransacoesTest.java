@@ -2,93 +2,87 @@ package com.example.gps_g11.Data.Transacao;
 
 import com.example.gps_g11.Data.Categoria.Categoria;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class HistoricoTransacoesTest {
 
-
     @Test
-    public void testAdicionarERemoverTransacao() {
+    void testAdicionarTransacao() {
         HistoricoTransacoes historico = new HistoricoTransacoes();
-        Categoria categoria = new Categoria("Comida", true);
-        LocalDate data = LocalDate.now();
-        Transacao transacao = new Transacao("Despesa", "Compra de alimentos", categoria, data, 50.0f);
-        /**TODO: Isto da erro ao correr tudo junto mas a correr individualmente corre bem*/
-        /*historico.adicionarTransacao(transacao);
-
-        assertEquals(transacao, historico.buscarPorId(0));*/
-
-        historico.removerTransacao(0);
-
-        assertNull(historico.buscarPorId(0));
+        Transacao transacao = criarTransacaoPadrao();
+        historico.adicionarTransacao(transacao);
+        assertTrue(historico.buscarTodasTransacoes().contains(transacao));
     }
 
     @Test
-    public void testEditarTransacao() {
+    void testRemoverTransacao() {
         HistoricoTransacoes historico = new HistoricoTransacoes();
-        Categoria categoria1 = new Categoria("Comida", true);
-        Categoria categoria2 = new Categoria("Transporte", false);
-        LocalDate data1 = LocalDate.now();
-        LocalDate data2 = LocalDate.of(2023, 1, 1);
-        Transacao transacao = new Transacao("Despesa", "Compra de alimentos", categoria1, data1, 50.0f);
+        Transacao transacao = criarTransacaoPadrao();
+        historico.adicionarTransacao(transacao);
+        historico.removerTransacao(transacao.getId());
+        assertFalse(historico.buscarTodasTransacoes().contains(transacao));
+    }
 
+    @Test
+    void testEditarTransacao() {
+        HistoricoTransacoes historico = new HistoricoTransacoes();
+        Transacao transacao = criarTransacaoPadrao();
         historico.adicionarTransacao(transacao);
 
-        historico.editarTransacao(0, "Nova descrição", data2, 75.0f, categoria2, true);
-        /**TODO: Isto da erro ao correr tudo junto mas a correr individualmente corre bem*/
-        /*assertEquals("Nova descrição", historico.buscarPorId(0).getDescricao());
-        assertEquals(data2, historico.buscarPorId(0).getData());
-        assertEquals(75.0f, historico.buscarPorId(0).getMontante(), 0.001);
-        assertEquals(categoria2, historico.buscarPorId(0).getCategoria());
-        assertTrue(historico.buscarPorId(0).isRecorrente());*/
+        String novaDescricao = "Nova Descrição";
+        LocalDate novaData = LocalDate.now().plusDays(1);
+        double novoMontante = 50.0;
+        Categoria novaCategoria = new Categoria(30.0, "Nova Categoria", true, false);
+        boolean novaRecorrencia = true;
+
+        historico.editarTransacao(
+                transacao.getId(),
+                novaDescricao,
+                novaData,
+                novoMontante,
+                novaCategoria,
+                novaRecorrencia
+        );
+
+        Transacao transacaoEditada = historico.buscarPorId(transacao.getId());
+        assertEquals(novaDescricao, transacaoEditada.getDescricao());
+        assertEquals(novaData, transacaoEditada.getData());
+        assertEquals(novoMontante, transacaoEditada.getMontante());
+        assertEquals(novaCategoria, transacaoEditada.getCategoria());
+        assertEquals(novaRecorrencia, transacaoEditada.isRecorrente());
     }
 
     @Test
-    public void testBuscarDespesas() {
+    void testBuscarDespesas() {
         HistoricoTransacoes historico = new HistoricoTransacoes();
-        Categoria categoria = new Categoria("Comida", true);
-        LocalDate data = LocalDate.now();
-
-        historico.adicionarTransacao(new Transacao("Despesa", "Compra de alimentos", categoria, data, 50.0f));
-        historico.adicionarTransacao(new Transacao("Entrada", "Salário", categoria, data, 1000.0f));
+        Transacao despesa = criarTransacaoPadrao();
+        Transacao entrada = new Transacao("Entrada", "Entrada Teste", new Categoria(20.0, "Categoria Teste", true, false), LocalDate.now(), 30.0);
+        historico.adicionarTransacao(despesa);
+        historico.adicionarTransacao(entrada);
 
         List<Transacao> despesas = historico.buscarDespesas();
-
-        assertEquals(1, despesas.size());
-        assertEquals("Despesa", despesas.get(0).getTipo());
+        assertTrue(despesas.contains(despesa));
+        assertFalse(despesas.contains(entrada));
     }
 
     @Test
-    public void testBuscarEntradas() {
+    void testBuscarEntradas() {
         HistoricoTransacoes historico = new HistoricoTransacoes();
-        Categoria categoria = new Categoria("Comida", true);
-        LocalDate data = LocalDate.now();
-
-        historico.adicionarTransacao(new Transacao("Despesa", "Compra de alimentos", categoria, data, 50.0f));
-        historico.adicionarTransacao(new Transacao("Entrada", "Salário", categoria, data, 1000.0f));
+        Transacao despesa = criarTransacaoPadrao();
+        Transacao entrada = new Transacao("Entrada", "Entrada Teste", new Categoria(20.0, "Categoria Teste", true, false), LocalDate.now(), 30.0);
+        historico.adicionarTransacao(despesa);
+        historico.adicionarTransacao(entrada);
 
         List<Transacao> entradas = historico.buscarEntradas();
-
-        assertEquals(1, entradas.size());
-        assertEquals("Entrada", entradas.get(0).getTipo());
+        assertTrue(entradas.contains(entrada));
+        assertFalse(entradas.contains(despesa));
     }
 
-    @Test
-    public void testBuscarTodasTransacoes() {
-        HistoricoTransacoes historico = new HistoricoTransacoes();
-        Categoria categoria = new Categoria("Comida", true);
+    private Transacao criarTransacaoPadrao() {
+        Categoria categoria = new Categoria(20.0, "Categoria Teste", true, false);
         LocalDate data = LocalDate.now();
-
-        historico.adicionarTransacao(new Transacao("Despesa", "Compra de alimentos", categoria, data, 50.0f));
-        historico.adicionarTransacao(new Transacao("Entrada", "Salário", categoria, data, 1000.0f));
-
-        List<Transacao> todasTransacoes = historico.buscarTodasTransacoes();
-
-        assertEquals(2, todasTransacoes.size());
+        return new Transacao("Despesa", "Descrição Teste", categoria, data, 30.0);
     }
-
 }

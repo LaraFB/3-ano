@@ -40,7 +40,6 @@
                 LError.setVisible(true);
                 LError.setText("Preenche o campo com o valor");
             }else{
-                context.addMontante(Integer.parseInt(TFMontante.getText()));
                 onClose();
             }
         }

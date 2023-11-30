@@ -4,20 +4,21 @@ import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPanePopUpCon
 import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Categoria.Categoria;
-import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class EnvelopeController implements Initializable {
@@ -26,6 +27,7 @@ public class EnvelopeController implements Initializable {
     public HBox hbox;
     public BorderPane root;
     public Button btnCriarEnvelope;
+    public Button btnGuardaDinheiro;
     private SideBarController sideBarController;
     private Context context;
     public void update() {
@@ -106,12 +108,17 @@ public class EnvelopeController implements Initializable {
 
         Label legendaLabel = new Label(categoria.getNome());
         legendaLabel.setAlignment(Pos.CENTER);
+        legendaLabel.setFont(new Font(14));
         legendaLabel.setMaxWidth(Double.MAX_VALUE);
         VBox.setVgrow(legendaLabel, Priority.ALWAYS);
 
-        VBox vbox = new VBox(imageView, legendaLabel);
-        vbox.setAlignment(Pos.CENTER);
-        vbox.setSpacing(5);
+        Label saldoLabel = new Label(formatarNumero(categoria.getValor()) + " €");
+        saldoLabel.setAlignment(Pos.CENTER);
+        saldoLabel.setMaxWidth(Double.MAX_VALUE);
+        VBox.setVgrow(saldoLabel, Priority.ALWAYS);
+
+        VBox vbox = new VBox(imageView, legendaLabel,saldoLabel);
+        vbox.setAlignment(Pos.TOP_CENTER);
 
         button.setGraphic(vbox);
 
@@ -120,17 +127,21 @@ public class EnvelopeController implements Initializable {
         return button;
     }
 
+    private String formatarNumero(double numero) {
+        DecimalFormat formato = new DecimalFormat("#,##0.00");
+        return formato.format(numero);
+    }
     private void handleCategoriaButtonClick(Categoria categoria) {
-        // Adicione a lógica de manipulação do botão aqui
+        sideBarController.verEnvelope(categoria);
+        System.out.println("envelopes"+categoria.getNome());
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         context = Context.getInstance();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        btnCriarEnvelope.setStyle("-fx-background-color: transparent;");
-        btnCriarEnvelope.setOnMouseEntered(event -> btnCriarEnvelope.setStyle("-fx-background-color: #e0e0e0;"));
-        btnCriarEnvelope.setOnMouseExited(event -> btnCriarEnvelope.setStyle("-fx-background-color: transparent;"));
+
         update();
     }
 
@@ -141,5 +152,7 @@ public class EnvelopeController implements Initializable {
     public void onCriarEnvelope(){
         sideBarController.criarEnvelopesPane();
     }
+
+    public void onGuardaDinheiro() {sideBarController.adicionaDinheiroEnvelope(); }
 
 }

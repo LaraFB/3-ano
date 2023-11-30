@@ -9,8 +9,6 @@ public class ListaCategorias implements Serializable {
 
     public ListaCategorias(){
         this.categorias = new ArrayList<>();
-
-
     }
 
     public List<Categoria> getCategorias() { return categorias; }
@@ -24,21 +22,21 @@ public class ListaCategorias implements Serializable {
         categorias.add(c);
         return true;
     }
-    public boolean adicionarCategoriaNomeDescricao(String nome,String descricao,boolean isAberto){
+    public boolean adicionarCategoriaNomeDescricao(double valor,String nome,String descricao,boolean isAberto,boolean pagarBolsa){
         //validation:
         for(Categoria check : categorias)
             if(check.getNome().equals(nome)) return false; //ja existe, n adiciona
 
-        Categoria c = new Categoria(nome,descricao,isAberto);
+        Categoria c = new Categoria(valor,nome,descricao,isAberto,pagarBolsa);
         categorias.add(c);
         return true;
     }
-    public boolean adicionarCateogiraNome(String nome,boolean isAberto){
+    public boolean adicionarCateogiraNome(double valor,String nome,boolean isAberto,boolean pagarBolsa){
         //validation:
         for(Categoria check : categorias)
             if(check.getNome().equals(nome)) return false; //ja existe, n adiciona
 
-        Categoria c = new Categoria(nome,isAberto);
+        Categoria c = new Categoria(valor,nome,isAberto,pagarBolsa);
         categorias.add(c);
         return true;
     }
@@ -84,7 +82,7 @@ public class ListaCategorias implements Serializable {
 
     public boolean editarCategoriaNomeIndex(int i, String nome){ //por index
         //validation:
-        if(i>categorias.size() || i<0 || nome == null)
+        if(i>=categorias.size() || i<0 || nome == null)
             return false;
 
         categorias.get(i).setNome(nome);

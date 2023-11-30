@@ -12,11 +12,11 @@ public class Transacao implements Serializable {
     private String tipo; // 'Despesa' ou 'Entrada'
     private String descricao;
     private LocalDate data;
-    private float montante;
+    private double montante;
     private Categoria categoria;
     private boolean recorrente;
 
-    public Transacao(String tipo, String descricao,Categoria categoria, LocalDate data, float montante) {
+    public Transacao(String tipo, String descricao,Categoria categoria, LocalDate data, double montante) {
         this.id = nextId++;
         this.tipo = tipo;
         this.descricao = descricao;
@@ -38,7 +38,7 @@ public class Transacao implements Serializable {
         return data;
     }
 
-    public float getMontante() {
+    public double getMontante() {
         return montante;
     }
 
@@ -54,7 +54,7 @@ public class Transacao implements Serializable {
         this.data = data;
     }
 
-    public void setMontante(float montante) {
+    public void setMontante(double montante) {
         this.montante = montante;
     }
     public Categoria getCategoria() {

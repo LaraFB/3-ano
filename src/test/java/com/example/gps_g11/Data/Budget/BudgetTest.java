@@ -2,102 +2,66 @@ package com.example.gps_g11.Data.Budget;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class BudgetTest {
-/*
+public class BudgetTest {
+
     @Test
-    void getBudgetRestante() {
-        Budget budget = new Budget(100.0);
-        assertEquals(100.0,budget.getBudgetRestante());
+    public void testConstrutor() {
+        Budget budget = new Budget(1000.0);
+        assertEquals(1000.0, budget.getSaldoReal(), 0.01);
+        assertEquals(1000.0, budget.getSaldoDisponivel(), 0.01);
+        assertEquals(0.0, budget.getTotalDespesas(), 0.01);
+        assertFalse(budget.isExcedeuSaldo());
+        assertNotNull(budget.getBolsa());
+        assertEquals("Bolsa", budget.getBolsa().getNome());
+        assertEquals(0.0, budget.getBolsa().getValorReal(), 0.01);
+        assertEquals("Bolsa de estudo", budget.getBolsa().getDescricao());
     }
 
     @Test
-    void getBudgetGasto() {
-        Budget budget = new Budget(100.0);
-        budget.setBudgetGasto(50.0);
-        assertEquals(50.0,budget.getBudgetGasto());
-    }
+    public void testSettersAndGetters() {
+        Budget budget = new Budget(1000.0);
 
-    @Test
-    void getBudgetGuardado() {
-        Budget budget = new Budget(100.0);
-        budget.setBudgetGuardado(50.0);
-        assertEquals(50.0,budget.getBudgetGuardado());
-    }
-    @Test
-    void isExcedeuBudget() {
-        Budget budget = new Budget(100.0);
+        budget.setSaldoReal(1500.0);
+        assertEquals(1500.0, budget.getSaldoReal(), 0.01);
+
+        budget.setSaldoDisponivel(1200.0);
+        assertEquals(1200.0, budget.getSaldoDisponivel(), 0.01);
+
+        budget.setTotalDespesas(500.0);
+        assertEquals(500.0, budget.getTotalDespesas(), 0.01);
+
         budget.setExcedeuBudget(true);
-        assertTrue(budget.isExcedeuBudget());
+        assertTrue(budget.isExcedeuSaldo());
+
+        budget.setDiaReset(15);
+        assertEquals(15, budget.getDiaReset());
+
+        budget.setNvezes(3);
+        assertEquals(3, budget.getNvezes());
+
+        budget.setCald("Alguma Calendário");
+        assertEquals("Alguma Calendário", budget.getCald());
+
+        LocalDate today = LocalDate.now();
+        budget.setHoje(today);
+        assertEquals(today, budget.getHoje());
+
+        Bolsa novaBolsa = new Bolsa("Nova Bolsa", 500.0, "Nova Descrição");
+        budget.setBolsa(novaBolsa);
+        assertEquals(novaBolsa, budget.getBolsa());
     }
-
     @Test
-    public void getBolsa() {
-        Budget budget = new Budget(500.0);
-        Bolsa bolsaEsperada = new Bolsa("ISEC", 120, "Bolsa de estudo");
-        budget.setBolsa(bolsaEsperada);
-        Bolsa bolsaObtida = budget.getBolsa();
-        assertEquals(bolsaEsperada, bolsaObtida);
+    public void testLimpaBudget() {
+        Budget budget = new Budget(1000.0);
+
+        budget.setTotalDespesas(500.0);
+        assertEquals(500.0, budget.getTotalDespesas(), 0.01);
+
+        budget.LimpaBudget();
+        assertEquals(0.0, budget.getTotalDespesas(), 0.01);
     }
-
-    @Test
-    void adicionarAoBudgetGasto() {
-        Budget budget = new Budget(500.0);
-        budget.adicionarAoBudgetGasto(100.0);
-        assertEquals(400.0, budget.getBudgetRestante(), 0.001);
-        assertEquals(100.0, budget.getBudgetGasto(), 0.001);
-    }
-
-    @Test
-    void adicionarAoBudgetGuardado() {
-        Budget budget = new Budget(500.0);
-        budget.adicionarAoBudgetGuardado(50.0);
-        assertEquals(450.0, budget.getBudgetRestante(), 0.001);
-        assertEquals(50.0, budget.getBudgetGuardado(), 0.001);
-    }
-
-    @Test
-    void retirarDoBudgetGasto() {
-        Budget budget = new Budget(500.0);
-        budget.adicionarAoBudgetGasto(100.0);
-        budget.retirarDoBudgetGasto(30.0);
-        assertEquals(430.0, budget.getBudgetRestante(), 0.001);
-        assertEquals(70.0, budget.getBudgetGasto(), 0.001);
-    }
-
-    @Test
-    void retirarDoBudgetGuardado() {
-        Budget budget = new Budget(500.0);
-        budget.adicionarAoBudgetGuardado(50.0);
-        budget.retirarDoBudgetGuardado(20.0);
-        assertEquals(470, budget.getBudgetRestante(), 0.001);
-        assertEquals(30.0, budget.getBudgetGuardado(), 0.001);
-    }
-
-    @Test
-    void getEnvelopes() {
-    }
-<<<<<<< HEAD
-}
-=======
-
-    @Test
-    void criarEnvelope() {
-        Budget budget = new Budget(500.0);
-        budget.criarEnvelope("Viagem", 100.0);
-        assertEquals(400.0, budget.getBudgetRestante(), 0.001);
-        assertEquals(100.0, budget.getBudgetGuardado(), 0.001);
-        assertEquals(1, budget.getEnvelopes().size());
-    }
-
-
-    @Test
-    public void criarEnvelopeExcedeOrçamento() {
-        Budget budget = new Budget(500.0);
-        budget.criarEnvelope("Viagem", 600.0);
-        assertEquals(500.0, budget.getBudgetRestante(), 0.001);
-        assertEquals(0.0, budget.getBudgetGuardado(), 0.001);
-        assertEquals(0, budget.getEnvelopes().size());
-    }*/
 }

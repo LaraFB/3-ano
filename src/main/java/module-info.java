@@ -25,4 +25,6 @@ module com.example.gps_g11 {
     opens com.example.gps_g11.Controller.Envelope to javafx.fxml;
     exports com.example.gps_g11.Controller.Home;
     opens com.example.gps_g11.Controller.Home to javafx.fxml;
+    opens com.example.gps_g11.Controller.Objetivo to javafx.fxml;
+    opens com.example.gps_g11.Controller.Estatistica to javafx.fxml;
 }

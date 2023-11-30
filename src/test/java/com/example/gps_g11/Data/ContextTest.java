@@ -5,52 +5,40 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ContextTest {
-    /*  Context context = Context.getInstance();
-    @Test
-    void getBudgetRestante (){
-        assertEquals(context.getBudgetRestante(),200);
-    }
-    @Test
-    void getBudgetGasto(){
-        assertEquals(context.getBudgetGasto(),49);
-    }
-    @Test
-    void isEmpty(){
-        //por fazer
-    }
-<<<<<<< HEAD
-/*
-    @Test
-=======
-  @Test
->>>>>>> 8df854d4a0c16895d584866cb66807a904e5b253
-    void getValorBolsa() {
-        assertEquals(context.getValorBolsa(),110);
-    }*/
-   /* @Test
-    void getValorGastoBolsa(){
-        assertEquals(context.getValorGastoBolsa(),10);
-<<<<<<< HEAD
-    }
-
-=======
-
->>>>>>> 8df854d4a0c16895d584866cb66807a904e5b253
 
     @Test
-    void getTotalExpenses(){
-        //por fazer
+    public void testAdicionarDinheiroEnvelope_Sucesso() {
+        ContextData contextData = new ContextData();
+        Context context = Context.getInstance();
+        double saldoInicial = context.getSaldoDisponivel();
+
+        int resultado = context.adicionarDinheiroEnvelope(50.0, "CategoriaExistente");
+
+        assertEquals(-2, resultado);
+        assertEquals(100.0, context.getSaldoDisponivel());
     }
+
     @Test
-    void getExpensesByCategory(){
-        //por fazer
+    public void testAdicionarDinheiroEnvelope_SemSaldo() {
+        ContextData contextData = new ContextData();
+        Context context = Context.getInstance();
+        double saldoInicial = context.getSaldoDisponivel();
+
+        int resultado = context.adicionarDinheiroEnvelope(150.0, "CategoriaExistente");
+
+        assertEquals(-1, resultado);
+        assertEquals(saldoInicial, context.getSaldoDisponivel());
     }
+
     @Test
-    void getExpensesByDate(){
-        //por fazer
+    public void testAdicionarDinheiroEnvelope_CategoriaInexistente() {
+        ContextData contextData = new ContextData();
+        Context context = Context.getInstance();
+        double saldoInicial = context.getSaldoDisponivel();
+
+        int resultado = context.adicionarDinheiroEnvelope(50.0, "CategoriaInexistente");
+
+        assertEquals(-2, resultado);
+        assertEquals(saldoInicial, context.getSaldoDisponivel());
     }
-    @Test
-    void ExpensestoString(){
-        //por fazer
-    }*/
 }

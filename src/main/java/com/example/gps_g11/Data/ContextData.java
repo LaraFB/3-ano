@@ -1,15 +1,18 @@
 package com.example.gps_g11.Data;
 
 import com.example.gps_g11.Data.Budget.Budget;
+import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
 import com.example.gps_g11.Data.Transacao.HistoricoTransacoes;
 import com.example.gps_g11.Data.Categoria.ListaCategorias;
 
 import java.io.*;
+import java.util.List;
 
 public class ContextData implements Serializable {
     private HistoricoTransacoes historicoTransacoes;
 
     private ListaCategorias listaCategorias;
+    private ListaObjetivos listaObjetivos;
 
     private Budget budget;
 
@@ -17,6 +20,11 @@ public class ContextData implements Serializable {
         this.listaCategorias = new ListaCategorias();
         this.budget = new Budget(0);
         this.historicoTransacoes = new HistoricoTransacoes();
+        this.listaObjetivos = new ListaObjetivos();
+        budget.setSaldoDisponivel(100);
+        budget.setSaldoReal(100);
+        budget.getBolsa().setValorDisponivel(200);
+        budget.getBolsa().setValorReal(200);
     }
 
     public HistoricoTransacoes getHistoricoTransacoes() {
@@ -26,6 +34,9 @@ public class ContextData implements Serializable {
 
     public ListaCategorias getListaCategorias() {
         return listaCategorias;
+    }
+    public ListaObjetivos getListaObjetivos() {
+        return listaObjetivos;
     }
 
     public Budget getBudget() {
@@ -50,5 +61,7 @@ public class ContextData implements Serializable {
             return new ContextData();
         }
     }
+
+
 
 }

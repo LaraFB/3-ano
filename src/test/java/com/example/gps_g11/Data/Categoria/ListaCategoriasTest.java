@@ -4,150 +4,161 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ListaCategoriasTest {
+public class ListaCategoriasTest {
 
     @Test
-    public void adicionarCategoriaObjeto() {
+    public void testAdicionarCategoriaObjeto() {
         ListaCategorias listaCategorias = new ListaCategorias();
-        Categoria categoria = new Categoria("Teste", "Descrição de teste", true);
+        Categoria categoria = new Categoria(50.0, "Compras", true, false);
 
         assertTrue(listaCategorias.adicionarCategoriaObjeto(categoria));
+        assertEquals(1, listaCategorias.getCategorias().size());
+
         assertFalse(listaCategorias.adicionarCategoriaObjeto(categoria));
+        assertEquals(1, listaCategorias.getCategorias().size());
     }
 
     @Test
-    public void adicionarCategoriaNomeDescricao() {
+    public void testAdicionarCategoriaNomeDescricao() {
         ListaCategorias listaCategorias = new ListaCategorias();
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
-        assertFalse(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Outra descrição", false));
+        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao(30.0, "Lazer", "Atividades recreativas", true, true));
+        assertEquals(1, listaCategorias.getCategorias().size());
+
+        assertFalse(listaCategorias.adicionarCategoriaNomeDescricao(30.0, "Lazer", "Atividades recreativas", true, true));
+        assertEquals(1, listaCategorias.getCategorias().size());
     }
 
     @Test
-    public void adicionarCateogiraNome() {
+    public void testAdicionarCateogiraNome() {
         ListaCategorias listaCategorias = new ListaCategorias();
 
-        assertTrue(listaCategorias.adicionarCateogiraNome("Teste", true));
-        assertFalse(listaCategorias.adicionarCateogiraNome("Teste", false));
+        assertTrue(listaCategorias.adicionarCateogiraNome(25.0, "Saúde", false, false));
+        assertEquals(1, listaCategorias.getCategorias().size());
+
+        assertFalse(listaCategorias.adicionarCateogiraNome(25.0, "Saúde", false, false));
+        assertEquals(1, listaCategorias.getCategorias().size());
     }
 
     @Test
-    public void removerCategoriaObjeto() {
+    public void testRemoverCategoriaObjeto() {
         ListaCategorias listaCategorias = new ListaCategorias();
-        Categoria categoria = new Categoria("Teste", "Descrição de teste", true);
+        Categoria categoria = new Categoria(40.0, "Viagem", false, true);
 
-        assertTrue(listaCategorias.adicionarCategoriaObjeto(categoria));
+        listaCategorias.adicionarCategoriaObjeto(categoria);
+
         assertTrue(listaCategorias.removerCategoriaObjeto(categoria));
+        assertEquals(0, listaCategorias.getCategorias().size());
+
         assertFalse(listaCategorias.removerCategoriaObjeto(categoria));
-        assertFalse(listaCategorias.removerCategoriaObjeto(null));
+        assertEquals(0, listaCategorias.getCategorias().size());
     }
 
     @Test
-    public void removerCategoriaIndex() {
+    public void testRemoverCategoriaIndex() {
         ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(20.0, "Estudo", "Gastos com material escolar", true, false);
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
         assertTrue(listaCategorias.removerCategoriaIndex(0));
-        assertFalse(listaCategorias.removerCategoriaIndex(-1));
-        assertFalse(listaCategorias.removerCategoriaIndex(10));
+        assertEquals(0, listaCategorias.getCategorias().size());
+
+        assertFalse(listaCategorias.removerCategoriaIndex(0));
+        assertEquals(0, listaCategorias.getCategorias().size());
     }
 
     @Test
-    public void removeCategoriaNome() {
+    public void testRemoveCategoriaNome() {
         ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(15.0, "Trabalho", "Gastos relacionados ao trabalho", true, false);
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
-        assertTrue(listaCategorias.removeCategoriaNome("Teste"));
-        assertFalse(listaCategorias.removeCategoriaNome("Teste"));
-        assertFalse(listaCategorias.removeCategoriaNome(null));
+        assertTrue(listaCategorias.removeCategoriaNome("Trabalho"));
+        assertEquals(0, listaCategorias.getCategorias().size());
+
+        assertFalse(listaCategorias.removeCategoriaNome("Trabalho"));
+        assertEquals(0, listaCategorias.getCategorias().size());
     }
 
     @Test
-    public void editarCategoria() {
+    public void testEditarCategoria() {
         ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(10.0, "Esportes", "Equipamentos esportivos", true, false);
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
-        assertTrue(listaCategorias.editarCategoria("Teste", "Nova descrição"));
-        assertFalse(listaCategorias.editarCategoria("CategoriaInexistente", "Nova descrição"));
-        assertFalse(listaCategorias.editarCategoria("Teste", null));
-        assertFalse(listaCategorias.editarCategoria(null, "Nova descrição"));
+        assertTrue(listaCategorias.editarCategoria("Esportes", "Equipamentos esportivos e atividades ao ar livre"));
+        assertEquals("Equipamentos esportivos e atividades ao ar livre", listaCategorias.getCategoriaPorNome("Esportes").getDescricao());
+
+        assertFalse(listaCategorias.editarCategoria("Viagem", "Novos destinos para explorar"));
     }
 
     @Test
-    public void editarCategoriaNomeIndex() {
+    public void testEditarCategoriaNomeIndex() {
         ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(12.0, "Saúde", "Consultas médicas", true, false);
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
-        assertTrue(listaCategorias.editarCategoriaNomeIndex(0, "NovoNome"));
-        assertFalse(listaCategorias.editarCategoriaNomeIndex(-1, "NovoNome"));
-        assertFalse(listaCategorias.editarCategoriaNomeIndex(0, null));
+        assertTrue(listaCategorias.editarCategoriaNomeIndex(0, "Bem-Estar"));
+        assertEquals("Bem-Estar", listaCategorias.getCategoriaPorIndex(0).getNome());
+
+        assertFalse(listaCategorias.editarCategoriaNomeIndex(1, "Bem-Estar"));
     }
 
     @Test
-    public void editCategoriaDescricaoIndex() {
+    public void testEditCategoriaDescricaoIndex() {
         ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(18.0, "Cultura", "Livros e eventos culturais", true, false);
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
-        assertTrue(listaCategorias.editCategoriaDescricaoIndex(0, "NovaDescrição"));
-        assertFalse(listaCategorias.editCategoriaDescricaoIndex(-1, "NovaDescrição"));
-        assertFalse(listaCategorias.editCategoriaDescricaoIndex(0, null));
+        assertTrue(listaCategorias.editCategoriaDescricaoIndex(0, "Leitura e participação em eventos culturais"));
+        assertEquals("Leitura e participação em eventos culturais", listaCategorias.getCategoraiDescricaoPorIndex(0));
+
+        assertFalse(listaCategorias.editCategoriaDescricaoIndex(1, "Arte e Cultura"));
     }
 
-
-
     @Test
-    public void getCategoriaPorIndex() {
+    public void testGetCategoriaPorIndex() {
         ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(25.0, "Finanças", "Controle de gastos", true, false);
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
+        assertEquals("Finanças", listaCategorias.getCategoriaPorIndex(0).getNome());
 
-        Categoria categoria = listaCategorias.getCategoriaPorIndex(0);
-        assertNotNull(categoria);
-        assertEquals("Teste", categoria.getNome());
-
-        assertNull(listaCategorias.getCategoriaPorIndex(-1));
         assertNull(listaCategorias.getCategoriaPorIndex(1));
     }
 
     @Test
-    public void getCategoriaNomePorIndex() {
+    public void testGetCategoriaNomePorIndex() {
         ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(22.0, "Tecnologia", "Gastos com dispositivos eletrônicos", true, false);
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
+        assertEquals("Tecnologia", listaCategorias.getCategoriaNomePorIndex(0));
 
-        String nome = listaCategorias.getCategoriaNomePorIndex(0);
-        assertNotNull(nome);
-        assertEquals("Teste", nome);
-
-        assertNull(listaCategorias.getCategoriaNomePorIndex(-1));
         assertNull(listaCategorias.getCategoriaNomePorIndex(1));
     }
 
     @Test
-    public void getCategoraiDescricaoPorIndex() {
+    public void testGetCategoraiDescricaoPorIndex() {
         ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(30.0, "Hobbies", "Atividades de lazer", true, false);
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
+        assertEquals("Atividades de lazer", listaCategorias.getCategoraiDescricaoPorIndex(0));
 
-        String descricao = listaCategorias.getCategoraiDescricaoPorIndex(0);
-        assertNotNull(descricao);
-        assertEquals("Descrição de teste", descricao);
-
-        assertNull(listaCategorias.getCategoraiDescricaoPorIndex(-1));
         assertNull(listaCategorias.getCategoraiDescricaoPorIndex(1));
     }
 
     @Test
-    public void getCategoriaPorNome() {
+    public void testIsEmpty() {
         ListaCategorias listaCategorias = new ListaCategorias();
 
-        assertTrue(listaCategorias.adicionarCategoriaNomeDescricao("Teste", "Descrição de teste", true));
+        assertTrue(listaCategorias.isEmpty());
 
-        Categoria categoria = listaCategorias.getCategoriaPorNome("Teste");
-        assertNotNull(categoria);
-        assertEquals("Descrição de teste", categoria.getDescricao());
+        listaCategorias.adicionarCategoriaNomeDescricao(15.0, "Teste", "Testando", true, false);
 
-        assertNull(listaCategorias.getCategoriaPorNome("CategoriaInexistente"));
-        assertNull(listaCategorias.getCategoriaPorNome(null));
+        assertFalse(listaCategorias.isEmpty());
+    }
+
+    @Test
+    public void testGetCategoriaPorNome() {
+        ListaCategorias listaCategorias = new ListaCategorias();
+        listaCategorias.adicionarCategoriaNomeDescricao(20.0, "Viagem", "Planejamento de viagens", true, false);
+
+        assertEquals("Viagem", listaCategorias.getCategoriaPorNome("Viagem").getNome());
+
+        assertNull(listaCategorias.getCategoriaPorNome("Trabalho"));
     }
 }

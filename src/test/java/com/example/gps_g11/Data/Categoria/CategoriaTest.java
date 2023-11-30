@@ -4,68 +4,63 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CategoriaTest {
+public class CategoriaTest {
 
     @Test
-    public void construtorComNomeEAberto() {
-        Categoria categoria = new Categoria("Teste", true);
+    public void testConstrutorSemDescricao() {
+        Categoria categoria = new Categoria(100.0, "Alimentação", true, false);
 
-        assertEquals("Teste", categoria.getNome());
+        assertEquals("Alimentação", categoria.getNome());
         assertEquals("", categoria.getDescricao());
+        assertEquals(100.0, categoria.getValor(), 0.001);
         assertTrue(categoria.isAberto());
+        assertFalse(categoria.isPagarBolsa());
     }
 
     @Test
-    public void construtorComNomeDescricaoEAberto() {
-        Categoria categoria = new Categoria("Teste", "Descrição de Teste", true);
+    public void testConstrutorComDescricao() {
+        Categoria categoria = new Categoria(50.0, "Transporte", "Gastos com transporte", false, true);
 
-        assertEquals("Teste", categoria.getNome());
-        assertEquals("Descrição de Teste", categoria.getDescricao());
-        assertTrue(categoria.isAberto());
+        assertEquals("Transporte", categoria.getNome());
+        assertEquals("Gastos com transporte", categoria.getDescricao());
+        assertEquals(50.0, categoria.getValor(), 0.001);
+        assertFalse(categoria.isAberto());
+        assertTrue(categoria.isPagarBolsa());
     }
 
     @Test
-    public void setNome() {
-        Categoria categoria = new Categoria("Teste", true);
+    public void testSetters() {
+        Categoria categoria = new Categoria(200.0, "Entretenimento", true, true);
 
-        categoria.setNome("NovoNome");
+        categoria.setNome("Cinema");
+        assertEquals("Cinema", categoria.getNome());
 
-        assertEquals("NovoNome", categoria.getNome());
+        categoria.setDescricao("Ingressos e lanches");
+        assertEquals("Ingressos e lanches", categoria.getDescricao());
+
+        categoria.setValor(30.0);
+        assertEquals(30.0, categoria.getValor(), 0.001);
+
+        categoria.setAberto(false);
+        assertFalse(categoria.isAberto());
+
+        categoria.setPagarBolsa(false);
+        assertFalse(categoria.isPagarBolsa());
     }
 
     @Test
-    public void setNomeNull() {
-        Categoria categoria = new Categoria("Teste", true);
-
+    public void testSetNomeComNull() {
+        Categoria categoria = new Categoria(50.0, "Saúde", true, false);
         categoria.setNome(null);
 
-        assertEquals("Teste", categoria.getNome());
+        assertEquals("Saúde", categoria.getNome());
     }
 
     @Test
-    public void setDescricao() {
-        Categoria categoria = new Categoria("Teste", true);
-
-        categoria.setDescricao("NovaDescrição");
-
-        assertEquals("NovaDescrição", categoria.getDescricao());
-    }
-
-    @Test
-    public void setDescricaoNull() {
-        Categoria categoria = new Categoria("Teste", true);
-
+    public void testSetDescricaoComNull() {
+        Categoria categoria = new Categoria(50.0, "Educação", true, false);
         categoria.setDescricao(null);
 
         assertEquals("", categoria.getDescricao());
-    }
-
-    @Test
-    public void setAberto() {
-        Categoria categoria = new Categoria("Teste", true);
-
-        categoria.setAberto(false);
-
-        assertFalse(categoria.isAberto());
     }
 }
