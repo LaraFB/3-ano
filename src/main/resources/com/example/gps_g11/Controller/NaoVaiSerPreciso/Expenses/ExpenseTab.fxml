@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../Style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.NaoVaiSerPreciso.ExpenseTabController">
+<TabPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../Style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.NaoVaiSerPreciso.ExpenseTabController">
     <tabs>
         <Tab fx:id="ExpenseTab" text="Expenses">
             <content>

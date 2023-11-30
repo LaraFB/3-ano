@@ -52,7 +52,7 @@
 </padding>
 </VBox>-->
 
-<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Historico.HistoricoController">
+<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Historico.HistoricoController">
    <center>
       <VBox prefHeight="636.0" prefWidth="1000.0" BorderPane.alignment="TOP_CENTER">
          <children>
