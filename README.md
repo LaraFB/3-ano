@@ -178,6 +178,7 @@ It is assumed:
 - User story 11 (tp-gps-11/gps_g11#15)
 - User story 12 (tp-gps-11/gps_g11#16)
 - User story 13 (tp-gps-11/gps_g11#17)
+- User story 14 (tp-gps-11/gps_g11#102)
 
 ***
 ##### User Story 1
@@ -219,7 +220,9 @@ As a user, I want to view expenses by categoria, so that I can understand in whi
 ##### User Story 13
 As a working student, I want to add money to my budget, so that I can keep the budget updated.
 ***
-
+##### User Story 14
+As a student, I want to track automatically reserved amounts, so that I can add recurrent expenses and categories
+***
 
 ## Definition of done
 
@@ -488,6 +491,12 @@ By the end of the second realease we must have all the user stories with "must" 
 
   - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
     - Task 1: Create methods to generate and export reports in PDF and Excel formats
+
+  - US 14: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
+    - Task 1: Design user interface
+    - Task 2: Create methods track automatically reserved amounts from expenses
+    - Task 3: Create methods track automatically reserved amounts from envelopes
+    - Task 2: Create methods to implement the tasks list fearure
   
 - Story Points: 1L + 3M
 

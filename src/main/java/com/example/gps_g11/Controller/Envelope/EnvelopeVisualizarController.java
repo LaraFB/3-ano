@@ -10,15 +10,11 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
-import javafx.util.StringConverter;
 
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
 
 public class EnvelopeVisualizarController{
     private SideBarController sideBarController;
@@ -186,7 +182,6 @@ public class EnvelopeVisualizarController{
         sideBarController.onEnvelope();
     }
 
-
     public void onAdcDinheiro(){
         if(context.getCategoriasList().size() == 1){ //se so ha esta categoria
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -199,11 +194,10 @@ public class EnvelopeVisualizarController{
         }
         boolean haAbertos = false;
         for (int x = 0; x < context.getCategoriasList().size(); x++)
-            if (context.getCategoriasList().get(x).isAberto() && context.getCategoriasList().get(x).getNome().compareTo(categoria.getNome()) != 0 && context.getCategoriasList().get(x).isPagarBolsa() == categoria.isPagarBolsa()) {
+            if (context.getCategoriasList().get(x).isAberto() && context.getCategoriasList().get(x).getNome().compareTo(categoria.getNome()) != 0) {
                 haAbertos = true;
                 break;
             }
-
         //se saiu e n ha+ envelopes abertos
         if(haAbertos == false){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -214,7 +208,6 @@ public class EnvelopeVisualizarController{
             alert.showAndWait();
             return;
         }
-
 
         //pop up:
         Dialog<Pair<String, Integer>> popUp = new Dialog<>();
@@ -235,7 +228,7 @@ public class EnvelopeVisualizarController{
         //escolher envelope
         ChoiceBox<String> envelopes = new ChoiceBox<>();
         for(int i=0; i<context.getCategoriasList().size(); i++)
-            if(context.getCategoriasList().get(i).isAberto() && context.getCategoriasList().get(i).getNome().compareTo(categoria.getNome()) != 0 && context.getCategoriasList().get(i).isPagarBolsa() == categoria.isPagarBolsa()) {
+            if(context.getCategoriasList().get(i).isAberto() && context.getCategoriasList().get(i).getNome().compareTo(categoria.getNome()) != 0) {
                 envelopes.getItems().add(context.getCategoriasList().get(i).getNome());
                 if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasList().get(i).getNome());
             }
@@ -244,7 +237,6 @@ public class EnvelopeVisualizarController{
 
         //escolher valor
         TextField valor = new TextField();
-        tfValorFormat(valor);
         valor.setPromptText("");
         valor.setStyle("-fx-background-color:  #DEEFFF");
 
@@ -260,12 +252,9 @@ public class EnvelopeVisualizarController{
 
         valor.textProperty().addListener((observable, oldValue, newValue) -> {
             btnOk.setDisable(!isNumber(newValue));
-            if(newValue.isEmpty()){
-                btnOk.setDisable(true);
-            }else{
-                btnOk.setDisable(Double.parseDouble(newValue) <= 0);
-                btnOk.setDisable(Double.parseDouble(newValue) > context.getCategoriaByName(envelopes.getValue()).getValor());
-            }
+            btnOk.setDisable(newValue.trim().isEmpty());
+            btnOk.setDisable(Double.parseDouble(newValue) <= 0);
+            btnOk.setDisable(Double.parseDouble(newValue) > context.getCategoriaByName(envelopes.getValue()).getValor());
 
         });
 
@@ -275,53 +264,24 @@ public class EnvelopeVisualizarController{
             if(!valor.getText().isEmpty())
                 btnOk.setDisable(Double.parseDouble(valor.getText()) > context.getCategoriaByName(newValue).getValor());
         });
-        ((Button) btnOk).setOnAction(event -> {
-            //fechou o popup: temos os valores:
-            double valoraretirar = Double.parseDouble(valor.getText());
-            String envelopearetirar = envelopes.getValue();
-
-            //retira dinheiro do envelope
-            context.getCategoriaByName(envelopearetirar).setValor(
-                    context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
-            );
-
-            //coloca neste envelope
-            categoria.setValor(
-                    categoria.getValor() + valoraretirar
-            );
-
-            reset();
-        });
 
         popUp.getDialogPane().setContent(grid);
         popUp.showAndWait();
 
+        //fechou o popup: temos os valores:
+        double valoraretirar = Double.parseDouble(valor.getText());
+        String envelopearetirar = envelopes.getValue();
 
+        //retira dinheiro do envelope
+        context.getCategoriaByName(envelopearetirar).setValor(
+                context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
+        );
 
-    }
+        //coloca neste envelope
+        categoria.setValor(
+                categoria.getValor() + valoraretirar
+        );
 
-    private void tfValorFormat(TextField textField){
-        Pattern pattern = Pattern.compile("^\\d*\\.?\\d{0,2}$");
-        UnaryOperator<TextFormatter.Change> filter = change -> {
-            String newText = change.getControlNewText();
-            if (pattern.matcher(newText).matches()) {
-                return change;
-            }
-            return null;
-        };
-        StringConverter<String> converter = new StringConverter<>() {
-            @Override
-            public String fromString(String string) {
-                return string;
-            }
-
-            @Override
-            public String toString(String object) {
-                return object;
-            }
-        };
-
-        TextFormatter<String> textFormatter = new TextFormatter<>(converter, "", filter);
-        textField.setTextFormatter(textFormatter);
+        reset();
     }
 }

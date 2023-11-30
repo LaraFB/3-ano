@@ -39,6 +39,14 @@ public class editarObjetivoController implements Initializable{
     private Button btnSalvar;
     @FXML
     private Button btnEliminar;
+    @FXML
+    private Slider sPrioridade;
+    @FXML
+    private DatePicker dpData;
+    @FXML
+    private Label lPrioridade;
+    @FXML
+    private Label lProgresso;
 
     public void setSideBar(SideBarController sideBarController) {this.sideBarController = sideBarController;}
 
@@ -47,6 +55,10 @@ public class editarObjetivoController implements Initializable{
         this.context = Context.getInstance();
         msgError.setVisible(false);
         update();
+
+        sPrioridade.valueProperty().addListener((observable, oldValue, newValue) -> {
+            lPrioridade.setText(newValue.intValue()+"/10");
+        });
     }
 
     public void onBackToObjetivos(){ sideBarController.onObjetivos();}
@@ -77,6 +89,9 @@ public class editarObjetivoController implements Initializable{
             if(!taDescricao.getText().isEmpty())
                 context.getListaObjetivos().getObjetivo(index).setDescricao(taDescricao.getText());
             else context.getListaObjetivos().getObjetivo(index).setDescricao("");
+
+            context.getListaObjetivos().getObjetivo(index).setDataLimite(dpData.getValue());
+            context.getListaObjetivos().getObjetivo(index).setPrioridade((int)sPrioridade.getValue());
 
             update();
 
@@ -138,6 +153,9 @@ public class editarObjetivoController implements Initializable{
         tfNome.setText(context.getListaObjetivos().getObjetivo(index).getNome());
         tfValor.setText(String.valueOf(context.getListaObjetivos().getObjetivo(index).getValor()));
         taDescricao.setText(context.getListaObjetivos().getObjetivo(index).getDescricao());
+        sPrioridade.setValue(context.getListaObjetivos().getObjetivo(index).getPrioridade());
+        lPrioridade.setText(context.getListaObjetivos().getObjetivo(index).getPrioridade() + "/10");
+        dpData.setValue(context.getListaObjetivos().getObjetivo(index).getDataLimite());
 
         // valor        --> 1
         // valor obtido --> ?
@@ -145,6 +163,7 @@ public class editarObjetivoController implements Initializable{
         // ?% = (valor obtido * 1) / valor
 
         pbObjetivo.setProgress( context.getListaObjetivos().getObjetivo(index).getCurrentValue() / context.getListaObjetivos().getObjetivo(index).getValor());
+        lProgresso.setText((context.getListaObjetivos().getObjetivo(index).getCurrentValue() / context.getListaObjetivos().getObjetivo(index).getValor())*100 +"%");
         msgError.setVisible(false);
         btnAdcDinheiro.setDisable(false);
         btnSalvar.setDisable(false);
@@ -172,9 +191,12 @@ public class editarObjetivoController implements Initializable{
             }
 
             update();
+            lTitulo.setText("Objetivo");
             tfNome.setText("");
             tfValor.setText("");
             taDescricao.setText("");
+            sPrioridade.setValue(0);
+            dpData.setValue(null);
             pbObjetivo.setProgress(0);
         }
         else {
