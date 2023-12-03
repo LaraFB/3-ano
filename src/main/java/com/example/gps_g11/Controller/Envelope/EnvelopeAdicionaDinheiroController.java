@@ -26,8 +26,8 @@ public class EnvelopeAdicionaDinheiroController {
     public void onBackToEnvelope() {sideBarController.onEnvelope();}
     public void initialize(){
         context = Context.getInstance();
-        ObservableList<String> nomesEnvelopes = FXCollections.observableArrayList(context.getCategoriaNomes());
-        cbEnvelope.setItems(nomesEnvelopes);
+        //ObservableList<String> nomesEnvelopes = FXCollections.observableArrayList(context.getCategoriaNomes());
+        //cbEnvelope.setItems(nomesEnvelopes);
         tfValorFormat();
         lblError1.setVisible(false);
         lblError2.setVisible(false);
@@ -68,7 +68,7 @@ public class EnvelopeAdicionaDinheiroController {
             lblError.setVisible(true);
             lblError1.setVisible(false);
             lblError2.setVisible(false);
-            int res = context.adicionarDinheiroEnvelope(Double.parseDouble(tfValor.getText()),cbEnvelope.getValue());
+            int res = context.adicionarDinheiroCategoriaDespesa(Double.parseDouble(tfValor.getText()),cbEnvelope.getValue());
             if(res == -1){
                 lblError.setText("Saldo insuficiente");
                 lblError.setTextFill(Color.RED);

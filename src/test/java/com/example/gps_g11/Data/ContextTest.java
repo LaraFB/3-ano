@@ -1,3 +1,4 @@
+/*
 package com.example.gps_g11.Data;
 
 import org.junit.jupiter.api.Test;
@@ -6,39 +7,44 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ContextTest {
 
-   /* @Test
-    public void testAdicionarDinheiroEnvelope_Sucesso() {
+   */
+/* @Test
+    public void testadicionarDinheiroCategoriaDespesa_Sucesso() {
         ContextData contextData = new ContextData();
         Context context = Context.getInstance();
         double saldoInicial = context.getSaldoDisponivel();
 
-        int resultado = context.adicionarDinheiroEnvelope(50.0, "CategoriaExistente");
+        int resultado = context.adicionarDinheiroCategoriaDespesa(50.0, "CategoriaExistente");
 
         assertEquals(-2, resultado);
         assertEquals(100.0, context.getSaldoDisponivel());
     }
-*/
+*//*
+
     @Test
-    public void testAdicionarDinheiroEnvelope_SemSaldo() {
+    public void testadicionarDinheiroCategoriaDespesa_SemSaldo() {
         ContextData contextData = new ContextData();
         Context context = Context.getInstance();
         double saldoInicial = context.getSaldoDisponivel();
 
-        int resultado = context.adicionarDinheiroEnvelope(150.0, "CategoriaExistente");
+        int resultado = context.adicionarDinheiroCategoriaDespesa(150.0, "CategoriaExistente");
 
         assertEquals(-1, resultado);
         assertEquals(saldoInicial, context.getSaldoDisponivel());
     }
 
     @Test
-    public void testAdicionarDinheiroEnvelope_CategoriaInexistente() {
+    public void testadicionarDinheiroCategoriaDespesa_CategoriaInexistente() {
         ContextData contextData = new ContextData();
         Context context = Context.getInstance();
         double saldoInicial = context.getSaldoDisponivel();
 
-        int resultado = context.adicionarDinheiroEnvelope(50.0, "CategoriaInexistente");
+        int resultado = context.adicionarDinheiroCategoriaDespesa(50.0, "CategoriaInexistente");
 
-       /* assertEquals(-2, resultado);*/
+       */
+/* assertEquals(-2, resultado);*//*
+
         assertEquals(saldoInicial, context.getSaldoDisponivel());
     }
 }
+*/

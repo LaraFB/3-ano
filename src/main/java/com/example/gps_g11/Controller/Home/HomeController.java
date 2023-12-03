@@ -1,13 +1,19 @@
 package com.example.gps_g11.Controller.Home;
 
+import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPanePopUpController;
 import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
 
 
@@ -17,12 +23,13 @@ import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
 public class HomeController {
-    public Label bolsaRealText;
-    public Label bolsaDisponivelText;
-    public Label bolsaDespesasText;
-    public Label saldoDespesasText;
-    public Label saldoRealText;
-    public Label saldoDisponivelText;
+
+    public Label lblSaldoRealCB;
+    public Label lblSaldoRealD;
+    public Label lblSaldoTotal;
+    public Label lblSaldoDistribuir;
+    public Label lblSaldoEnvelopes;
+    public Label lblTotalDespesas;
     private Context context;
 
     public BorderPane root;
@@ -34,14 +41,12 @@ public class HomeController {
 
     public void initialize(){
         context = Context.getInstance();
-        saldoRealText.setText(formatarNumero(context.getSaldoReal()));
-        saldoDisponivelText.setText(formatarNumero(context.getSaldoDisponivel()));
-        saldoDespesasText.setText(formatarNumero(context.getTotalDespesas()));
-        bolsaRealText.setText(formatarNumero(context.getBolsa().getValorReal()));
-        bolsaDisponivelText.setText(formatarNumero(context.getBolsa().getValorDisponivel()));
-        bolsaDespesasText.setText(formatarNumero(context.getBolsa().getTotalDespesas()));
-        /*BalanceText.setText(String.valueOf(context.getBudgetRestante()) + " €");
-        TotalExpenseText.setText(String.valueOf(context.getBudgetGasto()) + " €");*/
+        lblSaldoRealCB.setText(formatarNumero(context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
+        lblSaldoRealD.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()) + " €");
+        lblSaldoTotal.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()+context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
+        lblSaldoDistribuir.setText(formatarNumero(context.getSaldo().getSaldoPorDistribuir()) + " €");
+        lblSaldoEnvelopes.setText(formatarNumero(context.getSaldo().getSaldoNosEnvelopes()) + " €");
+        lblTotalDespesas.setText(formatarNumero(context.getSaldo().getTotalDespesas()) + " €");
     }
 
     private String formatarNumero(double numero) {
@@ -57,5 +62,5 @@ public class HomeController {
         sideBarController.adicionarSaldo();
     }
 
-    public void onResetBudget(){sideBarController.resetbudget();}
+
 }

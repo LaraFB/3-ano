@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
-public class HomePageAdicionarDividaController {
+public class HomePageAdicionarDespesaController {
     public TextField tfValor;
     public TextArea taDescricao;
     public ChoiceBox<String> cbEnvelope;
@@ -22,6 +22,9 @@ public class HomePageAdicionarDividaController {
     public Label lblError1;
     public Label lblError2;
     public Label lblError3;
+    public Label lblError4;
+    public Label lblError5;
+    public ChoiceBox <String>cbTipoPagamento;
     private SideBarController sideBarController;
     private Context context;
 
@@ -35,13 +38,18 @@ public class HomePageAdicionarDividaController {
 
     public void initialize(){
         context = Context.getInstance();
-        ObservableList<String> nomesEnvelopes = FXCollections.observableArrayList(context.getCategoriaNomes());
+        ObservableList<String> nomesEnvelopes = FXCollections.observableArrayList(context.getCategoriaDespesasNomes());
         cbEnvelope.setItems(nomesEnvelopes);
+        cbEnvelope.setValue("Escolhe");
         tfValorFormat();
         lblError1.setVisible(false);
         lblError2.setVisible(false);
         lblError3.setVisible(false);
+        lblError4.setVisible(false);
         lblError.setVisible(false);
+        cbTipoPagamento.getItems().addAll( "Débito", "Numerário");
+        cbTipoPagamento.setValue("Escolhe");
+
     }
 
     private void tfValorFormat() {
@@ -70,11 +78,13 @@ public class HomePageAdicionarDividaController {
     }
     public void onOk(){
         LocalDate selectedDate = dataPicker.getValue();
-        if(tfValor.getText().isEmpty() || cbEnvelope.getValue() == null || selectedDate == null){
+        if(tfValor.getText().isEmpty() || cbEnvelope.getValue().equals("Escolhe") || selectedDate == null || taDescricao.getText().isEmpty() || cbTipoPagamento.getValue().equals("Escolhe")){
             lblError.setVisible(true);
             lblError1.setVisible(true);
             lblError2.setVisible(true);
             lblError3.setVisible(true);
+            lblError4.setVisible(true);
+            lblError5.setVisible(true);
             lblError.setTextFill(Color.RED);
             lblError.setText("Preencha os espaços obrigatórios");
         }else{
@@ -82,8 +92,10 @@ public class HomePageAdicionarDividaController {
             lblError1.setVisible(false);
             lblError2.setVisible(false);
             lblError3.setVisible(false);
+            lblError4.setVisible(false);
+            lblError5.setVisible(false);
             //Adicionar um transação do tipo despesa
-            int res = context.adicionarTransacao("Despesa",taDescricao.getText(),cbEnvelope.getValue(),selectedDate, Double.parseDouble(tfValor.getText()));
+            int res = context.adicionarDespesa(cbEnvelope.getValue(),taDescricao.getText(),selectedDate, Double.parseDouble(tfValor.getText()),cbTipoPagamento.getValue().equals("Numerário"));
             if(res == -2){
                 lblError.setText("Não exsite este envelope");
                 lblError.setTextFill(Color.RED);

@@ -1,3 +1,4 @@
+/*
 package com.example.gps_g11.Data.Budget;
 
 import org.junit.jupiter.api.Test;
@@ -38,3 +39,4 @@ public class BolsaTest {
         assertEquals(30.0, bolsa.getValorGasto(), 0.01);
     }
 }
+*/

@@ -1,24 +1,25 @@
 package com.example.gps_g11.Controller.Envelope;
 
 import com.example.gps_g11.Controller.SideBarController;
-import com.example.gps_g11.Data.Categoria.Categoria;
+import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
+import com.example.gps_g11.Data.Categoria.CategoriaEntradas;
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
-import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 
 public class EnvelopeVisualizarController{
+    public Button btnEditar;
+    public Button btnEliminar;
     private SideBarController sideBarController;
-    private Categoria categoria;
+    private CategoriaDespesas categoriaDespesas;
+    private CategoriaEntradas categoriaEntradas;
     private Context context;
 
     @FXML
@@ -39,53 +40,73 @@ public class EnvelopeVisualizarController{
     private Label lblError;
     @FXML
     private Button btnAdcDinheiro;
+    private boolean isEnvelope;
 
 
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
 
-    public void setCategoria(Categoria categoria){
-        this.categoria = categoria;
+    public void setCategoria(CategoriaDespesas categoria){
+        this.categoriaDespesas = categoria;
         if(categoria == null){
             lblError.setText("Erro ao carregar categoria");
             lblError.setVisible(true);
             return;
         }
+        isEnvelope = true;
+        reset();
+        context = Context.getInstance();
+    }
+    public void setCategoria(CategoriaEntradas categoria){
+        this.categoriaEntradas = categoria;
+        if(categoria == null){
+            lblError.setText("Erro ao carregar categoria");
+            lblError.setVisible(true);
+            return;
+        }
+        isEnvelope = false;
         reset();
         context = Context.getInstance();
     }
 
 
+
     public void onEditar(){
-        tfValor.setDisable(false);
         tfNome.setDisable(false);
         taDescricao.setDisable(false);
-        tbtnEnvelopeAberto.setDisable(false);
-        tbtnEnvelopeFechado.setDisable(false);
         btnGuardar.setVisible(true);
+        btnGuardar.setDisable(true);
+        btnEditar.setDisable(true);
+        if(isEnvelope){
+            tfValor.setDisable(false);
+            tbtnEnvelopeAberto.setDisable(false);
+            tbtnEnvelopeFechado.setDisable(false);
+            btnEliminar.setVisible(false);
 
-        //checks antes de guardar:
-        tfValor.textProperty().addListener((observable, oldValue, newValue) -> { //listener: p ver alterações ao texto
-            lblError.setText("O valor não pode estar vazio e tem de ser um número!");
-            btnGuardar.setDisable(newValue.trim().isEmpty()); //nao consegue guardar se texto estiver vazio
-            lblError.setVisible(newValue.trim().isEmpty()); //aparece erro tb
+            //checks antes de guardar:
+            tfValor.textProperty().addListener((observable, oldValue, newValue) -> { //listener: p ver alterações ao texto
+                lblError.setText("O valor não pode estar vazio e tem de ser um número!");
+                btnGuardar.setDisable(newValue.trim().isEmpty()); //nao consegue guardar se texto estiver vazio
+                lblError.setVisible(newValue.trim().isEmpty()); //aparece erro tb
 
-            btnGuardar.setDisable(!isNumber(newValue)); //ou se n for numero
-            lblError.setVisible(!isNumber(newValue));
+                btnGuardar.setDisable(!isNumber(newValue)); //ou se n for numero
+                lblError.setVisible(!isNumber(newValue));
+            });
+            tfNome.textProperty().addListener((observable, oldValue, newValue) -> {
+                System.out.println("Entrei aqui");
+                lblError.setText("O nome não pode estar vazio!");
+                btnGuardar.setDisable(categoriaDespesas.getNome().equals(newValue) || newValue.trim().isEmpty());
+                lblError.setVisible(newValue.trim().isEmpty());
+            });
+        }else{
+            tfNome.textProperty().addListener((observable, oldValue, newValue) -> {
+                lblError.setText("O nome não pode estar vazio!");
+                btnGuardar.setDisable(categoriaEntradas.getNome().equals(newValue) || newValue.trim().isEmpty());
+                lblError.setVisible(newValue.trim().isEmpty());
+            });
+        }
 
-            for(Categoria c : context.getCategoriasList())
-                if(c.getNome().compareTo(newValue) == 0){ //caso ja exista um envelope c esse nome
-                    btnGuardar.setDisable(true);
-                    lblError.setVisible(true);
-                    break;
-                }
-        });
-        tfNome.textProperty().addListener((observable, oldValue, newValue) -> {
-            lblError.setText("O nome não pode estar vazio!");
-            btnGuardar.setDisable(newValue.trim().isEmpty());
-            lblError.setVisible(newValue.trim().isEmpty());
-        });
 
         tbtnEnvelopeAberto.selectedProperty().addListener((observable, oldValue, newValue) -> {
             tbtnEnvelopeFechado.setSelected(!newValue);
@@ -93,6 +114,7 @@ public class EnvelopeVisualizarController{
         tbtnEnvelopeFechado.selectedProperty().addListener((observable, oldValue, newValue) -> {
             tbtnEnvelopeAberto.setSelected(!newValue);
         });
+
     }
 
     private boolean isNumber(String text){
@@ -105,35 +127,83 @@ public class EnvelopeVisualizarController{
     }
 
     public void onGuardar(){ //so aparece se params estiverem corretos! se nao o botao fica desativado
-        categoria.setNome(tfNome.getText());
-        categoria.setDescricao(taDescricao.getText());
-        categoria.setValor(Double.parseDouble(tfValor.getText()));
-
-        if(tbtnEnvelopeAberto.isSelected())categoria.setAberto(true);
-        else categoria.setAberto(false);
-
-        reset();
+        boolean correct = true;
+        if(isEnvelope){
+            if(tbtnEnvelopeAberto.isSelected())categoriaDespesas.setAberto(true);
+            else categoriaDespesas.setAberto(false);
+            for (CategoriaDespesas categoriasListDespesa : context.getCategoriasListDespesas()) {
+                if(categoriasListDespesa.getNome().equals(tfNome.getText())){
+                    System.out.println("Entrei aquiu");
+                    correct = false;
+                    lblError.setText("Não pode ter o mesmo nome que outro envelope");
+                }
+            }
+        }else{
+            for (CategoriaEntradas categoriaEntrada : context.getCategoriasListEntradas()) {
+                if(categoriaEntrada.getNome().equals(categoriaEntradas.getNome())){
+                    correct = false;
+                    lblError.setText("Não pode ter o mesmo nome que outra categoria");
+                }
+            }
+        }
+        lblError.setVisible(true);
+        if(correct){
+            if(isEnvelope){
+                categoriaDespesas.setNome(tfNome.getText());
+                categoriaDespesas.setDescricao(taDescricao.getText());
+                categoriaDespesas.setValor(Double.parseDouble(tfValor.getText()));
+            }else{
+                categoriaEntradas.setNome(tfNome.getText());
+                categoriaEntradas.setDescricao(taDescricao.getText());
+                categoriaEntradas.setValor(Double.parseDouble(tfValor.getText()));
+            }
+            btnGuardar.setDisable(true);
+            btnEditar.setDisable(false);
+            btnEliminar.setVisible(false);
+            System.out.println("Here");
+            reset();
+        }
     }
 
     private void reset(){
-        lTitulo.setText("Envelope" + categoria.getNome());
-        tfValor.setText(String.valueOf(categoria.getValor()));
-        tfNome.setText(categoria.getNome());
-        taDescricao.setText(categoria.getDescricao());
+        if(isEnvelope){
+            lTitulo.setText("Envelope" + categoriaDespesas.getNome());
+            tfValor.setText(String.valueOf(categoriaDespesas.getValor()));
+            tfNome.setText(categoriaDespesas.getNome());
+            taDescricao.setText(categoriaDespesas.getDescricao());
 
 
-        tfValor.setDisable(true);
-        tfNome.setDisable(true);
-        taDescricao.setDisable(true);
+            tfValor.setDisable(true);
+            tfNome.setDisable(true);
+            taDescricao.setDisable(true);
 
-        if(categoria.isAberto()) tbtnEnvelopeAberto.setSelected(true);
-        else tbtnEnvelopeFechado.setSelected(true);
+            if(categoriaDespesas.isAberto()) tbtnEnvelopeAberto.setSelected(true);
+            else tbtnEnvelopeFechado.setSelected(true);
 
-        tbtnEnvelopeAberto.setDisable(true);
-        tbtnEnvelopeFechado.setDisable(true);
-        btnGuardar.setVisible(false);
+            tbtnEnvelopeAberto.setDisable(true);
+            tbtnEnvelopeFechado.setDisable(true);
+            btnGuardar.setVisible(false);
 
-        lblError.setVisible(false);
+            lblError.setVisible(false);
+        }else{
+            lTitulo.setText("Categoria" + categoriaEntradas.getNome());
+            tfValor.setText(String.valueOf(categoriaEntradas.getValor()));
+            tfNome.setText(categoriaEntradas.getNome());
+            taDescricao.setText(categoriaEntradas.getDescricao());
+
+
+            tfValor.setDisable(true);
+            tfNome.setDisable(true);
+            taDescricao.setDisable(true);
+
+            tbtnEnvelopeAberto.setVisible(false);
+            tbtnEnvelopeFechado.setVisible(false);
+            btnGuardar.setVisible(false);
+            btnAdcDinheiro.setVisible(false);
+            btnEliminar.setVisible(false);
+            lblError.setVisible(false);
+        }
+
 
         //if(!categoria.isAberto())
         //    btnAdcDinheiro.setVisible(false);
@@ -145,7 +215,7 @@ public class EnvelopeVisualizarController{
         alert.setGraphic(null);
         alert.setHeaderText(null);
         alert.setTitle("Confirmar eliminação");
-        alert.setContentText("Tem a certeza que deseja eliminar o envelope " + categoria.getNome() +"?");
+        alert.setContentText("Tem a certeza que deseja eliminar o envelope " + categoriaDespesas.getNome() +"?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (!(result.get() == ButtonType.OK)){
@@ -153,8 +223,9 @@ public class EnvelopeVisualizarController{
         }
 
         try {
-            context.adicionarTransacao("Envelope eliminado","Saldo reposto do envelope " + categoria.getNome(), LocalDate.now(),categoria.getValor());
-            context.getCategoriasList().remove(categoria);
+            context.getSaldo().setSaldoNosEnvelopes(context.getSaldo().getSaldoNosEnvelopes()-(Double.parseDouble(tfValor.getText())));
+            context.getSaldo().setSaldoPorDistribuir(context.getSaldo().getSaldoPorDistribuir()+(Double.parseDouble(tfValor.getText())));
+            context.getCategoriasListDespesas().remove(categoriaDespesas);
         }catch (Exception e){
             lblError.setText("Erro ao eliminar envelope...");
             lblError.setVisible(true);
@@ -183,7 +254,7 @@ public class EnvelopeVisualizarController{
     }
 
     public void onAdcDinheiro(){
-        if(context.getCategoriasList().size() == 1){ //se so ha esta categoria
+        if(context.getCategoriasListDespesas().size() == 1){ //se so ha esta categoria
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
             alert.setGraphic(null);
@@ -193,8 +264,8 @@ public class EnvelopeVisualizarController{
             return;
         }
         boolean haAbertos = false;
-        for (int x = 0; x < context.getCategoriasList().size(); x++)
-            if (context.getCategoriasList().get(x).isAberto() && context.getCategoriasList().get(x).getNome().compareTo(categoria.getNome()) != 0) {
+        for (int x = 0; x < context.getCategoriasListDespesas().size(); x++)
+            if (context.getCategoriasListDespesas().get(x).isAberto() && context.getCategoriasListDespesas().get(x).getNome().compareTo(categoriaDespesas.getNome()) != 0) {
                 haAbertos = true;
                 break;
             }
@@ -227,10 +298,10 @@ public class EnvelopeVisualizarController{
 
         //escolher envelope
         ChoiceBox<String> envelopes = new ChoiceBox<>();
-        for(int i=0; i<context.getCategoriasList().size(); i++)
-            if(context.getCategoriasList().get(i).isAberto() && context.getCategoriasList().get(i).getNome().compareTo(categoria.getNome()) != 0) {
-                envelopes.getItems().add(context.getCategoriasList().get(i).getNome());
-                if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasList().get(i).getNome());
+        for(int i=0; i<context.getCategoriasListDespesas().size(); i++)
+            if(context.getCategoriasListDespesas().get(i).isAberto() && context.getCategoriasListDespesas().get(i).getNome().compareTo(categoriaDespesas.getNome()) != 0) {
+                envelopes.getItems().add(context.getCategoriasListDespesas().get(i).getNome());
+                if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasListDespesas().get(i).getNome());
             }
 
         envelopes.setStyle("-fx-background-color:  #9FCDFF");
@@ -260,7 +331,7 @@ public class EnvelopeVisualizarController{
 
         envelopes.valueProperty().addListener((observable, oldValue, newValue) -> {
             lValor.setText("Valor (entre 0 e " + context.getCategoriaByName(newValue).getValor() + "): ");
-            //btnOk.setDisable(envelopes.getValue().trim().isEmpty());
+            btnOk.setDisable(envelopes.getValue().trim().isEmpty());
             if(!valor.getText().isEmpty())
                 btnOk.setDisable(Double.parseDouble(valor.getText()) > context.getCategoriaByName(newValue).getValor());
         });
@@ -278,8 +349,8 @@ public class EnvelopeVisualizarController{
         );
 
         //coloca neste envelope
-        categoria.setValor(
-                categoria.getValor() + valoraretirar
+        categoriaDespesas.setValor(
+                categoriaDespesas.getValor() + valoraretirar
         );
 
         reset();

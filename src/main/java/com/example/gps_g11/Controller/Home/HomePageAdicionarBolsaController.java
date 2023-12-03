@@ -76,9 +76,9 @@ public class HomePageAdicionarBolsaController {
             lblError3.setVisible(false);
             lblError.setText("Saldo adicionao com sucesso");
             lblError.setTextFill(Color.GREEN);
-            context.adicionarTransacao("Entrada","",selectedDate, Double.parseDouble(tfValor.getText()));
-            context.getBolsa().setValorDisponivel(context.getBolsa().getValorDisponivel()+Double.parseDouble(tfValor.getText()));
-            context.getBolsa().setValorReal(context.getBolsa().getValorReal()+Double.parseDouble(tfValor.getText()));
+            //context.adicionarTransacaoDespesa("Entrada","",selectedDate, Double.parseDouble(tfValor.getText()));
+            //context.getBolsa().setValorDisponivel(context.getBolsa().getValorDisponivel()+Double.parseDouble(tfValor.getText()));
+            //context.getBolsa().setValorReal(context.getBolsa().getValorReal()+Double.parseDouble(tfValor.getText()));
             resetCampos();
         }
 

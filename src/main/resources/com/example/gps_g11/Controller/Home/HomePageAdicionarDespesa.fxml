@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageAdicionarDividaController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageAdicionarDespesaController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -59,14 +59,29 @@
                               <Insets left="150.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label text="Pequena Descrição" textFill="#545454">
+                        <HBox alignment="TOP_CENTER" layoutX="-10.0" layoutY="30.0" prefHeight="0.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Pequena Descrição" textFill="#545454">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="lblError4" text="*" textFill="#ff676a">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
                            <VBox.margin>
-                              <Insets left="35.0" top="30.0" />
+                              <Insets top="25.0" />
                            </VBox.margin>
-                           <font>
-                              <Font name="Times New Roman" size="18.0" />
-                           </font>
-                        </Label>
+                        </HBox>
                         <TextArea fx:id="taDescricao" maxHeight="130.0" maxWidth="250.0" prefHeight="130.0" prefWidth="250.0" promptText="Escreva aqui detalhes ">
                            <VBox.margin>
                               <Insets left="150.0" top="10.0" />
@@ -130,7 +145,7 @@
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="20.0" />
                            </VBox.margin>
                         </HBox>
                         <DatePicker fx:id="dataPicker" prefHeight="30.0" prefWidth="200.0">
@@ -138,6 +153,34 @@
                               <Insets left="55.0" top="5.0" />
                            </VBox.margin>
                         </DatePicker>
+                        <HBox alignment="CENTER_LEFT" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
+                           <children>
+                              <Label text="Tipo de pagamento" textFill="#545454">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="55.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="lblError5" text="*" textFill="#ff676a">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ChoiceBox fx:id="cbTipoPagamento" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets left="55.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
                      </children>
                   </VBox>
                </children>

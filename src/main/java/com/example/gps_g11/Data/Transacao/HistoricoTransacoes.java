@@ -1,68 +1,57 @@
 package com.example.gps_g11.Data.Transacao;
 
-import com.example.gps_g11.Data.Categoria.Categoria;
-
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class HistoricoTransacoes implements Serializable {
-    private List<Transacao> transacoes;
+    private List<Despesa> transacaoDespesas;
+    private List<Entrada> transacaoEntradas;
 
     public HistoricoTransacoes() {
-        this.transacoes = new ArrayList<>();
+        this.transacaoDespesas = new ArrayList<>();
+        this.transacaoEntradas = new ArrayList<>();
     }
 
-    public void adicionarTransacao(Transacao transacao) {
-        transacoes.add(transacao);
+    /*Todo: Entradas*/
+    public List<Entrada> getTransacaoEntradas() {
+        return transacaoEntradas;
     }
-
-    public void removerTransacao(int id) {
-        transacoes.removeIf(t -> t.getId() == id);
+    public void adicionarTransacaoEntrada(Entrada transacaoEntrada) {
+        transacaoEntradas.add(transacaoEntrada);
     }
-
-    public void editarTransacao(int id, String novaDescricao, LocalDate novaData, double novoMontante, Categoria categoria, boolean novaRecorrencia) {
-        for (Transacao transacao : transacoes) {
-            if (transacao.getId() == id && "Despesa".equals(transacao.getTipo())) {
-                transacao.setDescricao(novaDescricao);
-                transacao.setData(novaData);
-                transacao.setMontante(novoMontante);
-                transacao.setCategoria(categoria);
-                transacao.setRecorrente(novaRecorrencia);
-                break;
+    public void removerTransacaoEntradas(int id) {
+        Iterator<Entrada> iterator = transacaoEntradas.iterator();
+        while (iterator.hasNext()) {
+            Entrada transacaoEntrada = iterator.next();
+            if (transacaoEntrada.getId() == id) {
+                iterator.remove();
+                return;
+            }
+        }
+    }
+    /*Todo: Despesas*/
+    public List<Despesa> getTransacaoDespesas() {
+        return transacaoDespesas;
+    }
+    public void adicionarTransacaoDespesas(Despesa transacaoDespesa) {
+        transacaoDespesas.add(transacaoDespesa);
+    }
+    public void removerTransacaoDespesas(int id) {
+        Iterator<Despesa> iterator = transacaoDespesas.iterator();
+        while (iterator.hasNext()) {
+            Despesa transacaoDespesa = iterator.next();
+            if (transacaoDespesa.getId() == id) {
+                iterator.remove();
+                return;
             }
         }
     }
 
-    public List<Transacao> buscarDespesas() {
-        return transacoes.stream().filter(transacao -> "Despesa".equals(transacao.getTipo())).collect(Collectors.toList());
-    }
-
-    public List<Transacao> buscarEntradas() {
-        return transacoes.stream().filter(transacao -> "Entrada".equals(transacao.getTipo())).collect(Collectors.toList());
-    }
-
-    public List<Transacao> buscarTodasTransacoes() {
-        return new ArrayList<>(transacoes);
-    }
-
-    public Transacao buscarPorId(int id) {
-        return transacoes.stream().filter(transacao -> transacao.getId() == id).findFirst().orElse(null);
-    }
-
-    public List<Transacao> buscarPorData(LocalDate data) {
-        return transacoes.stream().filter(transacao -> transacao.getData().equals(data)).collect(Collectors.toList());
-    }
-
-    public List<Transacao> buscarPorCategoria(Categoria categoria) {
-        return transacoes.stream().filter(transacao -> transacao.getCategoria().equals(categoria)).collect(Collectors.toList());
-    }
-
-    public List<Transacao> realizarPesquisa(String tipoTransacao, String categoria, LocalDate data, String ordenacao) {
-        List<Transacao> resultadoPesquisa = new ArrayList<>(transacoes);
+    /*
+    public List<TransacaoDespesa> realizarPesquisa(String tipoTransacao, String categoria, LocalDate data, String ordenacao) {
+        List<TransacaoDespesa> resultadoPesquisa = new ArrayList<>(transacoes);
         if (!"Sem filtro".equals(tipoTransacao)) {
             resultadoPesquisa = resultadoPesquisa.stream().filter(transacao -> tipoTransacao.equals(transacao.getTipo() + "s")).collect(Collectors.toList());
         }
@@ -78,7 +67,7 @@ public class HistoricoTransacoes implements Serializable {
         return resultadoPesquisa;
     }
 
-    private List<Transacao> ordenarTransacoes(List<Transacao> transacoes, String ordenacao) {
+    private List<TransacaoDespesa> ordenarTransacoes(List<TransacaoDespesa> transacoes, String ordenacao) {
         if(ordenacao == null){
             return transacoes;
         }
@@ -87,18 +76,18 @@ public class HistoricoTransacoes implements Serializable {
                 return transacoes.stream().sorted(Comparator.comparing(transacao -> transacao.getCategoria().getNome())).collect(Collectors.toList());
             case "Categoria por ordem inversa alfabética":
                 return transacoes.stream()
-                        .sorted(Comparator.comparing((Transacao transacao) -> transacao.getCategoria().getNome()).reversed()).collect(Collectors.toList());
+                        .sorted(Comparator.comparing((TransacaoDespesa transacao) -> transacao.getCategoria().getNome()).reversed()).collect(Collectors.toList());
             case "Data por ordem crescente":
-                return transacoes.stream().sorted(Comparator.comparing(Transacao::getData)).collect(Collectors.toList());
+                return transacoes.stream().sorted(Comparator.comparing(TransacaoDespesa::getData)).collect(Collectors.toList());
             case "Data por ordem decrescente":
-                return transacoes.stream().sorted(Comparator.comparing(Transacao::getData).reversed()).collect(Collectors.toList());
+                return transacoes.stream().sorted(Comparator.comparing(TransacaoDespesa::getData).reversed()).collect(Collectors.toList());
             case "Montante por ordem crescente":
-                return transacoes.stream().sorted(Comparator.comparing(Transacao::getMontante)).collect(Collectors.toList());
+                return transacoes.stream().sorted(Comparator.comparing(TransacaoDespesa::getMontante)).collect(Collectors.toList());
             case "Montante por ordem decrescente":
-                return transacoes.stream().sorted(Comparator.comparing(Transacao::getMontante).reversed()).collect(Collectors.toList());
+                return transacoes.stream().sorted(Comparator.comparing(TransacaoDespesa::getMontante).reversed()).collect(Collectors.toList());
             default:
                 return transacoes;
         }
-    }
+    }*/
 
 }

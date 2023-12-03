@@ -15,6 +15,7 @@ public class EnvelopeCriaEnvelopeController {
     public Label lblError;
     public Label lblError1;
     public Label lblError2;
+    public Label lblError3;
 
     public TextField tfValor;
 
@@ -23,7 +24,6 @@ public class EnvelopeCriaEnvelopeController {
     public ToggleButton tbtnEnvelopeAberto;
     public Button btnOk;
     public TextField nomeEnvelope;
-    public CheckBox checkBox;
     private SideBarController sideBarController;
     private ToggleGroup envelopeToggleGroup;
     private Context context;
@@ -44,6 +44,7 @@ public class EnvelopeCriaEnvelopeController {
 
         lblError1.setVisible(false);
         lblError2.setVisible(false);
+        lblError3.setVisible(false);
         lblError.setVisible(false);
     }
     private void tfValorFormat(){
@@ -73,32 +74,25 @@ public class EnvelopeCriaEnvelopeController {
 
     public void onOk(){
         ToggleButton toggleButtonAtivo = (ToggleButton) envelopeToggleGroup.getSelectedToggle();
-        if(tfValor.getText().isEmpty() || nomeEnvelope.getText().isEmpty() || toggleButtonAtivo == null){
+        if(tfValor.getText().isEmpty() || nomeEnvelope.getText().isEmpty() || toggleButtonAtivo == null || taDescricao.getText().isEmpty()){
             lblError.setVisible(true);
             lblError1.setVisible(true);
             lblError2.setVisible(true);
+            lblError3.setVisible(true);
             lblError.setTextFill(Color.RED);
             lblError.setText("Preencha os espaços obrigatórios");
         }else{
             lblError.setVisible(true);
             lblError1.setVisible(false);
             lblError2.setVisible(false);
+            lblError3.setVisible(false);
             lblError.setText("Saldo adicionao com sucesso");
             lblError.setTextFill(Color.GREEN);
-            if(taDescricao.getText().isEmpty()){
-                if( context.adicionarCategoriaPorNome(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkBox.isSelected()) == -1){
+            if(context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto) == -1){
                     lblError.setText("Saldo insuficiente");
                     lblError.setTextFill(Color.RED);
-                }else{
-                    resetCampos();
-                }
             }else{
-                if(context.adicionarCategoriaNomeDescricao(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkBox.isSelected()) == -1){
-                    lblError.setText("Saldo insuficiente");
-                    lblError.setTextFill(Color.RED);
-                }else{
                     resetCampos();
-                }
             }
         }
     }

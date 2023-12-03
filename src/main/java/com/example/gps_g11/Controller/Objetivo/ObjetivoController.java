@@ -1,16 +1,11 @@
 package com.example.gps_g11.Controller.Objetivo;
 
 import com.example.gps_g11.Controller.SideBarController;
-import com.example.gps_g11.Data.Categoria.Categoria;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Side;
 import javafx.scene.control.Button;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.ScrollPane;
@@ -19,9 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ObjetivoController implements Initializable {

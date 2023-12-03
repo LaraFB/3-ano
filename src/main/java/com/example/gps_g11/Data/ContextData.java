@@ -1,36 +1,32 @@
 package com.example.gps_g11.Data;
 
 import com.example.gps_g11.Data.Budget.Budget;
+import com.example.gps_g11.Data.Budget.Saldo;
 import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
 import com.example.gps_g11.Data.Transacao.HistoricoTransacoes;
 import com.example.gps_g11.Data.Categoria.ListaCategorias;
 
 import java.io.*;
-import java.util.List;
+import java.time.LocalDate;
 
 public class ContextData implements Serializable {
     private HistoricoTransacoes historicoTransacoes;
-
     private ListaCategorias listaCategorias;
     private ListaObjetivos listaObjetivos;
-
-    private Budget budget;
+    private Saldo saldo;
+    private LocalDate date;
 
     public ContextData() {
         this.listaCategorias = new ListaCategorias();
-        this.budget = new Budget(0);
+        this.saldo = new Saldo();
         this.historicoTransacoes = new HistoricoTransacoes();
         this.listaObjetivos = new ListaObjetivos();
-        budget.setSaldoDisponivel(100);
-        budget.setSaldoReal(100);
-        budget.getBolsa().setValorDisponivel(200);
-        budget.getBolsa().setValorReal(200);
+        date = LocalDate.of(2024,1,1);
     }
 
     public HistoricoTransacoes getHistoricoTransacoes() {
         return historicoTransacoes;
     }
-
 
     public ListaCategorias getListaCategorias() {
         return listaCategorias;
@@ -39,9 +35,10 @@ public class ContextData implements Serializable {
         return listaObjetivos;
     }
 
-    public Budget getBudget() {
-        return budget;
+    public Saldo getSaldo() {
+        return saldo;
     }
+
     public void saveToFile(String fileName) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
             oos.writeObject(this);
@@ -63,5 +60,11 @@ public class ContextData implements Serializable {
     }
 
 
+    public LocalDate getData() {
+        return date;
+    }
 
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }

@@ -1,134 +1,112 @@
 package com.example.gps_g11.Data.Categoria;
 
 import java.io.Serializable;
+import java.util.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListaCategorias implements Serializable {
-    private List<Categoria> categorias;
+    private List<CategoriaDespesas> categoriasDespesas;
+    private List<CategoriaEntradas> categoriasEntradas;
 
-    public ListaCategorias(){
-        this.categorias = new ArrayList<>();
+    public ListaCategorias() {
+        this.categoriasDespesas = new ArrayList<>();
+        this.categoriasEntradas = new ArrayList<>();
+    }
+    /*Todo: Despesas*/
+    public List<CategoriaDespesas> getCategoriasDespesas() {
+        return categoriasDespesas;
     }
 
-    public List<Categoria> getCategorias() { return categorias; }
-
-    //adicionar categoria
-    public boolean adicionarCategoriaObjeto(Categoria c){
-        //validation:
-        for(Categoria check : categorias)
-            if(check.equals(c)) return false; //ja existe, n adiciona
-
-        categorias.add(c);
-        return true;
-    }
-    public boolean adicionarCategoriaNomeDescricao(double valor,String nome,String descricao,boolean isAberto,boolean pagarBolsa){
-        //validation:
-        for(Categoria check : categorias)
-            if(check.getNome().equals(nome)) return false; //ja existe, n adiciona
-
-        Categoria c = new Categoria(valor,nome,descricao,isAberto,pagarBolsa);
-        categorias.add(c);
-        return true;
-    }
-    public boolean adicionarCateogiraNome(double valor,String nome,boolean isAberto,boolean pagarBolsa){
-        //validation:
-        for(Categoria check : categorias)
-            if(check.getNome().equals(nome)) return false; //ja existe, n adiciona
-
-        Categoria c = new Categoria(valor,nome,isAberto,pagarBolsa);
-        categorias.add(c);
-        return true;
+    public void adicionarCategoriaDespesas(CategoriaDespesas novaCategoria) {
+        if (!categoriaDespesasComNomeExistente(novaCategoria.getNome())) {
+            categoriasDespesas.add(novaCategoria);
+        }
     }
 
-    //remover categoria
-    public boolean removerCategoriaObjeto(Categoria c){
-        //validation:
-        if(c == null) return false;
-
-        return categorias.remove(c);
-    }
-    public boolean removerCategoriaIndex(int i){
-        //validation:
-        if(i>=categorias.size() || i<0)
-            return false;
-
-        return removerCategoriaObjeto(categorias.get(i));
-    }
-    public boolean removeCategoriaNome(String nome){ //por nome
-        //validation:
-        if(nome == null)
-            return false;
-
-        for(Categoria c : categorias)
-            if(c.getNome().equals(nome)) return removerCategoriaObjeto(c);
-
-        return false; //se n encontrou
+    public void removerCategoriaDespesas(String nomeCategoria) {
+        Iterator<CategoriaDespesas> iterator = categoriasDespesas.iterator();
+        while (iterator.hasNext()) {
+            CategoriaDespesas categoria = iterator.next();
+            if (categoria.getNome().equals(nomeCategoria)) {
+                iterator.remove();
+                return;
+            }
+        }
     }
 
+    public CategoriaDespesas obterCategoriaDespesasPorNome(String nome) {
+        for (CategoriaDespesas categoria : categoriasDespesas) {
+            if (categoria.getNome().equals(nome)) {
+                return categoria;
+            }
+        }
+        return null;
+    }
 
-
-    public boolean editarCategoria(String nome, String descricao){ //por nome
-        //validation:
-        if(nome == null || descricao == null) return false;
-
-        for(Categoria c : categorias)
-            if(c.getNome().equals(nome)){
-                c.setDescricao(descricao);
+    private boolean categoriaDespesasComNomeExistente(String nome) {
+        for (CategoriaDespesas categoria : categoriasDespesas) {
+            if (categoria.getNome().equals(nome)) {
                 return true;
             }
-        return false; //se n encontrou
+        }
+        return false;
     }
 
-    public boolean editarCategoriaNomeIndex(int i, String nome){ //por index
-        //validation:
-        if(i>=categorias.size() || i<0 || nome == null)
-            return false;
-
-        categorias.get(i).setNome(nome);
-        return true;
+    /*Todo: Entradas*/
+    public List<CategoriaEntradas> getCategoriasEntradas() {
+        return categoriasEntradas;
+    }
+    public int adicionarCategoriaEntradas(CategoriaEntradas novaCategoria) {
+        if (!categoriasEntradasComNomeExistente(novaCategoria.getNome())) {
+            categoriasEntradas.add(novaCategoria);
+            return 1;
+        }
+        return 0;
     }
 
-    public boolean editCategoriaDescricaoIndex(int i, String descricao){ //por index
-        //validation:
-        if(i>=categorias.size() || i<0 || descricao == null)
-            return false;
-
-        categorias.get(i).setDescricao(descricao);
-        return true;
+    public void removerCategoriaEntradas(String nomeCategoria) {
+        Iterator<CategoriaEntradas> iterator = categoriasEntradas.iterator();
+        while (iterator.hasNext()) {
+            CategoriaEntradas categoria = iterator.next();
+            if (categoria.getNome().equals(nomeCategoria)) {
+                iterator.remove();
+                return;
+            }
+        }
+    }
+    public CategoriaEntradas obterCategoriaEntradasPorNome(String nome) {
+        for (CategoriaEntradas categoria : categoriasEntradas) {
+            if (categoria.getNome().equals(nome)) {
+                return categoria;
+            }
+        }
+        return null;
     }
 
-    public Categoria getCategoriaPorIndex(int i){
-        if(i>=categorias.size() || i<0)
-            return null;
-        else
-            return categorias.get(i);
+    private boolean categoriasEntradasComNomeExistente(String nome) {
+        for (CategoriaEntradas categoria : categoriasEntradas) {
+            if (categoria.getNome().equals(nome)) {
+                return true;
+            }
+        }
+        return false;
     }
-    public String getCategoriaNomePorIndex(int i){
-        if(i>=categorias.size() || i<0)
-            return null;
-        else
-            return categorias.get(i).getNome();
+    public List<String> obterNomesCategoriasDespesas() {
+        List<String> nomes = new ArrayList<>();
+        for (CategoriaDespesas categoriaDespesas : categoriasDespesas) {
+            nomes.add(categoriaDespesas.getNome());
+        }
+        return nomes;
     }
-    public String getCategoraiDescricaoPorIndex(int i){
-        if(i>=categorias.size() || i<0)
-            return null;
-        else
-            return categorias.get(i).getDescricao();
+    public List<String> obterNomesCategoriasEntradas() {
+        List<String> nomes = new ArrayList<>();
+        for (CategoriaEntradas categoria : categoriasEntradas) {
+            nomes.add(categoria.getNome());
+        }
+        return nomes;
     }
 
-    public boolean isEmpty(){
-        return categorias.isEmpty();
-    }
-
-    public Categoria getCategoriaPorNome(String nome){ //por nome
-        //validation:
-        if(nome == null)
-            return null;
-
-        for(Categoria c : categorias)
-            if(c.getNome().equals(nome)) return c;
-
-        return null; //se n encontrou
-    }
 }
+

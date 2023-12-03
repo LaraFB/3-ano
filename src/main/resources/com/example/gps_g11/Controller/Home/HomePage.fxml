@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomeController">
+<BorderPane fx:id="root" maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700" prefWidth="1000" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomeController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -31,26 +31,12 @@
                         </Label>
                         <HBox alignment="CENTER" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
                            <children>
-                              <Label alignment="CENTER" text="Saldo Real: " textFill="#545454">
+                              <Label alignment="CENTER" text="Salo na Conta Bancária: " textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="saldoRealText" text="Label" textFill="#545454">
-                                 <font>
-                                    <Font name="Times New Roman" size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
-                           <children>
-                              <Label alignment="CENTER" text="Saldo Disponivel: " textFill="#545454">
-                                 <font>
-                                    <Font name="Times New Roman" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="saldoDisponivelText" text="Label" textFill="#545454">
+                              <Label fx:id="lblSaldoRealCB" text="Label" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
@@ -59,12 +45,26 @@
                         </HBox>
                         <HBox alignment="CENTER" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
                            <children>
-                              <Label alignment="CENTER" text="Total de Despesas: " textFill="#545454">
+                              <Label alignment="CENTER" text="Saldo em Dinheiro: " textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="saldoDespesasText" prefHeight="50.0" text="Label" textFill="#545454">
+                              <Label fx:id="lblSaldoRealD" text="Label" textFill="#545454">
+                                 <font>
+                                    <Font name="Times New Roman" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="99.0" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
+                           <children>
+                              <Label alignment="CENTER" text="Saldo Total: " textFill="#545454">
+                                 <font>
+                                    <Font name="Times New Roman" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblSaldoTotal" text="Label" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
@@ -79,9 +79,9 @@
                         <Insets right="30.0" />
                      </padding>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" maxHeight="190.0" minHeight="190.0" prefHeight="190.0" prefWidth="500.0">
+                  <VBox alignment="TOP_CENTER" layoutX="242.0" layoutY="10.0" prefHeight="190.0" prefWidth="300.0">
                      <children>
-                        <Label minHeight="31.0" text="Bolsa" textFill="#545454">
+                        <Label minHeight="31.0" text="Budget" textFill="#545454">
                            <font>
                               <Font name="Times New Roman Bold" size="30.0" />
                            </font>
@@ -89,42 +89,42 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <HBox alignment="CENTER" maxHeight="50.0" maxWidth="440.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
+                        <HBox alignment="CENTER" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
                            <children>
-                              <Label alignment="CENTER" text="Bolsa Real: " textFill="#545454">
+                              <Label alignment="CENTER" text="Saldo por Distribuir: " textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="bolsaRealText" text="Label" textFill="#545454">
+                              <Label fx:id="lblSaldoDistribuir" text="Label" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" maxHeight="50.0" maxWidth="440.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
+                        <HBox alignment="CENTER" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
                            <children>
-                              <Label alignment="CENTER" text="Bolsa Disponivel: " textFill="#545454">
+                              <Label alignment="CENTER" text="Saldo nos Envelopes: " textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="bolsaDisponivelText" text="Label" textFill="#545454">
+                              <Label fx:id="lblSaldoEnvelopes" prefHeight="50.0" text="Label" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" maxHeight="50.0" maxWidth="440.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="149.0" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
                            <children>
                               <Label alignment="CENTER" text="Total de Despesas: " textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="bolsaDespesasText" text="Label" textFill="#545454">
+                              <Label fx:id="lblTotalDespesas" prefHeight="50.0" text="Label" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
@@ -133,7 +133,7 @@
                         </HBox>
                      </children>
                      <padding>
-                        <Insets left="30.0" />
+                        <Insets right="30.0" />
                      </padding>
                   </VBox>
                </children>
@@ -192,11 +192,6 @@
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" maxHeight="479.0" maxWidth="282.0" minHeight="479.0" minWidth="282.0" prefHeight="479.0" prefWidth="282.0" spacing="45.0">
                      <children>
-                        <Button fx:id="ResetBudget" mnemonicParsing="false" onAction="#onResetBudget" prefHeight="100.0" prefWidth="200.0" styleClass="btn_history" stylesheets="@../../Style.css" text="Reiniciar (budget)" textAlignment="CENTER" textFill="#545454" wrapText="true">
-                           <font>
-                              <Font name="Times New Roman" size="24.0" />
-                           </font>
-                        </Button>
                         <Button fx:id="AddExpenseBtn" mnemonicParsing="false" onAction="#onAdicionarDespesa" prefHeight="100.0" prefWidth="200.0" styleClass="CancelBtn" stylesheets="@../../Style.css" text="- Despesas" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="25.0" />

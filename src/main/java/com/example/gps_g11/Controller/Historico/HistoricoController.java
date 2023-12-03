@@ -1,16 +1,20 @@
 package com.example.gps_g11.Controller.Historico;
 
 import com.example.gps_g11.Controller.SideBarController;
+import com.example.gps_g11.Data.Categoria.CategoriaEntradas;
 import com.example.gps_g11.Data.Context;
+import com.example.gps_g11.Data.Transacao.Despesa;
+import com.example.gps_g11.Data.Transacao.Entrada;
 import com.example.gps_g11.Data.Transacao.Transacao;
-import com.example.gps_g11.Data.Categoria.Categoria;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -36,14 +40,17 @@ public class HistoricoController implements Initializable {
     public ChoiceBox<String> cbTransacao;
     public ChoiceBox<String> cbFiltrosAvancados;
     public ChoiceBox<String> cbEnvelopes;
-    public DatePicker dpDate;
+    public DatePicker dpDateInicio;
+    public DatePicker dpDateFim;
     public ChoiceBox<String> cbOrdenar;
     public TableView<Transacao> tableView;
-    public TableColumn<Transacao, Float> tcMontante;
+    public TableColumn<Transacao, String> tcMontante;
     public TableColumn<Transacao, LocalDate> tfData;
     public TableColumn<Transacao, String> tfEnvelope;
     public TableColumn<Transacao, String> tfDescricao;
-    public TableColumn<Transacao, String> tcTransação;
+    public Label lblTotal;
+    public Label lblTotalEntradas;
+    public Label lblTotalDespesas;
     private SideBarController sideBarController;
     private Context context;
     private ObservableList<Transacao> transacaos = FXCollections.observableArrayList();
@@ -62,13 +69,13 @@ public class HistoricoController implements Initializable {
             NO_FILTER,FILTER_DESPESAS,FILTER_ENTRADAS
         );
         ObservableList<String> parametrosOrdenacao = FXCollections.observableArrayList(
-            NO_FILTER,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_MONTANTE_DESCRESCENTE
+            NO_FILTER,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_MONTANTE_DESCRESCENTE,FILTER_CATEGORIA_ORDEM_INVERSA_ALFABETICA,FILTER_CATEGORIA_ORDEM_ALFABETICA
         );
 
         ObservableList<String> parametrosCategorias = FXCollections.observableArrayList(
                 NO_FILTER
         );
-        parametrosCategorias.addAll(context.getCategoriaNomes());
+
 
         cbTransacao.setItems(parametrosTransacao);
         cbTransacao.setValue(NO_FILTER);
@@ -91,29 +98,37 @@ public class HistoricoController implements Initializable {
 
         cbTransacao.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             atualizarEscolhasOrdenar(newValue);
+
         });
 
         cbOrdenar.valueProperty().addListener((observable,oldValue,newValue) -> {
             update();
         });
-        dpDate.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
+        dpDateInicio.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
+            update();
+        }));
+        dpDateFim.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
             update();
         }));
 
     }
     private void atualizarEscolhasOrdenar(String tipoTransacao) {
-        ObservableList<String> escolhasOrdenar;
+        ObservableList<String> parametrosCategorias = FXCollections.observableArrayList(
+                NO_FILTER
+        );
         if ("Despesas".equals(tipoTransacao)) {
             cbEnvelopes.setDisable(false);
-            escolhasOrdenar = FXCollections.observableArrayList(NO_FILTER,FILTER_CATEGORIA_ORDEM_ALFABETICA,FILTER_CATEGORIA_ORDEM_INVERSA_ALFABETICA
-            ,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_DATA_DECRESCENTE);
-        }else {
+            parametrosCategorias.addAll(context.getCategoriaDespesasNomes());
+        }else if("Entradas".equals(tipoTransacao)) {
+            cbEnvelopes.setValue(NO_FILTER);
+            cbEnvelopes.setDisable(false);
+            parametrosCategorias.addAll(context.getCategoriaEntradasNomes());
+        }else{
             cbEnvelopes.setValue(NO_FILTER);
             cbEnvelopes.setDisable(true);
-            escolhasOrdenar = FXCollections.observableArrayList(NO_FILTER,FILTER_DATA_CRESCENTE,FILTER_DATA_DECRESCENTE,FILTER_MONTANTE_CRESCENTE,FILTER_DATA_DECRESCENTE);
         }
-        cbOrdenar.setItems(escolhasOrdenar);
-        cbOrdenar.setValue(NO_FILTER);  // Define o primeiro valor, se disponível
+        cbEnvelopes.setItems(parametrosCategorias);
+        cbEnvelopes.setValue(NO_FILTER);  // Define o primeiro valor, se disponível
     }
 
     /*private void mostrarDatePicker(boolean mostrar) {
@@ -142,33 +157,94 @@ public class HistoricoController implements Initializable {
     private void update(){
         String tipoTransacao = cbTransacao.getValue();
         String categoria = cbEnvelopes.getValue();
-        LocalDate date = dpDate.getValue();
+        LocalDate dateInicio = dpDateInicio.getValue();
+        LocalDate dateFim = dpDateFim.getValue();
         String ordenacao = cbOrdenar.getValue();
 
         transacaos.clear();
         tableView.getItems().clear();
-        transacaos.addAll(context.realizarPesquisa(tipoTransacao, categoria,date, ordenacao));
+        if(tipoTransacao.equals("Despesas")){
+            transacaos.addAll(context.getTransacoesDespesa(categoria,dateInicio,dateFim,ordenacao));
+        }else if(tipoTransacao.equals("Entradas")){
+            transacaos.addAll(context.getTransacoesEntrada(categoria,dateInicio,dateFim,ordenacao));
+        }else{
+            transacaos.addAll(context.getTransacoesEntrada(categoria,dateInicio,dateFim,ordenacao));
+            transacaos.addAll(context.getTransacoesDespesa(categoria,dateInicio,dateFim,ordenacao));
+        }
         tableView.setItems(transacaos);
+        if(ordenacao == null || ordenacao.equals("Sem Filtro")){
+            tableView.getSortOrder().clear();
+            tfData.setSortType(TableColumn.SortType.DESCENDING);
+            tableView.getSortOrder().add(tfData);
+            tableView.sort();
+        }
+        double entradasTotal = 0,desepsasTotal = 0;
+        for (int i = 0; i < transacaos.size(); i++) {
+            if(transacaos.get(i) instanceof Entrada){
+                entradasTotal += transacaos.get(i).getMontante();
+            }else{
+                desepsasTotal += transacaos.get(i).getMontante();
+            }
+        }
+        lblTotalDespesas.setText(String.valueOf(desepsasTotal) + " €");
+        lblTotalEntradas.setText(String.valueOf(entradasTotal) + " €");
+        lblTotal.setText(String.valueOf(entradasTotal-desepsasTotal) + " €");
     }
 
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
     private void configurarTabela() {
-        tcTransação.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        tcMontante.setCellValueFactory(new PropertyValueFactory<>("montante"));
         tfData.setCellValueFactory(new PropertyValueFactory<>("data"));
         tfDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tcMontante.setCellValueFactory(param -> {
+            Transacao transacao = param.getValue();
+            if (transacao instanceof Entrada) {
+                return new SimpleStringProperty("+"+transacao.getMontante());
+            } else if (transacao instanceof Despesa) {
+                return new SimpleStringProperty("-"+transacao.getMontante());
+            } else {
+                return new SimpleStringProperty("N/A");
+            }
+        });
+        tcMontante.setCellFactory(column -> {
+            return new TableCell<Transacao, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
 
-        tfEnvelope.setCellValueFactory(cellData -> {
-            Categoria categoria = cellData.getValue().getCategoria();
-            return new SimpleStringProperty(categoria != null ? categoria.getNome() : "");
+                    if (empty || item == null) {
+                        setText(null);
+                        setStyle("");
+                    } else {
+                        setText(item);
+
+                        Transacao transacao = getTableView().getItems().get(getIndex());
+
+                        if (transacao instanceof Entrada) {
+                            setStyle("-fx-text-fill: green;");
+                        } else if (transacao instanceof Despesa) {
+                            setStyle("-fx-text-fill: red;");
+                        } else {
+                            setStyle(""); // Para outras situações, você pode querer definir um estilo padrão
+                        }
+                    }
+                }
+            };
+        });
+        tfEnvelope.setCellValueFactory(param -> {
+            Transacao transacao = param.getValue();
+            if (transacao instanceof Entrada) {
+                return new SimpleStringProperty(((Entrada) transacao).getCategoria().getNome());
+            } else if (transacao instanceof Despesa) {
+                return new SimpleStringProperty(((Despesa) transacao).getCategoria().getNome());
+            } else {
+                return new SimpleStringProperty("N/A");
+            }
         });
     }
 
-    public void onPesquisar(){
 
-    }
 
 
 }

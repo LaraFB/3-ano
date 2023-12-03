@@ -11,15 +11,21 @@ import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
 
 import com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController;
 import com.example.gps_g11.Controller.Objetivo.editarObjetivoController;
-import com.example.gps_g11.Data.Categoria.Categoria;
+import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
+import com.example.gps_g11.Data.Categoria.CategoriaEntradas;
 import com.example.gps_g11.Data.Context;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.Pane;
+
+import java.time.LocalDate;
 
 
 public class SideBarController {
+    public DatePicker Date;
     public Button btnHomePage;
     public Button bntHistorico;
     public Button btnEnvelope;
@@ -28,7 +34,8 @@ public class SideBarController {
     private Context context;
     public Pane ContentPane;
 
-    private Categoria c;
+    private CategoriaDespesas c;
+    private CategoriaEntradas c1;
 
     public void onHomePage(){
         loadFXML("Home/HomePage.fxml");
@@ -80,12 +87,17 @@ public class SideBarController {
                     case "Envelope/EnvelopeVisualizar.fxml":
                         EnvelopeVisualizarController envelopeVisualizarController =loader.getController();
                         envelopeVisualizarController.setSideBar(this);
-                        System.out.println("sidebar-loadfml"+c.getNome());
-                        envelopeVisualizarController.setCategoria(c);
+                        if (c != null) {
+                            envelopeVisualizarController.setCategoria(c);
+                        }else{
+                            envelopeVisualizarController.setCategoria(c1);
+                        }
                         putBtnActive(btnEnvelope);
+                        c = null;
+                        c1 = null;
                         break;
-                    case "Home/HomePageAdicionarDivida.fxml":
-                        HomePageAdicionarDividaController homePageAdicionarDividaController = loader.getController();
+                    case "Home/HomePageAdicionarDespesa.fxml":
+                        HomePageAdicionarDespesaController homePageAdicionarDividaController = loader.getController();
                         homePageAdicionarDividaController.setSideBar(this);
                         putBtnActive(btnHomePage);
                         break;
@@ -119,11 +131,6 @@ public class SideBarController {
                         estatitcaController.setSideBar(this);
                         putBtnActive(btnEstatistica);
                         break;
-                    case "Home/HomePageReset.fxml":
-                        HomeResetController homeResetController =loader.getController();
-                        homeResetController.setSideBar(this);
-                        putBtnActive(btnHomePage);
-                        break;
                     default:
                 }
             }
@@ -155,7 +162,39 @@ public class SideBarController {
 
     public void initialize(){
         context = Context.getInstance();
+        Date.setValue(context.getData());
+        Date.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (date.isBefore(context.getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+        });
+        Date.valueProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("Data alterada para: " + newValue);
+            context.verficacoes(newValue);
+        });
+
+        inicializar();
         onHomePage();
+    }
+
+
+
+    private void inicializar() {
+        context.adicionarCategoriaEntrada("Mesada","Mesada");
+        context.adicionarCategoriaEntrada("Bolsa","Bolsa");
+        context.adicionarEntrada("Mesada","Deram me dinheiro", LocalDate.of(2023,10,2),50,true);
+        context.adicionarEntrada("Bolsa","Mais algum dinheiro da escola", LocalDate.of(2023,10,3),150,false);
+        context.adicionarEntrada("Mesada","Deram mais um dinheirinho ", LocalDate.of(2023,10,14),30,true);
+
+        context.adicionarCategoriaDespesa(70,"Propinas","Propinas para pagar",true);
+        context.adicionarCategoriaDespesa(30,"Compras","Dinheiro para compras",true);
+        context.adicionarCategoriaDespesa(20,"Anti-depressivos","Dinheiro pré-defesas",true);
+
     }
 
     public void criarEnvelopesPane(){
@@ -163,11 +202,14 @@ public class SideBarController {
     }
     public void adicionaDinheiroEnvelope(){loadFXML("Envelope/EnvelopeAdicionaDinheiro.fxml");}
     public void adicionarDespesa(){
-        loadFXML("Home/HomePageAdicionarDivida.fxml");
+        loadFXML("Home/HomePageAdicionarDespesa.fxml");
     }
-    public void verEnvelope(Categoria c){
+    public void verEnvelope(CategoriaDespesas c){
         this.c = c;
-        System.out.println("sidebarcontroller"+c.getNome());
+        loadFXML("Envelope/EnvelopeVisualizar.fxml");
+    }
+    public void verCategoria(CategoriaEntradas c1){
+        this.c1 = c1;
         loadFXML("Envelope/EnvelopeVisualizar.fxml");
     }
 
@@ -183,6 +225,8 @@ public class SideBarController {
     public void resetbudget(){loadFXML("Home/HomePageReset.fxml");}
 
     public void editarObjetivos() { loadFXML("Objetivo/editarObjetivo.fxml");}
+
+
 }
 
 

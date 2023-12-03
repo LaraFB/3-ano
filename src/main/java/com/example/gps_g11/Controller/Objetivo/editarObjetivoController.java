@@ -212,7 +212,7 @@ public class editarObjetivoController implements Initializable{
     }
 
     public void onAdcDinheiro(){
-        if(context.getCategoriasList().isEmpty()){ //se n houverem envelopes mostra um aviso e sai
+        if(context.getCategoriasListDespesas().isEmpty()){ //se n houverem envelopes mostra um aviso e sai
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
             alert.setGraphic(null);
@@ -222,9 +222,9 @@ public class editarObjetivoController implements Initializable{
             return;
         }
         boolean haAbertos = false;
-        for (int x = 0; x < context.getCategoriasList().size(); x++)
-            if (context.getCategoriasList().get(x).isAberto()) {
-                System.out.println(context.getCategoriasList().get(x).getNome() + " esta aberto");
+        for (int x = 0; x < context.getCategoriasListDespesas().size(); x++)
+            if (context.getCategoriasListDespesas().get(x).isAberto()) {
+                System.out.println(context.getCategoriasListDespesas().get(x).getNome() + " esta aberto");
                 haAbertos = true;
                 break;
             }
@@ -257,10 +257,10 @@ public class editarObjetivoController implements Initializable{
 
         //escolher envelope
         ChoiceBox<String> envelopes = new ChoiceBox<>();
-        for(int i=0; i<context.getCategoriasList().size(); i++)
-            if(context.getCategoriasList().get(i).isAberto()) {
-                envelopes.getItems().add(context.getCategoriasList().get(i).getNome());
-                if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasList().get(i).getNome());
+        for(int i=0; i<context.getCategoriasListDespesas().size(); i++)
+            if(context.getCategoriasListDespesas().get(i).isAberto()) {
+                envelopes.getItems().add(context.getCategoriasListDespesas().get(i).getNome());
+                if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasListDespesas().get(i).getNome());
             }
 
         envelopes.setStyle("-fx-background-color:  #9FCDFF");
@@ -272,8 +272,8 @@ public class editarObjetivoController implements Initializable{
 
         grid.add(new Label("Envelope:"), 0, 0);
         grid.add(envelopes, 1, 0);
-        Label lValor = new Label("Valor (entre 0 e " + context.getCategoriaByName(envelopes.getValue()).getValor() + "):      ");
-        grid.add(lValor, 0, 1);
+       // Label lValor = new Label("Valor (entre 0 e " + context.getCategoriaByName(envelopes.getValue()).getValor() + "):      ");
+        //grid.add(lValor, 0, 1);
         grid.add(valor, 1, 1);
 
         Node btnOk = popUp.getDialogPane().lookupButton(btnOkType);
@@ -284,15 +284,15 @@ public class editarObjetivoController implements Initializable{
             btnOk.setDisable(!isNumber(newValue));
             btnOk.setDisable(newValue.trim().isEmpty());
             btnOk.setDisable(Double.parseDouble(newValue) <= 0);
-            btnOk.setDisable(Double.parseDouble(newValue) > context.getCategoriaByName(envelopes.getValue()).getValor());
+            //btnOk.setDisable(Double.parseDouble(newValue) > context.getCategoriaByName(envelopes.getValue()).getValor());
 
         });
-
+/*
         envelopes.valueProperty().addListener((observable, oldValue, newValue) -> {
             if(context.getListaObjetivos().getObjetivo(index).getMissingValue() < context.getCategoriaByName(newValue).getValor()) //se precisa de menos dinheiro q o envelope tem
                 lValor.setText("Valor (entre 0 e " + context.getListaObjetivos().getObjetivo(index).getMissingValue() + "): ");
             else //>=
-                lValor.setText("Valor (entre 0 e " + context.getCategoriaByName(newValue).getValor() + "): ");
+                //lValor.setText("Valor (entre 0 e " + context.getCategoriaByName(newValue).getValor() + "): ");
             //btnOk.setDisable(envelopes.getValue().trim().isEmpty());
             if(!valor.getText().isEmpty())
                 btnOk.setDisable(Double.parseDouble(valor.getText()) > context.getCategoriaByName(newValue).getValor());
@@ -312,7 +312,7 @@ public class editarObjetivoController implements Initializable{
             context.getListaObjetivos().getObjetivo(index).addToGoal(valoraretirar);
 
             update();
-        });
+        });*/
 
 
         popUp.getDialogPane().setContent(grid);

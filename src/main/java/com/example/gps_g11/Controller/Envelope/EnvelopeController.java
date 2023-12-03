@@ -1,9 +1,9 @@
 package com.example.gps_g11.Controller.Envelope;
 
-import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPanePopUpController;
 import com.example.gps_g11.Controller.SideBarController;
+import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
+import com.example.gps_g11.Data.Categoria.CategoriaEntradas;
 import com.example.gps_g11.Data.Context;
-import com.example.gps_g11.Data.Categoria.Categoria;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -14,8 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -28,16 +26,48 @@ public class EnvelopeController implements Initializable {
     public BorderPane root;
     public Button btnCriarEnvelope;
     public Button btnGuardaDinheiro;
+    public Button btnSwitch;
+    public Label lblTitle;
     private SideBarController sideBarController;
     private Context context;
+    boolean isEnvelope = true;
     public void update() {
-
         int i = 0;
         int buttonsPerHBox = 5;
         vBoxEnvelopes.getChildren().clear();
         HBox currentHBox = null;
+        if(isEnvelope){
+            for (CategoriaDespesas categoria : context.getCategoriasListDespesas()) {
+                if (i % buttonsPerHBox == 0) {
+                    currentHBox = new HBox();
+                    currentHBox.setSpacing(7);
+                    vBoxEnvelopes.getChildren().add(currentHBox);
+                }
 
-        for (Categoria categoria : context.getCategoriasList()) {
+                Button categoriaButton = createCategoriaButton(categoria,categoria.isAberto());
+                currentHBox.getChildren().add(categoriaButton);
+
+                i++;
+            }
+            btnSwitch.setText("Categorias  ");
+            lblTitle.setText("Todos os envelopes criados");
+        }else{
+            for (CategoriaEntradas categoria : context.getCategoriasListEntradas()) {
+                if (i % buttonsPerHBox == 0) {
+                    currentHBox = new HBox();
+                    currentHBox.setSpacing(7);
+                    vBoxEnvelopes.getChildren().add(currentHBox);
+                }
+
+                Button categoriaButton = createCategoriaButton(categoria);
+                currentHBox.getChildren().add(categoriaButton);
+                i++;
+            }
+            btnSwitch.setText("Envlopes  ");
+            lblTitle.setText("Todas as categorias criadas");
+        }
+
+        /*for (Categoria categoria : context.getCategoriasListDespesas()) {
             if (i % buttonsPerHBox == 0) {
                 currentHBox = new HBox();
                 currentHBox.setSpacing(7);
@@ -49,19 +79,7 @@ public class EnvelopeController implements Initializable {
 
             i++;
         }
-        /*for (Categoria categoria : context.getCategoriasList()) {
-            if (i % buttonsPerHBox == 0) {
-                currentHBox = new HBox();
-                currentHBox.setSpacing(7);
-                vBoxEnvelopes.getChildren().add(currentHBox);
-            }
-
-            Button categoriaButton = createCategoriaButton(categoria,categoria.isAberto());
-            currentHBox.getChildren().add(categoriaButton);
-
-            i++;
-        }
-        for (Categoria categoria : context.getCategoriasList()) {
+        for (Categoria categoria : context.getCategoriasListDespesas()) {
             if (i % buttonsPerHBox == 0) {
                 currentHBox = new HBox();
                 currentHBox.setSpacing(7);
@@ -82,7 +100,7 @@ public class EnvelopeController implements Initializable {
         }
     }
 
-    private Button createCategoriaButton(Categoria categoria,boolean isAberto) {
+    private Button createCategoriaButton(CategoriaDespesas categoria, boolean isAberto) {
         Button button = new Button();
         button.setStyle("-fx-background-color: transparent;");
         button.setOnMouseEntered(event -> button.setStyle("-fx-background-color: #e0e0e0;"));
@@ -126,14 +144,51 @@ public class EnvelopeController implements Initializable {
 
         return button;
     }
+    private Button createCategoriaButton(CategoriaEntradas categoria) {
+        Button button = new Button();
+        button.setStyle("-fx-background-color: transparent;");
+        button.setOnMouseEntered(event -> button.setStyle("-fx-background-color: #e0e0e0;"));
+        button.setOnMouseExited(event -> button.setStyle("-fx-background-color: transparent;"));
+        button.setPrefSize(150,150);
+        Image image;
+        ImageView imageView;
+
+        image = new Image(getClass().getResource("/image/open_env_icon.png").toExternalForm());
+        imageView  = new ImageView(image);
+        imageView.setFitWidth(130);
+        imageView.setFitHeight(100);
+        button.setGraphic(imageView);
+
+        Label legendaLabel = new Label(categoria.getNome());
+        legendaLabel.setAlignment(Pos.CENTER);
+        legendaLabel.setFont(new Font(14));
+        legendaLabel.setMaxWidth(Double.MAX_VALUE);
+        VBox.setVgrow(legendaLabel, Priority.ALWAYS);
+
+        Label saldoLabel = new Label(formatarNumero(categoria.getValor()) + " €");
+        saldoLabel.setAlignment(Pos.CENTER);
+        saldoLabel.setMaxWidth(Double.MAX_VALUE);
+        VBox.setVgrow(saldoLabel, Priority.ALWAYS);
+
+        VBox vbox = new VBox(imageView, legendaLabel,saldoLabel);
+        vbox.setAlignment(Pos.TOP_CENTER);
+
+        button.setGraphic(vbox);
+
+        button.setOnAction(event -> handleCategoriaButtonClick(categoria));
+
+        return button;
+    }
 
     private String formatarNumero(double numero) {
         DecimalFormat formato = new DecimalFormat("#,##0.00");
         return formato.format(numero);
     }
-    private void handleCategoriaButtonClick(Categoria categoria) {
+    private void handleCategoriaButtonClick(CategoriaDespesas categoria) {
         sideBarController.verEnvelope(categoria);
-        System.out.println("envelopes"+categoria.getNome());
+    }
+    private void handleCategoriaButtonClick(CategoriaEntradas categoria) {
+        sideBarController.verCategoria(categoria);
 
     }
 
@@ -155,4 +210,8 @@ public class EnvelopeController implements Initializable {
 
     public void onGuardaDinheiro() {sideBarController.adicionaDinheiroEnvelope(); }
 
+    public void onSwitch() {
+        isEnvelope = !isEnvelope;
+        update();
+    }
 }

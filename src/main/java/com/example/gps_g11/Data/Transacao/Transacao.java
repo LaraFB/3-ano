@@ -1,45 +1,31 @@
 package com.example.gps_g11.Data.Transacao;
 
-import com.example.gps_g11.Data.Categoria.Categoria;
-
 import java.io.Serializable;
-
 import java.time.LocalDate;
 
 public class Transacao implements Serializable {
     private static int nextId = 0;
     private int id;
-    private String tipo; // 'Despesa' ou 'Entrada'
     private String descricao;
     private LocalDate data;
     private double montante;
-    private Categoria categoria;
-    private boolean recorrente;
 
-    public Transacao(String tipo, String descricao,Categoria categoria, LocalDate data, double montante) {
+    private boolean isDinheiro;
+
+    public Transacao(String descricao, LocalDate data, double montante, boolean isDinheiro) {
         this.id = nextId++;
-        this.tipo = tipo;
         this.descricao = descricao;
-        this.categoria = categoria;
         this.data = data;
         this.montante = montante;
-
+        this.isDinheiro = isDinheiro;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public double getMontante() {
-        return montante;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -50,39 +36,27 @@ public class Transacao implements Serializable {
         this.descricao = descricao;
     }
 
+    public LocalDate getData() {
+        return data;
+    }
+
     public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    public double getMontante() {
+        return montante;
     }
 
     public void setMontante(double montante) {
         this.montante = montante;
     }
-    public Categoria getCategoria() {
-        return categoria;
+
+    public boolean isDinheiro() {
+        return isDinheiro;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public boolean isRecorrente() {
-        return recorrente;
-    }
-
-    public void setRecorrente(boolean recorrente) {
-        this.recorrente = recorrente;
-    }
-
-    @Override
-    public String toString() {
-        return "Transacao{" +
-                "id=" + id +
-                ", tipo='" + tipo + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", data=" + data +
-                ", montante=" + montante +
-                ", categoria='" + categoria + '\'' +
-                ", recorrente=" + recorrente +
-                '}';
+    public void setDinheiro(boolean dinheiro) {
+        isDinheiro = dinheiro;
     }
 }
