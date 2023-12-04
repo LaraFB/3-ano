@@ -29,16 +29,7 @@ public class Context {
         }
         return instance;
     }
-    /*public String getNomeBolsa(){
-        return contextData.getBudget().getBolsa().getNome();
-    }
-    public double getValorBolsa(){
-        return contextData.getBudget().getBolsa().getValor();
-    }
 
-    public double getValorGastoBolsa(){
-        return contextData.getBudget().getBolsa().getValorGasto();
-    }*/
     /**TODO: Categorias Despesas*/
     public List<CategoriaEntradas> getCategoriasListEntradas(){
         return contextData.getListaCategorias().getCategoriasEntradas();
@@ -109,21 +100,6 @@ public class Context {
     public boolean isListaCategoriasEntradasEmpty() {
         return contextData.getListaCategorias().getCategoriasEntradas().isEmpty();
     }
-
-
-    /*public int adicionarCategoriaNomeDescricao(double valor, String name, String descripton,boolean isAberto,boolean pagarBolsa) {
-        if(contextData.getBudget().getSaldoDisponivel()-valor < 0){
-            return -1; //Não existe saldo para adicionar algo ao envelope
-        }
-        contextData.getListaCategorias().adicionarCategoriaNomeDescricao(valor,name,descripton,isAberto,pagarBolsa);
-        if(pagarBolsa){
-            contextData.getBudget().getBolsa().setValorDisponivel(getBolsa().getValorDisponivel()-valor);
-        }else{
-            contextData.getBudget().setSaldoDisponivel(getSaldoDisponivel()-valor);
-        }
-        return 0;
-    }*/
-
 
     /**Objetivos*/
     public ListaObjetivos getListaObjetivos(){return contextData.getListaObjetivos();}
@@ -308,6 +284,43 @@ public class Context {
         return transacaoEntrada;
     }
 
+    /**Guardar Ficheiro*/
+    public void saveToFile() {
+        if (contextData != null) {
+            contextData.saveToFile(fileName);
+        }
+    }
+    private void loadFromFile() {
+        contextData = ContextData.loadFromFile(fileName);
+    }
+
+    public CategoriaDespesas getCategoriaByName(String value) {
+        for (CategoriaDespesas categoriaDespesas : contextData.getListaCategorias().getCategoriasDespesas()) {
+            if(categoriaDespesas.getNome().equals(value)){
+                return categoriaDespesas;
+            }
+        }
+        return null;
+    }
+
+    public LocalDate getData() {
+        return contextData.getData();
+    }
+
+    public void verficacoes(LocalDate newValue) {
+        //Este metodo é aquele que verifica tudo
+        //Alterei a data
+        contextData.setDate(newValue);
+        //Verificar se o mês anterior é diferente do mês atual
+        //se for, guardamos as informações do mês passado (Cria uma classe para as estatisticas)
+        //vamos ter uma lista de objetos de estatisticas com informação importante para mostrar nas estatisticas
+        //resetar algumas variáveis
+        //e outras verficações que possam surgir
+    }
+
+    /*
+
+
 
 
 
@@ -365,46 +378,6 @@ public class Context {
         return contextData.getHistoricoEntradas().getEntradas();
     }*/
 
-
-    /**Guardar Ficheiro*/
-    public void saveToFile() {
-        if (contextData != null) {
-            contextData.saveToFile(fileName);
-        }
-    }
-
-    private void loadFromFile() {
-        contextData = ContextData.loadFromFile(fileName);
-    }
-
-    public CategoriaDespesas getCategoriaByName(String value) {
-        for (CategoriaDespesas categoriaDespesas : contextData.getListaCategorias().getCategoriasDespesas()) {
-            if(categoriaDespesas.getNome().equals(value)){
-                return categoriaDespesas;
-            }
-        }
-        return null;
-    }
-
-    public LocalDate getData() {
-        return contextData.getData();
-    }
-
-    public void verficacoes(LocalDate newValue) {
-        //Este metodo é aquele que verifica tudo
-        //Alterei a data
-        contextData.setDate(newValue);
-        //Verificar se o mês anterior é diferente do mês atual
-        //se for, guardamos as informações do mês passado (Cria uma classe para as estatisticas)
-        //vamos ter uma lista de objetos de estatisticas com informação importante para mostrar nas estatisticas
-        //resetar algumas variáveis
-        //e outras verficações que possam surgir
-    }
-
-    /*
-
-
-    */
 /**se n há data, reset automatico*//*
 
     public void ResetAutomatico(){

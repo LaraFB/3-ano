@@ -1,143 +1,96 @@
 package com.example.gps_g11.Data.Objetivo;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import java.time.LocalDate;
 
 public class ListaObjetivosTest {
 
-    /*@Test
-    public void testAddObjetivo() {
+    @Test
+    public void testIsEmpty() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
-        Objetivo objetivo = new Objetivo("Viagem", "Viagem dos sonhos", 5000.0);
+        assertTrue(listaObjetivos.isEmpty());
 
-        assertTrue(listaObjetivos.addObjetivo(objetivo));
+        listaObjetivos.addObjetivo("Comprar um carro", "Economizar para comprar um carro", 20000.0, 1);
+        assertFalse(listaObjetivos.isEmpty());
+    }
+
+    @Test
+    public void testGetSize() {
+        ListaObjetivos listaObjetivos = new ListaObjetivos();
+        assertEquals(0, listaObjetivos.getSize());
+
+        listaObjetivos.addObjetivo("Comprar um carro", "Economizar para comprar um carro", 20000.0, 1);
         assertEquals(1, listaObjetivos.getSize());
     }
 
     @Test
-    public void testAddObjetivoComParametros() {
+    public void testAddObjetivo() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
+        assertTrue(listaObjetivos.addObjetivo("Comprar um carro", "Economizar para comprar um carro", 20000.0, 1));
 
-        assertTrue(listaObjetivos.addObjetivo("Casa", "Compra da casa própria", 100000.0));
         assertEquals(1, listaObjetivos.getSize());
+        assertNotNull(listaObjetivos.getObjetivo("Comprar um carro"));
     }
 
     @Test
     public void testEditObjetivo() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Carro", "Compra de um carro", 30000.0);
+        listaObjetivos.addObjetivo("Comprar um carro", "Economizar para comprar um carro", 20000.0, 1);
 
-        assertTrue(listaObjetivos.editObjetivo(0, "Novo Carro"));
-        assertEquals("Novo Carro", listaObjetivos.getObjetivo(0).getNome());
+        assertTrue(listaObjetivos.editObjetivo("Comprar um carro", "Economizar para uma viagem"));
+        assertEquals("Economizar para uma viagem", listaObjetivos.getObjetivo("Comprar um carro").getDescricao());
     }
 
     @Test
-    public void testEditObjetivoDescricao() {
+    public void testDeleteObjetivo() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Férias", "Viagem dos sonhos", 8000.0);
+        listaObjetivos.addObjetivo("Comprar um carro", "Economizar para comprar um carro", 20000.0, 1);
 
-        assertTrue(listaObjetivos.editObjetivo("Férias", "Viagem dos sonhos em família"));
-        assertEquals("Viagem dos sonhos em família", listaObjetivos.getObjetivo("Férias").getDescricao());
-
-        assertFalse(listaObjetivos.editObjetivo("Trabalho", "Nova jornada profissional"));
-        assertNull(listaObjetivos.getObjetivo("Trabalho"));
-    }
-
-    @Test
-    public void testEditObjetivoValor() {
-        ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Estudos", "Investimento em cursos", 5000.0);
-
-        assertTrue(listaObjetivos.editObjetivo(0, 6000.0));
-        assertEquals(6000.0, listaObjetivos.getObjetivo(0).getValor(), 0.001);
-    }
-
-    @Test
-    public void testDeleteObjetivoIndex() {
-        ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Aposentadoria", "Planejamento para aposentadoria", 1000000.0);
-
-        assertTrue(listaObjetivos.deleteObjetivo(0));
-        assertEquals(0, listaObjetivos.getSize());
-
-    }
-
-    @Test
-    public void testDeleteObjetivoNome() {
-        ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Negócios", "Investimento em novos negócios", 50000.0);
-
-        assertTrue(listaObjetivos.deleteObjetivo("Negócios"));
-        assertEquals(0, listaObjetivos.getSize());
-
-        assertFalse(listaObjetivos.deleteObjetivo("Empreendedorismo"));
+        assertTrue(listaObjetivos.deleteObjetivo("Comprar um carro"));
         assertEquals(0, listaObjetivos.getSize());
     }
 
     @Test
-    public void testIsFullfiledIndex() {
+    public void testIsFullfiled() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Casa Própria", "Compra da casa própria", 200000.0);
+        listaObjetivos.addObjetivo("Comprar um carro", "Economizar para comprar um carro", 20000.0, 1);
+        assertFalse(listaObjetivos.isFullfiled("Comprar um carro"));
 
-        assertFalse(listaObjetivos.isFullfiled(0));
-
-        listaObjetivos.getObjetivo(0).addToGoal(200000.0);
-        assertTrue(listaObjetivos.isFullfiled(0));
+        listaObjetivos.getObjetivo("Comprar um carro").addToGoal(20000.0);
+        assertTrue(listaObjetivos.isFullfiled("Comprar um carro"));
     }
 
     @Test
-    public void testIsFullfiledNome() {
+    public void testHowMuchLeft() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Férias", "Viagem internacional", 8000.0);
+        listaObjetivos.addObjetivo("Comprar um carro", "Economizar para comprar um carro", 20000.0, 1);
+        assertEquals(20000.0, listaObjetivos.howMuchLeft("Comprar um carro"), 0.01);
 
-        assertFalse(listaObjetivos.isFullfiled("Férias"));
-
-        listaObjetivos.getObjetivo("Férias").addToGoal(8000.0);
-        assertTrue(listaObjetivos.isFullfiled("Férias"));
+        listaObjetivos.getObjetivo("Comprar um carro").addToGoal(5000.0);
+        assertEquals(15000.0, listaObjetivos.howMuchLeft("Comprar um carro"), 0.01);
     }
 
     @Test
-    public void testHowMuchLeftIndex() {
+    public void testCurrentValue() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Carro Novo", "Compra de carro zero km", 30000.0);
+        listaObjetivos.addObjetivo("Comprar um carro", "Economizar para comprar um carro", 20000.0, 1);
+        assertEquals(0.0, listaObjetivos.currentValue("Comprar um carro"), 0.01);
 
-        assertEquals(30000.0, listaObjetivos.howMuchLeft(0), 0.01);
-
-        listaObjetivos.getObjetivo(0).addToGoal(15000.0);
-        assertEquals(15000.0, listaObjetivos.howMuchLeft(0), 0.01);
+        listaObjetivos.getObjetivo("Comprar um carro").addToGoal(5000.0);
+        assertEquals(5000.0, listaObjetivos.currentValue("Comprar um carro"), 0.01);
     }
 
     @Test
-    public void testHowMuchLeftNome() {
+    public void testSort() {
         ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Curso Online", "Investimento em educação", 1500.0);
+        listaObjetivos.addObjetivo("Viagem", "Planejar uma viagem", 1000.0, 2);
+        listaObjetivos.addObjetivo("Estudos", "Estudar para o exame", 500.0, 1);
+        listaObjetivos.addObjetivo("Comprar livro", "Economizar para comprar um livro", 50.0, 3);
 
-        assertEquals(1500.0, listaObjetivos.howMuchLeft("Curso Online"), 0.01);
-
-        listaObjetivos.getObjetivo("Curso Online").addToGoal(1000.0);
-        assertEquals(500.0, listaObjetivos.howMuchLeft("Curso Online"), 0.01);
+        assertEquals("Comprar livro", listaObjetivos.getObjetivo(0).getNome());
+        assertEquals("Viagem", listaObjetivos.getObjetivo(1).getNome());
+        assertEquals("Estudos", listaObjetivos.getObjetivo(2).getNome());
     }
-
-    @Test
-    public void testCurrentValueIndex() {
-        ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Curso Online", "Investimento em educação", 1500.0);
-
-        assertEquals(0.0, listaObjetivos.currentValue(0), 0.01);
-
-        listaObjetivos.getObjetivo(0).addToGoal(1000.0);
-        assertEquals(1000.0, listaObjetivos.currentValue(0), 0.01);
-    }
-
-    @Test
-    public void testCurrentValueNome() {
-        ListaObjetivos listaObjetivos = new ListaObjetivos();
-        listaObjetivos.addObjetivo("Projeto Pessoal", "Desenvolvimento de um projeto pessoal", 5000.0);
-
-        assertEquals(0.0, listaObjetivos.currentValue("Projeto Pessoal"), 0.01);
-
-        listaObjetivos.getObjetivo("Projeto Pessoal").addToGoal(2500.0);
-        assertEquals(2500.0, listaObjetivos.currentValue("Projeto Pessoal"), 0.01);
-    }*/
 }

@@ -1,50 +1,148 @@
-/*
 package com.example.gps_g11.Data;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ContextTest {
+public class ContextTest {
 
-   */
-/* @Test
-    public void testadicionarDinheiroCategoriaDespesa_Sucesso() {
-        ContextData contextData = new ContextData();
-        Context context = Context.getInstance();
-        double saldoInicial = context.getSaldoDisponivel();
+    private Context context;
 
-        int resultado = context.adicionarDinheiroCategoriaDespesa(50.0, "CategoriaExistente");
-
-        assertEquals(-2, resultado);
-        assertEquals(100.0, context.getSaldoDisponivel());
-    }
-*//*
-
-    @Test
-    public void testadicionarDinheiroCategoriaDespesa_SemSaldo() {
-        ContextData contextData = new ContextData();
-        Context context = Context.getInstance();
-        double saldoInicial = context.getSaldoDisponivel();
-
-        int resultado = context.adicionarDinheiroCategoriaDespesa(150.0, "CategoriaExistente");
-
-        assertEquals(-1, resultado);
-        assertEquals(saldoInicial, context.getSaldoDisponivel());
+    @BeforeEach
+    public void setContext() {
+        context = Context.getInstance();
     }
 
     @Test
-    public void testadicionarDinheiroCategoriaDespesa_CategoriaInexistente() {
-        ContextData contextData = new ContextData();
-        Context context = Context.getInstance();
-        double saldoInicial = context.getSaldoDisponivel();
+    public void testAdicionarCategoriaDespesaSemSaldo() {
+        String nomeCategoria = "CategoriaTeste";
+        String descricao = "Descrição teste";
+        double valor = 100.0;
+        boolean isAberto = true;
 
-        int resultado = context.adicionarDinheiroCategoriaDespesa(50.0, "CategoriaInexistente");
+        int result = context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto);
 
-       */
-/* assertEquals(-2, resultado);*//*
+        assertEquals(0, result);
+        assertFalse(context.isListaCategoriasDespesasEmpty());
+        }
+    @Test
+    public void testAdicionarCategoriaDespesaComSaldo() {
+        String nomeCategoria = "CategoriaTeste";
+        String descricao = "Descrição teste";
+        double valor = 100.0;
+        boolean isAberto = true;
+        context.getSaldo().getBudgetContaBancaria().setSaldoReal(120);
+        context.getSaldo().setSaldoPorDistribuir(120);
+        int result = context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto);
 
-        assertEquals(saldoInicial, context.getSaldoDisponivel());
+        assertEquals(0, result);
+        assertFalse(context.isListaCategoriasDespesasEmpty());
+        assertTrue(context.getCategoriaDespesasNomes().contains(nomeCategoria));
     }
+
+    @Test
+    public void testAdicionarDinheiroCategoriaDespesa() {
+        String nomeCategoria = "CategoriaTeste";
+        String descricao = "Descrição teste";
+        double valor = 100.0;
+        boolean isAberto = true;
+        context.getSaldo().getBudgetContaBancaria().setSaldoReal(200);
+        context.getSaldo().setSaldoPorDistribuir(200);
+        context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto);
+
+        double valorAdicionar = 50.0;
+        int result = context.adicionarDinheiroCategoriaDespesa(valorAdicionar, nomeCategoria);
+
+        assertEquals(0, result);
+        assertEquals(valor + valorAdicionar, context.getCategoriasListDespesas()
+                .stream()
+                .filter(cat -> cat.getNome().equals(nomeCategoria))
+                .findFirst()
+                .orElseThrow()
+                .getValor());
+    }
+
+    @Test
+    public void testAdicionarCategoriaEntrada() {
+        String nomeCategoria = "CategoriaTeste";
+        String descricao = "Descrição teste";
+
+        context.getSaldo().getBudgetContaBancaria().setSaldoReal(200);
+        context.getSaldo().setSaldoPorDistribuir(200);
+        int result = context.adicionarCategoriaEntrada(nomeCategoria, descricao);
+
+        assertEquals(0, result);
+        assertFalse(context.isListaCategoriasEntradasEmpty());
+         }
+
+    @Test
+    public void testAdicionarDinheiroCategoriaEntrada() {
+        String nomeCategoria = "CategoriaTeste";
+        String descricao = "Descrição teste";
+        double valor = 100.0;
+        boolean isDinheiro = true;
+
+        context.getSaldo().getBudgetContaBancaria().setSaldoReal(200);
+        context.getSaldo().setSaldoPorDistribuir(200);
+        context.adicionarCategoriaEntrada(nomeCategoria, descricao);
+
+        double valorAdicionar = 50.0;
+        int result = context.adicionarDinheiroCategoriaEntrada(valorAdicionar, nomeCategoria, isDinheiro);
+
+        assertEquals(0, result);
+        assertEquals(valorAdicionar, context.getCategoriasListEntradas()
+                .stream()
+                .filter(cat -> cat.getNome().equals(nomeCategoria))
+                .findFirst()
+                .orElseThrow()
+                .getValor());
+    }
+
+    @Test
+    public void testAdicionarDespesa() {
+        String nomeCategoria = "CategoriaTeste";
+        String descricao = "Descrição teste";
+        LocalDate date = LocalDate.now();
+        double montante = 50.0;
+        boolean isDinheiro = true;
+
+        context.getSaldo().getBudgetContaBancaria().setSaldoReal(200);
+        context.getSaldo().setSaldoPorDistribuir(200);
+        context.adicionarCategoriaDespesa(montante, nomeCategoria, descricao, true);
+
+        int result = context.adicionarDespesa(nomeCategoria, descricao, date, montante, isDinheiro);
+
+        assertEquals(0, result);
+        assertFalse(context.getTransacoesDespesa().isEmpty());
+        }
+
+    @Test
+    public void testAdicionarEntrada() {
+        String nomeCategoria = "CategoriaTeste";
+        String descricao = "Descrição teste";
+        LocalDate date = LocalDate.now();
+        double montante = 50.0;
+        boolean isDinheiro = true;
+
+        context.adicionarCategoriaEntrada(nomeCategoria, descricao);
+
+        int result = context.adicionarEntrada(nomeCategoria, descricao, date, montante, isDinheiro);
+
+        assertEquals(0, result);
+        assertFalse(context.getTransacoesEntrada().isEmpty());
+       }
+
+    @Test
+    public void testVerficacoes() {
+        LocalDate newValue = LocalDate.now();
+        context.verficacoes(newValue);
+        assertEquals(newValue, context.getData());
+        // Adicione mais testes conforme necessário para cobrir a lógica dentro do método verficacoes.
+    }
+
+
 }
-*/

@@ -1,54 +1,52 @@
-/*
 package com.example.gps_g11.Data.Transacao;
 
-import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import org.junit.jupiter.api.Test;
-import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
-class TransacaoTest {
+import java.time.LocalDate;
+
+public class TransacaoTest {
+    //Não faz setnido fazer este
+    /*@Test
+    public void testGetId() {
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        assertEquals(0, transacao.getId());
+    }*/
 
     @Test
-    void testSetDescricao() {
-        Despesa transacao = criarTransacaoPadrao();
-        transacao.setDescricao("Nova descrição");
-        assertEquals("Nova descrição", transacao.getDescricao());
+    public void testGetSetDescricao() {
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        assertEquals("Compra de alimentos", transacao.getDescricao());
+
+        transacao.setDescricao("Pagamento de conta de luz");
+        assertEquals("Pagamento de conta de luz", transacao.getDescricao());
     }
 
     @Test
-    void testSetData() {
-        Despesa transacao = criarTransacaoPadrao();
-        LocalDate novaData = LocalDate.now().plusDays(1);
+    public void testGetSetData() {
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        assertEquals(LocalDate.now(), transacao.getData());
+
+        LocalDate novaData = LocalDate.of(2023, 12, 31);
         transacao.setData(novaData);
         assertEquals(novaData, transacao.getData());
     }
 
     @Test
-    void testSetMontante() {
-        Despesa transacao = criarTransacaoPadrao();
-        transacao.setMontante(50.0);
-        assertEquals(50.0, transacao.getMontante());
+    public void testGetSetMontante() {
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        assertEquals(50.0, transacao.getMontante(), 0.01);
+
+        transacao.setMontante(75.0);
+        assertEquals(75.0, transacao.getMontante(), 0.01);
     }
 
     @Test
-    void testSetCategoria() {
-        Despesa transacao = criarTransacaoPadrao();
-        CategoriaDespesas novaCategoria = new CategoriaDespesas(30.0, "Nova Categoria", true, false);
-        transacao.setCategoria(novaCategoria);
-        assertEquals(novaCategoria, transacao.getCategoria());
-    }
+    public void testIsDinheiro() {
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        assertTrue(transacao.isDinheiro());
 
-    @Test
-    void testSetRecorrente() {
-        Despesa transacao = criarTransacaoPadrao();
-        transacao.setRecorrente(true);
-        assertTrue(transacao.isRecorrente());
-    }
-
-    private Despesa criarTransacaoPadrao() {
-        CategoriaDespesas categoria = new CategoriaDespesas(20.0, "Categoria Teste", true, false);
-        LocalDate data = LocalDate.now();
-        return new Despesa("Despesa", "Descrição Teste", categoria, data, 30.0);
+        transacao.setDinheiro(false);
+        assertFalse(transacao.isDinheiro());
     }
 }
-*/
