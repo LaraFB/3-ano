@@ -63,7 +63,7 @@ public class EnvelopeController implements Initializable {
                 currentHBox.getChildren().add(categoriaButton);
                 i++;
             }
-            btnSwitch.setText("Envlopes  ");
+            btnSwitch.setText("Envelopes  ");
             lblTitle.setText("Todas as categorias criadas");
         }
 
