@@ -3,6 +3,8 @@ package com.example.gps_g11.Controller.Objetivo;
 import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
+import com.example.gps_g11.Data.Transacao.Despesa;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -12,8 +14,10 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class editarObjetivoController implements Initializable{
@@ -272,9 +276,14 @@ public class editarObjetivoController implements Initializable{
 
         grid.add(new Label("Envelope:"), 0, 0);
         grid.add(envelopes, 1, 0);
-       // Label lValor = new Label("Valor (entre 0 e " + context.getCategoriaByName(envelopes.getValue()).getValor() + "):      ");
-        //grid.add(lValor, 0, 1);
+        Label lValor = new Label("Valor (entre 0 e " + context.getCategoriaByName(envelopes.getValue()).getValor() + "):      ");
+        grid.add(lValor, 0, 1);
         grid.add(valor, 1, 1);
+
+        Label lCheck = new Label("Retirou o valor em dinheiro? ");
+        CheckBox isDinheiro = new CheckBox();
+        grid.add(lCheck,0,2);
+        grid.add(isDinheiro,1,2);
 
         Node btnOk = popUp.getDialogPane().lookupButton(btnOkType);
         btnOk.setDisable(true);
@@ -287,7 +296,7 @@ public class editarObjetivoController implements Initializable{
             //btnOk.setDisable(Double.parseDouble(newValue) > context.getCategoriaByName(envelopes.getValue()).getValor());
 
         });
-/*
+
         envelopes.valueProperty().addListener((observable, oldValue, newValue) -> {
             if(context.getListaObjetivos().getObjetivo(index).getMissingValue() < context.getCategoriaByName(newValue).getValor()) //se precisa de menos dinheiro q o envelope tem
                 lValor.setText("Valor (entre 0 e " + context.getListaObjetivos().getObjetivo(index).getMissingValue() + "): ");
@@ -297,26 +306,23 @@ public class editarObjetivoController implements Initializable{
             if(!valor.getText().isEmpty())
                 btnOk.setDisable(Double.parseDouble(valor.getText()) > context.getCategoriaByName(newValue).getValor());
         });
-        ((Button) btnOk).setOnAction(event -> {
 
+        popUp.getDialogPane().setContent(grid);
+        Optional<Pair<String, Integer>> check = popUp.showAndWait();
+
+        if(check.toString().contains("OK_DONE")){ //apenas se clicou em adicionar
             //fechou o popup: temos os valores:
             double valoraretirar = Double.parseDouble(valor.getText());
             String envelopearetirar = envelopes.getValue();
 
             //retira o valor do envelope:
-            context.getCategoriaByName(envelopearetirar).setValor(
-                    context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
-            );
+            context.adicionarDespesa(envelopearetirar,"Retirados " + valoraretirar +"€ para o objetivo " + tfNome.getText(),LocalDate.now(),valoraretirar,isDinheiro.isSelected());
 
             //coloca no objetivo
             context.getListaObjetivos().getObjetivo(index).addToGoal(valoraretirar);
 
             update();
-        });*/
-
-
-        popUp.getDialogPane().setContent(grid);
-        popUp.showAndWait();
+        }
 
     }
 
