@@ -283,4 +283,7 @@ public class HomeController implements Initializable {
 
     }
 
+    public void onTransaction(ActionEvent actionEvent) {
+        sideBarController.transaction();
+    }
 }

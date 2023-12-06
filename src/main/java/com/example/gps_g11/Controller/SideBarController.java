@@ -106,9 +106,14 @@ public class SideBarController {
                         homePageAdicionarSaldoController.setSideBar(this);
                         putBtnActive(btnHomePage);
                         break;
-                        case "Home/HomePageAdicionarBolsa.fxml":
+                    case "Home/HomePageAdicionarBolsa.fxml":
                         HomePageAdicionarBolsaController homePageAdicionarBolsaController = loader.getController();
                         homePageAdicionarBolsaController.setSideBar(this);
+                        putBtnActive(btnHomePage);
+                        break;
+                    case "Home/HomePageTransaction.fxml":
+                        HomePageTransactionController homePageTransactionController = loader.getController();
+                        homePageTransactionController.setSideBar(this);
                         putBtnActive(btnHomePage);
                         break;
                     case "Objetivo/Objetivo.fxml":
@@ -227,6 +232,9 @@ public class SideBarController {
     public void editarObjetivos() { loadFXML("Objetivo/editarObjetivo.fxml");}
 
 
+    public void transaction() {
+        loadFXML("Home/HomePageTransaction.fxml");
+    }
 }
 
 
