@@ -81,6 +81,19 @@ public class adicionarObjetivoController implements Initializable {
             msgError.setTextFill(Color.GREEN);
             msgError.setText("Objetivo adicionado com sucesso!");
 
+            boolean temEnvelopeObjetivos = false;
+            if(!context.getCategoriasListDespesas().isEmpty())
+                for(int i=0; i< context.getCategoriasListDespesas().size(); i++){
+                    if(context.getCategoriasListDespesas().get(i).getNome().toLowerCase().contains("objetivo")){
+                        temEnvelopeObjetivos = true;
+                        break;
+                    }
+                }
+
+
+            if(context.getCategoriasListDespesas().isEmpty() || temEnvelopeObjetivos == false)
+                context.adicionarCategoriaDespesa(0.0,"Objetivos","Para concetrização de objetivos", false);
+
         }catch (Exception e){
             msgError.setVisible(true);
             msgError.setText("Falha ao inserir objetivo...");

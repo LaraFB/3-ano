@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ObjetivoController implements Initializable {
@@ -35,9 +36,18 @@ public class ObjetivoController implements Initializable {
 
     private SideBarController sideBarController;
 
+    private int envelopeObjetivos = -1;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.context = Context.getInstance();
+
+        for(int i=0; i<context.getCategoriasListDespesas().size(); i++)
+            if(context.getCategoriasListDespesas().get(i).getNome().toLowerCase().contains("objetivo")){
+                envelopeObjetivos = i;
+                break;
+            }
+
         update();
     }
 
@@ -49,6 +59,9 @@ public class ObjetivoController implements Initializable {
     public void update(){
         if(context.getListaObjetivos().isEmpty())
             return;
+
+        if(envelopeObjetivos != -1 && !context.getListaObjetivos().isEmpty())
+            distribuiDinheiro();
 
         int i = 0;
         int buttonsPerHBox = 4;
@@ -108,6 +121,26 @@ public class ObjetivoController implements Initializable {
         pie.setPrefSize(200,300);
 
         return pie;
+    }
+
+    private void distribuiDinheiro(){
+        double dinheiro;
+        context.getListaObjetivos().sort(context.getData());
+
+        for (int i = 0; i < context.getListaObjetivos().getSize() - 1 ; i++) {
+            double valorARetirar;
+            dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor();
+
+            if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro / 2)
+                valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
+            else valorARetirar = dinheiro / 2;
+
+            context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(dinheiro - valorARetirar);
+            context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+        }
+        dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor();
+        context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).addToGoal(dinheiro);
+        context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(0);
     }
 
 

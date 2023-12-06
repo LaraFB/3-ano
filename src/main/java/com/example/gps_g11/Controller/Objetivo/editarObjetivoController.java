@@ -37,8 +37,8 @@ public class editarObjetivoController implements Initializable{
     private ProgressBar pbObjetivo;
     @FXML
     private Label msgError;
-    @FXML
-    private Button btnAdcDinheiro;
+    //@FXML
+    //private Button btnAdcDinheiro;
     @FXML
     private Button btnSalvar;
     @FXML
@@ -118,7 +118,7 @@ public class editarObjetivoController implements Initializable{
         if(context.getListaObjetivos().isEmpty()){
             btnPrev.setVisible(false);
             btnNext.setVisible(false);
-            btnAdcDinheiro.setDisable(true);
+            //btnAdcDinheiro.setDisable(true);
             btnEliminar.setDisable(true);
             btnSalvar.setDisable(true);
             tfNome.setDisable(true);
@@ -169,7 +169,7 @@ public class editarObjetivoController implements Initializable{
         pbObjetivo.setProgress( context.getListaObjetivos().getObjetivo(index).getCurrentValue() / context.getListaObjetivos().getObjetivo(index).getValor());
         lProgresso.setText((context.getListaObjetivos().getObjetivo(index).getCurrentValue() / context.getListaObjetivos().getObjetivo(index).getValor())*100 +"%");
         msgError.setVisible(false);
-        btnAdcDinheiro.setDisable(false);
+        //btnAdcDinheiro.setDisable(false);
         btnSalvar.setDisable(false);
         btnEliminar.setDisable(false);
     }
@@ -215,7 +215,8 @@ public class editarObjetivoController implements Initializable{
         }
     }
 
-    public void onAdcDinheiro(){
+    public void onAdcDinheiro(){/*
+        int EnvelopeObjetivos = -1;
         if(context.getCategoriasListDespesas().isEmpty()){ //se n houverem envelopes mostra um aviso e sai
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
@@ -226,12 +227,15 @@ public class editarObjetivoController implements Initializable{
             return;
         }
         boolean haAbertos = false;
-        for (int x = 0; x < context.getCategoriasListDespesas().size(); x++)
+        for (int x = 0; x < context.getCategoriasListDespesas().size(); x++) {
+            if(context.getCategoriasListDespesas().get(x).getNome().toLowerCase().contains("objetivo"))
+                EnvelopeObjetivos = x;
             if (context.getCategoriasListDespesas().get(x).isAberto()) {
                 System.out.println(context.getCategoriasListDespesas().get(x).getNome() + " esta aberto");
                 haAbertos = true;
                 break;
             }
+        }
         //se saiu e n ha abertos
         if(haAbertos == false){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -242,6 +246,28 @@ public class editarObjetivoController implements Initializable{
             alert.showAndWait();
             return;
         }
+        else{
+            if(EnvelopeObjetivos == -1){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText(null);
+                alert.setGraphic(null);
+                alert.setTitle("Aviso");
+                alert.setContentText("Não existe envelope relativo aos objetivos, pode retirar dinheiro de outros envelopes abertos, caso necessário.");
+                alert.showAndWait();
+                return;
+            }
+            if(context.getListaObjetivos().getObjetivo(EnvelopeObjetivos).getValor() < 0){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText(null);
+                alert.setGraphic(null);
+                alert.setTitle("Aviso");
+                alert.setContentText("O envelope de objetivos não tem dinheiro, pode retirar dinheiro de outros envelopes abertos, caso necessário.");
+                alert.showAndWait();
+                return;
+            }
+        }
+
+
 
         //pop up:
         Dialog<Pair<String, Integer>> popUp = new Dialog<>();
@@ -322,8 +348,7 @@ public class editarObjetivoController implements Initializable{
             context.getListaObjetivos().getObjetivo(index).addToGoal(valoraretirar);
 
             update();
-        }
-
+        }*/
     }
 
 

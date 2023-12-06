@@ -1,6 +1,8 @@
 package com.example.gps_g11.Data.Objetivo;
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class ListaObjetivos implements Serializable {
@@ -118,8 +120,42 @@ public class ListaObjetivos implements Serializable {
         Comparator<Objetivo> comparator = new Comparator<Objetivo>() {
             @Override
             public int compare(Objetivo o1, Objetivo o2) {
-                if(o1.getPrioridade() == o2.getPrioridade()) return 0;
-                if(o1.getPrioridade() > o2.getPrioridade()) return -1;
+                long diasO1 = Duration.between(o1.getDataLimite(),LocalDate.now()).toDays();
+                long diasO2 = Duration.between(o2.getDataLimite(),LocalDate.now()).toDays();
+
+                double prioridadeO1 = diasO1*o1.getPrioridade() + o1.getMissingValue()*o1.getPrioridade();
+                double prioridadeO2 = diasO2*o2.getPrioridade() + o2.getMissingValue()*o2.getPrioridade();
+
+                if(prioridadeO1 == prioridadeO2) return 0;
+                if(prioridadeO1 > prioridadeO2) return -1;
+                else return 1;
+            }
+        };
+
+        Collections.sort(objetivos,comparator);
+    }
+    public void sort(LocalDate now){
+        Comparator<Objetivo> comparator = new Comparator<Objetivo>() {
+            @Override
+            public int compare(Objetivo o1, Objetivo o2) {
+                double prioridadeO1, prioridadeO2;
+                if(o1.getDataLimite() != null && o2.getDataLimite() != null) {
+
+
+                    long diasO1 =  ChronoUnit.DAYS.between(o1.getDataLimite(), now);
+                    long diasO2 = ChronoUnit.DAYS.between(o2.getDataLimite(), now);
+
+
+                    prioridadeO1 = diasO1 * o1.getPrioridade() + o1.getMissingValue() * o1.getPrioridade();
+                    prioridadeO2 = diasO2 * o2.getPrioridade() + o2.getMissingValue() * o2.getPrioridade();
+                }
+                else{
+                    prioridadeO1 = o1.getMissingValue() * o1.getPrioridade();
+                    prioridadeO2 = o2.getMissingValue() * o2.getPrioridade();
+                }
+
+                if(prioridadeO1 == prioridadeO2) return 0;
+                if(prioridadeO1 > prioridadeO2) return -1;
                 else return 1;
             }
         };

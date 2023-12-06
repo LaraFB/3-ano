@@ -3,6 +3,8 @@ package com.example.gps_g11.Data;
 import com.example.gps_g11.Data.Budget.Budget;
 import com.example.gps_g11.Data.Budget.Saldo;
 import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
+import com.example.gps_g11.Data.ToDos.ToDo;
+import com.example.gps_g11.Data.ToDos.ToDoList;
 import com.example.gps_g11.Data.Transacao.HistoricoTransacoes;
 import com.example.gps_g11.Data.Categoria.ListaCategorias;
 
@@ -13,6 +15,7 @@ public class ContextData implements Serializable {
     private HistoricoTransacoes historicoTransacoes;
     private ListaCategorias listaCategorias;
     private ListaObjetivos listaObjetivos;
+    private ToDoList listaNotificacoes;
     private Saldo saldo;
     private LocalDate date;
 
@@ -21,6 +24,7 @@ public class ContextData implements Serializable {
         this.saldo = new Saldo();
         this.historicoTransacoes = new HistoricoTransacoes();
         this.listaObjetivos = new ListaObjetivos();
+        this.listaNotificacoes = new ToDoList();
         date = LocalDate.of(2024,1,1);
     }
 
@@ -33,6 +37,9 @@ public class ContextData implements Serializable {
     }
     public ListaObjetivos getListaObjetivos() {
         return listaObjetivos;
+    }
+    public ToDoList getListaNotificacoes() {
+        return listaNotificacoes;
     }
 
     public Saldo getSaldo() {

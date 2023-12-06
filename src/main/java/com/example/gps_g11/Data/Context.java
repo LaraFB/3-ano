@@ -4,6 +4,7 @@ import com.example.gps_g11.Data.Budget.Saldo;
 import com.example.gps_g11.Data.Categoria.CategoriaEntradas;
 import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
+import com.example.gps_g11.Data.ToDos.ToDoList;
 import com.example.gps_g11.Data.Transacao.Despesa;
 import com.example.gps_g11.Data.Transacao.Entrada;
 
@@ -103,6 +104,8 @@ public class Context {
 
     /**Objetivos*/
     public ListaObjetivos getListaObjetivos(){return contextData.getListaObjetivos();}
+    /**Notificações*/
+    public ToDoList getListaNotificacoes(){return contextData.getListaNotificacoes();}
 
     /**Budget*/
     public Saldo getSaldo() {
@@ -317,6 +320,7 @@ public class Context {
         //resetar algumas variáveis
         //e outras verficações que possam surgir
     }
+
 
     /*
 
