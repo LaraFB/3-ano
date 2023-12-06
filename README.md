@@ -263,6 +263,7 @@ By the end of the second realease we must have all the user stories with "must" 
 
 ##### Mitigation Actions (threats>=20)
  - RSK2 – MS; Constantly check with the client the progress of the project, make regular meetings and keep him updated.
+ - RSK2 – AS; Never assume what the client wishes, always ask on any doubts encountered
 
 ***
 
