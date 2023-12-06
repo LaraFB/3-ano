@@ -11,6 +11,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -58,7 +61,13 @@ public class HomeController implements Initializable {
         lblSaldoRealCB.setText(formatarNumero(context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
         lblSaldoRealD.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()) + " €");
         lblSaldoTotal.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()+context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
+
         lblSaldoDistribuir.setText(formatarNumero(context.getSaldo().getSaldoPorDistribuir()) + " €");
+        if(context.getSaldo().getSaldoPorDistribuir() > 0)
+            lblSaldoDistribuir.setStyle("-fx-text-fill: red;");
+        else
+            lblSaldoDistribuir.setStyle("-fx-text-fill: black;");
+
         lblSaldoEnvelopes.setText(formatarNumero(context.getSaldo().getSaldoNosEnvelopes()) + " €");
         lblTotalDespesas.setText(formatarNumero(context.getSaldo().getTotalDespesas()) + " €");
 
@@ -83,7 +92,7 @@ public class HomeController implements Initializable {
         VBoxToDo.getChildren().clear();
 
         if(context.getSaldo().getSaldoPorDistribuir() > 0)
-            context.getListaNotificacoes().addToDo("Ainda tem saldo para distribuir pelos envelopes", ToDo.TYPE.NOTIFICATION);
+            context.getListaNotificacoes().addToDo("Ainda tem saldo para distribuir pelos envelopes", ToDo.TYPE.ALERT);
         else
             context.getListaNotificacoes().removeToDo("Ainda tem saldo para distribuir pelos envelopes");
 
@@ -122,6 +131,7 @@ public class HomeController implements Initializable {
 
         for(int i=0; i<context.getListaNotificacoes().size(); i++){
             Label lNot = new Label( context.getListaNotificacoes().get(i).getDescription());
+            lNot.setCursor(Cursor.HAND);
             switch (context.getListaNotificacoes().get(i).getType()){
                 case ALERT -> {
                     lNot.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
@@ -158,6 +168,8 @@ public class HomeController implements Initializable {
             }
 
             VBoxToDo.getChildren().add(lNot);
+            Separator separator = new Separator(Orientation.HORIZONTAL);
+            VBoxToDo.getChildren().add(separator);
         }
     }
 
@@ -189,6 +201,10 @@ public class HomeController implements Initializable {
             ButtonType buttonNao = new ButtonType("Não");
 
             alert.getButtonTypes().setAll(buttonSim, buttonNao);
+
+        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;");
+        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
 
@@ -210,6 +226,10 @@ public class HomeController implements Initializable {
         ButtonType buttonNao = new ButtonType("Não");
 
         alert.getButtonTypes().setAll(buttonSim, buttonNao);
+
+        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;");
+        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim) {
             context.getListaNotificacoes().removeToDo(td);

@@ -159,7 +159,7 @@
                                     <Insets top="10.0" />
                                  </padding>
                               </Label>
-                              <Button fx:id="btAdcToDo" mnemonicParsing="false" onAction="#onAdicionarToDo" style="-fx-background-color: none; -fx-opacity: 0.9;">
+                              <Button fx:id="btAdcToDo" mnemonicParsing="false" style="-fx-background-color: none; -fx-opacity: 0.9;">
                                  <graphic>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -175,7 +175,7 @@
                         </HBox>
                         <ScrollPane prefHeight="334.0" prefWidth="682.0">
                            <content>
-                              <VBox fx:id="VBoxToDo" prefHeight="330.0" spacing="5.0">
+                              <VBox fx:id="VBoxToDo" prefHeight="0.0" prefWidth="679.0" spacing="5.0">
                                  <padding>
                                     <Insets left="10.0" right="10.0" top="5.0" />
                                  </padding>
