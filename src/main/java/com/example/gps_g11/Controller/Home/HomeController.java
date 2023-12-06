@@ -63,4 +63,7 @@ public class HomeController {
     }
 
 
+    public void onTransaction(ActionEvent actionEvent) {
+        sideBarController.transaction();
+    }
 }
