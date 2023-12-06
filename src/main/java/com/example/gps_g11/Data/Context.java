@@ -56,11 +56,11 @@ public class Context {
         }
         return -2;
     }
-    public int adicionarCategoriaDespesa(double valor, String name,String descricao,boolean isAberto) {
+    public int adicionarCategoriaDespesa(double valor, String name,String descricao,boolean isAberto, boolean isRecorrente) {
         if(contextData.getSaldo().getSaldoPorDistribuir()-valor < 0){
             return -1; //Não existe saldo para adicionar algo ao envelope
         }
-        contextData.getListaCategorias().adicionarCategoriaDespesas(new CategoriaDespesas(name,descricao,valor,isAberto));
+        contextData.getListaCategorias().adicionarCategoriaDespesas(new CategoriaDespesas(name,descricao,valor,isAberto,isRecorrente));
         contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
         contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
         return 0;

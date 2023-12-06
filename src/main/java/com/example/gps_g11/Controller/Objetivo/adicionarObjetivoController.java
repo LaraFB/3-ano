@@ -92,7 +92,7 @@ public class adicionarObjetivoController implements Initializable {
 
 
             if(context.getCategoriasListDespesas().isEmpty() || temEnvelopeObjetivos == false)
-                context.adicionarCategoriaDespesa(0.0,"Objetivos","Para concetrização de objetivos", false);
+                context.adicionarCategoriaDespesa(0.0,"Objetivos","Para concetrização de objetivos", false,false);
 
         }catch (Exception e){
             msgError.setVisible(true);

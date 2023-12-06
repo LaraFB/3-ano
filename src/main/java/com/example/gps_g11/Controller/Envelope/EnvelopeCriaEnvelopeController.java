@@ -27,6 +27,7 @@ public class EnvelopeCriaEnvelopeController {
     private SideBarController sideBarController;
     private ToggleGroup envelopeToggleGroup;
     private Context context;
+    public CheckBox checkRecorrente;
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
@@ -88,7 +89,7 @@ public class EnvelopeCriaEnvelopeController {
             lblError3.setVisible(false);
             lblError.setText("Saldo adicionao com sucesso");
             lblError.setTextFill(Color.GREEN);
-            if(context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto) == -1){
+            if(context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected()) == -1){
                     lblError.setText("Saldo insuficiente");
                     lblError.setTextFill(Color.RED);
             }else{

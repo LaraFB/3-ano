@@ -191,9 +191,9 @@ public class SideBarController {
         context.adicionarEntrada("Bolsa","Mais algum dinheiro da escola", LocalDate.of(2023,10,3),150,false);
         context.adicionarEntrada("Mesada","Deram mais um dinheirinho ", LocalDate.of(2023,10,14),30,true);
 
-        context.adicionarCategoriaDespesa(70,"Propinas","Propinas para pagar",true);
-        context.adicionarCategoriaDespesa(30,"Compras","Dinheiro para compras",true);
-        context.adicionarCategoriaDespesa(20,"Anti-depressivos","Dinheiro pré-defesas",true);
+        context.adicionarCategoriaDespesa(70,"Propinas","Propinas para pagar",true,true);
+        context.adicionarCategoriaDespesa(30,"Compras","Dinheiro para compras",true,false);
+        context.adicionarCategoriaDespesa(20,"Anti-depressivos","Dinheiro pré-defesas",true,true);
 
     }
 

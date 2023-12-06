@@ -2,8 +2,10 @@ package com.example.gps_g11.Controller.Home;
 
 import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPanePopUpController;
 import com.example.gps_g11.Controller.SideBarController;
+import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.ToDos.ToDo;
+import com.example.gps_g11.Data.Transacao.Despesa;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -60,10 +62,6 @@ public class HomeController implements Initializable {
         lblSaldoEnvelopes.setText(formatarNumero(context.getSaldo().getSaldoNosEnvelopes()) + " €");
         lblTotalDespesas.setText(formatarNumero(context.getSaldo().getTotalDespesas()) + " €");
 
-        context.getListaNotificacoes().addToDo("Notificação exemplo...", ToDo.TYPE.NOTIFICATION);
-        context.getListaNotificacoes().addToDo("Alerta exemplo!", ToDo.TYPE.ALERT);
-
-        context.getListaNotificacoes().sort();
         updateNotificacoes();
     }
 
@@ -81,54 +79,90 @@ public class HomeController implements Initializable {
     }
 
     public void updateNotificacoes(){
+        context.getListaNotificacoes().sort();
         VBoxToDo.getChildren().clear();
+
         if(context.getSaldo().getSaldoPorDistribuir() > 0)
             context.getListaNotificacoes().addToDo("Ainda tem saldo para distribuir pelos envelopes", ToDo.TYPE.NOTIFICATION);
+        else
+            context.getListaNotificacoes().removeToDo("Ainda tem saldo para distribuir pelos envelopes");
 
         if(context.getSaldo().getBudgetDinheiro().getSaldoReal() < 10)
             context.getListaNotificacoes().addToDo("Cuidado, tem menos de 10€ em dinheiro!", ToDo.TYPE.ALERT);
+        else
+            context.getListaNotificacoes().removeToDo("Cuidado, tem menos de 10€ em dinheiro!");
 
         if(context.getSaldo().getBudgetDinheiro().isExcedeuSaldo())
             context.getListaNotificacoes().addToDo("Atenção! Excedeu o seu budget de dinheiro!", ToDo.TYPE.ALERT);
+        else
+            context.getListaNotificacoes().removeToDo("Atenção! Excedeu o seu budget de dinheiro!");
 
         if(context.getSaldo().getBudgetContaBancaria().getSaldoReal() < 10)
             context.getListaNotificacoes().addToDo("Cuidado, tem menos de 10€ na sua conta bancária!", ToDo.TYPE.ALERT);
+        else
+            context.getListaNotificacoes().removeToDo("Cuidado, tem menos de 10€ na sua conta bancária!");
 
         if(context.getSaldo().getBudgetContaBancaria().isExcedeuSaldo())
             context.getListaNotificacoes().addToDo("Atenção! Excedeu o seu budget na sua conta bancária!", ToDo.TYPE.ALERT);
+        else
+            context.getListaNotificacoes().removeToDo("Atenção! Excedeu o seu budget na sua conta bancária!");
 
         if(context.getSaldo().getSaldoNosEnvelopes() < 10)
             context.getListaNotificacoes().addToDo("Atenção, tem menos de 10€ para gastar nos seus envelopes...", ToDo.TYPE.NOTIFICATION);
+        else
+            context.getListaNotificacoes().removeToDo("Atenção, tem menos de 10€ para gastar nos seus envelopes...");
 
-        if(context.getCategoriaByName("Propinas") != null &&
-                context.getCategoriaByName("Propinas").getValor()>0)
-            context.getListaNotificacoes().addToDo("Já pagaste as propinas este mês?", ToDo.TYPE.REQUEST);
+        for (CategoriaDespesas d: context.getCategoriasListDespesas()) {
+            if(d.isRecorrente() && d.getValor()>0){
+                context.getListaNotificacoes().addToDo("Já pagaste " + d.getNome() + " este mês?", ToDo.TYPE.REQUEST, d.getNome());
+            }
+        }
 
         if(context.getListaNotificacoes().isEmpty()) return;
 
         for(int i=0; i<context.getListaNotificacoes().size(); i++){
             Label lNot = new Label( context.getListaNotificacoes().get(i).getDescription());
             switch (context.getListaNotificacoes().get(i).getType()){
-                case ALERT -> lNot.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                case ALERT -> {
+                    lNot.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+
+                    int notificacao  = i;
+                    lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            clicaNotificacaoNOTIFICATION(context.getListaNotificacoes().get(notificacao));
+                        }
+                    });
+                }
                 case REQUEST -> {
                     lNot.setStyle("-fx-font-size: 16px;");
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
-                            clicaNotificacao(context.getListaNotificacoes().get(notificacao));
+                            clicaNotificacaoREQUEST(context.getListaNotificacoes().get(notificacao));
                         }
                     });
                 }
-                case NOTIFICATION -> lNot.setStyle("-fx-text-fill: gray; -fx-font-size: 16px;");
+                case NOTIFICATION -> {
+                    lNot.setStyle("-fx-text-fill: #707070; -fx-font-size: 16px;");
+
+                    int notificacao  = i;
+                    lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            clicaNotificacaoNOTIFICATION(context.getListaNotificacoes().get(notificacao));
+                        }
+                    });
+                }
             }
 
             VBoxToDo.getChildren().add(lNot);
         }
     }
 
-    private void clicaNotificacao(ToDo td) {
-        if (td.getDescription().contains("pagaste as propinas")) {
+    private void clicaNotificacaoREQUEST(ToDo td) {
+
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText(null);
             alert.setGraphic(null);
@@ -158,15 +192,76 @@ public class HomeController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
 
-                context.adicionarDespesa("Propinas", "Pagou propinas", LocalDate.now(), context.getCategoriaByName("Propinas").getValor(), isDinheiro.isSelected());
+                context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), LocalDate.now(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
 
                 context.getListaNotificacoes().removeToDo(td);
                 updateNotificacoes();
             }
+
+    }
+    private void clicaNotificacaoNOTIFICATION(ToDo td){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        alert.setTitle("Confirmação");
+        alert.setContentText("Deseja eliminar esta notificação?");
+
+        ButtonType buttonSim = new ButtonType("Sim");
+        ButtonType buttonNao = new ButtonType("Não");
+
+        alert.getButtonTypes().setAll(buttonSim, buttonNao);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonSim) {
+            context.getListaNotificacoes().removeToDo(td);
+            updateNotificacoes();
         }
     }
 
     public void onAdicionarToDo(){
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        alert.setTitle("Adicionar notificação");
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        Label lDesc = new Label("Descrição: ");
+        TextField tfDesc = new TextField();
+
+        grid.add(lDesc,0,0);
+        grid.add(tfDesc,0,1);
+
+        Label lTipo = new Label("Tipo de notificação:");
+        ChoiceBox<String> cbTipo = new ChoiceBox<>();
+        cbTipo.getItems().addAll("Alerta","Notificação");
+        cbTipo.setStyle("-fx-background-color:  #9FCDFF");
+
+        grid.add(lTipo,1,0);
+        grid.add(cbTipo,1,1);
+
+        alert.getDialogPane().setContent(grid);
+
+        ButtonType buttonSim = new ButtonType("Adicionar");
+        ButtonType buttonNao = new ButtonType("Cancelar");
+
+        alert.getButtonTypes().setAll(buttonSim, buttonNao);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonSim){
+            if(!tfDesc.getText().isEmpty() && tfDesc.getText().trim() != "" &&  cbTipo.getValue() != null){
+                ToDo.TYPE tipo = switch (cbTipo.getValue()){
+                    case "Alerta" -> ToDo.TYPE.ALERT;
+                    case "Notificação" -> ToDo.TYPE.NOTIFICATION;
+                    default -> ToDo.TYPE.NOTIFICATION;
+                };
+
+                context.getListaNotificacoes().addToDo(tfDesc.getText(), tipo);
+                updateNotificacoes();
+            }
+        }
 
     }
 

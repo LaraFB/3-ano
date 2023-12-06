@@ -2,15 +2,20 @@ package com.example.gps_g11.Data.ToDos;
 
 public class ToDo {
     public enum TYPE{
-        ALERT, NOTIFICATION, REQUEST
+        ALERT, NOTIFICATION, REQUEST,
     }
     private String description;
     private TYPE type;
-    private String url;
+    private String envelope;
 
     public ToDo(String description, TYPE type ){
         this.description = description;
         this.type = type;
+    }
+    public ToDo(String description, TYPE type, String envelope ){
+        this.description = description;
+        this.type = type;
+        this.envelope = envelope;
     }
 
     public String getDescription() {
@@ -25,5 +30,13 @@ public class ToDo {
     }
     public void setType(TYPE type) {
         this.type = type;
+    }
+
+    public String getEnvelope() {
+        return envelope;
+    }
+
+    public void setEnvelope(String area) {
+        this.envelope = area;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.gps_g11.Data.ToDos;
 
+import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
 
 import java.time.temporal.ChronoUnit;
@@ -31,6 +32,22 @@ public class ToDoList {
             return false;
         }
     }
+    public boolean addToDo(String description, ToDo.TYPE type, String envelope){
+        if(description.isEmpty() || description == null || type == null || envelope==null)
+            return false;
+        try{
+            for (ToDo t: toDoList) {
+                if(t.getDescription().equals(description)) return false;
+            }
+
+            ToDo toDo = new ToDo(description, type,envelope);
+            toDoList.add(toDo);
+            sort();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
     public boolean removeToDo(int index){
         try{
             toDoList.remove(index);
@@ -43,6 +60,19 @@ public class ToDoList {
         try{
             toDoList.remove(td);
             return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+    public boolean removeToDo(String desc){
+        try{
+            for (ToDo td:toDoList)
+                if(td.getDescription().equals(desc)){
+                    toDoList.remove(td);
+                    return true;
+                }
+
+            return false;
         }catch (Exception e){
             return false;
         }
@@ -102,4 +132,5 @@ public class ToDoList {
             return null;
         }
     }
+
 }
