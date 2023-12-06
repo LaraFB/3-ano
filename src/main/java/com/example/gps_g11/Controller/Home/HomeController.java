@@ -140,7 +140,7 @@ public class HomeController implements Initializable {
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
-                            clicaNotificacaoNOTIFICATION(context.getListaNotificacoes().get(notificacao));
+                            //clicaNotificacaoNOTIFICATION(context.getListaNotificacoes().get(notificacao));
                         }
                     });
                 }
@@ -161,7 +161,18 @@ public class HomeController implements Initializable {
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
-                            clicaNotificacaoNOTIFICATION(context.getListaNotificacoes().get(notificacao));
+                            //clicaNotificacaoNOTIFICATION(context.getListaNotificacoes().get(notificacao));
+                        }
+                    });
+                }
+                case USER_GENERATED -> {
+                    lNot.setStyle("-fx-text-fill: #444444; -fx-font-size: 16px;");
+
+                    int notificacao  = i;
+                    lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            clicaNotificacaoUSER(context.getListaNotificacoes().get(notificacao));
                         }
                     });
                 }
@@ -215,7 +226,7 @@ public class HomeController implements Initializable {
             }
 
     }
-    private void clicaNotificacaoNOTIFICATION(ToDo td){
+    private void clicaNotificacaoUSER(ToDo td){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
         alert.setGraphic(null);
@@ -254,13 +265,6 @@ public class HomeController implements Initializable {
         grid.add(lDesc,0,0);
         grid.add(tfDesc,0,1);
 
-        Label lTipo = new Label("Tipo de notificação:");
-        ChoiceBox<String> cbTipo = new ChoiceBox<>();
-        cbTipo.getItems().addAll("Alerta","Notificação");
-        cbTipo.setStyle("-fx-background-color:  #9FCDFF");
-
-        grid.add(lTipo,1,0);
-        grid.add(cbTipo,1,1);
 
         alert.getDialogPane().setContent(grid);
 
@@ -271,14 +275,8 @@ public class HomeController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim){
-            if(!tfDesc.getText().isEmpty() && tfDesc.getText().trim() != "" &&  cbTipo.getValue() != null){
-                ToDo.TYPE tipo = switch (cbTipo.getValue()){
-                    case "Alerta" -> ToDo.TYPE.ALERT;
-                    case "Notificação" -> ToDo.TYPE.NOTIFICATION;
-                    default -> ToDo.TYPE.NOTIFICATION;
-                };
-
-                context.getListaNotificacoes().addToDo(tfDesc.getText(), tipo);
+            if(!tfDesc.getText().isEmpty() && tfDesc.getText().trim() != ""){
+                context.getListaNotificacoes().addToDo(tfDesc.getText(), ToDo.TYPE.USER_GENERATED);
                 updateNotificacoes();
             }
         }

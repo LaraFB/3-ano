@@ -159,7 +159,7 @@
                                     <Insets top="10.0" />
                                  </padding>
                               </Label>
-                              <Button fx:id="btAdcToDo" mnemonicParsing="false" style="-fx-background-color: none; -fx-opacity: 0.9;">
+                              <Button fx:id="btAdcToDo" mnemonicParsing="false" onAction="#onAdicionarToDo" style="-fx-background-color: none; -fx-opacity: 0.9;">
                                  <graphic>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
