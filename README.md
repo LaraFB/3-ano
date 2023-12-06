@@ -496,9 +496,6 @@ By the end of the second realease we must have all the user stories with "must" 
   - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
     - Task 2: Create methods to notify the user of low funds  
 
-  - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
-    - Task 1: Create methods to generate and export reports in PDF and Excel formats
-
   - US 14:  As a student, I want to track automatically reserved amounts, so that I can add recurrent expenses and categories [Story Points: M]
     - Task 1: Design user interface
     - Task 2: Create methods track automatically reserved amounts from expenses
