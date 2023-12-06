@@ -258,10 +258,11 @@ By the end of the second realease we must have all the user stories with "must" 
 - RSK1 – PxI: 3x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
 - RSK2 – PxI: 2x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
 - RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
-- RSK3 – PxI: 4x4=16; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
+- RSK3 – PxI: 4x5=20; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
 
 
 ##### Mitigation Actions (threats>=20)
+ - RSK2 – MS; Constantly check with the client the progress of the project, make regular meetings and keep him updated.
 
 ***
 
@@ -442,28 +443,31 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - Story Points: 1L + 4M + 2S
 
-- Analysis: short analysis of the planning meeting
-
 ##### Sprint Review
 
-- Analysis: what was not done or what was added (Link to US or Task from the PB)
+- Analysis: All requirements were met (us 7,13(corrections),9,12,5,3). However, there was a disagreement regarding the interface and some features (sholarship management, goal feature, home page, expenses and entries input), as it did not correspond to the client's idealization.
 
-- Story Points: 2S+1M+2X+2H
+- Story Points: 1L + 4M + 2S
 
 - Version: 0.1 
 
-- Client analysis: client feedback
+- Client analysis: Acceptance Criteria for the finished US - not well (not corresponding to the client's expectation)
 
-- Conclusions: what to add/review
+- Conclusions: For the next sprint we'll have to adapt the tasks we have planned, as we will have to correct the functioning of goals, the home page design, and the way expenses and entries are added, according to the client's vision.
 
 ##### Sprint Retrospective
 
 - What we did well:
-    - A
+    - Manage to work within the time estimated (tasks have all been completed).
+    - Communication between members was effective.
+
 - What we did less well:
-    - B
+    - Misunderstandings with home page, transaction inputs, goal functioning, and sholarship management.
+    - Incomplete unit tests.
+
 - How to improve to the next sprint:
-    - C
+    - We should comunicate more with the client so by the end of the sprint we are on the same page as them, this will save the time of correcting the design and functionalities of our software.
+    - We should do better and more unit tests for all features developed, as not to run any risk of finding bugs.
 
 
 ***
@@ -502,7 +506,6 @@ By the end of the second realease we must have all the user stories with "must" 
   
 - Story Points: 1L + 3M
 
-- Analysis: short analysis of the planning meeting
 
 ##### Sprint Review
 
