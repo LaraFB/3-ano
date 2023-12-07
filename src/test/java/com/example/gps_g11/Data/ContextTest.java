@@ -10,15 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ContextTest {
 
-    private Context context;
-
-    @BeforeEach
-    public void setContext() {
-        context = Context.getInstance();
-    }
 
     @Test
     public void testAdicionarCategoriaDespesaSemSaldo() {
+        Context context = Context.getInstance();
         String nomeCategoria = "CategoriaTeste";
         String descricao = "Descrição teste";
         double valor = 100.0;
@@ -31,6 +26,7 @@ public class ContextTest {
         }
     @Test
     public void testAdicionarCategoriaDespesaComSaldo() {
+        Context context = Context.getInstance();
         String nomeCategoria = "CategoriaTeste";
         String descricao = "Descrição teste";
         double valor = 100.0;
@@ -46,6 +42,7 @@ public class ContextTest {
 
     @Test
     public void testAdicionarDinheiroCategoriaDespesa() {
+        Context context = Context.getInstance();
         String nomeCategoria = "CategoriaTeste";
         String descricao = "Descrição teste";
         double valor = 100.0;
@@ -68,6 +65,7 @@ public class ContextTest {
 
     @Test
     public void testAdicionarCategoriaEntrada() {
+        Context context = Context.getInstance();
         String nomeCategoria = "CategoriaTeste";
         String descricao = "Descrição teste";
 
@@ -81,6 +79,7 @@ public class ContextTest {
 
     @Test
     public void testAdicionarDinheiroCategoriaEntrada() {
+        Context context = Context.getInstance();
         String nomeCategoria = "CategoriaTeste";
         String descricao = "Descrição teste";
         double valor = 100.0;
@@ -104,6 +103,7 @@ public class ContextTest {
 
     @Test
     public void testAdicionarDespesa() {
+        Context context = Context.getInstance();
         String nomeCategoria = "CategoriaTeste";
         String descricao = "Descrição teste";
         LocalDate date = LocalDate.now();
@@ -122,6 +122,7 @@ public class ContextTest {
 
     @Test
     public void testAdicionarEntrada() {
+        Context context = Context.getInstance();
         String nomeCategoria = "CategoriaTeste";
         String descricao = "Descrição teste";
         LocalDate date = LocalDate.now();
@@ -138,6 +139,7 @@ public class ContextTest {
 
     @Test
     public void testVerficacoes() {
+        Context context = Context.getInstance();
         LocalDate newValue = LocalDate.now();
         context.verficacoes(newValue);
         assertEquals(newValue, context.getData());
