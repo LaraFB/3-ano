@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class CategoriaEntradas implements Serializable {
     private String nome;
     private String descricao;
-    private double valor;
+    protected double valor;
 
     public CategoriaEntradas(String nome, String descricao,double valor) {
         this.nome = nome;

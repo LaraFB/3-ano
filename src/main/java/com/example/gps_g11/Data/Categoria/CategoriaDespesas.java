@@ -26,7 +26,7 @@ public class CategoriaDespesas extends CategoriaEntradas implements Serializable
 
     @Override
     public void setValor(double valor) {
-        setValor(valor);
+        this.valor = valor;
         if(isRecorrente && valorRecorrente != valor)
             valorRecorrente = valor;
     }
