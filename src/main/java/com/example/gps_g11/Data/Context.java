@@ -129,7 +129,7 @@ public class Context {
         if(categoriaDespesas  == null){
             return -2; //Se não existir categoria
         }
-        if(categoriaDespesas.getValor() < montante){
+        if(categoriaDespesas.getValor() < montante || montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal() || montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
             return -1; //Se não houver saldo suficiente nesse envelope
         }
         //Subtrai no envelope o valor da montante
