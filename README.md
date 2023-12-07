@@ -102,6 +102,8 @@ It is assumed:
 
 ![Painel Inicial](imgs/pagina_inicial.png)
 
+![Transferir Dinheiro](imgs/transferir_dinheiro.png)
+
  Image 1: Homepage
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
@@ -110,7 +112,7 @@ It is assumed:
 
 ![Adicionar Saldo](imgs/adicionar_saldo.png)
 
- Image 3: Add budget/money (US7?,US13)
+ Image 3: Add budget/money (US7,US13)
 
 ![A pagar](imgs/adicionar_tarefas.png)
 
@@ -130,6 +132,10 @@ It is assumed:
 
 ![Guardar Dinheiro](imgs/guardar_dinheiro.png)
 
+![Adicionar Dinheiro Outro Envelope](imgs/adicionar_d_de_outro_envelope.png)
+
+![Dentro do envelope](imgs/dentro_envelope.png)
+
  Image 8: Reserve amounts (US5)
 
 ![Objetivos](imgs/objetivos.png)
@@ -140,25 +146,33 @@ It is assumed:
 
  Image 10: Add Objective (US6)
 
-![Reservar Montante](imgs/editar_objetivos.png)
+![Reservar Montante](imgs/editar_objetivo.png)
 
  Image 11: Manage Objective (US6)
 
-![Estasticas](imgs/estatiticas.png)
+![Estastiticas](imgs/estastiticas_despesas.png)
 
- Image 12: Statistic(US4,US8)
+ Image 12: Statistic Expense(US4,US8)
 
-![Reset Budget]()
+![Estasticas](imgs/estastiticas_envelope.png)
  
- Image 13: Reset Budget (US9)
+ Image 13:  Statitic Expense(US4,US8)
 
-![Bolsa]()
+![Categorias pagamento](imgs/gerir_categorias.png)
 
- Image 14: View Academic Scholarship (US11)
+ Image 14: Manage Category (US11)
 
 ![Relatorio](imgs/relatorio.png)
 
  Image 15: Reports (US4,US8)
+
+![Adicionar Notificacao](imgs/adicionar_notificacao.png)
+
+![Cofirmar despesa recorrente](imgs/confirmar_despesa_recorrente.png)
+
+![Dinheiro por distribuir](imgs/dinheiro_por_distribuir.png)
+
+ Image 16: Notification (US14)
 
 
 ***
@@ -258,12 +272,12 @@ By the end of the second realease we must have all the user stories with "must" 
 - RSK1 – PxI: 3x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
 - RSK2 – PxI: 2x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
 - RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
-- RSK3 – PxI: 4x5=20; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
+- RSK4 – PxI: 4x5=20; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
 
 
 ##### Mitigation Actions (threats>=20)
- - RSK2 – MS; Constantly check with the client the progress of the project, make regular meetings and keep him updated.
- - RSK2 – AS; Never assume what the client wishes, always ask on any doubts encountered
+ - RSK4 – MS; Constantly check with the client the progress of the project, make regular meetings and keep him updated.
+ - RSK4 – AS; Never assume what the client wishes, always ask on any doubts encountered.
 
 ***
 
@@ -446,15 +460,15 @@ By the end of the second realease we must have all the user stories with "must" 
 
 ##### Sprint Review
 
-- Analysis: All requirements were met (us 7,13(corrections),9,12,5,3). However, there was a disagreement regarding the interface and some features (sholarship management, goal feature, home page, expenses and entries input), as it did not correspond to the client's idealization.
+- Analysis: All requirements were met (us 7,13 (corrections),9,12,5,3). However, there was a disagreement regarding the interface and some features (sholarship management, homepage and entry of expenses), as it did not correspond to the client's idealization.
 
 - Story Points: 1L + 4M + 2S
 
 - Version: 0.1 
 
-- Client analysis: Acceptance Criteria for the finished US - not well (not corresponding to the client's expectation)
+- Client analysis: Acceptance Criteria not well, não ficaram bem feitos. Some requirements were not understood.
 
-- Conclusions: For the next sprint we'll have to adapt the tasks we have planned, as we will have to correct the functioning of goals, the home page design, and the way expenses and entries are added, according to the client's vision.
+- Conclusions: For the next sprint we'll have to adapt the tasks we have planned, as we'll have to correct the functioning of goals, the homepage design, the way expenses and income are added, according to the client's vision. We'll have to work harder so the goal of the project is met.
 
 ##### Sprint Retrospective
 
@@ -463,12 +477,12 @@ By the end of the second realease we must have all the user stories with "must" 
     - Communication between members was effective.
 
 - What we did less well:
-    - Misunderstandings with home page, transaction inputs, goal functioning, and sholarship management.
-    - Incomplete unit tests.
+    - Misunderstandings with homepage, the way expenses and income and scholarship management.
+    - Acceptance Criterias were not well executed (there was some bugs that we didn't notice until the meeting with the client).
 
 - How to improve to the next sprint:
-    - We should comunicate more with the client so by the end of the sprint we are on the same page as them, this will save the time of correcting the design and functionalities of our software.
-    - We should do better and more unit tests for all features developed, as not to run any risk of finding bugs.
+    - We should comunicate more with the client (presenting more mockups), so by the end of the sprint we are on the same page a he.
+    - We should do more carefully acceptance criteria for all US, so we can discover bugs more quickly.
 
 
 ***
@@ -477,24 +491,42 @@ By the end of the second realease we must have all the user stories with "must" 
 
 ##### Sprint Plan
 
-- Goal: Add recurrent expenses, notifications for goals or low funds, report generation and exportation to PDF
+- Goal: Add recurrent expenses, notifications for goals or low funds, do all corrections needed
 
 - Roles:
   - Product Owner: Artur Yurchuck
   - Scrum Master: Lara Bizarro
 - Dates: from 1/Dez to 15/Dez, 2 weeks
 
-- To do:
+- To do (priority order):
+  - US 1, US 7 and US13 (from last sprint)[(this sprint) Story Points: S]
+    - Task 5: Correction of bugs
+
+  - US 7 and US 13 (from last sprint, budget)[Story Points: S]
+    - Task 4: Adding features regarding budget (adding cash expenses)
+    - Task 5: Adding features regarding budget (add method to tranfer between cash and bank money)
+    - Task 6: Corrections on homepage regarding the values that are presented 
+
+  - US 10(from last sprint, history)[(this sprint) Story Points: S*]
+    - Task 3: Adding inserstion of expenses directly in table view (NOT POSSIBLE)
+    - Task 4: Adding filter option to filter by dates
+    - Task 5: Adding total (expenses and income)
+    - Tak 6: Correction regarding transactions (add -expense or +income)
 
   - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
     - Task 1: Implement feature to allow generation of a report
     - Task 2: Create methods to generate report
+    - Task 3: Create two separate pages (UI)
+    - Task 4: Create charts methods
+    - Task 5: Create filter methods
 
   - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
     - Task 4: Create notifications methods
+    - Task 5: Connect expenses categories with objectives
 
   - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
     - Task 2: Create methods to notify the user of low funds  
+    - Task 3: Corrections regarding the scholarship (create income category)
 
   - US 14:  As a student, I want to track automatically reserved amounts, so that I can add recurrent expenses and categories [Story Points: M]
     - Task 1: Design user interface
@@ -502,7 +534,33 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 3: Create methods track automatically reserved amounts from envelopes
     - Task 4: Create methods to implement the tasks list fearure
   
-- Story Points: 1L + 3M
+- Story Points: 1L + 3M + 3S
+
+*Because Task 3 is not possible story points goes from M to S.
+
+##### Progress table
+
+|          Week 12: progress meeting, during sprint 3                          | Points (0-3) | Comments |
+|:-----------------------------------------------------------------------------|:-------------|:---------|
+|Sprint 3 Backlog board has Tasks and AC cards with estimates/real             |       3      |:---------|
+|Product Backlog board has US cards selected for current sprint                |       3      |:---------|
+|Code and unit tests are finished, according to cards                          |       2      |:---------|
+|Run unit tests automatically at every commit                                  |       3      |:---------|
+|Merge request (from dev into qa) at the end of every  task. Code was reviewed |       -      |:---------|
+|Acceptance test run at the end of every US                                    |       -      |:---------|
+|Create and run deployed code                                                  |       3      |:---------|
+|Risk plan is updated                                                          |       3      |:---------|
+|Control project - compare estimates (SP and Hours) vs real                    |       3      |:---------|
+|Sprint 2 Review meeting report is updated                                     |       3      |:---------|
+|Sprint 2 Retrospective meeting report is updated                              |       3      |:---------|
+|Sprint 3 plan has Sprint Goal and Selected US/Tasks/AC with estimates         |       3      |:---------|
+
+Points: 
+
+  - 0 - not done 
+  - 1 - partly done 
+  - 2 - almost all done, with minor issues 
+  - 3 - all perfectly done 
 
 
 ##### Sprint Review
@@ -511,7 +569,7 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - Story Points: 2S+1M+2X+2H
 
-- Version: 0.1 
+- Version: 0.1
 
 - Client analysis: client feedback
 
