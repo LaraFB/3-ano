@@ -248,7 +248,7 @@ public class HomeController implements Initializable {
                 context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), LocalDate.now(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
 
                 context.getListaNotificacoes().removeToDo(td);
-                updateHomePage();
+                //updateHomePage();
             }
 
     }
