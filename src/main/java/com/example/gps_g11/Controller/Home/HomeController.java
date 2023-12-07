@@ -186,6 +186,18 @@ public class HomeController implements Initializable {
 
     private void clicaNotificacaoREQUEST(ToDo td) {
 
+        if(context.getSaldo().getBudgetContaBancaria().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()
+        && context.getSaldo().getBudgetDinheiro().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setGraphic(null);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Não tem dinheiro suficiente para pagar!!!");
+
+            alert.getButtonTypes().setAll(new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE));
+            alert.showAndWait();
+            return;
+        }
+
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText(null);
             alert.setGraphic(null);
@@ -203,8 +215,22 @@ public class HomeController implements Initializable {
             CheckBox isDinheiro = new CheckBox();
 
             grid.add(desc, 0, 0);
-            grid.add(ldinheiro, 0, 1);
-            grid.add(isDinheiro, 1, 1);
+
+            if(context.getSaldo().getBudgetContaBancaria().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()){
+                ldinheiro.setText("Saldo insuficiente na conta bancária. Pagamento pressuposto em dinheiro");
+                grid.add(ldinheiro, 0, 1);
+                //grid.add(isDinheiro, 1, 1);
+
+                isDinheiro.setSelected(true);
+                //isDinheiro.setDisable(true);
+            }
+            else {
+                if (context.getSaldo().getBudgetDinheiro().getSaldoReal() >= context.getCategoriaByName(td.getEnvelope()).getValor()) {
+                    ldinheiro.setText("Saldo insuficiente em numerário. Pagamento pressuposto em tranferência bancária.");
+                    grid.add(ldinheiro, 0, 1);
+                    //grid.add(isDinheiro, 1, 1);
+                } else isDinheiro.setSelected(false);
+            }
 
             alert.getDialogPane().setContent(grid);
 
@@ -222,10 +248,11 @@ public class HomeController implements Initializable {
                 context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), LocalDate.now(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
 
                 context.getListaNotificacoes().removeToDo(td);
-                updateNotificacoes();
+                updateHomePage();
             }
 
     }
+    
     private void clicaNotificacaoUSER(ToDo td){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
