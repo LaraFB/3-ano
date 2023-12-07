@@ -159,7 +159,7 @@
                                     <Insets top="10.0" />
                                  </padding>
                               </Label>
-                              <Button fx:id="btAdcToDo" mnemonicParsing="false" style="-fx-background-color: none; -fx-opacity: 0.9;">
+                              <Button fx:id="btAdcToDo" mnemonicParsing="false" onAction="#onAdicionarToDo" style="-fx-background-color: none; -fx-opacity: 0.9;">
                                  <graphic>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -186,6 +186,11 @@
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" maxHeight="479.0" maxWidth="282.0" minHeight="479.0" minWidth="282.0" prefHeight="479.0" prefWidth="282.0" spacing="45.0">
                      <children>
+                        <Button fx:id="TransactionBtn" mnemonicParsing="false" onAction="#onTransaction" style="-fx-background-color: orange;" prefHeight="100.0" prefWidth="200.0" styleClass="btn" stylesheets="@../../Style.css" text="Transferir" textFill="#545454">
+                           <font>
+                              <Font name="Times New Roman" size="25.0" />
+                           </font>
+                        </Button>
                         <Button fx:id="AddExpenseBtn" mnemonicParsing="false" onAction="#onAdicionarDespesa" prefHeight="100.0" prefWidth="200.0" styleClass="CancelBtn" stylesheets="@../../Style.css" text="- Despesas" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="25.0" />

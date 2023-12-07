@@ -2,7 +2,7 @@ package com.example.gps_g11.Data.ToDos;
 
 public class ToDo {
     public enum TYPE{
-        ALERT, NOTIFICATION, REQUEST,
+        ALERT, NOTIFICATION, REQUEST, USER_GENERATED
     }
     private String description;
     private TYPE type;
