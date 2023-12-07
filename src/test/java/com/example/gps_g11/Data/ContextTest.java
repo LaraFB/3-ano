@@ -24,7 +24,7 @@ public class ContextTest {
         double valor = 100.0;
         boolean isAberto = true;
 
-        int result = context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto);
+        int result = context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto,false);
 
         assertEquals(0, result);
         assertFalse(context.isListaCategoriasDespesasEmpty());
@@ -37,7 +37,7 @@ public class ContextTest {
         boolean isAberto = true;
         context.getSaldo().getBudgetContaBancaria().setSaldoReal(120);
         context.getSaldo().setSaldoPorDistribuir(120);
-        int result = context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto);
+        int result = context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto,false);
 
         assertEquals(0, result);
         assertFalse(context.isListaCategoriasDespesasEmpty());
@@ -52,7 +52,7 @@ public class ContextTest {
         boolean isAberto = true;
         context.getSaldo().getBudgetContaBancaria().setSaldoReal(200);
         context.getSaldo().setSaldoPorDistribuir(200);
-        context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto);
+        context.adicionarCategoriaDespesa(valor, nomeCategoria, descricao, isAberto,false);
 
         double valorAdicionar = 50.0;
         int result = context.adicionarDinheiroCategoriaDespesa(valorAdicionar, nomeCategoria);
@@ -112,7 +112,7 @@ public class ContextTest {
 
         context.getSaldo().getBudgetContaBancaria().setSaldoReal(200);
         context.getSaldo().setSaldoPorDistribuir(200);
-        context.adicionarCategoriaDespesa(montante, nomeCategoria, descricao, true);
+        context.adicionarCategoriaDespesa(montante, nomeCategoria, descricao, true,false);
 
         int result = context.adicionarDespesa(nomeCategoria, descricao, date, montante, isDinheiro);
 

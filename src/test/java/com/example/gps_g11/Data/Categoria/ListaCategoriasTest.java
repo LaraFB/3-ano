@@ -15,7 +15,7 @@ public class ListaCategoriasTest {
     @Test
     public void testAdicionarCategoriaDespesas() {
         ListaCategorias listaCategorias = new ListaCategorias();
-        CategoriaDespesas categoriaDespesas = new CategoriaDespesas("Transporte", "Despesas com transporte", 50.0, true);
+        CategoriaDespesas categoriaDespesas = new CategoriaDespesas("Transporte", "Despesas com transporte", 50.0, true,false);
         listaCategorias.adicionarCategoriaDespesas(categoriaDespesas);
         assertEquals(1, listaCategorias.getCategoriasDespesas().size());
         assertTrue(listaCategorias.getCategoriasDespesas().contains(categoriaDespesas));
@@ -24,8 +24,8 @@ public class ListaCategoriasTest {
     @Test
     public void testAdicionarCategoriaDespesasComNomeExistente() {
         ListaCategorias listaCategorias = new ListaCategorias();
-        CategoriaDespesas categoriaDespesas1 = new CategoriaDespesas("Transporte", "Despesas com transporte", 50.0, true);
-        CategoriaDespesas categoriaDespesas2 = new CategoriaDespesas("Transporte", "Despesas com transporte", 50.0, true);
+        CategoriaDespesas categoriaDespesas1 = new CategoriaDespesas("Transporte", "Despesas com transporte", 50.0, true,false);
+        CategoriaDespesas categoriaDespesas2 = new CategoriaDespesas("Transporte", "Despesas com transporte", 50.0, true,false);
         listaCategorias.adicionarCategoriaDespesas(categoriaDespesas1);
         assertEquals(1, listaCategorias.getCategoriasDespesas().size());
         listaCategorias.adicionarCategoriaDespesas(categoriaDespesas2);
@@ -35,8 +35,8 @@ public class ListaCategoriasTest {
     @Test
     public void testCategoriasDespesasComNomeExistente() {
         ListaCategorias listaCategorias = new ListaCategorias();
-        CategoriaDespesas categoriaEntradas1 = new CategoriaDespesas("Salário", "Recebimento mensal", 1000.0,true);
-        CategoriaDespesas categoriaEntradas2 = new CategoriaDespesas("Teste", "Recebimento mensal", 1000.0,false);
+        CategoriaDespesas categoriaEntradas1 = new CategoriaDespesas("Salário", "Recebimento mensal", 1000.0,true,false);
+        CategoriaDespesas categoriaEntradas2 = new CategoriaDespesas("Teste", "Recebimento mensal", 1000.0,false,false);
         assertFalse(listaCategorias.categoriasEntradasComNomeExistente("Teste"));
 
         listaCategorias.getCategoriasEntradas().add(categoriaEntradas1);

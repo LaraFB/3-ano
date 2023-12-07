@@ -29,7 +29,7 @@ public class HistoricoTransacoesTest {
     @Test
     public void testAdicionarRemoverTransacaoDespesa() {
         HistoricoTransacoes historico = new HistoricoTransacoes();
-        CategoriaDespesas categoria = new CategoriaDespesas("Alimentação", "Despesas com alimentação", 200.0, true);
+        CategoriaDespesas categoria = new CategoriaDespesas("Alimentação", "Despesas com alimentação", 200.0, true,false);
         Despesa despesa = new Despesa("Compras no mercado", LocalDate.now(), 150.0, categoria, true);
 
         historico.adicionarTransacaoDespesas(despesa);
