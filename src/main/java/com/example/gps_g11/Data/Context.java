@@ -319,6 +319,15 @@ public class Context {
         //vamos ter uma lista de objetos de estatisticas com informação importante para mostrar nas estatisticas
         //resetar algumas variáveis
         //e outras verficações que possam surgir
+
+        if(contextData.getData().getDayOfMonth() == 1){ //1º dia do mes
+            for (CategoriaDespesas env: getCategoriasListDespesas())
+                if(env.isRecorrente())
+                    env.setValor(env.getValorRecorrente()); //reset envelopes recorrentes
+
+            //guarda historico?
+            //reset historico
+        }
     }
 
 

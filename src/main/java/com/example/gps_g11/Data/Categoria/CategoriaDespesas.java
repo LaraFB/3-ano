@@ -5,10 +5,13 @@ import java.io.Serializable;
 public class CategoriaDespesas extends CategoriaEntradas implements Serializable{
     private boolean isAberto;
     private boolean isRecorrente;
+    double valorRecorrente;
     public CategoriaDespesas(String nome, String descricao, double valor,boolean isAberto, boolean isRecorrente) {
         super(nome, descricao, valor);
         this.isAberto = isAberto;
         this.isRecorrente = isRecorrente;
+        if(isRecorrente)
+            valorRecorrente = valor;
     }
 
     public boolean isAberto() {
@@ -18,5 +21,13 @@ public class CategoriaDespesas extends CategoriaEntradas implements Serializable
         isAberto = aberto;
     }
     public boolean isRecorrente(){return isRecorrente;}
-    public void switchRecorrente(){isRecorrente = !isRecorrente;}
+    public void switchRecorrente(){ isRecorrente = !isRecorrente; }
+    public double getValorRecorrente(){return valorRecorrente;}
+
+    @Override
+    public void setValor(double valor) {
+        setValor(valor);
+        if(isRecorrente && valorRecorrente != valor)
+            valorRecorrente = valor;
+    }
 }
