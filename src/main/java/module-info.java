@@ -14,10 +14,6 @@ module com.example.gps_g11 {
     exports com.example.gps_g11;
     exports com.example.gps_g11.Controller;
     opens com.example.gps_g11.Controller to javafx.fxml;
-    exports com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget;
-    opens com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget to javafx.fxml;
-    exports com.example.gps_g11.Controller.NaoVaiSerPreciso.Settings;
-    opens com.example.gps_g11.Controller.NaoVaiSerPreciso.Settings to javafx.fxml;
     exports com.example.gps_g11.Controller.Historico;
     opens com.example.gps_g11.Controller.Historico to javafx.fxml;
 

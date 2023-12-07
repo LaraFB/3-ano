@@ -1,6 +1,6 @@
 package com.example.gps_g11.Data.Budget;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
