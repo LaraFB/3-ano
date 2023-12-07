@@ -26,25 +26,25 @@ public class ListaObjetivos implements Serializable {
     public boolean addObjetivo(String nome, String descricao, double valor, int prioridade) {
         Objetivo o = new Objetivo(nome, descricao, valor, prioridade);
         boolean bool = objetivos.add(o);
-        sort();
+        //sort();
         return bool;
     }
     public boolean addObjetivo(String nome, String descricao, double valor, int prioridade, LocalDate dataLimite) {
         Objetivo o = new Objetivo(nome, descricao, valor, prioridade,dataLimite);
         boolean bool = objetivos.add(o);
-        sort();
+        //sort();
         return bool;
     }
     public boolean addObjetivo(String nome, double valor, int prioridade){
         Objetivo o = new Objetivo(nome,valor, prioridade);
         boolean bool = objetivos.add(o);
-        sort();
+        //sort();
         return bool;
     }
     public boolean addObjetivo(String nome, double valor, int prioridade, LocalDate dataLimite){
         Objetivo o = new Objetivo(nome,valor, prioridade,dataLimite);
         boolean bool = objetivos.add(o);
-        sort();
+        //sort();
         return bool;
     }
 
@@ -64,7 +64,7 @@ public class ListaObjetivos implements Serializable {
             return false;
 
         getObjetivo(index).setNome(nome);
-        sort();
+        //sort();
         return true;
     }
 
@@ -73,7 +73,7 @@ public class ListaObjetivos implements Serializable {
             return false;
 
         getObjetivo(nome).setDescricao(descricao);
-        sort();
+        //sort();
         return true;
     }
 
@@ -82,7 +82,7 @@ public class ListaObjetivos implements Serializable {
             return false;
 
         getObjetivo(index).setValor(valor);
-        sort();
+        //sort();
         return true;
     }
 
@@ -91,7 +91,7 @@ public class ListaObjetivos implements Serializable {
             return false;
 
         objetivos.remove(index);
-        sort();
+        //sort();
         return true;
     }
 
@@ -100,7 +100,7 @@ public class ListaObjetivos implements Serializable {
             return false;
 
         objetivos.remove(getObjetivo(nome));
-        sort();
+        //sort();
         return true;
     }
 

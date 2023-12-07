@@ -127,6 +127,7 @@ public class editarObjetivoController implements Initializable{
 
             return;
         }
+        context.getListaObjetivos().sort(context.getData());
 
         try{
             context.getListaObjetivos().getObjetivo(index+1);
@@ -213,6 +214,7 @@ public class editarObjetivoController implements Initializable{
             }
             update();
         }
+
     }
 
     public void onAdcDinheiro(){/*

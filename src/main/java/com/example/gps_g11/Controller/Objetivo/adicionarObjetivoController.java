@@ -98,6 +98,8 @@ public class adicionarObjetivoController implements Initializable {
             msgError.setVisible(true);
             msgError.setText("Falha ao inserir objetivo...");
         }
+
+        context.getListaObjetivos().sort(context.getData());
     }
 
     public void onBackToObjetivos(){ sideBarController.onObjetivos();}
