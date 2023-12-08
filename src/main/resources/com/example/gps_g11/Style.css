@@ -96,7 +96,7 @@
     -fx-padding: 0.0em;
 }
 .table-row-cell:selected {
-    -fx-background-color: #005797;
+    -fx-background-color: white;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }
@@ -232,4 +232,21 @@
 }
 .scroll-pane {
     -fx-background-color: #DEEFFF;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-body-color: #DEEFFF;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-body-color: ladder(#545454, #DEEFFF 0%, #9FCDFF 100%);
+}
+
+.spinner .increment-arrow-button:hover:pressed,
+.spinner .decrement-arrow-button:hover:pressed,
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-body-color: ladder(#d1d1d1, #DEEFFF 0%, #9FCDFF 100%);
 }
