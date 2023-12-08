@@ -60,9 +60,9 @@
                <children>
                   <HBox maxWidth="-Infinity" prefHeight="100.0">
                      <children>
-                        <Label prefWidth="150.0" text="Total de Entradas: ">
+                        <Label prefHeight="30.0" prefWidth="152.0" text="Total de Receitas: " textFill="#545454">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Times New Roman Bold" size="18.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" right="2.0" />
@@ -71,9 +71,9 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="lblTotalEntradas" prefWidth="100.0" text="Label">
+                        <Label fx:id="lblTotalEntradas" prefWidth="100.0" text="Label" textFill="#545454">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Times New Roman" size="18.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" right="10.0" />
@@ -87,9 +87,9 @@
                <children>
                   <HBox maxWidth="-Infinity" prefHeight="100.0">
                      <children>
-                        <Label prefWidth="160.0" text="Total de Despesas: ">
+                        <Label prefWidth="160.0" text="Total de Despesas: " textFill="#545454">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Times New Roman Bold" size="18.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" right="2.0" />
@@ -98,9 +98,9 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="lblTotalDespesas" prefWidth="100.0" text="Label">
+                        <Label fx:id="lblTotalDespesas" prefWidth="100.0" text="Label" textFill="#545454">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Times New Roman" size="18.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" />
@@ -117,9 +117,9 @@
                <children>
                   <HBox maxWidth="-Infinity" prefHeight="100.0">
                      <children>
-                        <Label prefWidth="55.0" text="Total: ">
+                        <Label prefWidth="55.0" text="Saldo:" textFill="#545454">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Times New Roman Bold" size="18.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" right="2.0" />
@@ -128,9 +128,9 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="lblTotal" prefWidth="100.0" text="Label">
+                        <Label fx:id="lblTotal" prefWidth="100.0" text="Label" textFill="#545454">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Times New Roman" size="18.0" />
                            </font>
                            <HBox.margin>
                               <Insets right="15.0" />
@@ -146,87 +146,93 @@
          </children>
       </HBox>
    </bottom>
-   <top>
-      <VBox prefHeight="636.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+   <center>
+      <VBox prefHeight="620.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="125.0" prefWidth="1000.0" style="-fx-background-color: #F4F9FF;">
+            <HBox prefHeight="137.0" prefWidth="1000.0" style="-fx-background-color: #F4F9FF;">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="260.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="137.0" prefWidth="323.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <padding>
-                        <Insets top="5.0" />
+                        <Insets left="40.0" top="5.0" />
                      </padding>
                      <children>
-                        <Label text="Selecionar periodo de tempo">
+                        <Label prefHeight="30.0" text="Selecionar periodo de tempo" textFill="#545454">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="Times New Roman Bold" size="16.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
                            <children>
-                              <Label prefWidth="30.0" text="De:" textFill="#545454">
+                              <Label prefWidth="36.0" text="De:" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="16.0" />
                                  </font>
                               </Label>
-                              <DatePicker fx:id="dpDateInicio" prefWidth="200.0" />
+                              <DatePicker fx:id="dpDateInicio" prefWidth="200.0">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin></DatePicker>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="40.0" prefWidth="200.0">
                            <children>
-                              <Label prefWidth="30.0" text="Até:" textFill="#545454">
+                              <Label prefHeight="19.0" prefWidth="37.0" text="Até:" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="16.0" />
                                  </font>
                               </Label>
-                              <DatePicker fx:id="dpDateFim" prefWidth="200.0" />
+                              <DatePicker fx:id="dpDateFim" prefWidth="200.0">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin></DatePicker>
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="480.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="137.0" prefWidth="399.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="200.0" text="Opções de Filtros Avançados" textFill="#545454">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="324.0" text="Opções de Filtros Avançados" textFill="#545454">
                            <font>
-                              <Font name="Times New Roman" size="16.0" />
+                              <Font name="Times New Roman Bold" size="16.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="10.0" top="10.0" />
+                              <Insets bottom="5.0" left="10.0" top="5.0" />
                            </VBox.margin>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="30.0" text="Tipo de Transação:" textFill="#545454">
+                              <Label prefHeight="30.0" prefWidth="132.0" text="Tipo de Transação:" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="16.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets right="10.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </Label>
-                              <ChoiceBox fx:id="cbTransacao" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css">
+                              <ChoiceBox fx:id="cbTransacao" prefWidth="220.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css">
                                  <HBox.margin>
-                                    <Insets right="80.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </ChoiceBox>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                            <children>
-                              <Label text="Envelopes:" textFill="#545454">
+                              <Label prefHeight="19.0" prefWidth="116.0" text="Envelopes:" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="16.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="-33.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </Label>
-                              <ChoiceBox fx:id="cbEnvelopes" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css" />
+                              <ChoiceBox fx:id="cbEnvelopes" prefWidth="220.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -240,19 +246,19 @@
                         <Insets />
                      </HBox.margin>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="260.0">
+                  <VBox prefHeight="137.0" prefWidth="296.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="200.0" text="Ordenar Transações" textFill="#545454">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Ordenar Transações" textFill="#545454">
                            <font>
-                              <Font name="Times New Roman" size="16.0" />
+                              <Font name="Times New Roman Bold" size="16.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="15.0" top="10.0" />
+                              <Insets bottom="5.0" left="15.0" top="5.0" />
                            </VBox.margin>
                         </Label>
-                        <ChoiceBox fx:id="cbOrdenar" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css">
+                        <ChoiceBox fx:id="cbOrdenar" prefWidth="220.0" style="-fx-background-color: #9FCDFF;" stylesheets="@../../Style.css">
                            <VBox.margin>
-                              <Insets left="15.0" top="5.0" />
+                              <Insets left="10.0" top="5.0" />
                            </VBox.margin>
                         </ChoiceBox>
                      </children>
@@ -268,9 +274,11 @@
             <TableView fx:id="tableView" prefHeight="435.0" prefWidth="920.0" style="-fx-font-size: 15" stylesheets="@../../Style.css">
               <columns>
                   <TableColumn fx:id="tfData" style="-fx-alignment: CENTER" text="Data" />
-                  <TableColumn fx:id="tcMontante" prefWidth="120.0" text="Montante" />
-                  <TableColumn fx:id="tfEnvelope" prefWidth="200.0" text="Envelope/Categoria" />
-                  <TableColumn fx:id="tfDescricao" prefWidth="510.0" text="Descrição" />
+                  <TableColumn fx:id="tcMontante" prefWidth="94.0" text="Montante" />
+                  <TableColumn fx:id="tfEnvelope" prefWidth="121.0" text="Envelope" />
+                  <TableColumn fx:id="tfDescricao" prefWidth="140.0" text="Categoria" />
+                  <TableColumn fx:id="tcMontante1" prefWidth="371.0" text="Descrição" />
+                  <TableColumn fx:id="tfDescricao1" prefWidth="113.0" text="Saldo " />
               </columns>
                <VBox.margin>
                   <Insets left="40.0" right="40.0" top="40.0" />
@@ -278,5 +286,5 @@
             </TableView>
          </children>
       </VBox>
-   </top>
+   </center>
 </BorderPane>
