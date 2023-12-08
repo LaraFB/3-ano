@@ -10,15 +10,17 @@ module com.example.gps_g11 {
     requires org.kordamp.bootstrapfx.core;
     //requires eu.hansolo.tilesfx;
     opens com.example.gps_g11 to javafx.fxml;
+    opens com.example.gps_g11.Data.Transacao to javafx.base;
     exports com.example.gps_g11;
     exports com.example.gps_g11.Controller;
     opens com.example.gps_g11.Controller to javafx.fxml;
-    exports com.example.gps_g11.Controller.Budget;
-    opens com.example.gps_g11.Controller.Budget to javafx.fxml;
-    exports com.example.gps_g11.Controller.Settings;
-    opens com.example.gps_g11.Controller.Settings to javafx.fxml;
-    exports com.example.gps_g11.Controller.Category;
-    opens com.example.gps_g11.Controller.Category to javafx.fxml;
-    exports com.example.gps_g11.Controller.Expenses;
-    opens com.example.gps_g11.Controller.Expenses to javafx.fxml;
+    exports com.example.gps_g11.Controller.Historico;
+    opens com.example.gps_g11.Controller.Historico to javafx.fxml;
+
+    exports com.example.gps_g11.Controller.Envelope;
+    opens com.example.gps_g11.Controller.Envelope to javafx.fxml;
+    exports com.example.gps_g11.Controller.Home;
+    opens com.example.gps_g11.Controller.Home to javafx.fxml;
+    opens com.example.gps_g11.Controller.Objetivo to javafx.fxml;
+    opens com.example.gps_g11.Controller.Estatistica to javafx.fxml;
 }

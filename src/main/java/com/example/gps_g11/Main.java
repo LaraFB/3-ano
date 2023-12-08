@@ -1,12 +1,11 @@
 package com.example.gps_g11;
 
-import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
-import com.example.gps_g11.Data.Expenses.ExpensesHistory;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -23,18 +22,18 @@ public class Main extends Application {
         stage.setScene(scene);
         scene.setRoot(loader.load());
 
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/Icon_App.png"))));
         stage.setTitle("Gestor de Despesas");
         stage.setResizable(false);
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                Context.getInstance().saveToFile();
+                //Context.getInstance().saveToFile();
             }
         });
 
         stage.show();
-
     }
 
     public static void main(String[] args) {

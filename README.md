@@ -102,47 +102,78 @@ It is assumed:
 
 ![Painel Inicial](imgs/pagina_inicial.png)
 
+![Transferir Dinheiro](imgs/transferir_dinheiro.png)
+
  Image 1: Homepage
 
 ![Adicionar despesas](imgs/adicionar_despesa.png)
 
- Image 2: Add expense (US1)
+ Image 2: Add entrada (US1)
 
-![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
+![Adicionar Saldo](imgs/adicionar_saldo.png)
 
- Image 3: Viewing the added expense (US1)
+ Image 3: Add budget/money (US7,US13)
 
-![Historico depois de adicionar despesa](imgs/despesas_historico_dps_adicionar.png)
+![A pagar](imgs/adicionar_tarefas.png)
 
- Image 4: Expense history (US10)
+ Image 4: Add To pay task
 
-![Despesas por categotia](imgs/despesas_compras.png)
+![Historico](imgs/historico.png)
 
- Image 5: Expenses by category (US12)
+ Image 5: History (Expenses and payments) (US10,US12,US3)
 
-![Despesas](imgs/despesas.png)
+![Gerir Envelopes](imgs/gerir_envelopes.png)
 
- Image 6: Expenses Homepage (US3)
+ Image 6: Budget homepage (US2)
 
-![Gerir categorias](imgs/gerir_categorias.png)
+![Adicionar Envelopes](imgs/adicionar_envelopes.png)
 
- Image 7: Manage categories (add and delete) (US2)
+ Image 7: Manage budget (US2)
 
-![Budget](imgs/guardar_montante.png)
+![Guardar Dinheiro](imgs/guardar_dinheiro.png)
 
- Image 8: Budget homepage (US7, US13, US11, US9)
+![Adicionar Dinheiro Outro Envelope](imgs/adicionar_d_de_outro_envelope.png)
+
+![Dentro do envelope](imgs/dentro_envelope.png)
+
+ Image 8: Reserve amounts (US5)
 
 ![Objetivos](imgs/objetivos.png)
 
- Image 9: Goals hompage (US6)
+ Image 9: Objective Homepage (US6)
+
+![Adicionar Objetivos](imgs/adicionar_objetivos.png)
+
+ Image 10: Add Objective (US6)
+
+![Reservar Montante](imgs/editar_objetivo.png)
+
+ Image 11: Manage Objective (US6)
+
+![Estastiticas](imgs/estastiticas_despesas.png)
+
+ Image 12: Statistic Expense(US4,US8)
+
+![Estasticas](imgs/estastiticas_envelope.png)
+ 
+ Image 13:  Statitic Expense(US4,US8)
+
+![Categorias pagamento](imgs/gerir_categorias.png)
+
+ Image 14: Manage Category (US11)
 
 ![Relatorio](imgs/relatorio.png)
 
- Image 10: Result of generating report (US4,US8)
+ Image 15: Reports (US4,US8)
 
-![Reservar Montante](imgs/reservar_montantes.png)
+![Adicionar Notificacao](imgs/adicionar_notificacao.png)
 
- Image 11: Reserve Amounts (US5)
+![Cofirmar despesa recorrente](imgs/confirmar_despesa_recorrente.png)
+
+![Dinheiro por distribuir](imgs/dinheiro_por_distribuir.png)
+
+ Image 16: Notification (US14)
+
 
 ***
 
@@ -161,6 +192,7 @@ It is assumed:
 - User story 11 (tp-gps-11/gps_g11#15)
 - User story 12 (tp-gps-11/gps_g11#16)
 - User story 13 (tp-gps-11/gps_g11#17)
+- User story 14 (tp-gps-11/gps_g11#102)
 
 ***
 ##### User Story 1
@@ -197,12 +229,14 @@ As a student, I want to view the transaction history so that I can review my pas
 As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it.
 ***
 ##### User Story 12
-As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money.
+As a user, I want to view expenses by categoria, so that I can understand in which categories I spend the most money.
 ***
 ##### User Story 13
 As a working student, I want to add money to my budget, so that I can keep the budget updated.
 ***
-
+##### User Story 14
+As a student, I want to track automatically reserved amounts, so that I can add recurrent expenses and categories
+***
 
 ## Definition of done
 
@@ -235,12 +269,15 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Risk List
 
 
-- RSK1 – PxI: 4x5=20; The team doesn't have any experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-- RSK2 – PxI: 3x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
+- RSK1 – PxI: 3x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
+- RSK2 – PxI: 2x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
 - RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
+- RSK4 – PxI: 4x5=20; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
+
 
 ##### Mitigation Actions (threats>=20)
-- RSK1 - AS; Perform regular check-ins twice a week during sprints and meetings;
+ - RSK4 – MS; Constantly check with the client the progress of the project, make regular meetings and keep him updated.
+ - RSK4 – AS; Never assume what the client wishes, always ask on any doubts encountered.
 
 ***
 
@@ -328,16 +365,16 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 4: Create Unit tests and fix remaining bugs
     
   - US 1: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: L]
-    - Task 1: Design user interface to allow expense entry
+    - Task 1: Design user interface to allow entrada entry
     - Task 2: Add expenses managing methods
     - Task 3: Create expenses validation methods
-    - Task 4: Create a display of the expense
+    - Task 4: Create a display of the entrada
     - Task 5: Create Unit tests and fix remaining bugs
 
   - US 2: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: L]
-    - Task 1: Design user interface to allow category management
-    - Task 2: Add category managing methods
-    - Task 3: Create category validation methods
+    - Task 1: Design user interface to allow categoria management
+    - Task 2: Add categoria managing methods
+    - Task 3: Create categoria validation methods
     - Task 4: Create Unit tests and fix remaining bugs 
 
   - US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
@@ -345,30 +382,34 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 2: Create methods to view trasaction history
   
   
-- Story Points: 4L
-
-- Analysis: short analysis of the planning meeting
+- Story Points: 4L + 1M
 
 ##### Sprint Review
 
-- Analysis: what was not done or what was added (Link to US or Task from the PB)
+- Analysis: All requirements were met (us 7,13,1,2,10). However, there was a disagreement regarding the budget, as it did not correspond to the client's idealization.
 
-- Story Points: 2S+1M+2X+2H
+- Story Points: 4L+ 1M
 
 - Version: 0.1 
 
-- Client analysis: client feedback
+- Client analysis: "Todas as tarefas feitas. Objetivo: despesas, entradas, categorias, histórico de despesas. Houve entendimento errado sobre orçamento. Está tudo feito de acordo com a sprint.A pipeline não está a funcionar "
 
-- Conclusions: what to add/review
+- Conclusions:For the next sprint we'll have to adapt the tasks we have planned, as we will have to correct the budget according to the client's vision.
 
 ##### Sprint Retrospective
 
 - What we did well:
-    - A
+    - Manage to work within the time estimated (tasks have all been completed).
+    - Communication between members was effective.
+    - Good project base that allows you to get an ideia of the inicial project, tracking and managing expenses and categorize expenses.
+
 - What we did less well:
-    - B
+    - Misunderstanding with tracking and managing monthly budget.
+    - Only carried out unit tests after all tasks were completed,.
+
 - How to improve to the next sprint:
-    - C
+    - We should comunicate more with the client so by the end of the sprint we are on the same page as them, this will save the time of correcting the design and functionalities of our software.
+    - We should do unit test after each task developed (according to the need), so as not to run the risk of coding on fallible code
 
 ***
 
@@ -377,7 +418,7 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Sprint Plan
 
 
-- Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
+- Goal: Monthly budget reseting, entrada display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
 
 - Roles:
   - Product Owner: Ana Sofia Silva
@@ -387,18 +428,21 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - To do:
 
+  - US7 and US13 (from last sprint, budget)[Story Points:S]
+    - Task 1: Corrections regarding budget
+
   - US 9: As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control. [Story Points: S]
     - Task 1: Create feature to allow budget reset
     - Task 2: Create budget reseting methods
     
-  - US 12: As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money. [Story Points: L]
-    - Task 1: Design interface to allow viewing of expenses grouped by category  
+  - US 12: As a user, I want to view expenses by categoria, so that I can understand in which categories I spend the most money. [Story Points: L]
+    - Task 1: Design interface to allow viewing of expenses grouped by categoria  
     - Task 2: Create methods to filter the expenses to a certain time period
 
   - US 5: As a user, I want to reserve amounts for future expenses so that I can plan my budget. [Story Points: M]
     - Task 1: Design user interface to allow amount reservation
     - Task 2: Add reservation methods 
-    - Task 3: Create methods to subtract the amount reserved for a certain category from future expenses
+    - Task 3: Create methods to subtract the amount reserved for a certain categoria from future expenses
 
   - US 3: As a student, I want to access expenses so that I can view all my recorded expenses. [Story Points: M]
     - Task 1: Design user interface
@@ -412,30 +456,33 @@ By the end of the second realease we must have all the user stories with "must" 
     - Task 2: Implement methods to allow creation and editing of goals
     - Task 3: Create methods to allow goal organization 
 
-- Story Points: 1L + 4M + 1S
-
-- Analysis: short analysis of the planning meeting
+- Story Points: 1L + 4M + 2S
 
 ##### Sprint Review
 
-- Analysis: what was not done or what was added (Link to US or Task from the PB)
+- Analysis: All requirements were met (us 7,13 (corrections),9,12,5,3). However, there was a disagreement regarding the interface and some features (sholarship management, homepage and entry of expenses), as it did not correspond to the client's idealization.
 
-- Story Points: 2S+1M+2X+2H
+- Story Points: 1L + 4M + 2S
 
 - Version: 0.1 
 
-- Client analysis: client feedback
+- Client analysis: Acceptance Criteria not well, não ficaram bem feitos. Some requirements were not understood.
 
-- Conclusions: what to add/review
+- Conclusions: For the next sprint we'll have to adapt the tasks we have planned, as we'll have to correct the functioning of goals, the homepage design, the way expenses and income are added, according to the client's vision. We'll have to work harder so the goal of the project is met.
 
 ##### Sprint Retrospective
 
 - What we did well:
-    - A
+    - Manage to work within the time estimated (tasks have all been completed).
+    - Communication between members was effective.
+
 - What we did less well:
-    - B
+    - Misunderstandings with homepage, the way expenses and income and scholarship management.
+    - Acceptance Criterias were not well executed (there was some bugs that we didn't notice until the meeting with the client).
+
 - How to improve to the next sprint:
-    - C
+    - We should comunicate more with the client (presenting more mockups), so by the end of the sprint we are on the same page a he.
+    - We should do more carefully acceptance criteria for all US, so we can discover bugs more quickly.
 
 
 ***
@@ -444,33 +491,77 @@ By the end of the second realease we must have all the user stories with "must" 
 
 ##### Sprint Plan
 
-- Goal: User Interfeca aperfeiçoada, terminar todos os metodos em falta, e corrigir bugs que possam existir 
+- Goal: Add recurrent expenses, notifications for goals or low funds, do all corrections needed
 
 - Roles:
-  - Product Owner: 
-  - Scrum Master: 
+  - Product Owner: Artur Yurchuck
+  - Scrum Master: Lara Bizarro
 - Dates: from 1/Dez to 15/Dez, 2 weeks
 
+- To do (priority order):
+  - US 1, US 7 and US13 (from last sprint)[(this sprint) Story Points: S]
+    - Task 5: Correction of bugs
 
-- To do:
+  - US 7 and US 13 (from last sprint, budget)[Story Points: S]
+    - Task 4: Adding features regarding budget (adding cash expenses)
+    - Task 5: Adding features regarding budget (add method to tranfer between cash and bank money)
+    - Task 6: Corrections on homepage regarding the values that are presented 
 
-  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
-    - Task 4: Create notifications methods
-
-  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
-    - Task 2: Create methods to notify the user of low funds  
+  - US 10(from last sprint, history)[(this sprint) Story Points: S*]
+    - Task 3: Adding inserstion of expenses directly in table view (NOT POSSIBLE)
+    - Task 4: Adding filter option to filter by dates
+    - Task 5: Adding total (expenses and income)
+    - Tak 6: Correction regarding transactions (add -expense or +income)
 
   - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
     - Task 1: Implement feature to allow generation of a report
     - Task 2: Create methods to generate report
-     
-  - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
-    - Task 1: Create feature to generate a PDF or Excel report
-    - Task 2: Create methods to export reports
-  
-- Story Points: 1L + 3M
+    - Task 3: Create two separate pages (UI)
+    - Task 4: Create charts methods
+    - Task 5: Create filter methods
 
-- Analysis: short analysis of the planning meeting
+  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+    - Task 4: Create notifications methods
+    - Task 5: Connect expenses categories with objectives
+
+  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
+    - Task 2: Create methods to notify the user of low funds  
+    - Task 3: Corrections regarding the scholarship (create income category)
+
+  - US 14:  As a student, I want to track automatically reserved amounts, so that I can add recurrent expenses and categories [Story Points: M]
+    - Task 1: Design user interface
+    - Task 2: Create methods track automatically reserved amounts from expenses
+    - Task 3: Create methods track automatically reserved amounts from envelopes
+    - Task 4: Create methods to implement the tasks list fearure
+  
+- Story Points: 1L + 3M + 3S
+
+*Because Task 3 is not possible story points goes from M to S.
+
+##### Progress table
+
+|          Week 12: progress meeting, during sprint 3                          | Points (0-3) | Comments |
+|:-----------------------------------------------------------------------------|:-------------|:---------|
+|Sprint 3 Backlog board has Tasks and AC cards with estimates/real             | 3            |:---------|
+|Product Backlog board has US cards selected for current sprint                | 3            |:---------|
+|Code and unit tests are finished, according to cards                          | 3            |:---------|
+|Run unit tests automatically at every commit                                  | 3            |:---------|
+|Merge request (from dev into qa) at the end of every  task. Code was reviewed | 3            |:---------|
+|Acceptance test run at the end of every US                                    | -            |:---------|
+|Create and run deployed code                                                  | 3            |:---------|
+|Risk plan is updated                                                          | 3            |:---------|
+|Control project - compare estimates (SP and Hours) vs real                    | 3            |:---------|
+|Sprint 2 Review meeting report is updated                                     | 3            |:---------|
+|Sprint 2 Retrospective meeting report is updated                              | 3            |:---------|
+|Sprint 3 plan has Sprint Goal and Selected US/Tasks/AC with estimates         | 3            |:---------|
+
+Points: 
+
+  - 0 - not done 
+  - 1 - partly done 
+  - 2 - almost all done, with minor issues 
+  - 3 - all perfectly done 
+
 
 ##### Sprint Review
 
@@ -478,7 +569,7 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - Story Points: 2S+1M+2X+2H
 
-- Version: 0.1 
+- Version: 0.1
 
 - Client analysis: client feedback
 
