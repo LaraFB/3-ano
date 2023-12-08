@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageTransactionController">
+
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+         <Label text="Tranferir dinheiro" textFill="#545454">
+            <font>
+               <Font name="Times New Roman Bold" size="30.0" />
+            </font>
+            <VBox.margin>
+               <Insets bottom="30.0" top="-50.0" />
+            </VBox.margin>
+         </Label>
+             <ChoiceBox fx:id="cb1" maxHeight="40.0" minHeight="40.0" onAction="#change2" prefHeight="40.0" prefWidth="288.0" style="-fx-font-size: 20" />
+         <HBox alignment="TOP_CENTER" maxHeight="39.0" prefHeight="23.0" prefWidth="442.0">
+            <children>
+               <Label text="Valor" textFill="#545454">
+                  <font>
+                     <Font name="Times New Roman" size="18.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets top="3.0" />
+                  </HBox.margin>
+               </Label>
+               <Label fx:id="lblError1" text="*" textFill="#ff676a">
+                  <font>
+                     <Font name="Times New Roman" size="18.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Label>
+            </children>
+         </HBox>
+         <Spinner fx:id="amount" editable="true" minHeight="40.0" prefHeight="40.0" prefWidth="292.0" style="-fx-font-size: 20" />
+
+            <Button minHeight="40.0" minWidth="120.0" onAction="#Transferir" styleClass="btn" text="Transferir" textFill="#545454">
+            <font>
+               <Font name="Times New Roman" size="20.0" />
+            </font></Button>
+         <Label alignment="CENTER" prefHeight="29.0" prefWidth="310.0" text="Label" textFill="#ff676a">
+            <font>
+               <Font name="Times New Roman" size="16.0" />
+            </font>
+         </Label>
+        </VBox>
+    </center>
+
+    <top>
+        <Button mnemonicParsing="false" onAction="#onBackToHomePage" prefHeight="40.0" styleClass="btn" text="Voltar ao Home" textFill="#545454" BorderPane.alignment="TOP_LEFT">
+            <BorderPane.margin>
+                <Insets left="5.0" top="5.0" />
+            </BorderPane.margin>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../image/back_icon.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font name="Times New Roman" size="14.0" />
+            </font>
+        </Button>
+    </top>
+
+</BorderPane>

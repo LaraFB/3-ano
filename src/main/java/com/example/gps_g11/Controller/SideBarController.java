@@ -4,7 +4,8 @@ import com.example.gps_g11.Controller.Envelope.EnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController;
-import com.example.gps_g11.Controller.Estatistica.EstatisticaController;
+import com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaController;
+import com.example.gps_g11.Controller.Estatistica.EstastiticasEnvelopeController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
 import com.example.gps_g11.Controller.Home.*;
 import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
@@ -22,7 +23,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.Pane;
 
 import java.time.LocalDate;
-
 
 public class SideBarController {
     public DatePicker Date;
@@ -51,7 +51,7 @@ public class SideBarController {
         loadFXML("Objetivo/Objetivo.fxml");
     }
 
-    public void onEstatisticas(){ loadFXML("Estatisticas/Estatisticas.fxml");}
+    public void onEstatisticas(){ loadFXML("Estatisticas/EstatisticasDespesas.fxml");}
 
     private void loadFXML(String fxmlFileName) {
         try {
@@ -131,11 +131,15 @@ public class SideBarController {
                         editObjetivoController.setSideBar(this);
                         putBtnActive(btnObjetivos);
                         break;
-                    case "Estatisticas/Estatisticas.fxml":
-                        EstatisticaController estatitcaController = loader.getController();
-                        estatitcaController.setSideBar(this);
+                    case "Estatisticas/EstatisticasDespesas.fxml":
+                        EstastiticasDespesaController estastiticasDespesaController = loader.getController();
+                        estastiticasDespesaController.setSideBar(this);
                         putBtnActive(btnEstatistica);
                         break;
+                    case "Estatisticas/EstatisticasEnvelope.fxml":
+                        EstastiticasEnvelopeController estastiticasEnvelopeController = loader.getController();
+                        estastiticasEnvelopeController.setSideBar(this);
+                        putBtnActive(btnEstatistica);
                     default:
                 }
             }
@@ -227,14 +231,17 @@ public class SideBarController {
 
     public void adicionarObjetivos() { loadFXML("Objetivo/adicionarObjetivo.fxml");}
 
-    public void resetbudget(){loadFXML("Home/HomePageReset.fxml");}
+    //public void resetbudget(){loadFXML("Home/HomePageReset.fxml");}
 
     public void editarObjetivos() { loadFXML("Objetivo/editarObjetivo.fxml");}
-
 
     public void transaction() {
         loadFXML("Home/HomePageTransaction.fxml");
     }
+
+    public void mudaestastiticasEnvelope(){loadFXML("Estatisticas/EstatisticasEnvelope.fxml");}
+    public void mudaestastiticasDespesa(){loadFXML("Estatisticas/EstatisticasDespesas.fxml");}
+
 }
 
 
