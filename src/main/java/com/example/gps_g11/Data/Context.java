@@ -132,6 +132,7 @@ public class Context {
         if(categoriaDespesas.getValor() < montante || montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal() || montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
             return -1; //Se não houver saldo suficiente nesse envelope
         }
+
         //Subtrai no envelope o valor da montante
         categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
         //Adiciioan adespesa
