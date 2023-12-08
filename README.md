@@ -1,4 +1,4 @@
-# Project Title
+# Gestor de despesas
 
 ## Contents
 
@@ -6,22 +6,28 @@
 - [Vision and Scope](#vision-and-scope)
 - [Requirements](#requirements)
     - [Use case diagram](#use-case-diagram)
-    - [User stories and prototypes](#user-stories-and-prototypes)
+    - [Mockups](#mockups)
+    - [User stories](#user-stories)
+- [Definition of Done](#definition-of-done)
 - [Architecture and Design](#architecture-and-design)
     - [Domain Model](#domain-model)
-- [Implementation](#implementation)
-    - [Product Increment 1](#product-increment-1)
-    - [Product Increment 2](#product-increment-2)
-    - [Product Increment 3](#product-increment-3)
-    - [Product Increment 4](#product-increment-4)
+- [Risk Plan](#risk-plan)
+- [Pre-Game](#pre-game)
+- [Release Plan](#release-plan)
+  - [Release 1](#release-1)
+  - [Release 2](#release-2)
+- [Increments](#increments)
+  - [Sprint 1](#sprint-1)
+  - [Sprint 2](#sprint-2)
+  - [Sprint 3](#sprint-3)
 
 ## Team
 
-- Francisco Costa - 2021146317
-- Artur Yurchuk - 2021130221
-- Lara Bizarro - 2021130066
-- Joana Ferrao - 2020131638
-- Ana Sofia Silva - 2021154586
+- Francisco Costa - 2021146317 - a2021146317@isec.pt
+- Artur Yurchuk - 2021130221 - a2021130221@isec.pt
+- Lara Bizarro - 2021130066 - a2021130066@isec.pt
+- Joana Ferrao - 2020131638 - a2020131638@isec.pt
+- Ana Sofia Silva - 2021154586 - a2021154586@isec.pt
 
 ***
 
@@ -31,227 +37,329 @@
 
 ##### Project background
 
-
-Gerir as finanças pessoais é uma parte essencial da vida quotidiana. Atualmente, de forma a controlar as despesas apenas
-consegue através do extrato bancário, o que se torna um trabalho entediante e complexo. Numa tentativa de facilitar a
-leitura dos gastos financeiros, procuramos desenvolver um Gestor de Despesas, uma solução intuitiva e fácil de usar, que
-permite categorizar e visualizar um resumo das despesas do dia, do mês ou até do ano.
+Currently, the only way to control expenses is through bank statements, which becomes a tedious and complex job.
+For a student that started recently having their own expenses (rent ,university fees) and revenues (monthly allowances or salaries) can be hard to manage them in order to reach to the end of the month with some money left.
 
 ##### Stakeholders
 
+###### Students
+People who want to keep a detailed record of their expenses for better financial management. These expenses are distributed between living costs, personal expenses and additional one-off costs.
+###### Parents
+They may provide financial support to students and have an indirect interest in the efficiency of the software. It is in their interest that their financial contributions are used responsibly and that their child has financial stability and education.
 
-###### Stakeholder Primário - Estudante Deslocado
-Os estudantes são os principais beneficiários deste software, visto que afeta diretamente a sua capacidade de gerir as suas finanças enquanto vivem longe de casa.
+###### Educational Institutions
+Although they may not have a direct financial interest, they do have an interest in the general well-being of their students - it is an issue that can affect their academic performance and overall experience at the institution.
+There are also some institutions that offer scholarships to certain students, according to their performance or contribution to it.
 
+#### Users
+Students.
 
-###### Interessados Secundários: Pais / Responsáveis
-Podem fornecer apoio financeiro aos estudantes e têm um interesse indireto na eficiência do software. É do seu interesse que as suas contribuições financeiras sejam usadas de maneira responsável e que o seu filho tenha estabilidade e educação financeira.
-
-
-###### Stakeholders Terceários - Instituições de Ensino 
-Embora possam não ter um interesse financeiro direto, têm interesse no bem-estar geral de seus estudantes - é um tema que pode afetar seu desempenho acadêmico e experiência geral na instituição.
-Existem também algumas instituições que oferecem bolsas a certos estudantes, de acordo com o seu desempenho ou contribuição para com a mesma.
-
-
-##### Users
-
-O software “Gestor de Despesas” é projetado para estudantes deslocados - Pessoas que desejam
-manter um registo detalhado de suas despesas para uma melhor gestão financeira. Estas despesas são distribuidas entre custos de vida (renda, compras de supermercado, serviços de água, eletrecidade, entre outros), despesas pessoas (jantares com amigos, idas a cafés, etc) e custos únicos adicionais (o estudante pode comprar manuais escolares durante o primeiro mês de aulas).
+***
 
 
 #### Vision & Scope of the Solution
 
 ##### Vision statement
 
-Com Gestor de Despesas procuramos um mundo onde a gestão financeira é facilmente acessível. Aspiramos criar um software
-que sirva como um companheiro financeiro confiável, simplificando as complexidades do acompanhamento financeiro.
-Vemos o Gestor de Despesas como um catalisador de mudanças, ajudando os utilizadores a assumir o controlo do seu
-dinheiro, reduzindo o stress financeiro e ajudando a criar e cumprir objetivos impostos pelos próprios utilizadores.
-A nossa visão é capacitar as pessoas a abraçarem um futuro financeiro mais controlado, onde a gestão de despesas não
-seja um fardo, mas uma oportunidade de crescimento, estabilidade e prosperidade.
+We see Expense Manager as a catalyst for change, helping users take control of their money by having expenses summaries, analyses and tracking, alowing to establish monthly budgets/limits.
 
 ##### List of features
 
-Os nossos principais objetivos são os seguintes:
+Our main objectives are the following:
 
-- Acompanhar as despesas
-- Categorizar as despesas (Por exemplo: Refeições na cantina, propinas, "going out", despesas, etc.)
-- Resumo de despesas
-- Análise de despesas
-- Estabelecer budgets/limites em certas áreas (reservar ou não permitir que o utilizador gaste mais)
-- Notificar o utilizador quando os limites estiverem próximos de serem ultrapassados  
+- Track expenses both card and physical money
+- Categorize expenses (For example: Canteen meals, tuition fees, going out, expenses, etc.)
+- Expense summary
+- Expense analysis
+- Establish budgets/limits mothly (reserve or not allow the user to spend more)
+- Notify the user when limits are close to being exceeded
 
 ##### Features that will not be developed
+Link a card and bank account- Since it requires permissions that we do not have (we intend to resolve this issue by creating a budget that is entered by the user and adds the same amount each month. It will require the user to take care to record all financial operations carried out.)
 
-Associar um cartão e uma conta bancária, uma vez que exige permissões que não temos (pretendemos resolver esta questão criando um budget que é introduzido pelo utilizador e adiciona a cada mês o mesmo valor. Irá exigir que o utilizador tome o cuidado de registar todas as operações financeiras efetuadas.)
-
-
-##### Risk
-
-###### Segurança e privacidade
-
-Como pretendemos trabalhar com informação sensível temos um grande risco de violações de dados ou de privacidade, o que poderia pôr em causa a fidelidade do nosso software. Desta forma, a implementação de protocolos de segurança rigorosos, criptologia e a conformidade com leis de proteção de dados são essenciais. 
-
-###### Marketing
-
-Outro risco será a adoção dos estudantes, por outras palavras, a falta de conhecimento sobre o software, uma vez que existem imensas aplicações financeiras. Para combater isto, pretendemos fazer parcerias com instituições, adotar medidas eficazes de marketing.
 
 ##### Assumptions
 
-Supõe-se:
-- que os estudantes utilizem o software ativamente para acompanhar despesas, definir orçamentos e trabalhar em direção aos seus objetivos.
-- que os utilizadores fornecerão valores precisos, como renda e despesas.
--  a demanda de um produto financeiro dedicado às necessidades dos estudantes.
-- que a infraestrutura do software será segura e resistente a violações de dados.
-- que o software cumprirá todas as regulamentações e leis financeiras relevantes.
-- O software pressupõe a necessidade de atualizações e melhorias contínuas para se adaptar às mudanças no cenário financeiro e às necessidades dos utilizadores.
+It is assumed:
+- Students actively use the software to track expenses, set budgets, and work toward their goals.
+- Users will provide accurate values such as income and expenses.
+- The demand for a financial product dedicated to the needs of students.
+- The software infrastructure will be secure and resistant to data breaches.
+- The software will comply with all relevant financial regulations and laws.
+- The software assumes the need for continuous updates and improvements to adapt to changes in the financial scenario and user needs.
 
 ***
 
 ## Requirements
 
-#### Use Case Diagram
+### Use Case Diagram
 
-![Use case diagram](imgs/UML_use_case_example-800x707.png)
-
-***
-
-##### Use Case 1
-
-- Actor: Actor x
-- Description: Description of use case number 1
-- Preconditions:
-    - Precondition 1
-    - Precondition 2
-    - Without preconditions
-- Postconditions:
-    - Postcondition 1
-    - Postcondition 2
-    - Without postcondition
-- Normal flow:
-    - The user ...
-    - The user ...
-- Alternative flows:
-    - The user ...
-    - The user ...
+![Use case diagram](imgs/UseCaseDiagram.png)
 
 ***
 
-##### Use Case 2
+### Mockups
+
+![Painel Inicial](imgs/pagina_inicial.png)
+
+ Image 1: Homepage
+
+![Adicionar despesas](imgs/adicionar_despesa.png)
+
+ Image 2: Add expense (US1)
+
+![Resultado adicionar despesas](imgs/visualizacao_pos_adicao_despesa.png)
+
+ Image 3: Viewing the added expense (US1)
+
+![Historico depois de adicionar despesa](imgs/despesas_historico_dps_adicionar.png)
+
+ Image 4: Expense history (US10)
+
+![Despesas por categotia](imgs/despesas_compras.png)
+
+ Image 5: Expenses by category (US12)
+
+![Despesas](imgs/despesas.png)
+
+ Image 6: Expenses Homepage (US3)
+
+![Gerir categorias](imgs/gerir_categorias.png)
+
+ Image 7: Manage categories (add and delete) (US2)
+
+![Budget](imgs/guardar_montante.png)
+
+ Image 8: Budget homepage (US7, US13, US11, US9)
+
+![Objetivos](imgs/objetivos.png)
+
+ Image 9: Goals hompage (US6)
+
+![Relatorio](imgs/relatorio.png)
+
+ Image 10: Result of generating report (US4,US8)
+
+![Reservar Montante](imgs/reservar_montantes.png)
+
+ Image 11: Reserve Amounts (US5)
 
 ***
 
-##### Use Case 3
+### User Stories
+
+- User story 1 (tp-gps-11/gps_g11#2)
+- User story 2 (tp-gps-11/gps_g11#3)
+- User story 3 (tp-gps-11/gps_g11#7)
+- User story 4 (tp-gps-11/gps_g11#8)
+- User story 5 (tp-gps-11/gps_g11#9)
+- User story 6 (tp-gps-11/gps_g11#10)
+- User story 7 (tp-gps-11/gps_g11#11)
+- User story 8 (tp-gps-11/gps_g11#12)
+- User story 9 (tp-gps-11/gps_g11#13)
+- User story 10 (tp-gps-11/gps_g11#14)
+- User story 11 (tp-gps-11/gps_g11#15)
+- User story 12 (tp-gps-11/gps_g11#16)
+- User story 13 (tp-gps-11/gps_g11#17)
 
 ***
-
-#### User Stories and Prototypes
-
-***
-
 ##### User Story 1
-
-As a new user,
-I want to be able to create a new account,
-So that I can start using it and mange my finances effectively.
-
-(Como um novo utilizador. desejo poder registar-me para puder usar o software).
-
-###### Acceptance Criteria
-
-```
-Quando abrir o software, devo ver uma opção clara e intuitiva para fazer o login ou para registar uma nova conta. Durante o processo de registo, devo ser pedido o meu nome, endereço de e-mail e criar uma senha segura com verificação. Após fornecer as informações necessárias, devo receber um e-mail de verificação para confirmar minha conta. Após clicar no link de verificação no e-mail, devo receber uma mensagem de confirmação no software, indicando que minha conta está ativa. Não devo ser capaz de aceder aos recursos do software até que minha conta seja verificada. Se encontrar qualquer problema durante o login, como um e-mail ou senha inválidos, devo receber mensagens de erro claras me orientando sobre como resgatar a palavra-passe.
-```
-
-###### Prototype
-
-A prototype of user story 1 should be here. You can see in (#use-case-diagram) how to import an image.
-
+As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
 ***
-
 ##### User Story 2
-
-As a student, I want to be able to track my daily expenses and categorize them,so that I can gain insights into my spending habits.
-
-(Como estudante, quero ser capaz de controlar as minhas despesas diárias e categorizá-las, para saber mais sobre os meus gastos diários).
-
-###### Acceptance Criteria
-
-```
-Após fazer o login, devo ter um painel inicial que mostre o meu balanço semanal, de forma a mostrar o dinheiro que tenho reservado para aquela semana, assim como um balanço do que já gastei. Além disso, o software deve ter uma opção bem vísivelpara inserir as minhas despesas. Devo ser capaz de inserir o valor gasto, a data, uma breve descrição e escolher uma categoria existente (por exemplo, alimentação, refeições na cantina, propinas, transporte, ginásio) ou criar uma nova. Devo ser capaz de visualizar gráficos ou informação clara e curta em cada categoria sobre os balanços mensais e semanais. Devo receber lembretes se exceder os limites de gastos predefinidos.
-```
-
-###### Prototype
-
-A prototype of user story 2 should be here. You can see in (#use-case-diagram) how to import an image.
-
+As a user, I want to manage categories so that I can organize my expenses according to different types.
+***
+##### User Story 3
+As a student, I want to access expenses so that I can view all my recorded expenses.
+***
+##### User Story 4
+As a student, I want to generate reports so that I can analyze send them or analize them later.
+***
+##### User Story 5
+As a user, I want to reserve amounts for future expenses so that I can plan my budget.
+***
+##### User Story 6
+As a user, I want to set goals so that I can work for a specific objective.
+***
+##### User Story 7
+As a user, I want to see the monthly budget so that I can make adjustments as needed.
+***
+##### User Story 8
+As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses.
+***
+##### User Story 9
+As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control.
+***
+##### User Story 10
+As a student, I want to view the transaction history so that I can review my past financial activities.
+***
+##### User Story 11
+As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it.
+***
+##### User Story 12
+As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money.
+***
+##### User Story 13
+As a working student, I want to add money to my budget, so that I can keep the budget updated.
 ***
 
-##### User Story 3
 
-As a student, I want to analyze my spending patterns, So that I can better understand where my money is going and make informed financial decisions.
+## Definition of done
 
-(Como estudante, quero analisar os meus gastos, para entender para onde vai o meu dinheiro e tomar melhores decisões).
+(This section is already written, do not edit)
+It is a collection of criteria that must be completed for a User Story to be considered “done.”
 
-###### Acceptance Criteria
+1. All tasks done:
+  - CI – built, tested (Junit), reviewed (SonarCloud)
+  - Merge request to qa (code review)
+2. Acceptance tests passed
+3. Accepted by the client
+4. Code merged to main
 
-```
-Após fazer o login, devo ter um menu que me permita efetuar diversas operações, como por exemplo ver o conjunto de todas as despesas, ver as despesas por categoria, ver uma breve análise. Nessa análise, posso escolher o intervalos de datas que pretendo (o último mês, o último semestre, a última semana, hoje, ou datas personalizadas). O software deve fazer um resumo das minhas despezas, exibir um pequeno texto que me informe das minhas despesas (por exemplo, este mês gastou mais 50€ em compras, para melhorar tente fazer uma lista do que realmete precisa e obrigue-se a segui-la). Poderá também exiber algund gráficos ou imagens representivas. 
-```
-
-###### Prototype
-
-A prototype of user story 3 should be here. You can see in (#use-case-diagram) how to import an image.
 ***
 
 ## Architecture and Design
 
 #### Domain Model
 
-A domain model should be here. You can see in (#use-case-diagram) how to import an image.
+![Domain Model](imgs/domain_model.png)
 
 ***
 
 ## Risk Plan
 
-##### Threshhold of Success
-- By the 2nd release date, 30% of all the User Stories from the Product Backlog are closed. (for example)
-- Goal2
-- Goal3
+##### Threshold of Success
+By the end of the second realease we must have all the user stories with "must" priorities.
+
 
 ##### Risk List
-- RSKn – PxI: axb=c; Risk statement
-- RSK2 – PxI: 4x5=20; The team has no experience in software estimation, therefore there might cause underestimation, delaying the project in an uncontrolled way (for example)
 
+
+- RSK1 – PxI: 4x5=20; The team doesn't have any experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
+- RSK2 – PxI: 3x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
+- RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
 
 ##### Mitigation Actions (threats>=20)
-- RSK1 - AS; Efetuar check-ins regulares durante os sprints, e reuniões; 
-- RSK2 - AS; Panificar bem o projeto, para evitar qualquer alteração futura; 
-- RSK3 - AS; Comunicar com os membros do grupo, para que estes ajudem a manter o código coroente e sem bugs;
-- RSK4 - CP; Efetuar reuniões todas as semanas para averiguar o progresso de todos os membros;
-- RSK5 - MS; Gerir de forma eficiente o tempo entre todos os membros, de forma a implementar o maior numero de funcionalidades possiveis.
+- RSK1 - AS; Perform regular check-ins twice a week during sprints and meetings;
 
 ***
 
-## Implementation
+## Pre-Game
+### Sprint 0 Plan
 
-#### Product Increment 1
+- Goal: Plan the project, create an action plan and present the project to the client
 
-##### Sprint Goal
+- Dates: from 13/Oct to 27/Oct, 2 weeks
 
-The sprint goal was ...
+- Roles:
+  - Product Owner: Francisco Costa
+  - Scrum Master: Artur Yurchuck
+  - Developer: Lara Bizarro, 
+  	           Joana Ferrao, 
+  	           Ana Sofia Silva.
 
-##### Planned vs Implemented
+- Sprint 0 Backlog (don't edit this list):
+  - Task1 – Write Team
+  - Task2 – Write V&S
+  - Task3 – Write Requirements
+  - Task4 – Write DoD
+  - Task5 – Write Architecture&Design
+  - Task6 – Write Risk Plan
+  - Task7 – Write Pre-Gane
+  - Task8 – Write Release Plan
+  - Task9 – Write Product Increments
+  - Task10 – Create Product Board
+  - Task11 – Create Sprint 0 Board
+  - Task12 – Write US in PB, estimate (SML), prioritize (MoSCoW), sort
+  - Task13 – Create repository with “GPS Git” Workflow
+  - Task14 - Fix week 4 feedback problems
+  - Task15 - Create wiki page with weekly feedback
+  - Task16 - Create wiki page with meeting agenda
+  - Task17 - Plan sprint 1
 
-For this iteration we planned to implement the:
+  ***
 
-- Feature 1
-- Feature 2
+## Release Plan
 
-For this iteration we implemented the:
+### Release 1
 
-- Feature 1
-- Feature 2
+- Goal: MVP -> 
+    - Track, Categorize and Analise expenses; 
+    - Expense Summary;
+    - Allow the criation of limits/budgets, in certain areas;
+- Dates:[teams1] 30/Nov
+- Release: V1.0
+
+***
+
+### Release 2
+
+- Goal: Final release - Have a functional app with the missing features (Notifications).
+- Date: [teams 0+1] 15/Dec
+- Release: V2.0
+
+***
+
+## Increments
+
+### Sprint 1
+##### Sprint Plan
+
+- Goal: User Interface that allows you to get an ideia of the inicial project, only with the simplest of methods as creation of new acounts, tracking and managing expenses, monthly budget and adding and categorize expenses.
+
+- Roles:
+  - Product Owner: Lara Bizarro
+  - Scrum Master: Joana Ferrão
+
+- Dates: from 27/Oct to 17/Nov, 3 weeks
+
+- To do (order by importance):
+
+  - US 7: As a user, I want to create the monthly budget so that I can make adjustments as needed. [Story Points: L]
+    - Task 1: Design user interface to allow budget entry
+    - Task 2: Add budget methods
+    - Task 3: Create budget validation methods
+    - Task 4: Create Unit tests and fix remaining bugs
+
+  - US 13: As a working student, I want to add money to my budget, so that I can keep the budget updated [Story Points: L]
+    - Task 1: Design user interface 
+    - Task 2: Add budget adding methods
+    - Task 3: Create budget validation methods
+    - Task 4: Create Unit tests and fix remaining bugs
+    
+  - US 1: As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.[Story Points: L]
+    - Task 1: Design user interface to allow expense entry
+    - Task 2: Add expenses managing methods
+    - Task 3: Create expenses validation methods
+    - Task 4: Create a display of the expense
+    - Task 5: Create Unit tests and fix remaining bugs
+
+  - US 2: As a user, I want to manage categories so that I can organize my expenses according to different types.[Story Points: L]
+    - Task 1: Design user interface to allow category management
+    - Task 2: Add category managing methods
+    - Task 3: Create category validation methods
+    - Task 4: Create Unit tests and fix remaining bugs 
+
+  - US 10: As a student, I want to view the transaction history so that I can review my past financial activities. [Story Points: M]
+    - Task 1: Design user interface to show trasaction history
+    - Task 2: Create methods to view trasaction history
+  
+  
+- Story Points: 4L
+
+- Analysis: short analysis of the planning meeting
+
+##### Sprint Review
+
+- Analysis: what was not done or what was added (Link to US or Task from the PB)
+
+- Story Points: 2S+1M+2X+2H
+
+- Version: 0.1 
+
+- Client analysis: client feedback
+
+- Conclusions: what to add/review
 
 ##### Sprint Retrospective
 
@@ -264,14 +372,126 @@ For this iteration we implemented the:
 
 ***
 
-#### Product Increment 2
+#### Sprint 2
+
+##### Sprint Plan
+
+
+- Goal: Monthly budget reseting, expense display, transaction history display, allow goal setting and amount reservation, and manage scholarship.
+
+- Roles:
+  - Product Owner: Ana Sofia Silva
+  - Scrum Master: Francisco Costa
+
+- Dates: from 17/Nov to 1/Dez, 2 weeks
+
+- To do:
+
+  - US 9: As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control. [Story Points: S]
+    - Task 1: Create feature to allow budget reset
+    - Task 2: Create budget reseting methods
+    
+  - US 12: As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money. [Story Points: L]
+    - Task 1: Design interface to allow viewing of expenses grouped by category  
+    - Task 2: Create methods to filter the expenses to a certain time period
+
+  - US 5: As a user, I want to reserve amounts for future expenses so that I can plan my budget. [Story Points: M]
+    - Task 1: Design user interface to allow amount reservation
+    - Task 2: Add reservation methods 
+    - Task 3: Create methods to subtract the amount reserved for a certain category from future expenses
+
+  - US 3: As a student, I want to access expenses so that I can view all my recorded expenses. [Story Points: M]
+    - Task 1: Design user interface
+    - Task 2: Create methods to filter expenses
+
+  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
+    - Task 1: Create methods related the scholarship
+
+  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+    - Task 1: Design user interface
+    - Task 2: Implement methods to allow creation and editing of goals
+    - Task 3: Create methods to allow goal organization 
+
+- Story Points: 1L + 4M + 1S
+
+- Analysis: short analysis of the planning meeting
+
+##### Sprint Review
+
+- Analysis: what was not done or what was added (Link to US or Task from the PB)
+
+- Story Points: 2S+1M+2X+2H
+
+- Version: 0.1 
+
+- Client analysis: client feedback
+
+- Conclusions: what to add/review
+
+##### Sprint Retrospective
+
+- What we did well:
+    - A
+- What we did less well:
+    - B
+- How to improve to the next sprint:
+    - C
+
 
 ***
 
-#### Product Increment 3
+#### Sprint 3
 
-***
+##### Sprint Plan
 
-#### Product Increment 4
+- Goal: User Interfeca aperfeiçoada, terminar todos os metodos em falta, e corrigir bugs que possam existir 
+
+- Roles:
+  - Product Owner: 
+  - Scrum Master: 
+- Dates: from 1/Dez to 15/Dez, 2 weeks
+
+
+- To do:
+
+  - US 6: As a user, I want to set goals so that I can work for a specific objective. [Story Points: M]
+    - Task 4: Create notifications methods
+
+  - US 11: As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it. [Story Points: M]
+    - Task 2: Create methods to notify the user of low funds  
+
+  - US 4: As a student, I want to generate reports so that I can analyze send them or analize them later. [Story Points: L]
+    - Task 1: Implement feature to allow generation of a report
+    - Task 2: Create methods to generate report
+     
+  - US 8: As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses. [Story Points: M]
+    - Task 1: Create feature to generate a PDF or Excel report
+    - Task 2: Create methods to export reports
+  
+- Story Points: 1L + 3M
+
+- Analysis: short analysis of the planning meeting
+
+##### Sprint Review
+
+- Analysis: what was not done or what was added (Link to US or Task from the PB)
+
+- Story Points: 2S+1M+2X+2H
+
+- Version: 0.1 
+
+- Client analysis: client feedback
+
+- Conclusions: what to add/review
+
+##### Sprint Retrospective
+
+- What we did well:
+    - A
+- What we did less well:
+    - B
+- How to improve to the next sprint:
+    - C
+
 
 ***

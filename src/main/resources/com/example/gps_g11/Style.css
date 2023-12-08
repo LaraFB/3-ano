@@ -1,0 +1,143 @@
+.MenuItem{
+    -fx-border-color: #545454;
+    -fx-border-width: 1px;
+    -fx-background-color: WHITE;
+    -fx-border-radius: 70px;
+    -fx-background-radius: 70px;
+}
+
+.active-button {
+    -fx-background-color: #DEEFFF;
+ }
+
+.buttonCategory{
+    -fx-background-color: transparent;
+}
+.buttonCategory:hover{
+    -fx-background-color: #e0e0e0;
+}
+
+.MenuItem:hover{-fx-background-color: #D6D6D6;}
+.slideItem{-fx-background-color: #9FCDFF;}
+.slideItem:hover{-fx-background-color:#DEEFFF;}
+.slideItem1{-fx-background-color:#DEEFFF;}
+
+.CancelExpensesBtn{-fx-background-color: #ff676a;}
+.CancelExpensesBtn:hover{-fx-background-color: #EFA5A7;}
+.btn:hover{-fx-opacity:70%;}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-radius: 0px;
+}
+.check-box:selected .mark {-fx-background-color: #545454;}
+.check-box:selected .box {-fx-background-color: white;}
+
+.tab-pane .tab-header-area .tab-header-background {-fx-background-color: white;}
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+    -fx-pref-height: 50px;
+}
+.tab-pane .tab {-fx-background-color: #63A7F1;}
+.tab-pane .tab:selected{-fx-background-color: #DEEFFF;}
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-family: "Times New Roman";
+}
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #545454;
+}
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0px 3px 0px 3px;
+}
+
+.choice-box {
+    -fx-background-color: white;
+    -fx-mark-color: #545454;
+}
+.choice-box .context-menu {
+    -fx-background-color: #EFF7FF;
+    -fx-pref-width: 300px ;
+}
+.choice-box .menu-item:focused { -fx-background-color: #9FCDFF;}
+.choice-box .menu-item > .label { -fx-text-fill: #545454;}
+.choice-box .menu-item:focused > .label { -fx-text-fill: white;}
+
+.calendar-grid {-fx-background-color: #DEEFFF;}
+
+.table-view{-fx-background-color: transparent;}
+.table-view .column-header-background{-fx-background-color: #9FCDFF;}
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: #545454;
+    -fx-font-family: "Times New Roman";
+}
+.table-view .column-header {-fx-background-color: transparent;}
+.table-view .table-cell{
+    -fx-text-fill: #545454;
+    -fx-font-family: "Times New Roman";
+}
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #63A7F1;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #9FCDFF;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {-fx-background-color: transparent;}
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {-fx-opacity: 0;}
+
+.vBoxItem {
+    -fx-border-color: #545454;
+    -fx-border-width: 1px;
+    -fx-background-color: WHITE;
+    -fx-border-radius: 40px;
+    -fx-background-radius: 40px;
+}
+.vBoxItemCategory{
+    -fx-border-color: #545454;
+    -fx-border-width: 1px;
+    -fx-background-color: WHITE;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+.buttonItemCategory{
+    -fx-border-color: #545454;
+    -fx-border-width: 1px;
+    -fx-background-color: WHITE;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+.buttonItemCategory:hover{
+    -fx-background-color: #b7b7b7;
+}
+
+.category-add{
+    -fx-background-color: #4f4c4c;
+    -fx-text-fill: White;
+}
+.category-add:hover{-fx-background-color: #858181;}
+
+.categoory-delete{
+    -fx-background-color: #ff676a;;
+    -fx-text-fill: White;
+}
+.categoory-delete:hover{-fx-background-color: #EFA5A7;}

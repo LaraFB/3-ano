@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Settings.SettingsController">
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: DEEFFF;" BorderPane.alignment="CENTER">
+            <children>
+            <HBox prefHeight="700.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="1000.0" styleClass="vBoxItem" stylesheets="@../../Style.css">
+                     <children>
+                        <Label text="Categorias">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                         <ScrollPane fx:id="scrollPane" fitToWidth="true" prefHeight="450.0" style="-fx-background-color:white">
+                             <VBox fx:id="vboxCategories" alignment="CENTER" spacing="10.0" style="-fx-background-color:white"/>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                         </ScrollPane>
+                        <HBox fx:id="HBox3" alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="50.0">
+                           <children>
+                              <Button fx:id="BtnAdc" mnemonicParsing="false" onAction="#onAdd" prefHeight="80.0" prefWidth="180.0" styleClass="category-add,MenuItem" stylesheets="@../../Style.css" text="Acidiconar nova categoria" textAlignment="CENTER" textFill="#545454" wrapText="true">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Button>
+                              <Button mnemonicParsing="false" onAction="#onRemove" prefHeight="80.0" prefWidth="180.0" styleClass="CancelExpensesBtn,MenuItem" stylesheets="@../../Style.css" text="Eliminar" textAlignment="CENTER" textFill="#525252" wrapText="true">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            </children>
+        </VBox>
+    </center>
+
+
+</BorderPane>
