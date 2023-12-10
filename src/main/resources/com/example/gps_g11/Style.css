@@ -110,7 +110,6 @@
 .table-view > .virtual-flow > .scroll-bar > .de,crement-button {-fx-opacity: 0;}
 .table-view .column-header {-fx-font-size: 18px}
 
-
 .vBoxItem {
     -fx-border-color: #545454;
     -fx-border-width: 1px;
@@ -164,7 +163,7 @@
     -fx-font-size: 1em;
 }
 .chart-legend {
-    -fx-background-color: white;
+    -fx-background-color:  transparent;
     -fx-stroke: #545454;
 }
 .default-color0.chart-pie { -fx-pie-color: #7ED957; }
@@ -249,4 +248,32 @@
 .spinner .increment-arrow-button:pressed,
 .spinner .decrement-arrow-button:pressed {
     -fx-body-color: ladder(#d1d1d1, #DEEFFF 0%, #9FCDFF 100%);
+}
+.chart{
+    -fx-background-color: #DEEFFF;
+    -fx-font-size: 12px;
+}
+.chart-title{
+    -fx-font-size: 22px;
+}
+.chart-legend {
+    -fx-font-size: 18px;
+    -fx-background-color:#F4F9FF ;
+}
+.chart .axis-label {
+    -fx-font-size: 14px;
+}
+.chart-plot-background{
+    -fx-background-color: transparent;
+}
+
+.btngraph{
+    -fx-background-color: transparent;
+    -fx-font: 16 px;
+    -fx-font-family: "Times New Roman";
+}
+.btngraph:hover{
+    -fx-border-color: transparent transparent #80BDFF transparent;
+    -fx-border-width: 0 0 3 0;
+    -fx-opacity: 70%;
 }

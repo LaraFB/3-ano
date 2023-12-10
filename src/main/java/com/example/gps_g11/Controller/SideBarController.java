@@ -4,7 +4,7 @@ import com.example.gps_g11.Controller.Envelope.EnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController;
 import com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController;
-import com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaController;
+import com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaGastoDiaController;
 import com.example.gps_g11.Controller.Estatistica.EstastiticasEnvelopeController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
 import com.example.gps_g11.Controller.Home.*;
@@ -51,7 +51,7 @@ public class SideBarController {
         loadFXML("Objetivo/Objetivo.fxml");
     }
 
-    public void onEstatisticas(){ loadFXML("Estatisticas/EstatisticasDespesas.fxml");}
+    public void onEstatisticas(){ loadFXML("Estatisticas/EstatisticasDespesasGastoDia.fxml");}
 
     private void loadFXML(String fxmlFileName) {
         try {
@@ -131,8 +131,8 @@ public class SideBarController {
                         editObjetivoController.setSideBar(this);
                         putBtnActive(btnObjetivos);
                         break;
-                    case "Estatisticas/EstatisticasDespesas.fxml":
-                        EstastiticasDespesaController estastiticasDespesaController = loader.getController();
+                    case "Estatisticas/EstatisticasDespesasGastoDia.fxml":
+                        EstastiticasDespesaGastoDiaController estastiticasDespesaController = loader.getController();
                         estastiticasDespesaController.setSideBar(this);
                         putBtnActive(btnEstatistica);
                         break;
@@ -240,7 +240,7 @@ public class SideBarController {
     }
 
     public void mudaestastiticasEnvelope(){loadFXML("Estatisticas/EstatisticasEnvelope.fxml");}
-    public void mudaestastiticasDespesa(){loadFXML("Estatisticas/EstatisticasDespesas.fxml");}
+    public void mudaestastiticasDespesa(){loadFXML("Estatisticas/EstatisticasDespesasGastoDia.fxml");}
 
 }
 

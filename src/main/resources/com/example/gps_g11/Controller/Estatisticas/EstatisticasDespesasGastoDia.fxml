@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import java.lang.Double?>
-<?import java.lang.String?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaController">
+<!--
+
+        <center>
+        <LineChart fx:id="graphicdespesas" maxHeight="500.0" maxWidth="850.0" minHeight="500.0" minWidth="850.0" prefHeight="500.0" prefWidth="850.0" title="Despesas" BorderPane.alignment="CENTER">
+           <xAxis>
+              <CategoryAxis side="BOTTOM" />
+           </xAxis>
+           <yAxis>
+              <NumberAxis side="LEFT" />
+           </yAxis>
+           <BorderPane.margin>
+              <Insets left="50.0" />
+           </BorderPane.margin>
+        </LineChart>
+        </center>-->
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaGastoDiaController">
    <right>
       <Button fx:id="btnNext" mnemonicParsing="false" onAction="#onNext" prefHeight="100.0" prefWidth="77.0" style="-fx-background-color: #F4F9FF;" styleClass="btn_history" text="&gt;" textFill="#545454" BorderPane.alignment="CENTER">
          <font>
@@ -56,16 +68,27 @@
       </HBox>
    </top>
    <center>
-      <LineChart fx:id="graphicdespesas" maxHeight="500.0" maxWidth="850.0" minHeight="500.0" minWidth="850.0" prefHeight="500.0" prefWidth="850.0" title="Despesas" BorderPane.alignment="CENTER">
-         <xAxis>
-            <CategoryAxis side="BOTTOM" />
-         </xAxis>
-         <yAxis>
-            <NumberAxis side="LEFT" />
-         </yAxis>
-         <BorderPane.margin>
-            <Insets left="50.0" />
-         </BorderPane.margin>
-      </LineChart>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox minHeight="30.0" prefHeight="30.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Button fx:id="despesasdia" mnemonicParsing="false" onAction="#OnPorDia" prefHeight="30.0" styleClass="btngraph" text="Despesas por dia" />
+                  <Button fx:id="despesasgasto" mnemonicParsing="false" onAction="#OnTotalDespesas" prefHeight="30.0" styleClass="btngraph" text="Despesas gastas" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="650.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="850.0" prefWidth="500.0">
+               <children>
+                  <BorderPane fx:id="hboxGraph" prefHeight="200.0" prefWidth="1000.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </center>
+
 </BorderPane>
