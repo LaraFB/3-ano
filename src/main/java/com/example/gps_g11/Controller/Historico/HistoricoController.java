@@ -18,6 +18,7 @@ import javafx.util.Callback;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class HistoricoController implements Initializable {
@@ -45,9 +46,11 @@ public class HistoricoController implements Initializable {
     public ChoiceBox<String> cbOrdenar;
     public TableView<Transacao> tableView;
     public TableColumn<Transacao, String> tcMontante;
+    public TableColumn<Transacao, String> tcSaldo;
     public TableColumn<Transacao, LocalDate> tfData;
-    public TableColumn<Transacao, String> tfEnvelope;
-    public TableColumn<Transacao, String> tfDescricao;
+    public TableColumn<Transacao, String> tcEnvelope;
+    public TableColumn<Transacao, String> tcCategoria;
+    public TableColumn<Transacao, String> tcDescricao;
     public Label lblTotal;
     public Label lblTotalEntradas;
     public Label lblTotalDespesas;
@@ -98,7 +101,6 @@ public class HistoricoController implements Initializable {
 
         cbTransacao.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             atualizarEscolhasOrdenar(newValue);
-
         });
 
         cbOrdenar.valueProperty().addListener((observable,oldValue,newValue) -> {
@@ -171,13 +173,15 @@ public class HistoricoController implements Initializable {
             transacaos.addAll(context.getTransacoesEntrada(categoria,dateInicio,dateFim,ordenacao));
             transacaos.addAll(context.getTransacoesDespesa(categoria,dateInicio,dateFim,ordenacao));
         }
-        tableView.setItems(transacaos);
-        if(ordenacao == null || ordenacao.equals("Sem Filtro")){
-            tableView.getSortOrder().clear();
-            tfData.setSortType(TableColumn.SortType.DESCENDING);
-            tableView.getSortOrder().add(tfData);
-            tableView.sort();
+
+        switch (ordenacao){
+            case NO_FILTER,FILTER_DATA_DECRESCENTE -> transacaos.sort(Comparator.comparing(Transacao::getData).reversed());
+            case FILTER_DATA_CRESCENTE -> transacaos.sort(Comparator.comparing(Transacao::getData));
+            case FILTER_MONTANTE_CRESCENTE -> transacaos.sort(Comparator.comparing(Transacao::getMontante));
+            case FILTER_MONTANTE_DESCRESCENTE -> transacaos.sort(Comparator.comparing(Transacao::getMontante).reversed());
         }
+        tableView.setItems(transacaos);
+
         double entradasTotal = 0,desepsasTotal = 0;
         for (int i = 0; i < transacaos.size(); i++) {
             if(transacaos.get(i) instanceof Entrada){
@@ -196,7 +200,7 @@ public class HistoricoController implements Initializable {
     }
     private void configurarTabela() {
         tfData.setCellValueFactory(new PropertyValueFactory<>("data"));
-        tfDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
         tcMontante.setCellValueFactory(param -> {
             Transacao transacao = param.getValue();
             if (transacao instanceof Entrada) {
@@ -232,16 +236,27 @@ public class HistoricoController implements Initializable {
                 }
             };
         });
-        tfEnvelope.setCellValueFactory(param -> {
+        tcEnvelope.setCellValueFactory(param -> {
             Transacao transacao = param.getValue();
-            if (transacao instanceof Entrada) {
-                return new SimpleStringProperty(((Entrada) transacao).getCategoria().getNome());
-            } else if (transacao instanceof Despesa) {
+             if (transacao instanceof Despesa) {
                 return new SimpleStringProperty(((Despesa) transacao).getCategoria().getNome());
             } else {
                 return new SimpleStringProperty("N/A");
             }
         });
+        tcCategoria.setCellValueFactory(param -> {
+            Transacao transacao = param.getValue();
+            if (transacao instanceof Entrada) {
+                return new SimpleStringProperty(((Entrada) transacao).getCategoria().getNome());
+            } else {
+                return new SimpleStringProperty("N/A");
+            }
+        });
+        tcSaldo.setCellValueFactory(param -> {
+            return new SimpleStringProperty(""+param.getValue().getSaldoAtual());
+        });
+
+
     }
 
 

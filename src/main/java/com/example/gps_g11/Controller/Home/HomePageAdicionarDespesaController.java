@@ -78,7 +78,7 @@ public class HomePageAdicionarDespesaController {
     }
     public void onOk(){
         LocalDate selectedDate = dataPicker.getValue();
-        if(tfValor.getText().isEmpty() || cbEnvelope.getValue().equals("Escolhe") || selectedDate == null || taDescricao.getText().isEmpty() || cbTipoPagamento.getValue().equals("Escolhe")){
+        if(tfValor.getText().isEmpty() || cbEnvelope.getValue() == null || cbEnvelope.getValue().equals("Escolhe") || selectedDate == null || taDescricao.getText().isEmpty() || cbTipoPagamento.getValue().equals("Escolhe")){
             lblError.setVisible(true);
             lblError1.setVisible(true);
             lblError2.setVisible(true);

@@ -136,22 +136,22 @@ public class Context {
         //Subtrai no envelope o valor da montante
         categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
         //Adiciioan adespesa
-        Despesa transacao = new Despesa(descricao,date,montante,categoriaDespesas,isDinheiro);
-        //Adicionar ao historioTransacao a despesa
-        contextData.getHistoricoTransacoes().adicionarTransacaoDespesas(transacao);
-        //Subtrari ao saldo real e ao saldo nos envelopes a montante
-        contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()-montante);
-        contextData.getSaldo().setTotalDespesas(contextData.getSaldo().getTotalDespesas()+montante);
         if(isDinheiro){
             contextData.getSaldo().getBudgetDinheiro().setSaldoReal(contextData.getSaldo().getBudgetDinheiro().getSaldoReal()-montante);
         }else{
             contextData.getSaldo().getBudgetContaBancaria().setSaldoReal(contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()-montante);
         }
+        Despesa transacao = new Despesa(descricao,date,montante,categoriaDespesas,isDinheiro,contextData.getSaldo().getBudgetDinheiro().getSaldoReal()+contextData.getSaldo().getBudgetContaBancaria().getSaldoReal());
+        //Adicionar ao historioTransacao a despesa
+        contextData.getHistoricoTransacoes().adicionarTransacaoDespesas(transacao);
+        //Subtrari ao saldo real e ao saldo nos envelopes a montante
+        contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()-montante);
+        contextData.getSaldo().setTotalDespesas(contextData.getSaldo().getTotalDespesas()+montante);
         return 0;
     }
     public List<Despesa> getTransacoesDespesa() {
         List<Despesa> transacoesDespesa = contextData.getHistoricoTransacoes().getTransacaoDespesas();
-        transacoesDespesa.sort(Comparator.comparing(Despesa::getData).reversed());
+        transacoesDespesa.sort(Comparator.comparing(Despesa::getData));
         return transacoesDespesa;
     }
 
@@ -222,20 +222,20 @@ public class Context {
         if(categoriaEntradas  == null){
             return -2; //Se não existir categoria
         }
-        categoriaEntradas.setValor(categoriaEntradas.getValor()+montante);
-        Entrada entrada = new Entrada(descricao,date,montante,categoriaEntradas,isDinheiro);
-        contextData.getHistoricoTransacoes().adicionarTransacaoEntrada(entrada);
-        contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()+montante);
         if(isDinheiro){
             contextData.getSaldo().getBudgetDinheiro().setSaldoReal(contextData.getSaldo().getBudgetDinheiro().getSaldoReal()+montante);
         }else{
             contextData.getSaldo().getBudgetContaBancaria().setSaldoReal(contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()+ montante);
         }
+        categoriaEntradas.setValor(categoriaEntradas.getValor()+montante);
+        Entrada entrada = new Entrada(descricao,date,montante,categoriaEntradas,isDinheiro,contextData.getSaldo().getBudgetDinheiro().getSaldoReal()+contextData.getSaldo().getBudgetContaBancaria().getSaldoReal());
+        contextData.getHistoricoTransacoes().adicionarTransacaoEntrada(entrada);
+        contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()+montante);
+
         return 0;
     }
     public List<Entrada> getTransacoesEntrada() {
         List<Entrada> transacaoEntradas = contextData.getHistoricoTransacoes().getTransacaoEntradas();
-        transacaoEntradas.sort(Comparator.comparing(Entrada::getData).reversed());
         return transacaoEntradas;
     }
 

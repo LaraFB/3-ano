@@ -275,10 +275,10 @@
               <columns>
                   <TableColumn fx:id="tfData" style="-fx-alignment: CENTER" text="Data" />
                   <TableColumn fx:id="tcMontante" prefWidth="94.0" text="Montante" />
-                  <TableColumn fx:id="tfEnvelope" prefWidth="121.0" text="Envelope" />
-                  <TableColumn fx:id="tfDescricao" prefWidth="140.0" text="Categoria" />
-                  <TableColumn fx:id="tcMontante1" prefWidth="371.0" text="Descrição" />
-                  <TableColumn fx:id="tfDescricao1" prefWidth="113.0" text="Saldo " />
+                  <TableColumn fx:id="tcEnvelope" prefWidth="121.0" text="Envelope" />
+                  <TableColumn fx:id="tcCategoria" prefWidth="140.0" text="Categoria" />
+                  <TableColumn fx:id="tcDescricao" prefWidth="362.0" text="Descrição" />
+                  <TableColumn fx:id="tcSaldo" prefWidth="113.0" text="Saldo " />
               </columns>
                <VBox.margin>
                   <Insets left="40.0" right="40.0" top="40.0" />

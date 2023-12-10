@@ -30,4 +30,14 @@ public class CategoriaDespesas extends CategoriaEntradas implements Serializable
         if(isRecorrente && valorRecorrente != valor)
             valorRecorrente = valor;
     }
+
+    @Override
+    public String toString() {
+        return "CategoriaDespesas{" +
+                "isAberto=" + isAberto +
+                ", isRecorrente=" + isRecorrente +
+                ", valorRecorrente=" + valorRecorrente +
+                ", valor=" + valor +
+                '}';
+    }
 }
