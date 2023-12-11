@@ -56,20 +56,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         context = Context.getInstance();
-        lblSaldoRealCB.setText(formatarNumero(context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
-        lblSaldoRealD.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()) + " €");
-        lblSaldoTotal.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()+context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
-
-        lblSaldoDistribuir.setText(formatarNumero(context.getSaldo().getSaldoPorDistribuir()) + " €");
-        if(context.getSaldo().getSaldoPorDistribuir() > 0)
-            lblSaldoDistribuir.setStyle("-fx-text-fill: red;");
-        else
-            lblSaldoDistribuir.setStyle("-fx-text-fill: black;");
-
-        lblSaldoEnvelopes.setText(formatarNumero(context.getSaldo().getSaldoNosEnvelopes()) + " €");
-        lblTotalDespesas.setText(formatarNumero(context.getSaldo().getTotalDespesas()) + " €");
-
-        updateNotificacoes();
+        updateHomePage();
     }
 
     private String formatarNumero(double numero) {
@@ -138,6 +125,7 @@ public class HomeController implements Initializable {
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
+                            clicaAlerta(context.getListaNotificacoes().get(notificacao));
                             //clicaNotificacaoNOTIFICATION(context.getListaNotificacoes().get(notificacao));
                         }
                     });
@@ -181,6 +169,99 @@ public class HomeController implements Initializable {
             VBoxToDo.getChildren().add(separator);
         }
     }
+
+    private boolean isNumber(String text){
+        try{
+            Double.parseDouble(text);
+            return true;
+        }catch (NumberFormatException e){
+            return false;
+        }
+    }
+
+    private void clicaAlerta(ToDo td) {
+        if(td.getDescription().equals("Ainda tem saldo para distribuir pelos envelopes")){
+            //caso específico
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText(null);
+            alert.setGraphic(null);
+            alert.setTitle("Distribuir saldo");
+
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(20, 150, 10, 10));
+
+            Label labelValor = new Label("Dinheiro a distribuir: ");
+            Label lValor = new Label(String.valueOf(context.getSaldo().getSaldoPorDistribuir()));
+
+            grid.add(labelValor,0,0);
+            grid.add(lValor,1,0);
+
+            ChoiceBox<String> cbEnvelopes = new ChoiceBox<>();
+            for (CategoriaDespesas env: context.getCategoriasListDespesas())
+                cbEnvelopes.getItems().add(env.getNome());
+
+            cbEnvelopes.setStyle("-fx-background-color:  #9FCDFF");
+
+            Label lEnv = new Label("Envelope ");
+
+            grid.add(lEnv,0,1);
+            grid.add(cbEnvelopes,1,1);
+
+            Label lValorEscolhido = new Label("Valor: ");
+            TextField tfValor = new TextField();
+
+            grid.add(lValorEscolhido,0,2);
+            grid.add(tfValor,1,2);
+
+            ButtonType buttonSim = new ButtonType("Adicionar");
+            ButtonType buttonNao = new ButtonType("Cancelar");
+
+            alert.getButtonTypes().setAll(buttonNao);
+            alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+
+
+            tfValor.textProperty().addListener((observable, oldValue, newValue) -> {
+                if(!isNumber(newValue) || newValue.trim().isEmpty() ||
+                        Double.parseDouble(newValue) <= 0 || Double.parseDouble(newValue) >context.getSaldo().getSaldoPorDistribuir()){
+                    alert.getButtonTypes().clear();
+                    alert.getButtonTypes().add(buttonNao);
+                    alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+                }
+                else{
+                    alert.getButtonTypes().clear();
+                    alert.getButtonTypes().add(buttonSim);
+                    alert.getButtonTypes().add(buttonNao);
+
+
+                    alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;");
+                    alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+                }
+            });
+
+            alert.getDialogPane().setContent(grid);
+
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == buttonSim) {
+                double val = Double.parseDouble(tfValor.getText());
+
+                //retira do saldo por distribuir
+                context.getSaldo().setSaldoPorDistribuir(
+                        context.getSaldo().getSaldoPorDistribuir() - val
+                );
+
+                //adiciona ao envelope
+                context.getCategoriaByName(cbEnvelopes.getValue()).setValor(
+                        context.getCategoriaByName(cbEnvelopes.getValue()).getValor() + val
+                );
+
+                updateHomePage();
+            }
+        }
+    }
+
 
     private void clicaNotificacaoREQUEST(ToDo td) {
 
@@ -246,11 +327,10 @@ public class HomeController implements Initializable {
                 context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), LocalDate.now(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
 
                 context.getListaNotificacoes().removeToDo(td);
-                //updateHomePage();
+                updateHomePage();
             }
 
     }
-    
     private void clicaNotificacaoUSER(ToDo td){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
@@ -269,7 +349,7 @@ public class HomeController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim) {
             context.getListaNotificacoes().removeToDo(td);
-            updateNotificacoes();
+            updateHomePage();
         }
     }
 
@@ -290,7 +370,6 @@ public class HomeController implements Initializable {
         grid.add(lDesc,0,0);
         grid.add(tfDesc,0,1);
 
-
         alert.getDialogPane().setContent(grid);
 
         ButtonType buttonSim = new ButtonType("Adicionar");
@@ -302,7 +381,7 @@ public class HomeController implements Initializable {
         if (result.get() == buttonSim){
             if(!tfDesc.getText().isEmpty() && tfDesc.getText().trim() != ""){
                 context.getListaNotificacoes().addToDo(tfDesc.getText(), ToDo.TYPE.USER_GENERATED);
-                updateNotificacoes();
+                updateHomePage();
             }
         }
 
@@ -310,5 +389,22 @@ public class HomeController implements Initializable {
 
     public void onTransaction(ActionEvent actionEvent) {
         sideBarController.transaction();
+    }
+
+    private void updateHomePage(){
+        lblSaldoRealCB.setText(formatarNumero(context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
+        lblSaldoRealD.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()) + " €");
+        lblSaldoTotal.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()+context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
+
+        lblSaldoDistribuir.setText(formatarNumero(context.getSaldo().getSaldoPorDistribuir()) + " €");
+        if(context.getSaldo().getSaldoPorDistribuir() > 0)
+            lblSaldoDistribuir.setStyle("-fx-text-fill: red;");
+        else
+            lblSaldoDistribuir.setStyle("-fx-text-fill: black;");
+
+        lblSaldoEnvelopes.setText(formatarNumero(context.getSaldo().getSaldoNosEnvelopes()) + " €");
+        lblTotalDespesas.setText(formatarNumero(context.getSaldo().getTotalDespesas()) + " €");
+
+        updateNotificacoes();
     }
 }

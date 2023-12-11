@@ -4,17 +4,23 @@ import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ObjetivoController implements Initializable {
@@ -76,6 +82,11 @@ public class ObjetivoController implements Initializable {
             }
 
             PieChart objetivosPie = createPie(context.getListaObjetivos().getObjetivo(j));
+            if(context.getListaObjetivos().getObjetivo(j).isFullfiled()) {
+                int finalJ = j;
+                objetivosPie.setOnMouseClicked(mouseEvent -> eliminar(finalJ));
+                objetivosPie.setTitle("Objetivo cumprido!");
+            }
             currentHBox.getChildren().add(objetivosPie);
 
             i++;
@@ -141,6 +152,29 @@ public class ObjetivoController implements Initializable {
         dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor();
         context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).addToGoal(dinheiro);
         context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(0);
+    }
+
+    private void eliminar(int index){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Objetivo cumprido!");
+        alert.setGraphic(null);
+        alert.setHeaderText("Deseja eliminar este objetivo?");
+
+        alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);
+
+        Optional<ButtonType> a = alert.showAndWait();
+        if(a.get() == ButtonType.YES){
+            try{
+                context.getListaObjetivos().deleteObjetivo(index);
+                context.getListaObjetivos().sort(context.getData());
+                update();
+            }catch (Exception e){
+                Alert err = new Alert(Alert.AlertType.ERROR);
+                err.setTitle("Falha ao eliminar objetivo.");
+                err.setGraphic(null);
+                err.setHeaderText(null);
+            }
+        }
     }
 
 
