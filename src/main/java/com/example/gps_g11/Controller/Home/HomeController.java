@@ -1,6 +1,4 @@
 package com.example.gps_g11.Controller.Home;
-
-import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPanePopUpController;
 import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Context;

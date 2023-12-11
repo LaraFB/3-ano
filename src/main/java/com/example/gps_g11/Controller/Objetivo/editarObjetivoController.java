@@ -63,6 +63,16 @@ public class editarObjetivoController implements Initializable{
         sPrioridade.valueProperty().addListener((observable, oldValue, newValue) -> {
             lPrioridade.setText(newValue.intValue()+"/10");
         });
+        dpData.setDayCellFactory(datePicker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                if(localDate.isBefore(context.getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+        });
     }
 
     public void onBackToObjetivos(){ sideBarController.onObjetivos();}

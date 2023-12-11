@@ -3,13 +3,14 @@ package com.example.gps_g11.Data.ToDos;
 import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
 
+import java.io.Serializable;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ToDoList {
+public class ToDoList implements Serializable {
     private List<ToDo> toDoList;
 
     public ToDoList() {

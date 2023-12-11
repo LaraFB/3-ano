@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Button;
 
@@ -41,14 +42,143 @@ public class EstastiticasEnvelopeController {
     public void initialize(){
         context = Context.getInstance();
         chartUpdate();
-        cbenvelope.setVisible(false);
-        datai.valueProperty().addListener((observable, oldValue, newValue) -> {
+
+        dataf.valueProperty().addListener((observable, oldValue, newValue) -> {
             chartUpdate();
         });
 
         dataf.valueProperty().addListener((observable, oldValue, newValue) -> {
             chartUpdate();
         });
+        cbenvelope.setVisible(false);
+        handlers();
+    }
+
+    private void handlers() {
+        if(isEnvelopes){
+            if (!context.getTransacoesDespesa().isEmpty()) {
+                datai.setValue(context.getTransacoesDespesa().get(0).getData());
+                dataf.setValue(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size() - 1).getData());
+            }
+        }else{
+            if (!context.getTransacoesEntrada().isEmpty()) {
+                datai.setValue(context.getTransacoesEntrada().get(0).getData());
+                dataf.setValue(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size() - 1).getData());
+            }
+        }
+        datai.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                boolean flag = false;
+                if(isEnvelopes){
+                    if (!context.getTransacoesDespesa().isEmpty()) {
+                        dataPickerDespesa(localDate);
+                        flag = true;
+                    } else {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                    if (flag && localDate.isAfter(dataf.getValue())) {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else{
+                    if (!context.getTransacoesEntrada().isEmpty()) {
+                        dataPickerEntrada(localDate);
+                        flag = true;
+                    } else {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                    if (flag && localDate.isAfter(dataf.getValue())) {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }
+
+            }
+            private void dataPickerEntrada(LocalDate localDate) {
+                if(localDate.isBefore(context.getTransacoesEntrada().get(0).getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if(localDate.isAfter(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+
+            }
+            private void dataPickerDespesa(LocalDate localDate) {
+                if (localDate.isBefore(context.getTransacoesDespesa().get(0).getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if (localDate.isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size() - 1).getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+
+        });
+
+        dataf.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                boolean flag = false;
+                if(isEnvelopes){
+                    if (!context.getTransacoesDespesa().isEmpty()) {
+                        dataPickerDespesa(localDate);
+                        flag = true;
+                    } else {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+
+                    if (flag && localDate.isBefore(datai.getValue())) {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else{
+                    if (!context.getTransacoesEntrada().isEmpty()) {
+                        dataPickerEntrada(localDate);
+                        flag = true;
+                    } else {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+
+                    if (flag && localDate.isBefore(datai.getValue())) {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }
+
+            }
+            private void dataPickerEntrada(LocalDate localDate) {
+                if(localDate.isBefore(context.getTransacoesEntrada().get(0).getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if(localDate.isAfter(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+
+            }
+            private void dataPickerDespesa(LocalDate localDate) {
+                if (localDate.isBefore(context.getTransacoesDespesa().get(0).getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if (localDate.isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size() - 1).getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+        });
+
     }
 
     public void chartUpdate() {

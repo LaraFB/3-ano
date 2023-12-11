@@ -50,6 +50,18 @@ public class HomePageAdicionarDespesaController {
         cbTipoPagamento.getItems().addAll( "Débito", "Numerário");
         cbTipoPagamento.setValue("Escolhe");
 
+        dataPicker.setValue(context.getData());
+        dataPicker.setDayCellFactory(datePicker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                    if(localDate.isBefore(context.getData().minusDays(4)) || localDate.isAfter(context.getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+            }
+        });
+
     }
 
     private void tfValorFormat() {

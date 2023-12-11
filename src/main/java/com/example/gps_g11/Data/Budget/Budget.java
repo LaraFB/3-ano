@@ -1,6 +1,8 @@
 package com.example.gps_g11.Data.Budget;
 
-public class Budget {
+import java.io.Serializable;
+
+public class Budget implements Serializable {
     double saldoReal; //Saldo que existe mesmo
     private boolean excedeuSaldo;
 

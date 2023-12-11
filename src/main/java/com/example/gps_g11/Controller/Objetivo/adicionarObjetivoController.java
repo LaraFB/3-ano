@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class adicionarObjetivoController implements Initializable {
@@ -112,6 +113,16 @@ public class adicionarObjetivoController implements Initializable {
 
         sPrioridade.valueProperty().addListener((observable, oldValue, newValue) -> {
             lPrioridade.setText(newValue.intValue()+"/10");
+        });
+        dpData.setDayCellFactory(datePicker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                if(localDate.isBefore(context.getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
         });
     }
 }

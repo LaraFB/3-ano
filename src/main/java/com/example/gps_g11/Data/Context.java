@@ -21,7 +21,7 @@ public class Context {
 
     private Context() {
         contextData = new ContextData();
-        //loadFromFile();
+        loadFromFile();
     }
 
     public static Context getInstance() {
@@ -129,8 +129,14 @@ public class Context {
         if(categoriaDespesas  == null){
             return -2; //Se não existir categoria
         }
-        if(categoriaDespesas.getValor() < montante || montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal() || montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
+        if(categoriaDespesas.getValor() < montante ){
             return -1; //Se não houver saldo suficiente nesse envelope
+        }
+        if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
+            return -1;
+        }
+        if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
+            return -1;
         }
 
         //Subtrai no envelope o valor da montante

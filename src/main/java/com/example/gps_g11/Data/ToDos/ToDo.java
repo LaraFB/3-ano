@@ -1,6 +1,9 @@
 package com.example.gps_g11.Data.ToDos;
 
-public class ToDo {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class ToDo implements Serializable {
     public enum TYPE{
         ALERT, NOTIFICATION, REQUEST, USER_GENERATED
     }

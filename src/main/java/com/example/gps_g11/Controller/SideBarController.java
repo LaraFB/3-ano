@@ -187,7 +187,7 @@ public class SideBarController {
             context.verficacoes(newValue);
         });
 
-        inicializar();
+        //inicializar();
         onHomePage();
     }
 

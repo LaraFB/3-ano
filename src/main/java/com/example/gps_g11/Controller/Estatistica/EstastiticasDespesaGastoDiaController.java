@@ -11,11 +11,8 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import com.example.gps_g11.Controller.SideBarController;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -31,12 +28,13 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
     public DatePicker datai;
     public LineChart<String, Number> graphicdespesas;
     public BorderPane root;
-    public Button despesasdia,despesasgasto;
+    public Button despesasdia, despesasgasto;
     public BorderPane hboxGraph;
     private SideBarController sideBarController;
     private Context context;
 
     private boolean BotaoDia = true;
+
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
@@ -44,26 +42,93 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         context = Context.getInstance();
+        if (!context.getTransacoesDespesa().isEmpty()) {
+            datai.setValue(context.getTransacoesDespesa().get(0).getData());
+            dataf.setValue(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size() - 1).getData());
+        }
+        datai.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                boolean flag = false;
+                if (!context.getTransacoesDespesa().isEmpty()) {
+                    dataPickerDespesa(localDate);
+                    flag = true;
+                } else {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if (flag && localDate.isAfter(dataf.getValue())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+
+            private void dataPickerDespesa(LocalDate localDate) {
+                if (localDate.isBefore(context.getTransacoesDespesa().get(0).getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if (localDate.isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size() - 1).getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+
+        });
+
         datai.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if(BotaoDia)
+            if (BotaoDia)
                 OnPorDia();
             else
                 OnTotalDespesas();
+        });
+
+        dataf.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                boolean flag = false;
+                if (!context.getTransacoesDespesa().isEmpty()) {
+                    dataPickerDespesa(localDate);
+                    flag = true;
+                } else {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+
+                if (flag && localDate.isBefore(datai.getValue())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+
+            private void dataPickerDespesa(LocalDate localDate) {
+                if (localDate.isBefore(context.getTransacoesDespesa().get(0).getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if (localDate.isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size() - 1).getData())) {
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
         });
 
         dataf.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if(BotaoDia)
+            if (BotaoDia)
                 OnPorDia();
             else
                 OnTotalDespesas();
         });
-        cbenvelope.valueProperty().addListener((observable,oldValue,newValue) -> {
-            if(BotaoDia)
+        cbenvelope.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (BotaoDia)
                 OnPorDia();
             else
-                        OnTotalDespesas();
-                });
+                OnTotalDespesas();
+        });
 
+/*
 
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,10),5,true);
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,11),4,true);
@@ -80,6 +145,7 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
         context.adicionarDespesa("Anti-depressivos","asd",LocalDate.of(2023,12,26),4,true);
 
 
+*/
 
 
         ObservableList<String> parametrosCategorias = FXCollections.observableArrayList(
@@ -89,7 +155,9 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
         cbenvelope.setItems(parametrosCategorias);
         cbenvelope.setValue("Sem filtro");
 
+
         OnPorDia();
+
     }
 
     public void onNext() {
@@ -115,7 +183,7 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
     }
 
     public void OnPorDia() {
-        BotaoDia=true;
+        BotaoDia = true;
 
         despesasdia.setStyle(" -fx-border-width: 0 0 3 0;" + "-fx-border-color: transparent transparent #80BDFF transparent;" + "-fx-background-color: #F4F9FF;");
         despesasgasto.setStyle("-fx-background-color: transparent;" + "-fx-font: 16 px;" + "-fx-font-family: \"Times New Roman\";");
@@ -148,16 +216,16 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
         graphicdespesas.setTitle("Despesas por dia");
 
         for (CategoriaDespesas envelope : envelopes) {
-            if(!cbenvelope.getValue().equals("Sem filtro")){
-                 if(!cbenvelope.getValue().equals(envelope.getNome())){
-                     continue;
-                 }
+            if (!cbenvelope.getValue().equals("Sem filtro")) {
+                if (!cbenvelope.getValue().equals(envelope.getNome())) {
+                    continue;
+                }
             }
             XYChart.Series<String, Number> series = new XYChart.Series<>();
             series.setName(envelope.getNome());
 
             LocalDate dataAtual = dateIni;
-            while (!dataAtual.isAfter(dateFim)) {
+            while (dataAtual != null && !dataAtual.isAfter(dateFim)) {
                 double montante = 0;
                 for (Despesa despesa : despesas) {
                     if (despesa.getCategoria().equals(envelope) && despesa.getData().isEqual(dataAtual)) {
@@ -195,7 +263,7 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
     }
 
     public void OnTotalDespesas() {
-        BotaoDia=false;
+        BotaoDia = false;
         despesasgasto.setStyle(" -fx-border-width: 0 0 3 0;\n" + "-fx-border-color: transparent transparent #80BDFF transparent;" + "-fx-background-color: #F4F9FF;");
         despesasdia.setStyle("-fx-background-color: transparent;" + "-fx-font: 16 px;\n" + "-fx-font-family: \"Times New Roman\";");
         DateTimeFormatter FormatoData = DateTimeFormatter.ofPattern("dd/MM/yy");
@@ -225,8 +293,8 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
 
         graphicdespesas.setTitle("Despesas gastas");
         for (CategoriaDespesas envelope : envelopes) {
-            if(!cbenvelope.getValue().equals("Sem filtro")){
-                if(!cbenvelope.getValue().equals(envelope.getNome())){
+            if (!cbenvelope.getValue().equals("Sem filtro")) {
+                if (!cbenvelope.getValue().equals(envelope.getNome())) {
                     continue;
                 }
             }
@@ -235,7 +303,7 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
             double montante = 0;
 
             LocalDate dataAtual = dateIni;
-            while (!dataAtual.isAfter(dateFim)) {
+            while (dataAtual != null && !dataAtual.isAfter(dateFim)) {
                 for (Despesa despesa : despesas) {
                     if (despesa.getCategoria().equals(envelope) && despesa.getData().isEqual(dataAtual)) {
                         montante += despesa.getMontante();
@@ -362,7 +430,7 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
 
         }
     }*/
-    //}
+//}
 
 
 /*
