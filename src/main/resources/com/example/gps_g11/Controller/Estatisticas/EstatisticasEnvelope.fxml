@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Estatistica.EstastiticasEnvelopeController">
@@ -44,7 +45,8 @@
             <ChoiceBox fx:id="cbenvelope" prefHeight="30.0" prefWidth="200.0">
                <HBox.margin>
                   <Insets left="50.0" />
-               </HBox.margin></ChoiceBox>
+               </HBox.margin>
+            </ChoiceBox>
          </children>
          <padding>
             <Insets left="40.0" top="40.0" />
@@ -52,13 +54,26 @@
       </HBox>
    </top>
    <center>
-      <PieChart fx:id="cp_envelope" maxHeight="500.0" maxWidth="850.0" minHeight="500.0" minWidth="850.0" prefHeight="500.0" prefWidth="850.0" title="Envelopes" BorderPane.alignment="CENTER">
-         <padding>
-            <Insets bottom="-10.0" />
-         </padding>
-         <BorderPane.margin>
-            <Insets right="50.0" />
-         </BorderPane.margin>
-      </PieChart>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="envelopes" mnemonicParsing="false" onAction="#onEnvelopes" prefHeight="30.0" styleClass="btngraph" text="Envelopes" />
+                  <Button fx:id="categoriasEntradas" mnemonicParsing="false" onAction="#onCategoriaEntrada" prefHeight="30.0" styleClass="btngraph" text="Categorais de Entrada">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <PieChart fx:id="cp_envelope" maxHeight="500.0" maxWidth="850.0" minHeight="500.0" minWidth="850.0" prefHeight="500.0" prefWidth="850.0" title="Envelopes">
+               <padding>
+                  <Insets bottom="-10.0" />
+               </padding>
+            </PieChart>
+         </children>
+      </VBox>
    </center>
 </BorderPane>

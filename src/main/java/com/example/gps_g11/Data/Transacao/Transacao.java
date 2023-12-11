@@ -9,7 +9,7 @@ public class Transacao implements Serializable {
     protected String descricao;
     protected LocalDate data;
     protected double montante;
-    protected double saldoAtual; //saldo com que ficou depois da trasnaçãi
+    protected double saldoAtual; //saldo com que ficou depois da trasnação
 
     protected boolean isDinheiro;
 

@@ -26,7 +26,7 @@ import java.util.*;
 
 public class EstastiticasDespesaGastoDiaController implements Initializable {
     public Button btnNext;
-    public ChoiceBox<?> cbenvelope;
+    public ChoiceBox<String> cbenvelope;
     public DatePicker dataf;
     public DatePicker datai;
     public LineChart<String, Number> graphicdespesas;
@@ -57,19 +57,37 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
             else
                 OnTotalDespesas();
         });
+        cbenvelope.valueProperty().addListener((observable,oldValue,newValue) -> {
+            if(BotaoDia)
+                OnPorDia();
+            else
+                        OnTotalDespesas();
+                });
+
+
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,10),5,true);
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,11),4,true);
-        context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,13),3,true);
+        context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,13),4,true);
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,14),4,true);
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,14),5,true);
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,16),2,true);
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,18),1,true);
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,21),3,true);
         context.adicionarDespesa("Compras","asd",LocalDate.of(2023,12,25),3,true);
-        context.adicionarDespesa("Propinas","asd",LocalDate.of(2023,12,13),4,true);
+        context.adicionarDespesa("Propinas","asd",LocalDate.of(2023,12,13),3,true);
         context.adicionarDespesa("Propinas","asd",LocalDate.of(2023,12,27),4,true);
         context.adicionarDespesa("Anti-depressivos","asd",LocalDate.of(2023,12,13),4,true);
         context.adicionarDespesa("Anti-depressivos","asd",LocalDate.of(2023,12,26),4,true);
+
+
+
+
+        ObservableList<String> parametrosCategorias = FXCollections.observableArrayList(
+                "Sem filtro"
+        );
+        parametrosCategorias.addAll(context.getCategoriaDespesasNomes());
+        cbenvelope.setItems(parametrosCategorias);
+        cbenvelope.setValue("Sem filtro");
 
         OnPorDia();
     }
@@ -92,13 +110,13 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
         graphicdespesas.setMinWidth(850.0);
         graphicdespesas.setPrefHeight(500.0);
         graphicdespesas.setPrefWidth(850.0);
-        graphicdespesas.setTitle("Despesas por dia");
 
         return graphicdespesas;
     }
 
     public void OnPorDia() {
         BotaoDia=true;
+
         despesasdia.setStyle(" -fx-border-width: 0 0 3 0;" + "-fx-border-color: transparent transparent #80BDFF transparent;" + "-fx-background-color: #F4F9FF;");
         despesasgasto.setStyle("-fx-background-color: transparent;" + "-fx-font: 16 px;" + "-fx-font-family: \"Times New Roman\";");
 
@@ -127,7 +145,14 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
         graphicdespesas.getYAxis().setLabel("Montante\n");
         hboxGraph.setCenter(graphicdespesas);
 
+        graphicdespesas.setTitle("Despesas por dia");
+
         for (CategoriaDespesas envelope : envelopes) {
+            if(!cbenvelope.getValue().equals("Sem filtro")){
+                 if(!cbenvelope.getValue().equals(envelope.getNome())){
+                     continue;
+                 }
+            }
             XYChart.Series<String, Number> series = new XYChart.Series<>();
             series.setName(envelope.getNome());
 
@@ -198,7 +223,13 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
         graphicdespesas.getYAxis().setLabel("Montante\n");
         hboxGraph.setCenter(graphicdespesas);
 
+        graphicdespesas.setTitle("Despesas gastas");
         for (CategoriaDespesas envelope : envelopes) {
+            if(!cbenvelope.getValue().equals("Sem filtro")){
+                if(!cbenvelope.getValue().equals(envelope.getNome())){
+                    continue;
+                }
+            }
             XYChart.Series<String, Number> series = new XYChart.Series<>();
             series.setName(envelope.getNome());
             double montante = 0;

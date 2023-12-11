@@ -13,7 +13,7 @@ public class DespesaTest {
     @Test
     public void testGetCategoria() {
         CategoriaDespesas categoria = new CategoriaDespesas("Salário", "Recebimento mensal", 3000.0,true,false);
-        Despesa despesa = new Despesa("Recebimento salário", LocalDate.now(), 3000.0, categoria, true);
+        Despesa despesa = new Despesa("Recebimento salário", LocalDate.now(), 3000.0, categoria, true,0);
 
         assertEquals(categoria, despesa.getCategoria());
     }
@@ -21,7 +21,7 @@ public class DespesaTest {
     @Test
     public void testInheritedProperties() {
         CategoriaDespesas categoria = new CategoriaDespesas("Salário", "Recebimento mensal", 3000.0,true,false);
-        Entrada entrada = new Entrada("Recebimento salário", LocalDate.now(), 3000.0, categoria, true);
+        Entrada entrada = new Entrada("Recebimento salário", LocalDate.now(), 3000.0, categoria, true,0);
 
         assertEquals("Recebimento salário", entrada.getDescricao());
         assertEquals(LocalDate.now(), entrada.getData());
