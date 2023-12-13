@@ -26,8 +26,8 @@ public class EnvelopeAdicionaDinheiroController {
     public void onBackToEnvelope() {sideBarController.onEnvelope();}
     public void initialize(){
         context = Context.getInstance();
-        //ObservableList<String> nomesEnvelopes = FXCollections.observableArrayList(context.getCategoriaNomes());
-        //cbEnvelope.setItems(nomesEnvelopes);
+        ObservableList<String> nomesEnvelopes = FXCollections.observableArrayList(context.getCategoriaDespesasNomes());
+        cbEnvelope.setItems(nomesEnvelopes);
         tfValorFormat();
         lblError1.setVisible(false);
         lblError2.setVisible(false);

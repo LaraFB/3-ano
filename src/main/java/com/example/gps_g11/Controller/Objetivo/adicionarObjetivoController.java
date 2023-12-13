@@ -114,6 +114,7 @@ public class adicionarObjetivoController implements Initializable {
         sPrioridade.valueProperty().addListener((observable, oldValue, newValue) -> {
             lPrioridade.setText(newValue.intValue()+"/10");
         });
+        dpData.setValue(context.getData());
         dpData.setDayCellFactory(datePicker -> new DateCell(){
             @Override
             public void updateItem(LocalDate localDate, boolean b) {

@@ -244,12 +244,17 @@ public class HomeController implements Initializable {
 
 
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == buttonSim) {
+            if (result.isPresent() && result.get() == buttonSim) {
                 double val = Double.parseDouble(tfValor.getText());
 
                 //retira do saldo por distribuir
                 context.getSaldo().setSaldoPorDistribuir(
                         context.getSaldo().getSaldoPorDistribuir() - val
+                );
+
+                //Adicionar ao dinheiro nos envelopes
+                context.getSaldo().setSaldoNosEnvelopes(
+                        context.getSaldo().getSaldoNosEnvelopes()+val
                 );
 
                 //adiciona ao envelope
@@ -324,7 +329,7 @@ public class HomeController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
 
-                context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), LocalDate.now(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
+                context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
 
                 context.getListaNotificacoes().removeToDo(td);
                 updateHomePage();

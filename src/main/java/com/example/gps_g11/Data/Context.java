@@ -60,10 +60,13 @@ public class Context {
         if(contextData.getSaldo().getSaldoPorDistribuir()-valor < 0){
             return -1; //Não existe saldo para adicionar algo ao envelope
         }
-        contextData.getListaCategorias().adicionarCategoriaDespesas(new CategoriaDespesas(name,descricao,valor,isAberto,isRecorrente));
-        contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
-        contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
-        return 0;
+
+        if(contextData.getListaCategorias().adicionarCategoriaDespesas(new CategoriaDespesas(name,descricao,valor,isAberto,isRecorrente))){
+            contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
+            contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
+            return 0;
+        }
+        return -2;
     }
     public boolean isListaCategoriasDespesasEmpty() {
         return contextData.getListaCategorias().getCategoriasDespesas().isEmpty();

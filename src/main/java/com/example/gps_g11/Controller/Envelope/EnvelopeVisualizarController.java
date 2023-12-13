@@ -83,13 +83,11 @@ public class EnvelopeVisualizarController{
             tbtnEnvelopeAberto.setDisable(false);
             tbtnEnvelopeFechado.setDisable(false);
             btnEliminar.setVisible(false);
-
             //checks antes de guardar:
             tfValor.textProperty().addListener((observable, oldValue, newValue) -> { //listener: p ver alterações ao texto
                 lblError.setText("O valor não pode estar vazio e tem de ser um número!");
                 btnGuardar.setDisable(newValue.trim().isEmpty()); //nao consegue guardar se texto estiver vazio
                 lblError.setVisible(newValue.trim().isEmpty()); //aparece erro tb
-
                 btnGuardar.setDisable(!isNumber(newValue)); //ou se n for numero
                 lblError.setVisible(!isNumber(newValue));
             });
