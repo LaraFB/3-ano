@@ -562,7 +562,7 @@ By the end of the second realease we must have all the user stories with "must" 
 |Recording time spent                                                          | 3            |:---------|
 |Check/update risk plan                                                        | 3            |:---------|
 |Code + Unit tests                                                             | 3            |:---------|
-|Acceptance test run at the end of every US(ATUALIZAR)                         | 3            |:---------|
+|Acceptance test run at the end of every US                                    | 3            |:---------|
 |Code review if you created merge requests from 'dev' into 'qa'                | 3            |:---------|
 |Pipeline                                                                      | 3            |:---------|
 |Run unit tests automatically at every commit                                  | 3            |:---------|
