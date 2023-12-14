@@ -122,7 +122,8 @@ public class Context {
         * Se tiver saldo suficiente vai criar uma despesa
         * Desconta do budget o saldo Real e desconta o saldo nos envelopes, e desconta o valor do envelope
         * */
-
+        if(montante == 0)
+            return -3;
         CategoriaDespesas categoriaDespesas = null;
         for (CategoriaDespesas c : contextData.getListaCategorias().getCategoriasDespesas()) {
             if(c.getNome().equals(nomeCategoria)){
@@ -221,7 +222,8 @@ public class Context {
          * Se existir tenho que verificar se essa categoria tem saldo suficiente nesse envelope
          * Aumenta do budget o saldo Real
          * */
-
+        if (montante ==0)
+            return -3;
         CategoriaEntradas categoriaEntradas = null;
         for (CategoriaEntradas c : contextData.getListaCategorias().getCategoriasEntradas()) {
             if(c.getNome().equals(nomeCategoria)){

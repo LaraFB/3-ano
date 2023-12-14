@@ -87,7 +87,7 @@ public class EnvelopeCriaEnvelopeController {
             lblError1.setVisible(false);
             lblError2.setVisible(false);
             lblError3.setVisible(false);
-            lblError.setText("Saldo adicionao com sucesso");
+            lblError.setText("Envelope adicionado com sucesso");
             lblError.setTextFill(Color.GREEN);
             int res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected());
             if(res == -1){

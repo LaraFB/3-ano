@@ -63,7 +63,7 @@
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox fx:id="venvelope" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Button fx:id="btnCriarEnvelope" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onCriarEnvelope" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Criar&#10;Envelope" textAlignment="CENTER" textFill="#545454">
                            <cursor>
@@ -82,6 +82,24 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="btnCriarCategoria" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onCriarCategoria" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Criar&#10;Categoria" textAlignment="CENTER" textFill="#545454" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Times New Roman" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../image/add_category_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets top="-130.0" />
+                           </VBox.margin>
                         </Button>
                         <Button fx:id="btnGuardaDinheiro" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onGuardaDinheiro" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Adicionar&#10;Dinheiro" textAlignment="CENTER" textFill="#545454">
                            <graphic>

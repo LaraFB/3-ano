@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,10 +13,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageTransactionController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageTransacaoController">
 
     <center>
-        <VBox alignment="CENTER" spacing="20">
+        <VBox alignment="CENTER" spacing="20" style="-fx-font-size: 16px;">
          <Label text="Tranferir dinheiro" textFill="#545454">
             <font>
                <Font name="Times New Roman Bold" size="30.0" />
@@ -25,7 +25,7 @@
                <Insets bottom="30.0" top="-50.0" />
             </VBox.margin>
          </Label>
-             <ChoiceBox fx:id="cb1" maxHeight="40.0" minHeight="40.0" onAction="#change2" prefHeight="40.0" prefWidth="288.0" style="-fx-font-size: 20" />
+             <ChoiceBox fx:id="cb1" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="288.0" />
          <HBox alignment="TOP_CENTER" maxHeight="39.0" prefHeight="23.0" prefWidth="442.0">
             <children>
                <Label text="Valor" textFill="#545454">
@@ -46,13 +46,17 @@
                </Label>
             </children>
          </HBox>
-         <Spinner fx:id="amount" editable="true" minHeight="40.0" prefHeight="40.0" prefWidth="292.0" style="-fx-font-size: 20" />
+         <TextField fx:id="tfValor" maxWidth="294.0" prefHeight="40.0" prefWidth="288.0" promptText="€" style="-fx-background-color: #DEEFFF;">
+            <font>
+               <Font name="Times New Roman" size="16.0" />
+            </font>
+         </TextField>
 
             <Button minHeight="40.0" minWidth="120.0" onAction="#Transferir" styleClass="btn" text="Transferir" textFill="#545454">
             <font>
                <Font name="Times New Roman" size="20.0" />
             </font></Button>
-         <Label alignment="CENTER" prefHeight="29.0" prefWidth="310.0" text="Label" textFill="#ff676a">
+         <Label fx:id="lblError" alignment="CENTER" prefHeight="29.0" prefWidth="310.0" text="Label" textFill="#ff676a">
             <font>
                <Font name="Times New Roman" size="16.0" />
             </font>

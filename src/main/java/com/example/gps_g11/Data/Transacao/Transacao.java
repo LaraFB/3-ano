@@ -26,8 +26,6 @@ public class Transacao implements Serializable {
         return id;
     }
 
-
-
     public String getDescricao() {
         return descricao;
     }
@@ -67,6 +65,4 @@ public class Transacao implements Serializable {
     public void setSaldoAtual(double saldoAtual) {
         this.saldoAtual = saldoAtual;
     }
-
-
 }

@@ -44,9 +44,9 @@ public class HomePageAdicionarSaldoController {
         sideBarController.onHomePage();
     }
 
-    public void onAdicionarBolsa(){
+    /*public void onAdicionarBolsa(){
         sideBarController.adicionarBolsa();
-    }
+    }*/
 
     public void initialize(){
         context = Context.getInstance();
@@ -160,13 +160,15 @@ public class HomePageAdicionarSaldoController {
         cbTipoEntrada.getItems().clear();
         if(context.getCategoriasListEntradas().isEmpty()){
             cbTipoEntrada.setDisable(true);
+            cbTipoEntrada.setValue("Crie um tipo de entrada");
         }else{
             cbTipoEntrada.setDisable(false);
             for (String categoriaEntradasNome : context.getCategoriaEntradasNomes()) {
                 cbTipoEntrada.getItems().add(categoriaEntradasNome);
+                cbTipoEntrada.setValue(categoriaEntradasNome);
             }
         }
-        cbTipoEntrada.setValue("Escolhe");
+      //  cbTipoEntrada.setValue("Escolhe");
     }
 
 

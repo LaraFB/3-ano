@@ -76,10 +76,11 @@ public class EnvelopeVisualizarController{
         tfNome.setDisable(false);
         taDescricao.setDisable(false);
         btnGuardar.setVisible(true);
-        btnGuardar.setDisable(true);
+        btnGuardar.setDisable(false);
         btnEditar.setDisable(true);
+
         if(isEnvelope){
-            tfValor.setDisable(false);
+            tfValor.setDisable(true);
             tbtnEnvelopeAberto.setDisable(false);
             tbtnEnvelopeFechado.setDisable(false);
             btnEliminar.setVisible(false);
@@ -130,10 +131,10 @@ public class EnvelopeVisualizarController{
             if(tbtnEnvelopeAberto.isSelected())categoriaDespesas.setAberto(true);
             else categoriaDespesas.setAberto(false);
             for (CategoriaDespesas categoriasListDespesa : context.getCategoriasListDespesas()) {
-                if(categoriasListDespesa.getNome().equals(tfNome.getText())){
-                    System.out.println("Entrei aquiu");
-                    correct = false;
-                    lblError.setText("Não pode ter o mesmo nome que outro envelope");
+                if(!(categoriasListDespesa.getNome().equals(tfNome.getText()) && categoriasListDespesa.getDescricao().equals(taDescricao.getText()))){
+                        System.out.println("Entrei aquiu");
+                        correct = false;
+                        lblError.setText("Não pode ter o mesmo nome que outro envelope");
                 }
             }
         }else{

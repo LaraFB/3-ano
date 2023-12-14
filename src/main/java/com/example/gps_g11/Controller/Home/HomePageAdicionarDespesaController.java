@@ -114,6 +114,9 @@ public class HomePageAdicionarDespesaController {
             }else if(res == -1){
                 lblError.setText("Não existe tanto dinheiro no envelope");
                 lblError.setTextFill(Color.RED);
+            }else if(res == -3){
+                lblError.setText("Valor inserido inválido");
+                lblError.setTextFill(Color.RED);
             }else{
                 lblError.setText("Despesa efetuada com sucesso");
                 lblError.setTextFill(Color.GREEN);

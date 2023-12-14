@@ -10,6 +10,7 @@ import com.example.gps_g11.Data.Categoria.ListaCategorias;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ContextData implements Serializable {
     private HistoricoTransacoes historicoTransacoes;
@@ -25,7 +26,8 @@ public class ContextData implements Serializable {
         this.historicoTransacoes = new HistoricoTransacoes();
         this.listaObjetivos = new ListaObjetivos();
         this.listaNotificacoes = new ToDoList();
-        date = LocalDate.of(2024,1,1);
+        date= LocalDate.from(LocalDateTime.now());
+        //date = LocalDate.of(2023,12,15);
     }
 
     public HistoricoTransacoes getHistoricoTransacoes() {

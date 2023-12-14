@@ -71,7 +71,7 @@ public class HomeController implements Initializable {
     public void onAdicionarSaldo() {
         sideBarController.adicionarSaldo();
     }
-
+    public void onTransaction() {sideBarController.transacao();}//sideBarController.transaction();
     public void updateNotificacoes(){
         context.getListaNotificacoes().sort();
         VBoxToDo.getChildren().clear();
@@ -119,7 +119,7 @@ public class HomeController implements Initializable {
             lNot.setCursor(Cursor.HAND);
             switch (context.getListaNotificacoes().get(i).getType()){
                 case ALERT -> {
-                    lNot.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                    lNot.setStyle("-fx-text-fill: #ff676a; -fx-font-size: 16px;-fx-font-family: 'Times New Roman';");
 
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -131,7 +131,7 @@ public class HomeController implements Initializable {
                     });
                 }
                 case REQUEST -> {
-                    lNot.setStyle("-fx-font-size: 16px;");
+                    lNot.setStyle("-fx-font-size: 16px;-fx-font-family: 'Times New Roman';");
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
@@ -141,7 +141,7 @@ public class HomeController implements Initializable {
                     });
                 }
                 case NOTIFICATION -> {
-                    lNot.setStyle("-fx-text-fill: #707070; -fx-font-size: 16px;");
+                    lNot.setStyle("-fx-text-fill: #545454; -fx-font-size: 16px;-fx-font-family: 'Times New Roman';");
 
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -152,7 +152,7 @@ public class HomeController implements Initializable {
                     });
                 }
                 case USER_GENERATED -> {
-                    lNot.setStyle("-fx-text-fill: #444444; -fx-font-size: 16px;");
+                    lNot.setStyle("-fx-text-fill: #545454; -fx-font-size: 16px;-fx-font-family: 'Times New Roman';");
 
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -187,6 +187,7 @@ public class HomeController implements Initializable {
             alert.setGraphic(null);
             alert.setTitle("Distribuir saldo");
 
+            alert.getDialogPane().setStyle("-fx-font-family: 'Times New Roman';-fx-background-color: #DEEFFF;-fx-text-fill: #545454;");
             GridPane grid = new GridPane();
             grid.setHgap(10);
             grid.setVgap(10);
@@ -202,7 +203,7 @@ public class HomeController implements Initializable {
             for (CategoriaDespesas env: context.getCategoriasListDespesas())
                 cbEnvelopes.getItems().add(env.getNome());
 
-            cbEnvelopes.setStyle("-fx-background-color:  #9FCDFF");
+            cbEnvelopes.setStyle("-fx-background-color: #9FCDFF;-fx-font-family: 'Times New Roman';");
 
             Label lEnv = new Label("Envelope ");
 
@@ -211,6 +212,7 @@ public class HomeController implements Initializable {
 
             Label lValorEscolhido = new Label("Valor: ");
             TextField tfValor = new TextField();
+            tfValor.setStyle("-fx-background-color: #9FCDFF");
 
             grid.add(lValorEscolhido,0,2);
             grid.add(tfValor,1,2);
@@ -219,7 +221,7 @@ public class HomeController implements Initializable {
             ButtonType buttonNao = new ButtonType("Cancelar");
 
             alert.getButtonTypes().setAll(buttonNao);
-            alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+            alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
 
 
             tfValor.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -227,7 +229,7 @@ public class HomeController implements Initializable {
                         Double.parseDouble(newValue) <= 0 || Double.parseDouble(newValue) >context.getSaldo().getSaldoPorDistribuir()){
                     alert.getButtonTypes().clear();
                     alert.getButtonTypes().add(buttonNao);
-                    alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+                    alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
                 }
                 else{
                     alert.getButtonTypes().clear();
@@ -235,8 +237,8 @@ public class HomeController implements Initializable {
                     alert.getButtonTypes().add(buttonNao);
 
 
-                    alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;");
-                    alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+                    alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+                    alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
                 }
             });
 
@@ -293,7 +295,7 @@ public class HomeController implements Initializable {
             grid.setPadding(new Insets(20, 150, 10, 10));
 
             Label desc = new Label(td.getDescription());
-            desc.setStyle("-fx-font-size: 12px;");
+            desc.setStyle("-fx-font-size: 12px;-fx-font-family: 'Times New Roman';");
 
             Label ldinheiro = new Label("..em dinheiro?");
             CheckBox isDinheiro = new CheckBox();
@@ -323,8 +325,8 @@ public class HomeController implements Initializable {
 
             alert.getButtonTypes().setAll(buttonSim, buttonNao);
 
-        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;");
-        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+            alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+            alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
@@ -348,8 +350,8 @@ public class HomeController implements Initializable {
 
         alert.getButtonTypes().setAll(buttonSim, buttonNao);
 
-        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;");
-        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim) {
@@ -363,6 +365,7 @@ public class HomeController implements Initializable {
         alert.setHeaderText(null);
         alert.setGraphic(null);
         alert.setTitle("Adicionar notificação");
+        alert.getDialogPane().setStyle("-fx-background-color: #DEEFFF;-fx-font-family: 'Times New Roman';-fx-text-fill: #545454;-fx-font: 16px;");
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -371,9 +374,10 @@ public class HomeController implements Initializable {
 
         Label lDesc = new Label("Descrição: ");
         TextField tfDesc = new TextField();
+        tfDesc.setStyle("-fx-background-color: #9FCDFF;-fx-font-family: 'Times New Roman';");
 
         grid.add(lDesc,0,0);
-        grid.add(tfDesc,0,1);
+        grid.add(tfDesc,1,0);
 
         alert.getDialogPane().setContent(grid);
 
@@ -382,6 +386,9 @@ public class HomeController implements Initializable {
 
         alert.getButtonTypes().setAll(buttonSim, buttonNao);
 
+        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
+
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim){
             if(!tfDesc.getText().isEmpty() && tfDesc.getText().trim() != ""){
@@ -389,11 +396,6 @@ public class HomeController implements Initializable {
                 updateHomePage();
             }
         }
-
-    }
-
-    public void onTransaction(ActionEvent actionEvent) {
-        sideBarController.transaction();
     }
 
     private void updateHomePage(){
@@ -403,9 +405,9 @@ public class HomeController implements Initializable {
 
         lblSaldoDistribuir.setText(formatarNumero(context.getSaldo().getSaldoPorDistribuir()) + " €");
         if(context.getSaldo().getSaldoPorDistribuir() > 0)
-            lblSaldoDistribuir.setStyle("-fx-text-fill: red;");
+            lblSaldoDistribuir.setStyle("-fx-text-fill: red;-fx-font-family: 'Times New Roman';");
         else
-            lblSaldoDistribuir.setStyle("-fx-text-fill: black;");
+            lblSaldoDistribuir.setStyle("-fx-text-fill: #545454;-fx-font-family: 'Times New Roman';");
 
         lblSaldoEnvelopes.setText(formatarNumero(context.getSaldo().getSaldoNosEnvelopes()) + " €");
         lblTotalDespesas.setText(formatarNumero(context.getSaldo().getTotalDespesas()) + " €");

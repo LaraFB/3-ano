@@ -60,6 +60,7 @@
 }
 
 .choice-box {
+    -fx-font-family: "Times New Roman";
     -fx-background-color: #DEEFFF;
     -fx-mark-color: #545454;
 }
