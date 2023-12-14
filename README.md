@@ -390,7 +390,7 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - Story Points: 4L+ 1M
 
-- Version: 0.1 
+- Version: 1.1 
 
 - Client analysis: "Todas as tarefas feitas. Objetivo: despesas, entradas, categorias, histórico de despesas. Houve entendimento errado sobre orçamento. Está tudo feito de acordo com a sprint.A pipeline não está a funcionar "
 
@@ -464,7 +464,7 @@ By the end of the second realease we must have all the user stories with "must" 
 
 - Story Points: 1L + 4M + 2S
 
-- Version: 0.1 
+- Version: 1.2 
 
 - Client analysis: Acceptance Criteria not well, não ficaram bem feitos. Some requirements were not understood.
 
@@ -588,7 +588,7 @@ Points:
 
 - Story Points: 2S+1M+2X+2H
 
-- Version: 0.1
+- Version: 2.0
 
 - Client analysis: client feedback
 
