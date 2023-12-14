@@ -554,6 +554,25 @@ By the end of the second realease we must have all the user stories with "must" 
 |Sprint 2 Review meeting report is updated                                     | 3            |:---------|
 |Sprint 2 Retrospective meeting report is updated                              | 3            |:---------|
 |Sprint 3 plan has Sprint Goal and Selected US/Tasks/AC with estimates         | 3            |:---------|
+  
+  
+|          Week 13: sprint 3 apresentation                                     | Points (0-3) | Comments |
+|:-----------------------------------------------------------------------------|:-------------|:---------|
+|Update the boards (Sprint 3 Backlog and PB Backlog)                           | 3            |:---------|
+|Recording time spent                                                          | 3            |:---------|
+|Check/update risk plan (reduzir o risco do professor maybe, ou diminuir os outros riscos)    | 3            |:---------|
+|Code + Unit tests                                                             | 3            |:---------|
+|Acceptance test run at the end of every US(ATUALIZAR)                         | 3            |:---------|
+|Code review if you created merge requests from 'dev' into 'qa'                | -            |:---------|
+|Pipeline                                                                      | 3            |:---------|
+|Run unit tests automatically at every commit                                  | 3            |:---------|
+|Create and run jar                                                            | 3            |:---------|
+|Create and run deployed code                                                  | 3            |:---------|
+|Demo prepared (in qa branch, with data prepared).                             | 3            |:---------|
+|Compare with goal                                                             | 3            |:---------|
+|Collect client feedback                                                       | 3            |:---------|
+|Compare estimates (SP and Hours) vs real Show DoD                             | 3            |:---------|
+|Pequena apresentação do produto final (mostrar funcionalidades) ao cliente mencionando o que foi feito, o que não foi feito, o sucesso ou insucesso                                                            | 3            |:---------|
 
 Points: 
 
