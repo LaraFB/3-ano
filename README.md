@@ -269,9 +269,9 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Risk List
 
 
-- RSK1 – PxI: 3x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-- RSK2 – PxI: 2x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
-- RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
+- RSK1 – PxI: 2x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
+- RSK2 – PxI: 1x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
+- RSK3 – PxI: 3x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
 - RSK4 – PxI: 4x5=20; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
 
 
@@ -560,10 +560,10 @@ By the end of the second realease we must have all the user stories with "must" 
 |:-----------------------------------------------------------------------------|:-------------|:---------|
 |Update the boards (Sprint 3 Backlog and PB Backlog)                           | 3            |:---------|
 |Recording time spent                                                          | 3            |:---------|
-|Check/update risk plan (reduzir o risco do professor maybe, ou diminuir os outros riscos)    | 3            |:---------|
+|Check/update risk plan                                                        | 3            |:---------|
 |Code + Unit tests                                                             | 3            |:---------|
 |Acceptance test run at the end of every US(ATUALIZAR)                         | 3            |:---------|
-|Code review if you created merge requests from 'dev' into 'qa'                | -            |:---------|
+|Code review if you created merge requests from 'dev' into 'qa'                | 3            |:---------|
 |Pipeline                                                                      | 3            |:---------|
 |Run unit tests automatically at every commit                                  | 3            |:---------|
 |Create and run jar                                                            | 3            |:---------|
@@ -572,7 +572,8 @@ By the end of the second realease we must have all the user stories with "must" 
 |Compare with goal                                                             | 3            |:---------|
 |Collect client feedback                                                       | 3            |:---------|
 |Compare estimates (SP and Hours) vs real Show DoD                             | 3            |:---------|
-|Pequena apresentação do produto final (mostrar funcionalidades) ao cliente mencionando o que foi feito, o que não foi feito, o sucesso ou insucesso                                                            | 3            |:---------|
+|Short presentation of the final product (showcasing features) to the client, 
+mentioning what was done, what was not done, success, or failure.              | 3            |:---------|
 
 Points: 
 
