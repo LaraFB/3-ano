@@ -269,9 +269,9 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Risk List
 
 
-- RSK1 – PxI: 2x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-- RSK2 – PxI: 1x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
-- RSK3 – PxI: 3x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
+- RSK1 – PxI: 2x4=8; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
+- RSK2 – PxI: 1x4=4; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
+- RSK3 – PxI: 3x2=6; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
 - RSK4 – PxI: 4x5=20; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
 
 
@@ -572,8 +572,7 @@ By the end of the second realease we must have all the user stories with "must" 
 |Compare with goal                                                             | 3            |:---------|
 |Collect client feedback                                                       | 3            |:---------|
 |Compare estimates (SP and Hours) vs real Show DoD                             | 3            |:---------|
-|Short presentation of the final product (showcasing features) to the client, 
-mentioning what was done, what was not done, success, or failure.              | 3            |:---------|
+|Short presentation of the final product (showcasing features) to the client, what was done, what was not done, success, or failure.              | 3            |:---------|
 
 Points: 
 
