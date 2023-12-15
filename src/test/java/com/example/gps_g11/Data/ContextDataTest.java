@@ -16,7 +16,7 @@ public class ContextDataTest {
         assertNotNull(contextData.getListaCategorias());
         assertNotNull(contextData.getListaObjetivos());
         assertNotNull(contextData.getSaldo());
-        assertEquals(LocalDate.of(2024, 1, 1), contextData.getData());
+        assertEquals(LocalDate.of(2023, 12, 15), contextData.getData());
     }
 
 }
