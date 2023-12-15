@@ -366,7 +366,7 @@ public class Context {
             //guarda historico?
             //reset historico
         }
-        if(datee.getMonth().compareTo(newValue.getMonth()) < 0) {
+        if(datee != null && datee.getMonth().compareTo(newValue.getMonth()) < 0) {
             contextData.getSaldo().setTotalDespesas(0);
             for (CategoriaDespesas categoriasDespesa : contextData.getListaCategorias().getCategoriasDespesas()) {
                 categoriasDespesa.setPago(false);
