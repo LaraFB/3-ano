@@ -1,6 +1,8 @@
 package com.example.gps_g11.Data.Budget;
 
-public class Saldo {
+import java.io.Serializable;
+
+public class Saldo implements Serializable {
     private Budget budgetDinheiro;
     private Budget budgetContaBancaria;
     private double saldoPorDistribuir; //Saldo que falta distribuir pelos envelopes

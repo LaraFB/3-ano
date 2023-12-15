@@ -87,11 +87,15 @@ public class EnvelopeCriaEnvelopeController {
             lblError1.setVisible(false);
             lblError2.setVisible(false);
             lblError3.setVisible(false);
-            lblError.setText("Saldo adicionao com sucesso");
+            lblError.setText("Envelope adicionado com sucesso");
             lblError.setTextFill(Color.GREEN);
-            if(context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected()) == -1){
-                    lblError.setText("Saldo insuficiente");
-                    lblError.setTextFill(Color.RED);
+            int res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected());
+            if(res == -1){
+                lblError.setText("Saldo insuficiente");
+                lblError.setTextFill(Color.RED);
+            }else if(res == -2){
+                lblError.setText("Envelope já existe");
+                lblError.setTextFill(Color.RED);
             }else{
                     resetCampos();
             }

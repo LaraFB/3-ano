@@ -14,7 +14,7 @@ public class HistoricoTransacoesTest {
     public void testAdicionarRemoverTransacaoEntrada() {
         HistoricoTransacoes historico = new HistoricoTransacoes();
         CategoriaEntradas categoria = new CategoriaEntradas("Salário", "Recebimento mensal", 3000.0);
-        Entrada entrada = new Entrada("Recebimento salário", LocalDate.now(), 3000.0, categoria, true);
+        Entrada entrada = new Entrada("Recebimento salário", LocalDate.now(), 3000.0, categoria, true,3000);
 
         historico.adicionarTransacaoEntrada(entrada);
 
@@ -30,7 +30,7 @@ public class HistoricoTransacoesTest {
     public void testAdicionarRemoverTransacaoDespesa() {
         HistoricoTransacoes historico = new HistoricoTransacoes();
         CategoriaDespesas categoria = new CategoriaDespesas("Alimentação", "Despesas com alimentação", 200.0, true,false);
-        Despesa despesa = new Despesa("Compras no mercado", LocalDate.now(), 150.0, categoria, true);
+        Despesa despesa = new Despesa("Compras no mercado", LocalDate.now(), 150.0, categoria, true,50);
 
         historico.adicionarTransacaoDespesas(despesa);
 

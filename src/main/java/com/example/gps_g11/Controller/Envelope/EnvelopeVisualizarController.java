@@ -76,20 +76,19 @@ public class EnvelopeVisualizarController{
         tfNome.setDisable(false);
         taDescricao.setDisable(false);
         btnGuardar.setVisible(true);
-        btnGuardar.setDisable(true);
+        btnGuardar.setDisable(false);
         btnEditar.setDisable(true);
+
         if(isEnvelope){
-            tfValor.setDisable(false);
+            tfValor.setDisable(true);
             tbtnEnvelopeAberto.setDisable(false);
             tbtnEnvelopeFechado.setDisable(false);
             btnEliminar.setVisible(false);
-
             //checks antes de guardar:
             tfValor.textProperty().addListener((observable, oldValue, newValue) -> { //listener: p ver alterações ao texto
                 lblError.setText("O valor não pode estar vazio e tem de ser um número!");
                 btnGuardar.setDisable(newValue.trim().isEmpty()); //nao consegue guardar se texto estiver vazio
                 lblError.setVisible(newValue.trim().isEmpty()); //aparece erro tb
-
                 btnGuardar.setDisable(!isNumber(newValue)); //ou se n for numero
                 lblError.setVisible(!isNumber(newValue));
             });
@@ -132,10 +131,10 @@ public class EnvelopeVisualizarController{
             if(tbtnEnvelopeAberto.isSelected())categoriaDespesas.setAberto(true);
             else categoriaDespesas.setAberto(false);
             for (CategoriaDespesas categoriasListDespesa : context.getCategoriasListDespesas()) {
-                if(categoriasListDespesa.getNome().equals(tfNome.getText())){
-                    System.out.println("Entrei aquiu");
-                    correct = false;
-                    lblError.setText("Não pode ter o mesmo nome que outro envelope");
+                if(!(categoriasListDespesa.getNome().equals(tfNome.getText()) && categoriasListDespesa.getDescricao().equals(taDescricao.getText()))){
+                        System.out.println("Entrei aquiu");
+                        correct = false;
+                        lblError.setText("Não pode ter o mesmo nome que outro envelope");
                 }
             }
         }else{

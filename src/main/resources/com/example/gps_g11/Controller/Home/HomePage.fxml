@@ -24,7 +24,7 @@
                      <children>
                         <Label minHeight="31.0" text="Saldo" textFill="#545454">
                            <font>
-                              <Font name="Times New Roman Bold" size="30.0" />
+                              <Font name="Times New Roman Bold" size="28.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" />
@@ -32,7 +32,7 @@
                         </Label>
                         <HBox alignment="CENTER" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
                            <children>
-                              <Label alignment="CENTER" text="Salo na Conta Bancária: " textFill="#545454">
+                              <Label alignment="CENTER" text="Saldo na Conta Bancária: " textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
@@ -82,9 +82,9 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" layoutX="242.0" layoutY="10.0" prefHeight="190.0" prefWidth="300.0">
                      <children>
-                        <Label minHeight="31.0" text="Budget" textFill="#545454">
+                        <Label minHeight="31.0" prefHeight="45.0" prefWidth="92.0" text="Budget" textFill="#545454">
                            <font>
-                              <Font name="Times New Roman Bold" size="30.0" />
+                              <Font name="Times New Roman Bold" size="28.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" />
@@ -120,7 +120,7 @@
                         </HBox>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="149.0" maxHeight="50.0" maxWidth="420.0" minHeight="50.0" minWidth="440.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #BADBF8;">
                            <children>
-                              <Label alignment="CENTER" text="Total de Despesas: " textFill="#545454">
+                              <Label alignment="CENTER" text="Total de Despesas /mês: " textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="20.0" />
                                  </font>
@@ -173,7 +173,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <ScrollPane prefHeight="334.0" prefWidth="682.0">
+                        <ScrollPane prefHeight="334.0" prefWidth="682.0" style="-fx-background: white;">
                            <content>
                               <VBox fx:id="VBoxToDo" prefHeight="0.0" prefWidth="679.0" spacing="5.0">
                                  <padding>
@@ -186,7 +186,7 @@
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" maxHeight="479.0" maxWidth="282.0" minHeight="479.0" minWidth="282.0" prefHeight="479.0" prefWidth="282.0" spacing="45.0">
                      <children>
-                        <Button fx:id="TransactionBtn" mnemonicParsing="false" onAction="#onTransaction" style="-fx-background-color: orange;" prefHeight="100.0" prefWidth="200.0" styleClass="btn" stylesheets="@../../Style.css" text="Transferir" textFill="#545454">
+                        <Button fx:id="TransactionBtn" mnemonicParsing="false" onAction="#onTransaction" prefHeight="100.0" prefWidth="200.0" styleClass="btn_history" stylesheets="@../../Style.css" text="Transferir" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="25.0" />
                            </font>
@@ -196,7 +196,7 @@
                               <Font name="Times New Roman" size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="AddIncomeBtn" mnemonicParsing="false" onAction="#onAdicionarSaldo" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF9D;" styleClass="btn" stylesheets="@../../Style.css" text="+ Saldo" textFill="#545454">
+                        <Button fx:id="AddIncomeBtn" mnemonicParsing="false" onAction="#onAdicionarSaldo" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF9D;" styleClass="btn" stylesheets="@../../Style.css" text="+ Receita" textFill="#545454">
                            <font>
                               <Font name="Times New Roman" size="25.0" />
                            </font>
@@ -209,7 +209,7 @@
                         <Insets />
                      </HBox.margin>
                      <padding>
-                        <Insets right="30.0" />
+                        <Insets right="80.0" />
                      </padding>
                   </VBox>
                </children>

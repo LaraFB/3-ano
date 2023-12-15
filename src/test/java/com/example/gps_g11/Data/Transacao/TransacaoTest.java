@@ -15,7 +15,7 @@ public class TransacaoTest {
 
     @Test
     public void testGetSetDescricao() {
-        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true,0);
         assertEquals("Compra de alimentos", transacao.getDescricao());
 
         transacao.setDescricao("Pagamento de conta de luz");
@@ -24,7 +24,7 @@ public class TransacaoTest {
 
     @Test
     public void testGetSetData() {
-        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true,0);
         assertEquals(LocalDate.now(), transacao.getData());
 
         LocalDate novaData = LocalDate.of(2023, 12, 31);
@@ -34,7 +34,7 @@ public class TransacaoTest {
 
     @Test
     public void testGetSetMontante() {
-        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true,0);
         assertEquals(50.0, transacao.getMontante(), 0.01);
 
         transacao.setMontante(75.0);
@@ -43,7 +43,7 @@ public class TransacaoTest {
 
     @Test
     public void testIsDinheiro() {
-        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true);
+        Transacao transacao = new Transacao("Compra de alimentos", LocalDate.now(), 50.0, true,0);
         assertTrue(transacao.isDinheiro());
 
         transacao.setDinheiro(false);

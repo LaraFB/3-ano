@@ -268,6 +268,10 @@ By the end of the second realease we must have all the user stories with "must" 
 
 ##### Risk List
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c9f62edc89dcc4e7ef0c243b17575f05eec07c4
 - RSK1 – PxI: 2x4=8; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
 - RSK2 – PxI: 1x4=4; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
 - RSK3 – PxI: 3x2=6; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
@@ -553,6 +557,25 @@ By the end of the second realease we must have all the user stories with "must" 
 |Sprint 2 Review meeting report is updated                                     | 3            |:---------|
 |Sprint 2 Retrospective meeting report is updated                              | 3            |:---------|
 |Sprint 3 plan has Sprint Goal and Selected US/Tasks/AC with estimates         | 3            |:---------|
+  
+  
+|          Week 13: sprint 3 apresentation                                     | Points (0-3) | Comments |
+|:-----------------------------------------------------------------------------|:-------------|:---------|
+|Update the boards (Sprint 3 Backlog and PB Backlog)                           | 3            |:---------|
+|Recording time spent                                                          | 3            |:---------|
+|Check/update risk plan                                                        | 3            |:---------|
+|Code + Unit tests                                                             | 3            |:---------|
+|Acceptance test run at the end of every US                                    | 3            |:---------|
+|Code review if you created merge requests from 'dev' into 'qa'                | 3            |:---------|
+|Pipeline                                                                      | 3            |:---------|
+|Run unit tests automatically at every commit                                  | 3            |:---------|
+|Create and run jar                                                            | 3            |:---------|
+|Create and run deployed code                                                  | 3            |:---------|
+|Demo prepared (in qa branch, with data prepared).                             | 3            |:---------|
+|Compare with goal                                                             | 3            |:---------|
+|Collect client feedback                                                       | 3            |:---------|
+|Compare estimates (SP and Hours) vs real Show DoD                             | 3            |:---------|
+|Short presentation of the final product (showcasing features) to the client, what was done, what was not done, success, or failure.              | 3            |:---------|
 
 Points: 
 

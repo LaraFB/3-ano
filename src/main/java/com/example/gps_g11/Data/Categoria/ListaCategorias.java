@@ -19,10 +19,12 @@ public class ListaCategorias implements Serializable {
         return categoriasDespesas;
     }
 
-    public void adicionarCategoriaDespesas(CategoriaDespesas novaCategoria) {
+    public boolean adicionarCategoriaDespesas(CategoriaDespesas novaCategoria) {
         if (!categoriaDespesasComNomeExistente(novaCategoria.getNome())) {
             categoriasDespesas.add(novaCategoria);
+            return true;
         }
+        return false;
     }
     protected boolean categoriaDespesasComNomeExistente(String nome) {
         for (CategoriaDespesas categoria : categoriasDespesas) {

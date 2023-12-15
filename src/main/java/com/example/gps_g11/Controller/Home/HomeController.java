@@ -1,6 +1,4 @@
 package com.example.gps_g11.Controller.Home;
-
-import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPanePopUpController;
 import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Context;
@@ -58,20 +56,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         context = Context.getInstance();
-        lblSaldoRealCB.setText(formatarNumero(context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
-        lblSaldoRealD.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()) + " €");
-        lblSaldoTotal.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()+context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
-
-        lblSaldoDistribuir.setText(formatarNumero(context.getSaldo().getSaldoPorDistribuir()) + " €");
-        if(context.getSaldo().getSaldoPorDistribuir() > 0)
-            lblSaldoDistribuir.setStyle("-fx-text-fill: red;");
-        else
-            lblSaldoDistribuir.setStyle("-fx-text-fill: black;");
-
-        lblSaldoEnvelopes.setText(formatarNumero(context.getSaldo().getSaldoNosEnvelopes()) + " €");
-        lblTotalDespesas.setText(formatarNumero(context.getSaldo().getTotalDespesas()) + " €");
-
-        updateNotificacoes();
+        updateHomePage();
     }
 
     private String formatarNumero(double numero) {
@@ -86,7 +71,7 @@ public class HomeController implements Initializable {
     public void onAdicionarSaldo() {
         sideBarController.adicionarSaldo();
     }
-
+    public void onTransaction() {sideBarController.transacao();}//sideBarController.transaction();
     public void updateNotificacoes(){
         context.getListaNotificacoes().sort();
         VBoxToDo.getChildren().clear();
@@ -134,18 +119,19 @@ public class HomeController implements Initializable {
             lNot.setCursor(Cursor.HAND);
             switch (context.getListaNotificacoes().get(i).getType()){
                 case ALERT -> {
-                    lNot.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                    lNot.setStyle("-fx-text-fill: #ff676a; -fx-font-size: 16px;-fx-font-family: 'Times New Roman';");
 
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
+                            clicaAlerta(context.getListaNotificacoes().get(notificacao));
                             //clicaNotificacaoNOTIFICATION(context.getListaNotificacoes().get(notificacao));
                         }
                     });
                 }
                 case REQUEST -> {
-                    lNot.setStyle("-fx-font-size: 16px;");
+                    lNot.setStyle("-fx-font-size: 16px;-fx-font-family: 'Times New Roman';");
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
@@ -155,7 +141,7 @@ public class HomeController implements Initializable {
                     });
                 }
                 case NOTIFICATION -> {
-                    lNot.setStyle("-fx-text-fill: #707070; -fx-font-size: 16px;");
+                    lNot.setStyle("-fx-text-fill: #545454; -fx-font-size: 16px;-fx-font-family: 'Times New Roman';");
 
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -166,7 +152,7 @@ public class HomeController implements Initializable {
                     });
                 }
                 case USER_GENERATED -> {
-                    lNot.setStyle("-fx-text-fill: #444444; -fx-font-size: 16px;");
+                    lNot.setStyle("-fx-text-fill: #545454; -fx-font-size: 16px;-fx-font-family: 'Times New Roman';");
 
                     int notificacao  = i;
                     lNot.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -184,8 +170,107 @@ public class HomeController implements Initializable {
         }
     }
 
-    private void clicaNotificacaoREQUEST(ToDo td) {
+    private boolean isNumber(String text){
+        try{
+            Double.parseDouble(text);
+            return true;
+        }catch (NumberFormatException e){
+            return false;
+        }
+    }
 
+    private void clicaAlerta(ToDo td) {
+        if(td.getDescription().equals("Ainda tem saldo para distribuir pelos envelopes")){
+            //caso específico
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText(null);
+            alert.setGraphic(null);
+            alert.setTitle("Distribuir saldo");
+
+            alert.getDialogPane().setStyle("-fx-font-family: 'Times New Roman';-fx-background-color: #DEEFFF;-fx-text-fill: #545454;");
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(20, 150, 10, 10));
+
+            Label labelValor = new Label("Dinheiro a distribuir: ");
+            Label lValor = new Label(String.valueOf(context.getSaldo().getSaldoPorDistribuir()));
+
+            grid.add(labelValor,0,0);
+            grid.add(lValor,1,0);
+
+            ChoiceBox<String> cbEnvelopes = new ChoiceBox<>();
+            for (CategoriaDespesas env: context.getCategoriasListDespesas())
+                cbEnvelopes.getItems().add(env.getNome());
+
+            cbEnvelopes.setStyle("-fx-background-color: #9FCDFF;-fx-font-family: 'Times New Roman';");
+
+            Label lEnv = new Label("Envelope ");
+
+            grid.add(lEnv,0,1);
+            grid.add(cbEnvelopes,1,1);
+
+            Label lValorEscolhido = new Label("Valor: ");
+            TextField tfValor = new TextField();
+            tfValor.setStyle("-fx-background-color: #9FCDFF");
+
+            grid.add(lValorEscolhido,0,2);
+            grid.add(tfValor,1,2);
+
+            ButtonType buttonSim = new ButtonType("Adicionar");
+            ButtonType buttonNao = new ButtonType("Cancelar");
+
+            alert.getButtonTypes().setAll(buttonNao);
+            alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
+
+
+            tfValor.textProperty().addListener((observable, oldValue, newValue) -> {
+                if(!isNumber(newValue) || newValue.trim().isEmpty() ||
+                        Double.parseDouble(newValue) <= 0 || Double.parseDouble(newValue) >context.getSaldo().getSaldoPorDistribuir()){
+                    alert.getButtonTypes().clear();
+                    alert.getButtonTypes().add(buttonNao);
+                    alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
+                }
+                else{
+                    alert.getButtonTypes().clear();
+                    alert.getButtonTypes().add(buttonSim);
+                    alert.getButtonTypes().add(buttonNao);
+
+
+                    alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+                    alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
+                }
+            });
+
+            alert.getDialogPane().setContent(grid);
+
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == buttonSim) {
+                double val = Double.parseDouble(tfValor.getText());
+
+                //retira do saldo por distribuir
+                context.getSaldo().setSaldoPorDistribuir(
+                        context.getSaldo().getSaldoPorDistribuir() - val
+                );
+
+                //Adicionar ao dinheiro nos envelopes
+                context.getSaldo().setSaldoNosEnvelopes(
+                        context.getSaldo().getSaldoNosEnvelopes()+val
+                );
+
+                //adiciona ao envelope
+                context.getCategoriaByName(cbEnvelopes.getValue()).setValor(
+                        context.getCategoriaByName(cbEnvelopes.getValue()).getValor() + val
+                );
+
+                updateHomePage();
+            }
+        }
+    }
+
+
+    private void clicaNotificacaoREQUEST(ToDo td) {
         if(context.getSaldo().getBudgetContaBancaria().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()
         && context.getSaldo().getBudgetDinheiro().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -198,6 +283,7 @@ public class HomeController implements Initializable {
             return;
         }
 
+        System.out.println(td.getValor());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText(null);
             alert.setGraphic(null);
@@ -209,7 +295,7 @@ public class HomeController implements Initializable {
             grid.setPadding(new Insets(20, 150, 10, 10));
 
             Label desc = new Label(td.getDescription());
-            desc.setStyle("-fx-font-size: 12px;");
+            desc.setStyle("-fx-font-size: 12px;-fx-font-family: 'Times New Roman';");
 
             Label ldinheiro = new Label("..em dinheiro?");
             CheckBox isDinheiro = new CheckBox();
@@ -239,39 +325,61 @@ public class HomeController implements Initializable {
 
             alert.getButtonTypes().setAll(buttonSim, buttonNao);
 
-        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;");
-        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+            alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+            alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
+
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
-
-                context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), LocalDate.now(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
-
+                if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+                    context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), td.getValor(), isDinheiro.isSelected());
+                }else{
+                    context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
+                }
                 context.getListaNotificacoes().removeToDo(td);
-                //updateHomePage();
+                updateHomePage();
             }
-
     }
-    
+
+
     private void clicaNotificacaoUSER(ToDo td){
+        System.out.println(td.getValor());
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
         alert.setGraphic(null);
         alert.setTitle("Confirmação");
         alert.setContentText("Deseja eliminar esta notificação?");
-
+        if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+            alert.setContentText("Deseja usar o dinheiro do objetivo?");
+        }
         ButtonType buttonSim = new ButtonType("Sim");
         ButtonType buttonNao = new ButtonType("Não");
 
         alert.getButtonTypes().setAll(buttonSim, buttonNao);
 
-        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;");
-        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;");
+        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim) {
             context.getListaNotificacoes().removeToDo(td);
-            updateNotificacoes();
+            if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+                for (CategoriaDespesas categoriasListDespesa : context.getCategoriasListDespesas()) {
+                    if(categoriasListDespesa.getNome().equals(td.getEnvelope())){
+                        categoriasListDespesa.setValor(categoriasListDespesa.getValor()-td.getValor());
+                        String texto = td.getDescription();
+                        int indiceTraco = texto.indexOf("-");
+                        String resultado = null;
+                        if (indiceTraco != -1) {
+                            resultado = texto.substring(indiceTraco + 1).trim();
+                            System.out.println(resultado);
+                        }
+                        System.out.println(td.getValor());
+                        context.getListaNotificacoes().addToDo("Já pagou o objetivo - " + resultado, ToDo.TYPE.REQUEST,td.getEnvelope(),td.getValor());
+                    }
+                }
+            }
+            updateHomePage();
         }
     }
 
@@ -280,6 +388,7 @@ public class HomeController implements Initializable {
         alert.setHeaderText(null);
         alert.setGraphic(null);
         alert.setTitle("Adicionar notificação");
+        alert.getDialogPane().setStyle("-fx-background-color: #DEEFFF;-fx-font-family: 'Times New Roman';-fx-text-fill: #545454;-fx-font: 16px;");
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -288,10 +397,10 @@ public class HomeController implements Initializable {
 
         Label lDesc = new Label("Descrição: ");
         TextField tfDesc = new TextField();
+        tfDesc.setStyle("-fx-background-color: #9FCDFF;-fx-font-family: 'Times New Roman';");
 
         grid.add(lDesc,0,0);
-        grid.add(tfDesc,0,1);
-
+        grid.add(tfDesc,1,0);
 
         alert.getDialogPane().setContent(grid);
 
@@ -300,17 +409,32 @@ public class HomeController implements Initializable {
 
         alert.getButtonTypes().setAll(buttonSim, buttonNao);
 
+        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
+
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim){
             if(!tfDesc.getText().isEmpty() && tfDesc.getText().trim() != ""){
                 context.getListaNotificacoes().addToDo(tfDesc.getText(), ToDo.TYPE.USER_GENERATED);
-                updateNotificacoes();
+                updateHomePage();
             }
         }
-
     }
 
-    public void onTransaction(ActionEvent actionEvent) {
-        sideBarController.transaction();
+    private void updateHomePage(){
+        lblSaldoRealCB.setText(formatarNumero(context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
+        lblSaldoRealD.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()) + " €");
+        lblSaldoTotal.setText(formatarNumero(context.getSaldo().getBudgetDinheiro().getSaldoReal()+context.getSaldo().getBudgetContaBancaria().getSaldoReal()) + " €");
+
+        lblSaldoDistribuir.setText(formatarNumero(context.getSaldo().getSaldoPorDistribuir()) + " €");
+        if(context.getSaldo().getSaldoPorDistribuir() > 0)
+            lblSaldoDistribuir.setStyle("-fx-text-fill: red;-fx-font-family: 'Times New Roman';");
+        else
+            lblSaldoDistribuir.setStyle("-fx-text-fill: #545454;-fx-font-family: 'Times New Roman';");
+
+        lblSaldoEnvelopes.setText(formatarNumero(context.getSaldo().getSaldoNosEnvelopes()) + " €");
+        lblTotalDespesas.setText(formatarNumero(context.getSaldo().getTotalDespesas()) + " €");
+
+        updateNotificacoes();
     }
 }

@@ -11,15 +11,16 @@ public class EntradaTest {
     @Test
     public void testGetCategoria() {
         CategoriaEntradas categoria = new CategoriaEntradas("Salário", "Recebimento mensal", 3000.0);
-        Entrada entrada = new Entrada("Recebimento salário", LocalDate.now(), 3000.0, categoria, true);
+        Entrada entrada = new Entrada("Recebimento salário", LocalDate.now(), 3000.0, categoria, true,3000.0);
 
         assertEquals(categoria, entrada.getCategoria());
+        assertEquals(entrada.getSaldoAtual(),3000.0);
     }
 
     @Test
     public void testInheritedProperties() {
         CategoriaEntradas categoria = new CategoriaEntradas("Salário", "Recebimento mensal", 3000.0);
-        Entrada entrada = new Entrada("Recebimento salário", LocalDate.now(), 3000.0, categoria, true);
+        Entrada entrada = new Entrada("Recebimento salário", LocalDate.now(), 3000.0, categoria, true,3000);
 
         assertEquals("Recebimento salário", entrada.getDescricao());
         assertEquals(LocalDate.now(), entrada.getData());

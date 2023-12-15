@@ -18,6 +18,7 @@ import javafx.util.Callback;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class HistoricoController implements Initializable {
@@ -25,9 +26,6 @@ public class HistoricoController implements Initializable {
     private static final String FILTER_ENTRADAS = "Entradas";
     private static final String FILTER_DESPESAS = "Despesas";
 
-
-    private static final String FILTER_DATA = "Data";
-    private static final String FILTER_CATEGORIA = "Categoria";
 
     private static final String FILTER_DATA_CRESCENTE = "Data por ordem crescente";
     private static final String FILTER_DATA_DECRESCENTE = "Data por ordem decrescente";
@@ -45,9 +43,11 @@ public class HistoricoController implements Initializable {
     public ChoiceBox<String> cbOrdenar;
     public TableView<Transacao> tableView;
     public TableColumn<Transacao, String> tcMontante;
+    public TableColumn<Transacao, String> tcSaldo;
     public TableColumn<Transacao, LocalDate> tfData;
-    public TableColumn<Transacao, String> tfEnvelope;
-    public TableColumn<Transacao, String> tfDescricao;
+    public TableColumn<Transacao, String> tcEnvelope;
+    public TableColumn<Transacao, String> tcCategoria;
+    public TableColumn<Transacao, String> tcDescricao;
     public Label lblTotal;
     public Label lblTotalEntradas;
     public Label lblTotalDespesas;
@@ -60,8 +60,31 @@ public class HistoricoController implements Initializable {
         context = Context.getInstance();
         configurarTabela();
         configurarChoiceBoxs();
+        inicializarDataPicker();
         configurarListeners();
         update();
+    }
+
+    private void inicializarDataPicker() {
+        if(!context.getTransacoesDespesa().isEmpty() && !context.getTransacoesEntrada().isEmpty()){
+            if(context.getTransacoesEntrada().get(0).getData().isBefore(context.getTransacoesDespesa().get(0).getData())){
+                dpDateInicio.setValue(context.getTransacoesEntrada().get(0).getData());
+            }else{
+                dpDateInicio.setValue(context.getTransacoesDespesa().get(0).getData());
+            }
+            if(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData().isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData())){
+                dpDateFim.setValue(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData());
+            }else{
+                dpDateFim.setValue(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData());
+            }
+        }else if(!context.getTransacoesDespesa().isEmpty()){
+            dpDateInicio.setValue(context.getTransacoesDespesa().get(0).getData());
+            dpDateFim.setValue(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData());
+        }else if(!context.getTransacoesEntrada().isEmpty()){
+            dpDateInicio.setValue(context.getTransacoesEntrada().get(0).getData());
+            dpDateFim.setValue(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData());
+        }
+
     }
 
     private void configurarChoiceBoxs() {
@@ -98,20 +121,201 @@ public class HistoricoController implements Initializable {
 
         cbTransacao.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             atualizarEscolhasOrdenar(newValue);
-
         });
 
         cbOrdenar.valueProperty().addListener((observable,oldValue,newValue) -> {
             update();
         });
+
+
+        dpDateInicio.setDayCellFactory(picker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                boolean flag = false;
+                if(cbTransacao.getValue().equals(FILTER_ENTRADAS)){
+                    if(!context.getTransacoesEntrada().isEmpty()){
+                        dataPickerEntrada(localDate);
+                        flag = true;
+                    }else{
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else if(cbTransacao.getValue().equals(FILTER_DESPESAS)){
+                    if(!context.getTransacoesDespesa().isEmpty()) {
+                        dataPickerDespesa(localDate);
+                        flag = true;
+                    }else{
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else{
+                    if(!context.getTransacoesDespesa().isEmpty() && !context.getTransacoesEntrada().isEmpty()){
+                        dataPickerBoth(localDate);
+                        flag = true;
+                    }else if(!context.getTransacoesDespesa().isEmpty()){
+                        dataPickerDespesa(localDate);
+                        flag = true;
+                    }else if(!context.getTransacoesEntrada().isEmpty()){
+                        dataPickerEntrada(localDate);
+                        flag = true;
+                    }else{
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }
+                if(flag && localDate.isAfter(dpDateFim.getValue())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+
+            private void dataPickerEntrada(LocalDate localDate) {
+                    if(localDate.isBefore(context.getTransacoesEntrada().get(0).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                    if(localDate.isAfter(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+
+            }
+            private void dataPickerDespesa(LocalDate localDate) {
+                    if(localDate.isBefore(context.getTransacoesDespesa().get(0).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                    if(localDate.isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+            }
+            private void dataPickerBoth(LocalDate localDate){
+                if(context.getTransacoesDespesa().get(0).getData().isBefore(context.getTransacoesEntrada().get(0).getData())){
+                    if(localDate.isBefore(context.getTransacoesDespesa().get(0).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else{
+                    if(localDate.isBefore(context.getTransacoesEntrada().get(0).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }
+                if(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData().isAfter(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData())){
+                    if(localDate.isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else{
+                    if(localDate.isAfter(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }
+            }
+        });
+
         dpDateInicio.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
             update();
         }));
+
+        dpDateFim.setDayCellFactory(picker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                boolean flag = false;
+                if(cbTransacao.getValue().equals(FILTER_ENTRADAS)){
+                    if(!context.getTransacoesEntrada().isEmpty()){
+                        dataPickerEntrada(localDate);
+                        flag = true;
+                    }else{
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else if(cbTransacao.getValue().equals(FILTER_DESPESAS)){
+                    if(!context.getTransacoesDespesa().isEmpty()) {
+                        dataPickerDespesa(localDate);
+                        flag = true;
+                    }else{
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else{
+                    if(!context.getTransacoesDespesa().isEmpty() && !context.getTransacoesEntrada().isEmpty()){
+                        dataPickerBoth(localDate);
+                        flag = true;
+                    }else if(!context.getTransacoesDespesa().isEmpty()){
+                        dataPickerDespesa(localDate);
+                        flag = true;
+                    }else if(!context.getTransacoesEntrada().isEmpty()){
+                        dataPickerEntrada(localDate);
+                        flag = true;
+                    }else{
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }
+                if(flag && localDate.isBefore(dpDateInicio.getValue())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+
+            private void dataPickerEntrada(LocalDate localDate) {
+                if(localDate.isBefore(context.getTransacoesEntrada().get(0).getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if(localDate.isAfter(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+
+            }
+            private void dataPickerDespesa(LocalDate localDate) {
+                if(localDate.isBefore(context.getTransacoesDespesa().get(0).getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if(localDate.isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+            private void dataPickerBoth(LocalDate localDate){
+                if(context.getTransacoesDespesa().get(0).getData().isBefore(context.getTransacoesEntrada().get(0).getData())){
+                    if(localDate.isBefore(context.getTransacoesDespesa().get(0).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else{
+                    if(localDate.isBefore(context.getTransacoesEntrada().get(0).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }
+                if(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData().isAfter(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData())){
+                    if(localDate.isAfter(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }else{
+                    if(localDate.isAfter(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+                }
+            }
+        });
         dpDateFim.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
             update();
         }));
 
     }
+
+
     private void atualizarEscolhasOrdenar(String tipoTransacao) {
         ObservableList<String> parametrosCategorias = FXCollections.observableArrayList(
                 NO_FILTER
@@ -171,13 +375,15 @@ public class HistoricoController implements Initializable {
             transacaos.addAll(context.getTransacoesEntrada(categoria,dateInicio,dateFim,ordenacao));
             transacaos.addAll(context.getTransacoesDespesa(categoria,dateInicio,dateFim,ordenacao));
         }
-        tableView.setItems(transacaos);
-        if(ordenacao == null || ordenacao.equals("Sem Filtro")){
-            tableView.getSortOrder().clear();
-            tfData.setSortType(TableColumn.SortType.DESCENDING);
-            tableView.getSortOrder().add(tfData);
-            tableView.sort();
+
+        switch (ordenacao){
+            case NO_FILTER,FILTER_DATA_DECRESCENTE -> transacaos.sort(Comparator.comparing(Transacao::getData).reversed());
+            case FILTER_DATA_CRESCENTE -> transacaos.sort(Comparator.comparing(Transacao::getData));
+            case FILTER_MONTANTE_CRESCENTE -> transacaos.sort(Comparator.comparing(Transacao::getMontante));
+            case FILTER_MONTANTE_DESCRESCENTE -> transacaos.sort(Comparator.comparing(Transacao::getMontante).reversed());
         }
+        tableView.setItems(transacaos);
+
         double entradasTotal = 0,desepsasTotal = 0;
         for (int i = 0; i < transacaos.size(); i++) {
             if(transacaos.get(i) instanceof Entrada){
@@ -196,7 +402,7 @@ public class HistoricoController implements Initializable {
     }
     private void configurarTabela() {
         tfData.setCellValueFactory(new PropertyValueFactory<>("data"));
-        tfDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
         tcMontante.setCellValueFactory(param -> {
             Transacao transacao = param.getValue();
             if (transacao instanceof Entrada) {
@@ -232,16 +438,27 @@ public class HistoricoController implements Initializable {
                 }
             };
         });
-        tfEnvelope.setCellValueFactory(param -> {
+        tcEnvelope.setCellValueFactory(param -> {
             Transacao transacao = param.getValue();
-            if (transacao instanceof Entrada) {
-                return new SimpleStringProperty(((Entrada) transacao).getCategoria().getNome());
-            } else if (transacao instanceof Despesa) {
+             if (transacao instanceof Despesa) {
                 return new SimpleStringProperty(((Despesa) transacao).getCategoria().getNome());
             } else {
                 return new SimpleStringProperty("N/A");
             }
         });
+        tcCategoria.setCellValueFactory(param -> {
+            Transacao transacao = param.getValue();
+            if (transacao instanceof Entrada) {
+                return new SimpleStringProperty(((Entrada) transacao).getCategoria().getNome());
+            } else {
+                return new SimpleStringProperty("N/A");
+            }
+        });
+        tcSaldo.setCellValueFactory(param -> {
+            return new SimpleStringProperty(""+param.getValue().getSaldoAtual());
+        });
+
+
     }
 
 

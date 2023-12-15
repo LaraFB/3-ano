@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -134,7 +134,7 @@
                         </TextField>
                         <ToggleButton fx:id="tbtnEnvelopeFechado" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Fechado" textFill="#545454">
                            <VBox.margin>
-                              <Insets left="50.0" top="60.0" />
+                              <Insets left="50.0" top="50.0" />
                            </VBox.margin>
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -155,7 +155,7 @@
                         </ToggleButton>
                         <ToggleButton fx:id="tbtnEnvelopeAberto" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Aberto" textFill="#545454">
                            <VBox.margin>
-                              <Insets left="50.0" top="20.0" />
+                              <Insets left="50.0" top="30.0" />
                            </VBox.margin>
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -185,7 +185,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="checkRecorrente" mnemonicParsing="false" />
+                  <CheckBox fx:id="checkRecorrente" mnemonicParsing="false" stylesheets="@../../../../../UI_vbackup/src/main/resources/com/example/gps_g11/Style.css" />
                </children>
                <VBox.margin>
                   <Insets left="200.0" right="200.0" />
@@ -193,9 +193,9 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="lblError" prefHeight="20.0" prefWidth="280.0" text="Mensagem de Erro" textAlignment="CENTER" textFill="#ff676a">
+                  <Label fx:id="lblError" alignment="CENTER" prefHeight="20.0" prefWidth="371.0" text="Mensagem de Erro" textAlignment="CENTER" textFill="#ff676a">
                      <HBox.margin>
-                        <Insets right="200.0" />
+                        <Insets right="120.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Times New Roman" size="18.0" />
@@ -233,7 +233,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
-            <Font name="Times New Roman" size="14.0" />
+            <Font name="Times New Roman" size="16.0" />
          </font>
       </Button>
    </top>
