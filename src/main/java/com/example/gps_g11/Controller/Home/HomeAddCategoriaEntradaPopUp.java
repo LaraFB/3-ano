@@ -39,7 +39,7 @@ public class HomeAddCategoriaEntradaPopUp {
     public void onAddBudget() {
         if(tfNome.getText().isEmpty() || taDescricao.getText().isEmpty()){
             LError.setVisible(true);
-            LError.setText("Preenche o campo com o valor");
+            LError.setText("Preenche todos os campos");
         }else{
             if(context.adicionarCategoriaEntrada(tfNome.getText(),taDescricao.getText()) == 1){
                 onClose();

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -78,7 +78,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <ChoiceBox id="MenuItem" fx:id="cbEnvelope" prefHeight="30.0" prefWidth="250.0" stylesheets="@../../Style.css">
+                  <ChoiceBox id="MenuItem" fx:id="cbEnvelope" prefHeight="30.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -96,7 +96,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                      <children>
-                        <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="40.0" prefWidth="100.0" styleClass="btn" stylesheets="@../../Style.css" text="OK" textFill="#545454">
+                        <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="40.0" prefWidth="100.0" styleClass="btn" text="OK" textFill="#545454">
                            <HBox.margin>
                               <Insets left="150.0" />
                            </HBox.margin>
@@ -118,7 +118,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" stylesheets="@../../Style.css" text="Voltar ao Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
+      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" text="Voltar ao Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets left="5.0" top="5.0" />
          </BorderPane.margin>

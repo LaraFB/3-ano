@@ -49,22 +49,6 @@ public class ToDoList implements Serializable {
             return false;
         }
     }
-    public boolean addToDo(String description, ToDo.TYPE type, String envelope,Double valor){
-        if(description.isEmpty() || description == null || type == null || envelope==null)
-            return false;
-        try{
-            for (ToDo t: toDoList) {
-                if(t.getDescription().equals(description)) return false;
-            }
-
-            ToDo toDo = new ToDo(description, type,envelope,valor);
-            toDoList.add(toDo);
-            sort();
-            return true;
-        }catch (Exception e){
-            return false;
-        }
-    }
     public boolean removeToDo(int index){
         try{
             toDoList.remove(index);

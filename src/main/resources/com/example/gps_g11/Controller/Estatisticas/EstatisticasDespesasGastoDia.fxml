@@ -26,7 +26,7 @@
         </LineChart>
         </center>-->
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaGastoDiaController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaGastoDiaController">
    <right>
       <Button fx:id="btnNext" mnemonicParsing="false" onAction="#onNext" prefHeight="100.0" prefWidth="77.0" style="-fx-background-color: #F4F9FF;" styleClass="btn_history" text="&gt;" textFill="#545454" BorderPane.alignment="CENTER">
          <font>
@@ -72,14 +72,14 @@
          <children>
             <HBox minHeight="30.0" prefHeight="30.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Button fx:id="despesasdia" mnemonicParsing="false" onAction="#OnPorDia" prefHeight="30.0" styleClass="btngraph" text="Despesas por dia" />
-                  <Button fx:id="despesasgasto" mnemonicParsing="false" onAction="#OnTotalDespesas" prefHeight="30.0" styleClass="btngraph" text="Despesas gastas" />
+                  <Button fx:id="despesasdia" mnemonicParsing="false" onAction="#OnPorDia" prefHeight="29.0" prefWidth="138.0" styleClass="btngraph" text="Despesas diárias" textFill="#545454" />
+                  <Button fx:id="despesasgasto" mnemonicParsing="false" onAction="#OnTotalDespesas" prefHeight="29.0" prefWidth="174.0" styleClass="btngraph" text="Evolução das Despesas" textFill="#545454" />
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <padding>
-                  <Insets left="650.0" top="10.0" />
+                  <Insets left="600.0" top="10.0" />
                </padding>
             </HBox>
             <HBox prefHeight="850.0" prefWidth="500.0">

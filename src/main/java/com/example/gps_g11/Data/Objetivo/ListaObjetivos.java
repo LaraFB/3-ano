@@ -159,13 +159,4 @@ public class ListaObjetivos implements Serializable {
 
         Collections.sort(objetivos,comparator);
     }
-
-    public boolean isAllFullfiled() {
-        for (Objetivo objetivo : objetivos) {
-            if(!objetivo.isFullfiled()){
-                return false;
-            }
-        }
-        return true;
-    }
 }

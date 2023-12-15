@@ -9,8 +9,6 @@ public class Objetivo implements Serializable {
     private double valor, valorObtido;
     private int prioridade;
     private LocalDate dataLimite;
-    private boolean isDone = false;
-
 
     public Objetivo(String nome, String descricao, double valor, int prioridade){
         this.nome = nome;
@@ -90,12 +88,4 @@ public class Objetivo implements Serializable {
     }
     public Double getMissingValue(){return valor-valorObtido;} //oq falta p completar
     public Double getCurrentValue(){return valorObtido;} //oq tem agr
-
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
-    }
 }
