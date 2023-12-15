@@ -71,6 +71,18 @@ public class Context {
         }
         return -2;
     }
+    public int adicionarCategoriaDespesa(double valor, String name,String descricao,boolean isAberto, boolean isRecorrente, double valorRecorrente) {
+        if(contextData.getSaldo().getSaldoPorDistribuir()-valor < 0){
+            return -1; //Não existe saldo para adicionar algo ao envelope
+        }
+
+        if(contextData.getListaCategorias().adicionarCategoriaDespesas(new CategoriaDespesas(name,descricao,valor,isAberto,isRecorrente,valorRecorrente))){
+            contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
+            contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
+            return 0;
+        }
+        return -2;
+    }
     public boolean isListaCategoriasDespesasEmpty() {
         return contextData.getListaCategorias().getCategoriasDespesas().isEmpty();
     }
@@ -354,8 +366,14 @@ public class Context {
             //guarda historico?
             //reset historico
         }
+        if(datee.getMonth().compareTo(newValue.getMonth()) < 0) {
+            contextData.getSaldo().setTotalDespesas(0);
+            for (CategoriaDespesas categoriasDespesa : contextData.getListaCategorias().getCategoriasDespesas()) {
+                categoriasDespesa.setPago(false);
+            }
+        }
     }
-
+    private LocalDate datee= null;
 
     /*
 

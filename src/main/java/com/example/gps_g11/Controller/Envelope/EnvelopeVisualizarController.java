@@ -300,7 +300,7 @@ public class EnvelopeVisualizarController{
         popUp.getDialogPane().setStyle("-fx-background-color: white; -fx-text-fill: #545454; -fx-font-family: 'Times New Roman'");
 
         ButtonType btnOkType = new ButtonType("Adicionar", ButtonBar.ButtonData.OK_DONE);
-        popUp.getDialogPane().getButtonTypes().addAll(btnOkType, ButtonType.CANCEL);
+        popUp.getDialogPane().getButtonTypes().setAll(btnOkType, ButtonType.CANCEL);
         popUp.getDialogPane().lookupButton( ButtonType.CANCEL).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
 
         GridPane grid = new GridPane();

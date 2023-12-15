@@ -7,13 +7,19 @@ public class CategoriaDespesas extends CategoriaEntradas implements Serializable
     private boolean isRecorrente;
     double valorRecorrente;
     private double oldValue = 0.0;
+    boolean pago=false;
 
     public CategoriaDespesas(String nome, String descricao, double valor,boolean isAberto, boolean isRecorrente) {
         super(nome, descricao, valor);
         this.isAberto = isAberto;
         this.isRecorrente = isRecorrente;
+    }
+    public CategoriaDespesas(String nome, String descricao, double valor,boolean isAberto, boolean isRecorrente, double valorRecorrente) {
+        super(nome, descricao, valor);
+        this.isAberto = isAberto;
+        this.isRecorrente = isRecorrente;
         if(isRecorrente)
-            valorRecorrente = valor;
+            this.valorRecorrente = valorRecorrente;
     }
 
     public boolean isAberto() {
@@ -23,6 +29,7 @@ public class CategoriaDespesas extends CategoriaEntradas implements Serializable
         isAberto = aberto;
     }
     public boolean isRecorrente(){return isRecorrente;}
+    public boolean isPago(){return pago;}
     public void switchRecorrente(){ isRecorrente = !isRecorrente; }
     public double getValorRecorrente(){return valorRecorrente;}
 
@@ -32,6 +39,9 @@ public class CategoriaDespesas extends CategoriaEntradas implements Serializable
         if(isRecorrente && valorRecorrente != valor)
             valorRecorrente = valor;
     }
+
+    public void setPago(boolean x){pago=x;}
+
     public double getOldValue() {
         return oldValue;
     }
