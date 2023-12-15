@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Estatistica.EstastiticasEnvelopeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Estatistica.EstastiticasEnvelopeController">
    <left>
       <Button fx:id="btnBack" mnemonicParsing="false" onAction="#onBack" prefHeight="100.0" prefWidth="50.0" style="-fx-background-color: #F4F9FF;" styleClass="btn_history" text="&lt;" textFill="#545454" BorderPane.alignment="CENTER">
          <font>
@@ -59,7 +59,7 @@
             <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="200.0">
                <children>
                   <Button fx:id="envelopes" mnemonicParsing="false" onAction="#onEnvelopes" prefHeight="30.0" styleClass="btngraph" text="Envelopes" />
-                  <Button fx:id="categoriasEntradas" mnemonicParsing="false" onAction="#onCategoriaEntrada" prefHeight="30.0" styleClass="btngraph" text="Categorais de Entrada">
+                  <Button fx:id="categoriasEntradas" mnemonicParsing="false" onAction="#onCategoriaEntrada" prefHeight="30.0" styleClass="btngraph" text="Categorias de Entrada">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin></Button>

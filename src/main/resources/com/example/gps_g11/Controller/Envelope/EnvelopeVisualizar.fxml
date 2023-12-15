@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="515.0" prefWidth="1000.0">
          <children>
@@ -69,7 +69,7 @@
                               <Font name="Times New Roman" size="18.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="taDescricao" maxWidth="250.0" prefHeight="125.0" prefWidth="250.0" promptText="Escreva aqui detalhes " styleClass="textarea" stylesheets="@../../Style.css">
+                        <TextArea fx:id="taDescricao" maxWidth="250.0" prefHeight="125.0" prefWidth="250.0" promptText="Escreva aqui detalhes " styleClass="textarea">
                            <VBox.margin>
                               <Insets left="160.0" top="10.0" />
                            </VBox.margin>
@@ -112,7 +112,7 @@
                               <Font name="Times New Roman" size="16.0" />
                            </font>
                         </TextField>
-                        <ToggleButton fx:id="tbtnEnvelopeFechado" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Fechado" textFill="#545454">
+                        <ToggleButton fx:id="tbtnEnvelopeFechado" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="Envelope Fechado" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="60.0" />
                            </VBox.margin>
@@ -133,7 +133,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </ToggleButton>
-                        <ToggleButton fx:id="tbtnEnvelopeAberto" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../Style.css" text="Envelope Aberto" textFill="#545454">
+                        <ToggleButton fx:id="tbtnEnvelopeAberto" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="Envelope Aberto" textFill="#545454">
                            <VBox.margin>
                               <Insets left="50.0" top="20.0" />
                            </VBox.margin>
@@ -165,7 +165,7 @@
             </Label>
             <HBox alignment="CENTER_RIGHT" maxWidth="1000.0" minWidth="1000.0" prefHeight="71.0" prefWidth="1000.0" spacing="10.0">
                <children>
-                  <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#onGuardar" prefHeight="50.0" prefWidth="161.0" styleClass="btn" stylesheets="@../../Style.css" text="Salvar Alterações" textFill="#545454">
+                  <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#onGuardar" prefHeight="50.0" prefWidth="161.0" styleClass="btn" text="Salvar Alterações" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -173,7 +173,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnAdcDinheiro" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onAdcDinheiro" prefHeight="50.0" styleClass="btn" stylesheets="@../../Style.css" text="Adicionar dinheiro de outro envelope" textFill="#545454">
+                  <Button fx:id="btnAdcDinheiro" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onAdcDinheiro" prefHeight="50.0" styleClass="btn" text="Adicionar dinheiro de outro envelope" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -181,7 +181,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnEditar" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onEditar" prefHeight="50.0" prefWidth="110.0" styleClass="btn" stylesheets="@../../Style.css" text="Editar" textFill="#545454">
+                  <Button fx:id="btnEditar" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onEditar" prefHeight="50.0" prefWidth="110.0" styleClass="btn" text="Editar" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -189,7 +189,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnEliminar" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onEliminar" prefHeight="50.0" prefWidth="110.0" styleClass="CancelBtn" stylesheets="@../../Style.css" text="Eliminar" textFill="WHITE">
+                  <Button fx:id="btnEliminar" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onEliminar" prefHeight="50.0" prefWidth="110.0" styleClass="CancelBtn" text="Eliminar" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="140.0" />
                      </HBox.margin>
@@ -212,7 +212,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" prefWidth="170.0" styleClass="btn" stylesheets="@../../Style.css" text="Back to Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
+      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" prefWidth="170.0" styleClass="btn" text="Back to Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

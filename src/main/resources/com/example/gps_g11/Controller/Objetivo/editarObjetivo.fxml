@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.editarObjetivoController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.editarObjetivoController">
    <right>
       <Button fx:id="btnNext" mnemonicParsing="false" onAction="#onNext" prefHeight="100.0" prefWidth="100.0" styleClass="btn" text="&gt;" textFill="#545454" BorderPane.alignment="CENTER">
          <font>

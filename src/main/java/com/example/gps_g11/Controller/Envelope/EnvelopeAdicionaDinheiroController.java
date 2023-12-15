@@ -75,6 +75,9 @@ public class EnvelopeAdicionaDinheiroController {
             }else if(res == -2){
                 lblError.setText("Não existe este envelope");
                 lblError.setTextFill(Color.RED);
+            }else if(res == -3){
+                lblError.setText("Valor Inválido");
+                lblError.setTextFill(Color.RED);
             }else{
                 lblError.setText("Adicionou dinheiro com sucesso");
                 lblError.setTextFill(Color.GREEN);

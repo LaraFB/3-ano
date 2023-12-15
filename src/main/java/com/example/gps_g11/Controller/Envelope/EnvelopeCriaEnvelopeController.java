@@ -16,8 +16,11 @@ public class EnvelopeCriaEnvelopeController {
     public Label lblError1;
     public Label lblError2;
     public Label lblError3;
+    public Label lblError4;
+    public Label lValorR;
 
     public TextField tfValor;
+    public TextField tfValorR;
 
     public TextArea taDescricao;
     public ToggleButton tbtnEnvelopeFechado;
@@ -36,6 +39,9 @@ public class EnvelopeCriaEnvelopeController {
         sideBarController.onEnvelope();
     }
     public void initialize(){
+        lValorR.setVisible(false);
+        lblError4.setVisible(false);
+        tfValorR.setVisible(false);
         context = Context.getInstance();
         tfValorFormat();
         envelopeToggleGroup = new ToggleGroup();
@@ -47,6 +53,20 @@ public class EnvelopeCriaEnvelopeController {
         lblError2.setVisible(false);
         lblError3.setVisible(false);
         lblError.setVisible(false);
+
+        checkRecorrente.setOnAction(event -> {
+            if(checkRecorrente.isSelected()){
+                lValorR.setVisible(true);
+                lblError4.setVisible(true);
+                tfValorR.setVisible(true);
+            } else {
+                tfValorR.clear();
+                lValorR.setVisible(false);
+                lblError4.setVisible(false);
+                tfValorR.setVisible(false);
+            }
+        });
+
     }
     private void tfValorFormat(){
         Pattern pattern = Pattern.compile("^\\d*\\.?\\d{0,2}$");
@@ -75,6 +95,8 @@ public class EnvelopeCriaEnvelopeController {
 
     public void onOk(){
         ToggleButton toggleButtonAtivo = (ToggleButton) envelopeToggleGroup.getSelectedToggle();
+
+
         if(tfValor.getText().isEmpty() || nomeEnvelope.getText().isEmpty() || toggleButtonAtivo == null || taDescricao.getText().isEmpty()){
             lblError.setVisible(true);
             lblError1.setVisible(true);

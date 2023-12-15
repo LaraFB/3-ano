@@ -50,7 +50,6 @@ public class ToDo implements Serializable {
     public void setEnvelope(String area) {
         this.envelope = area;
     }
-
     public Double getValor() {
         return valor;
     }
@@ -58,4 +57,5 @@ public class ToDo implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
 }

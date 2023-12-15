@@ -271,6 +271,7 @@ public class HomeController implements Initializable {
 
 
     private void clicaNotificacaoREQUEST(ToDo td) {
+
         if(context.getSaldo().getBudgetContaBancaria().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()
         && context.getSaldo().getBudgetDinheiro().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -283,7 +284,6 @@ public class HomeController implements Initializable {
             return;
         }
 
-        System.out.println(td.getValor());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText(null);
             alert.setGraphic(null);
@@ -328,7 +328,6 @@ public class HomeController implements Initializable {
             alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
             alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
 
-
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
                 if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
@@ -336,14 +335,13 @@ public class HomeController implements Initializable {
                 }else{
                     context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
                 }
+
                 context.getListaNotificacoes().removeToDo(td);
                 updateHomePage();
             }
+
     }
-
-
     private void clicaNotificacaoUSER(ToDo td){
-        System.out.println(td.getValor());
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
         alert.setGraphic(null);
@@ -352,6 +350,7 @@ public class HomeController implements Initializable {
         if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
             alert.setContentText("Deseja usar o dinheiro do objetivo?");
         }
+
         ButtonType buttonSim = new ButtonType("Sim");
         ButtonType buttonNao = new ButtonType("Não");
 
@@ -374,11 +373,12 @@ public class HomeController implements Initializable {
                             resultado = texto.substring(indiceTraco + 1).trim();
                             System.out.println(resultado);
                         }
-                        System.out.println(td.getValor());
                         context.getListaNotificacoes().addToDo("Já pagou o objetivo - " + resultado, ToDo.TYPE.REQUEST,td.getEnvelope(),td.getValor());
+                        context.getListaObjetivos().getObjetivo(resultado).setDone(true);
                     }
                 }
             }
+
             updateHomePage();
         }
     }
@@ -388,7 +388,7 @@ public class HomeController implements Initializable {
         alert.setHeaderText(null);
         alert.setGraphic(null);
         alert.setTitle("Adicionar notificação");
-        alert.getDialogPane().setStyle("-fx-background-color: #DEEFFF;-fx-font-family: 'Times New Roman';-fx-text-fill: #545454;-fx-font: 16px;");
+        alert.getDialogPane().setStyle("-fx-background-color: #DEEFFF;-fx-font-family: 'Times New Roman';-fx-text-fill: #545454;-fx-font-size: 16px;");
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -411,6 +411,13 @@ public class HomeController implements Initializable {
 
         alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
         alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
+
+        tfDesc.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(!tfDesc.getText().isEmpty())
+                alert.getDialogPane().lookupButton(buttonSim).setDisable(false);
+            else
+                alert.getDialogPane().lookupButton(buttonSim).setDisable(true);
+        });
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim){

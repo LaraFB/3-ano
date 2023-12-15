@@ -52,7 +52,7 @@
 </padding>
 </VBox>-->
 
-<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Historico.HistoricoController">
+<BorderPane fx:id="root" prefHeight="700" prefWidth="1000" style="-fx-background-color: #DEEFFF;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Historico.HistoricoController">
    <bottom>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="120.0" BorderPane.alignment="BOTTOM_LEFT">
          <children>
@@ -224,7 +224,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                            <children>
-                              <Label prefHeight="19.0" prefWidth="116.0" text="Envelopes:" textFill="#545454">
+                              <Label fx:id="lFiltro" prefHeight="19.0" prefWidth="116.0" text="Envelopes:" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="16.0" />
                                  </font>

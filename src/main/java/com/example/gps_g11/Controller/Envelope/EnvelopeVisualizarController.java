@@ -79,7 +79,9 @@ public class EnvelopeVisualizarController{
         btnGuardar.setDisable(false);
         btnEditar.setDisable(true);
 
+
         if(isEnvelope){
+
             tfValor.setDisable(true);
             tbtnEnvelopeAberto.setDisable(false);
             tbtnEnvelopeFechado.setDisable(false);
@@ -93,7 +95,6 @@ public class EnvelopeVisualizarController{
                 lblError.setVisible(!isNumber(newValue));
             });
             tfNome.textProperty().addListener((observable, oldValue, newValue) -> {
-                System.out.println("Entrei aqui");
                 lblError.setText("O nome não pode estar vazio!");
                 btnGuardar.setDisable(categoriaDespesas.getNome().equals(newValue) || newValue.trim().isEmpty());
                 lblError.setVisible(newValue.trim().isEmpty());
@@ -131,17 +132,28 @@ public class EnvelopeVisualizarController{
             if(tbtnEnvelopeAberto.isSelected())categoriaDespesas.setAberto(true);
             else categoriaDespesas.setAberto(false);
             for (CategoriaDespesas categoriasListDespesa : context.getCategoriasListDespesas()) {
-                if(!(categoriasListDespesa.getNome().equals(tfNome.getText()) && categoriasListDespesa.getDescricao().equals(taDescricao.getText()))){
-                        System.out.println("Entrei aquiu");
+                if(!(categoriasListDespesa.getNome().equals(tfNome.getText()) || categoriasListDespesa.getDescricao().equals(taDescricao.getText()))){
+                    if(!(categoriasListDespesa.getNome().equals(tfNome.getText()) && categoriasListDespesa.getDescricao().equals(taDescricao.getText())))
+                        break;
+
+                    else {
+
+                        //System.out.println("Entrei aquiu");
                         correct = false;
                         lblError.setText("Não pode ter o mesmo nome que outro envelope");
+                    }
                 }
             }
         }else{
             for (CategoriaEntradas categoriaEntrada : context.getCategoriasListEntradas()) {
-                if(categoriaEntrada.getNome().equals(categoriaEntradas.getNome())){
-                    correct = false;
-                    lblError.setText("Não pode ter o mesmo nome que outra categoria");
+                if(!(categoriaEntrada.getNome().equals(categoriaEntradas.getNome()) || categoriaEntrada.getDescricao().equals(taDescricao.getText()))) {
+                    if (!(categoriaEntrada.getNome().equals(categoriaEntradas.getNome()) && categoriaEntrada.getDescricao().equals(taDescricao.getText())))
+                        break;
+                    else {
+                        //System.out.println("Entrei aquiu");
+                        correct = false;
+                        lblError.setText("Não pode ter o mesmo nome que outra categoria");
+                    }
                 }
             }
         }
@@ -159,7 +171,7 @@ public class EnvelopeVisualizarController{
             btnGuardar.setDisable(true);
             btnEditar.setDisable(false);
             btnEliminar.setVisible(false);
-            System.out.println("Here");
+          //  System.out.println("Here");
             reset();
         }
     }
@@ -285,10 +297,11 @@ public class EnvelopeVisualizarController{
         popUp.setGraphic(null);
         popUp.setTitle("Adicionar dinheiro de outro envelope");
 
-        popUp.getDialogPane().getStylesheets().add("@../../Style.css");
+        popUp.getDialogPane().setStyle("-fx-background-color: white; -fx-text-fill: #545454; -fx-font-family: 'Times New Roman'");
 
         ButtonType btnOkType = new ButtonType("Adicionar", ButtonBar.ButtonData.OK_DONE);
         popUp.getDialogPane().getButtonTypes().addAll(btnOkType, ButtonType.CANCEL);
+        popUp.getDialogPane().lookupButton( ButtonType.CANCEL).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -303,12 +316,12 @@ public class EnvelopeVisualizarController{
                 if(envelopes.getValue() == null) envelopes.setValue(context.getCategoriasListDespesas().get(i).getNome());
             }
 
-        envelopes.setStyle("-fx-background-color:  #9FCDFF");
+        envelopes.setStyle("-fx-background-color: #DEEFFF");
 
         //escolher valor
         TextField valor = new TextField();
         valor.setPromptText("");
-        valor.setStyle("-fx-background-color:  #DEEFFF");
+        valor.setStyle("-fx-background-color: #DEEFFF");
 
         grid.add(new Label("Envelope:"), 0, 0);
         grid.add(envelopes, 1, 0);
@@ -319,13 +332,13 @@ public class EnvelopeVisualizarController{
         Node btnOk = popUp.getDialogPane().lookupButton(btnOkType);
         btnOk.setDisable(true);
         btnOk.getStyleClass().add("btn");
+        btnOk.setStyle("-fx-background-color: #9FCDFF");
 
         valor.textProperty().addListener((observable, oldValue, newValue) -> {
             btnOk.setDisable(!isNumber(newValue));
             btnOk.setDisable(newValue.trim().isEmpty());
             btnOk.setDisable(Double.parseDouble(newValue) <= 0);
             btnOk.setDisable(Double.parseDouble(newValue) > context.getCategoriaByName(envelopes.getValue()).getValor());
-
         });
 
         envelopes.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -336,22 +349,24 @@ public class EnvelopeVisualizarController{
         });
 
         popUp.getDialogPane().setContent(grid);
-        popUp.showAndWait();
+        Optional<Pair<String, Integer>> x= popUp.showAndWait();
 
-        //fechou o popup: temos os valores:
-        double valoraretirar = Double.parseDouble(valor.getText());
-        String envelopearetirar = envelopes.getValue();
+        if(x.toString().contains("OK_DONE")){ //apenas se clicou em adicionar
+            //fechou o popup: temos os valores:
+            double valoraretirar = Double.parseDouble(valor.getText());
+            String envelopearetirar = envelopes.getValue();
 
-        //retira dinheiro do envelope
-        context.getCategoriaByName(envelopearetirar).setValor(
-                context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
-        );
+            //retira dinheiro do envelope
+            context.getCategoriaByName(envelopearetirar).setValor(
+                    context.getCategoriaByName(envelopearetirar).getValor() - valoraretirar
+            );
 
-        //coloca neste envelope
-        categoriaDespesas.setValor(
-                categoriaDespesas.getValor() + valoraretirar
-        );
+            //coloca neste envelope
+            categoriaDespesas.setValor(
+                    categoriaDespesas.getValor() + valoraretirar
+            );
+            reset();
+        }
 
-        reset();
     }
 }

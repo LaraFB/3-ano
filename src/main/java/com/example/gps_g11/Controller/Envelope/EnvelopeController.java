@@ -37,7 +37,8 @@ public class EnvelopeController implements Initializable {
     public Label lblTitle;
     private SideBarController sideBarController;
     private Context context;
-    boolean isEnvelope = true;
+    boolean isEnvelope;
+
     public void update() {
         int i = 0;
         int buttonsPerHBox = 5;
@@ -160,9 +161,9 @@ public class EnvelopeController implements Initializable {
         Image image;
         ImageView imageView;
 
-        image = new Image(getClass().getResource("/image/open_env_icon.png").toExternalForm());
+        image = new Image(getClass().getResource("/image/category_entrada_icon.png").toExternalForm());
         imageView  = new ImageView(image);
-        imageView.setFitWidth(130);
+        imageView.setFitWidth(100);
         imageView.setFitHeight(100);
         button.setGraphic(imageView);
 
@@ -198,7 +199,7 @@ public class EnvelopeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         context = Context.getInstance();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
+        isEnvelope = true;
         update();
     }
 
@@ -217,13 +218,18 @@ public class EnvelopeController implements Initializable {
         if(isEnvelope){
             btnCriarCategoria.setVisible(false);
             btnCriarEnvelope.setVisible(true);
+            btnGuardaDinheiro.setVisible(true);
         }else {
             btnCriarCategoria.setVisible(true);
             btnCriarEnvelope.setVisible(false);
+            btnGuardaDinheiro.setVisible(false);
         }
         update();
     }
 
-    public void onCriarCategoria() {}
+    public void onCriarCategoria() {
+        sideBarController.criaCategoria();
+        isEnvelope = false;
+    }
 
 }

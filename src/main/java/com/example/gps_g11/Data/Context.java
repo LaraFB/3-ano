@@ -7,7 +7,6 @@ import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
 import com.example.gps_g11.Data.ToDos.ToDoList;
 import com.example.gps_g11.Data.Transacao.Despesa;
 import com.example.gps_g11.Data.Transacao.Entrada;
-import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -47,6 +46,8 @@ public class Context {
         if(contextData.getSaldo().getSaldoPorDistribuir()-valor < 0){
             return -1;
         }
+        if(valor == 0)
+            return -3;
         for (CategoriaDespesas categoria : contextData.getListaCategorias().getCategoriasDespesas()) {
             if(categoria.getNome().equals(nomeCategoria)){
                 categoria.setValor(categoria.getValor()+valor);
@@ -124,19 +125,14 @@ public class Context {
         * Se tiver saldo suficiente vai criar uma despesa
         * Desconta do budget o saldo Real e desconta o saldo nos envelopes, e desconta o valor do envelope
         * */
-
         if(montante == 0)
             return -3;
-
-
-
         CategoriaDespesas categoriaDespesas = null;
         for (CategoriaDespesas c : contextData.getListaCategorias().getCategoriasDespesas()) {
             if(c.getNome().equals(nomeCategoria)){
                 categoriaDespesas = c;
             }
         }
-        //Subtrai no envelope o valor da montante
         if(nomeCategoria.equals("Objetivos")){
             if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
                 return -1;
@@ -162,6 +158,7 @@ public class Context {
             }
             categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
         }
+
         //Adiciioan adespesa
         if(isDinheiro){
             contextData.getSaldo().getBudgetDinheiro().setSaldoReal(contextData.getSaldo().getBudgetDinheiro().getSaldoReal()-montante);

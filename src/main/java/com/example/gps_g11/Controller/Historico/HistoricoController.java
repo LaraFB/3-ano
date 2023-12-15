@@ -17,6 +17,7 @@ import javafx.scene.layout.*;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.ResourceBundle;
@@ -49,6 +50,7 @@ public class HistoricoController implements Initializable {
     public TableColumn<Transacao, String> tcCategoria;
     public TableColumn<Transacao, String> tcDescricao;
     public Label lblTotal;
+    public  Label lFiltro;
     public Label lblTotalEntradas;
     public Label lblTotalDespesas;
     private SideBarController sideBarController;
@@ -364,12 +366,15 @@ public class HistoricoController implements Initializable {
         LocalDate dateInicio = dpDateInicio.getValue();
         LocalDate dateFim = dpDateFim.getValue();
         String ordenacao = cbOrdenar.getValue();
+        lFiltro.setText("Envelopes:");
 
         transacaos.clear();
         tableView.getItems().clear();
         if(tipoTransacao.equals("Despesas")){
+                lFiltro.setText("Envelopes:");
             transacaos.addAll(context.getTransacoesDespesa(categoria,dateInicio,dateFim,ordenacao));
         }else if(tipoTransacao.equals("Entradas")){
+            lFiltro.setText("Categorias:");
             transacaos.addAll(context.getTransacoesEntrada(categoria,dateInicio,dateFim,ordenacao));
         }else{
             transacaos.addAll(context.getTransacoesEntrada(categoria,dateInicio,dateFim,ordenacao));
@@ -400,6 +405,7 @@ public class HistoricoController implements Initializable {
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
+
     private void configurarTabela() {
         tfData.setCellValueFactory(new PropertyValueFactory<>("data"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
@@ -455,7 +461,10 @@ public class HistoricoController implements Initializable {
             }
         });
         tcSaldo.setCellValueFactory(param -> {
-            return new SimpleStringProperty(""+param.getValue().getSaldoAtual());
+            double valor= Double.parseDouble(""+param.getValue().getSaldoAtual());
+            DecimalFormat df =new DecimalFormat("#.00");
+
+            return new SimpleStringProperty(df.format(valor));
         });
 
 
