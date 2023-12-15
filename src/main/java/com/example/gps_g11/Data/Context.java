@@ -7,6 +7,7 @@ import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
 import com.example.gps_g11.Data.ToDos.ToDoList;
 import com.example.gps_g11.Data.Transacao.Despesa;
 import com.example.gps_g11.Data.Transacao.Entrada;
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class Context {
                 categoria.setValor(categoria.getValor()+valor);
                 contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
                 contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
+                categoria.setOldValue(valor);
                 return 0;
             }
         }
@@ -122,29 +124,44 @@ public class Context {
         * Se tiver saldo suficiente vai criar uma despesa
         * Desconta do budget o saldo Real e desconta o saldo nos envelopes, e desconta o valor do envelope
         * */
+
         if(montante == 0)
             return -3;
+
+
+
         CategoriaDespesas categoriaDespesas = null;
         for (CategoriaDespesas c : contextData.getListaCategorias().getCategoriasDespesas()) {
             if(c.getNome().equals(nomeCategoria)){
                 categoriaDespesas = c;
             }
         }
-        if(categoriaDespesas  == null){
-            return -2; //Se não existir categoria
-        }
-        if(categoriaDespesas.getValor() < montante ){
-            return -1; //Se não houver saldo suficiente nesse envelope
-        }
-        if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
-            return -1;
-        }
-        if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
-            return -1;
-        }
-
         //Subtrai no envelope o valor da montante
-        categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
+        if(nomeCategoria.equals("Objetivos")){
+            if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
+                return -1;
+            }
+            if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
+                return -1;
+            }
+        }else{
+
+            if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
+                return -1;
+            }
+            if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
+                return -1;
+            }
+            if(categoriaDespesas  == null){
+
+                System.out.println("1");
+                return -2; //Se não existir categoria
+            }
+            if(categoriaDespesas.getValor() < montante ){
+                return -1; //Se não houver saldo suficiente nesse envelope
+            }
+            categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
+        }
         //Adiciioan adespesa
         if(isDinheiro){
             contextData.getSaldo().getBudgetDinheiro().setSaldoReal(contextData.getSaldo().getBudgetDinheiro().getSaldoReal()-montante);

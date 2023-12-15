@@ -271,7 +271,6 @@ public class HomeController implements Initializable {
 
 
     private void clicaNotificacaoREQUEST(ToDo td) {
-
         if(context.getSaldo().getBudgetContaBancaria().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()
         && context.getSaldo().getBudgetDinheiro().getSaldoReal() < context.getCategoriaByName(td.getEnvelope()).getValor()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -284,6 +283,7 @@ public class HomeController implements Initializable {
             return;
         }
 
+        System.out.println(td.getValor());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText(null);
             alert.setGraphic(null);
@@ -328,23 +328,30 @@ public class HomeController implements Initializable {
             alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
             alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
 
+
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
-
-                context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
-
+                if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+                    context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), td.getValor(), isDinheiro.isSelected());
+                }else{
+                    context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
+                }
                 context.getListaNotificacoes().removeToDo(td);
                 updateHomePage();
             }
-
     }
+
+
     private void clicaNotificacaoUSER(ToDo td){
+        System.out.println(td.getValor());
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
         alert.setGraphic(null);
         alert.setTitle("Confirmação");
         alert.setContentText("Deseja eliminar esta notificação?");
-
+        if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+            alert.setContentText("Deseja usar o dinheiro do objetivo?");
+        }
         ButtonType buttonSim = new ButtonType("Sim");
         ButtonType buttonNao = new ButtonType("Não");
 
@@ -356,6 +363,22 @@ public class HomeController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim) {
             context.getListaNotificacoes().removeToDo(td);
+            if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+                for (CategoriaDespesas categoriasListDespesa : context.getCategoriasListDespesas()) {
+                    if(categoriasListDespesa.getNome().equals(td.getEnvelope())){
+                        categoriasListDespesa.setValor(categoriasListDespesa.getValor()-td.getValor());
+                        String texto = td.getDescription();
+                        int indiceTraco = texto.indexOf("-");
+                        String resultado = null;
+                        if (indiceTraco != -1) {
+                            resultado = texto.substring(indiceTraco + 1).trim();
+                            System.out.println(resultado);
+                        }
+                        System.out.println(td.getValor());
+                        context.getListaNotificacoes().addToDo("Já pagou o objetivo - " + resultado, ToDo.TYPE.REQUEST,td.getEnvelope(),td.getValor());
+                    }
+                }
+            }
             updateHomePage();
         }
     }
