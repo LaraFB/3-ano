@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-
     @Override
     public void start(Stage stage) throws IOException {
         Scene scene = new Scene(new Pane());
@@ -29,7 +28,7 @@ public class Main extends Application {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                //Context.getInstance().saveToFile();
+                Context.getInstance().saveToFile();
             }
         });
 

@@ -3,13 +3,14 @@ package com.example.gps_g11.Data.ToDos;
 import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
 
+import java.io.Serializable;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ToDoList {
+public class ToDoList implements Serializable {
     private List<ToDo> toDoList;
 
     public ToDoList() {
@@ -41,6 +42,22 @@ public class ToDoList {
             }
 
             ToDo toDo = new ToDo(description, type,envelope);
+            toDoList.add(toDo);
+            sort();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+    public boolean addToDo(String description, ToDo.TYPE type, String envelope,Double valor){
+        if(description.isEmpty() || description == null || type == null || envelope==null)
+            return false;
+        try{
+            for (ToDo t: toDoList) {
+                if(t.getDescription().equals(description)) return false;
+            }
+
+            ToDo toDo = new ToDo(description, type,envelope,valor);
             toDoList.add(toDo);
             sort();
             return true;

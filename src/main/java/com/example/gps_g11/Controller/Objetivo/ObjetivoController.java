@@ -3,18 +3,25 @@ package com.example.gps_g11.Controller.Objetivo;
 import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
+import com.example.gps_g11.Data.ToDos.ToDo;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ObjetivoController implements Initializable {
@@ -76,6 +83,11 @@ public class ObjetivoController implements Initializable {
             }
 
             PieChart objetivosPie = createPie(context.getListaObjetivos().getObjetivo(j));
+            if(context.getListaObjetivos().getObjetivo(j).isFullfiled()) {
+                int finalJ = j;
+                objetivosPie.setOnMouseClicked(mouseEvent -> eliminar(finalJ));
+                objetivosPie.setTitle("Objetivo cumprido!");
+            }
             currentHBox.getChildren().add(objetivosPie);
 
             i++;
@@ -126,21 +138,66 @@ public class ObjetivoController implements Initializable {
     private void distribuiDinheiro(){
         double dinheiro;
         context.getListaObjetivos().sort(context.getData());
+        int count = 0;
+        while(context.getCategoriasListDespesas().get(envelopeObjetivos).getValor()-context.getCategoriaByName("Objetivos").getOldValue() != 0.0 && !context.getListaObjetivos().isAllFullfiled()){
+            for (int i = 0; i < context.getListaObjetivos().getSize() ; i++) {
+                double valorARetirar;
+                dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor()-context.getCategoriaByName("Objetivos").getOldValue();
+                if(!context.getListaObjetivos().isFullfiled(i) && count != 0 && context.getCategoriasListDespesas().get(envelopeObjetivos).getValor() != 0.0){
+                    if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro)
+                        valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
+                    else valorARetirar = dinheiro;
+                    context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(dinheiro - valorARetirar);
+                    context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+                }else{
+                    if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro / 2)
+                        valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
+                    else valorARetirar = dinheiro / 2;
 
-        for (int i = 0; i < context.getListaObjetivos().getSize() - 1 ; i++) {
-            double valorARetirar;
-            dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor();
+                    context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+                }
 
-            if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro / 2)
-                valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
-            else valorARetirar = dinheiro / 2;
-
-            context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(dinheiro - valorARetirar);
-            context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+            }
+            count++;
         }
+
         dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor();
         context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).addToGoal(dinheiro);
-        context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(0);
+        //context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(0);
+
+        verificaoObjetivoCompleto();
+    }
+
+    private void verificaoObjetivoCompleto() {
+        for(int i = 0; i < context.getListaObjetivos().getSize();i++){
+            if(context.getListaObjetivos().getObjetivo(i).isFullfiled() && !context.getListaObjetivos().getObjetivo(i).isDone()){
+                context.getListaNotificacoes().addToDo("Concluio o objetivo - " + context.getListaObjetivos().getObjetivo(i).getNome(), ToDo.TYPE.USER_GENERATED,"Objetivos",context.getListaObjetivos().getObjetivo(i).getValor( ));
+                context.getListaObjetivos().getObjetivo(i).setDone(true);
+            }
+        }
+    }
+
+    private void eliminar(int index){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Objetivo cumprido!");
+        alert.setGraphic(null);
+        alert.setHeaderText("Deseja eliminar este objetivo?");
+
+        alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);
+
+        Optional<ButtonType> a = alert.showAndWait();
+        if(a.get() == ButtonType.YES){
+            try{
+                context.getListaObjetivos().deleteObjetivo(index);
+                context.getListaObjetivos().sort(context.getData());
+                update();
+            }catch (Exception e){
+                Alert err = new Alert(Alert.AlertType.ERROR);
+                err.setTitle("Falha ao eliminar objetivo.");
+                err.setGraphic(null);
+                err.setHeaderText(null);
+            }
+        }
     }
 
 

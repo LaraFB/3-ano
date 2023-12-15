@@ -1,6 +1,5 @@
 package com.example.gps_g11.Controller.Home;
 
-import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPaneController;
 import com.example.gps_g11.Data.Context;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;

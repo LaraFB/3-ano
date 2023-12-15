@@ -15,7 +15,7 @@
     <left>
         <VBox fx:id="SideBar" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: #9FCDFF;" AnchorPane.bottomAnchor="-18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1007.0" AnchorPane.topAnchor="0.0" xmlns:fx="http://javafx.com/fxml">
             <children>
-            <DatePicker fx:id="Date">
+            <DatePicker fx:id="Date" stylesheets="@../Style.css">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -38,7 +38,7 @@
                         <Insets left="10.0" />
                     </padding>
                 </Button>
-                <Button fx:id="bntHistorico" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onHistorico" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Histórico" textAlignment="RIGHT" textFill="#545454">
+                <Button fx:id="bntHistorico" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onHistorico" prefHeight="70.0" prefWidth="200.0" styleClass="slideItem" stylesheets="@../Style.css" text="Transações" textAlignment="RIGHT" textFill="#545454">
                     <font>
                         <Font name="Times New Roman" size="26.0" />
                     </font>

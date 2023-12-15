@@ -1,9 +1,7 @@
 package com.example.gps_g11.Data.Transacao;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class HistoricoTransacoes implements Serializable {
     private List<Despesa> transacaoDespesas;
@@ -20,6 +18,8 @@ public class HistoricoTransacoes implements Serializable {
     }
     public void adicionarTransacaoEntrada(Entrada transacaoEntrada) {
         transacaoEntradas.add(transacaoEntrada);
+        transacaoEntradas.sort(Comparator.comparing(Entrada::getData));
+
     }
     public void removerTransacaoEntradas(int id) {
         Iterator<Entrada> iterator = transacaoEntradas.iterator();
@@ -37,6 +37,7 @@ public class HistoricoTransacoes implements Serializable {
     }
     public void adicionarTransacaoDespesas(Despesa transacaoDespesa) {
         transacaoDespesas.add(transacaoDespesa);
+        transacaoDespesas.sort(Comparator.comparing(Despesa::getData));
     }
     public void removerTransacaoDespesas(int id) {
         Iterator<Despesa> iterator = transacaoDespesas.iterator();

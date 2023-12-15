@@ -44,9 +44,9 @@ public class HomePageAdicionarSaldoController {
         sideBarController.onHomePage();
     }
 
-    public void onAdicionarBolsa(){
+    /*public void onAdicionarBolsa(){
         sideBarController.adicionarBolsa();
-    }
+    }*/
 
     public void initialize(){
         context = Context.getInstance();
@@ -60,6 +60,17 @@ public class HomePageAdicionarSaldoController {
         cbTipoPagamento.getItems().addAll( "Débito", "Numerário");
         cbTipoPagamento.setValue("Escolhe");
 
+        dataPicker.setValue(context.getData());
+        dataPicker.setDayCellFactory(datePicker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                if(localDate.isBefore(context.getData().minusDays(4)) || localDate.isAfter(context.getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+        });
         update();
     }
 
@@ -149,13 +160,15 @@ public class HomePageAdicionarSaldoController {
         cbTipoEntrada.getItems().clear();
         if(context.getCategoriasListEntradas().isEmpty()){
             cbTipoEntrada.setDisable(true);
+            cbTipoEntrada.setValue("Crie um tipo de entrada");
         }else{
             cbTipoEntrada.setDisable(false);
             for (String categoriaEntradasNome : context.getCategoriaEntradasNomes()) {
                 cbTipoEntrada.getItems().add(categoriaEntradasNome);
+                cbTipoEntrada.setValue(categoriaEntradasNome);
             }
         }
-        cbTipoEntrada.setValue("Escolhe");
+      //  cbTipoEntrada.setValue("Escolhe");
     }
 
 
