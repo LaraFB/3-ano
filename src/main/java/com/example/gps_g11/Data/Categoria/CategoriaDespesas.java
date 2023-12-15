@@ -6,6 +6,8 @@ public class CategoriaDespesas extends CategoriaEntradas implements Serializable
     private boolean isAberto;
     private boolean isRecorrente;
     double valorRecorrente;
+    private double oldValue = 0.0;
+
     public CategoriaDespesas(String nome, String descricao, double valor,boolean isAberto, boolean isRecorrente) {
         super(nome, descricao, valor);
         this.isAberto = isAberto;
@@ -29,6 +31,13 @@ public class CategoriaDespesas extends CategoriaEntradas implements Serializable
         this.valor = valor;
         if(isRecorrente && valorRecorrente != valor)
             valorRecorrente = valor;
+    }
+    public double getOldValue() {
+        return oldValue;
+    }
+
+    public void setOldValue(double oldValue) {
+        this.oldValue = oldValue;
     }
 
     @Override

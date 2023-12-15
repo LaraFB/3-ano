@@ -5,6 +5,8 @@ import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import com.example.gps_g11.Data.ToDos.ToDo;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -135,23 +137,71 @@ public class ObjetivoController implements Initializable {
     }
 
     private void distribuiDinheiro(){
-        double dinheiro;
-        context.getListaObjetivos().sort(context.getData());
-
-        for (int i = 0; i < context.getListaObjetivos().getSize() - 1 ; i++) {
-            double valorARetirar;
-            dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor();
-
-            if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro / 2)
-                valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
-            else valorARetirar = dinheiro / 2;
-
-            context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(dinheiro - valorARetirar);
-            context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+        double dinheiro = 0;
+        double oldVlaue = 0;
+        double valorNosObejtivos = 0;
+        double valorQueFaltaNosObjetivs = 0;
+        for (int i = 0; i < context.getListaObjetivos().getSize(); i++) {
+            if(!context.getListaObjetivos().getObjetivo(i).isDone()){
+                System.out.println(context.getListaObjetivos().getObjetivo(i).getCurrentValue());
+                valorNosObejtivos += context.getListaObjetivos().getObjetivo(i).getCurrentValue();
+                valorQueFaltaNosObjetivs += context.getListaObjetivos().getObjetivo(i).getMissingValue();
+            }
         }
+        context.getListaObjetivos().sort(context.getData());
+        int count = 0;
+        /*valor nos objetivos 0
+        * valor que falta nos obejtivos 3
+        * valor que os objetivos têm 2*/
+
+        /*valor nos objetivos 0
+         * valor que falta nos obejtivos 11
+         * valor que os obejtivos têm 10*/
+
+        /*valor nos objetivos 10
+         * valor que falta nos obejtivos 1
+         * valor que os obejtivos têm 10*//*
+        System.out.println(valorNosObejtivos);
+        System.out.println(context.getCategoriaByName("Objetivos").getValor());*/
+        while(valorNosObejtivos != context.getCategoriaByName("Objetivos").getValor() && oldVlaue != context.getCategoriaByName("Objetivos").getValor() && context.getCategoriasListDespesas().get(envelopeObjetivos).getValor()>context.getCategoriaByName("Objetivos").getOldValue() && !context.getListaObjetivos().isAllFullfiled()){
+            for (int i = 0; i < context.getListaObjetivos().getSize() ; i++) {
+                double valorARetirar;
+                if(oldVlaue == context.getCategoriaByName("Objetivos").getValor()){
+                    break;
+                }
+                dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor()-oldVlaue;
+                if(!context.getListaObjetivos().isFullfiled(i) && count != 0 && context.getCategoriasListDespesas().get(envelopeObjetivos).getValor() != 0.0){
+                    if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro)
+                        valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
+                    else valorARetirar = dinheiro;
+                    oldVlaue += valorARetirar;
+                    context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+                }else{
+                    if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro / 2)
+                        valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
+                    else valorARetirar = dinheiro / 2;
+                    oldVlaue += valorARetirar;
+                    context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+                }
+            }
+            if(dinheiro == 0.0){
+                break;
+            }
+            System.out.println(oldVlaue);
+            count++;
+        }
+
         dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor();
         context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).addToGoal(dinheiro);
-        context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(0);
+        context.getCategoriaByName("Objetivos").setOldValue(oldVlaue);
+        verificaoObjetivoCompleto();
+    }
+    private void verificaoObjetivoCompleto() {
+        for(int i = 0; i < context.getListaObjetivos().getSize();i++){
+            if(context.getListaObjetivos().getObjetivo(i).isFullfiled() && !context.getListaObjetivos().getObjetivo(i).isDone()){
+                context.getListaNotificacoes().addToDo("Concluio o objetivo - " + context.getListaObjetivos().getObjetivo(i).getNome(), ToDo.TYPE.USER_GENERATED,"Objetivos",context.getListaObjetivos().getObjetivo(i).getValor( ));
+            }
+        }
     }
 
     private void eliminar(int index){

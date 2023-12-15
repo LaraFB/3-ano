@@ -330,8 +330,11 @@ public class HomeController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
-
-                context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
+                if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+                    context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), td.getValor(), isDinheiro.isSelected());
+                }else{
+                    context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), context.getCategoriaByName(td.getEnvelope()).getValor(), isDinheiro.isSelected());
+                }
 
                 context.getListaNotificacoes().removeToDo(td);
                 updateHomePage();
@@ -344,6 +347,9 @@ public class HomeController implements Initializable {
         alert.setGraphic(null);
         alert.setTitle("Confirmação");
         alert.setContentText("Deseja eliminar esta notificação?");
+        if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+            alert.setContentText("Deseja usar o dinheiro do objetivo?");
+        }
 
         ButtonType buttonSim = new ButtonType("Sim");
         ButtonType buttonNao = new ButtonType("Não");
@@ -356,6 +362,23 @@ public class HomeController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonSim) {
             context.getListaNotificacoes().removeToDo(td);
+            if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
+                for (CategoriaDespesas categoriasListDespesa : context.getCategoriasListDespesas()) {
+                    if(categoriasListDespesa.getNome().equals(td.getEnvelope())){
+                        categoriasListDespesa.setValor(categoriasListDespesa.getValor()-td.getValor());
+                        String texto = td.getDescription();
+                        int indiceTraco = texto.indexOf("-");
+                        String resultado = null;
+                        if (indiceTraco != -1) {
+                            resultado = texto.substring(indiceTraco + 1).trim();
+                            System.out.println(resultado);
+                        }
+                        context.getListaNotificacoes().addToDo("Já pagou o objetivo - " + resultado, ToDo.TYPE.REQUEST,td.getEnvelope(),td.getValor());
+                        context.getListaObjetivos().getObjetivo(resultado).setDone(true);
+                    }
+                }
+            }
+
             updateHomePage();
         }
     }

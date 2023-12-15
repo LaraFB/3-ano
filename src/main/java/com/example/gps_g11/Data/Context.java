@@ -53,6 +53,7 @@ public class Context {
                 categoria.setValor(categoria.getValor()+valor);
                 contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
                 contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
+                categoria.setOldValue(valor);
                 return 0;
             }
         }
@@ -132,21 +133,32 @@ public class Context {
                 categoriaDespesas = c;
             }
         }
-        if(categoriaDespesas  == null){
-            return -2; //Se não existir categoria
-        }
-        if(categoriaDespesas.getValor() < montante ){
-            return -1; //Se não houver saldo suficiente nesse envelope
-        }
-        if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
-            return -4;
-        }
-        if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
-            return -5;
+        if(nomeCategoria.equals("Objetivos")){
+            if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
+                return -1;
+            }
+            if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
+                return -1;
+            }
+        }else{
+
+            if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
+                return -1;
+            }
+            if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
+                return -1;
+            }
+            if(categoriaDespesas  == null){
+
+                System.out.println("1");
+                return -2; //Se não existir categoria
+            }
+            if(categoriaDespesas.getValor() < montante ){
+                return -1; //Se não houver saldo suficiente nesse envelope
+            }
+            categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
         }
 
-        //Subtrai no envelope o valor da montante
-        categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
         //Adiciioan adespesa
         if(isDinheiro){
             contextData.getSaldo().getBudgetDinheiro().setSaldoReal(contextData.getSaldo().getBudgetDinheiro().getSaldoReal()-montante);
