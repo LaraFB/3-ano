@@ -1,9 +1,6 @@
 package com.example.gps_g11.Controller;
 
-import com.example.gps_g11.Controller.Envelope.EnvelopeController;
-import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
-import com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController;
-import com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController;
+import com.example.gps_g11.Controller.Envelope.*;
 import com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaGastoDiaController;
 import com.example.gps_g11.Controller.Estatistica.EstastiticasEnvelopeController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
@@ -138,6 +135,12 @@ public class SideBarController {
                     EstastiticasEnvelopeController estastiticasEnvelopeController = loader.getController();
                     estastiticasEnvelopeController.setSideBar(this);
                     putBtnActive(btnEstatistica);
+                    break;
+                case "Envelope/EnvelopeCriaCategoria.fxml":
+                    EnvelopeCriaCategoriaController envelopeCriaCategoriaController = loader.getController();
+                    envelopeCriaCategoriaController.setSideBar(this);
+                    putBtnActive(btnEnvelope);
+                    break;
                 default:
             }
             ContentPane.getChildren().setAll(node);
@@ -203,6 +206,9 @@ public class SideBarController {
 
     public void criarEnvelopesPane(){
         loadFXML("Envelope/EnvelopeCriaEnvelope.fxml");
+    }
+    public void criaCategoria(){
+        loadFXML("Envelope/EnvelopeCriaCategoria.fxml");
     }
     public void adicionaDinheiroEnvelope(){loadFXML("Envelope/EnvelopeAdicionaDinheiro.fxml");}
     public void adicionarDespesa(){

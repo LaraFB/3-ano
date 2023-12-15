@@ -26,7 +26,7 @@ public class ContextData implements Serializable {
         this.historicoTransacoes = new HistoricoTransacoes();
         this.listaObjetivos = new ListaObjetivos();
         this.listaNotificacoes = new ToDoList();
-        date= LocalDate.from(LocalDateTime.now());
+        date = LocalDate.from(LocalDateTime.now());
         //date = LocalDate.of(2023,12,15);
     }
 

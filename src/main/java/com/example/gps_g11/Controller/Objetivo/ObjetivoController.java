@@ -1,21 +1,23 @@
 package com.example.gps_g11.Controller.Objetivo;
 
 import com.example.gps_g11.Controller.SideBarController;
+import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
+import com.example.gps_g11.Data.Categoria.CategoriaEntradas;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
-import com.example.gps_g11.Data.ToDos.ToDo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import com.example.gps_g11.Data.ToDos.ToDo;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -68,7 +70,7 @@ public class ObjetivoController implements Initializable {
             return;
 
         if(envelopeObjetivos != -1 && !context.getListaObjetivos().isEmpty())
-            distribuiDinheiro();
+            distribui2();
 
         int i = 0;
         int buttonsPerHBox = 4;
@@ -105,14 +107,15 @@ public class ObjetivoController implements Initializable {
 
         PieChart.Data totalValor = new PieChart.Data("Dinheiro necessário", somaValorTotal);
         PieChart.Data totalValor2 = new PieChart.Data("Dinheiro necessário", somaValorTotal);
-        PieChart.Data totalObtido = new PieChart.Data("Dinheiro total obtido", somaObtido);
-        PieChart.Data totalEmFalta = new PieChart.Data("Dinheiro total que falta", somaEmFalta);
+        PieChart.Data totalObtido = new PieChart.Data("Total guardado", somaObtido);
+        PieChart.Data totalEmFalta = new PieChart.Data("Total em falta", somaEmFalta);
 
-
+        pieEmfalta.getData().clear();
         pieEmfalta.getData().add(totalValor);
         pieEmfalta.getData().add(totalEmFalta);
         pieEmfalta.setLabelsVisible(false);
 
+        pieObtido.getData().clear();
         pieObtido.getData().add(totalValor2);
         pieObtido.getData().add(totalObtido);
         pieObtido.setLabelsVisible(false);
@@ -120,8 +123,8 @@ public class ObjetivoController implements Initializable {
 
     private PieChart createPie(Objetivo o) {
         PieChart pie = new PieChart();
-        PieChart.Data obtido = new PieChart.Data("Dinheiro obtido", o.getCurrentValue());
-        PieChart.Data emFalta = new PieChart.Data("Dinheiro que falta", o.getMissingValue());
+        PieChart.Data obtido = new PieChart.Data("Guardado", o.getCurrentValue());
+        PieChart.Data emFalta = new PieChart.Data("Em falta", o.getMissingValue());
 
         pie.getData().add(obtido);
         pie.getData().add(emFalta);
@@ -135,70 +138,184 @@ public class ObjetivoController implements Initializable {
         return pie;
     }
 
+    private void distribui2(){
+        double valor_envelope = context.getCategoriaByName("Objetivos").getValor();
+        double valor_retirar = 0;
+
+        boolean flag = false;
+
+        if(valor_envelope > 0) flag = true;
+        if(context.getListaObjetivos().getSize() <= 0) flag = false;
+
+        while(flag){
+            context.getListaObjetivos().sort(context.getData());
+            valor_envelope = context.getCategoriaByName("Objetivos").getValor();
+
+            for (int i=0; i< context.getListaObjetivos().getSize()-1; i++){
+                valor_retirar = valor_envelope/2;
+                if(context.getListaObjetivos().getObjetivo(i).getMissingValue() < valor_retirar)
+                    valor_retirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
+
+                context.getListaObjetivos().getObjetivo(i).addToGoal(valor_retirar);
+                valor_envelope -=valor_retirar;
+                context.getCategoriaByName("Objetivos").setValor(valor_envelope);
+            }
+            //ultimo obj
+            valor_retirar = valor_envelope;
+
+            if(context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).getMissingValue() < valor_retirar)
+                valor_retirar = context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).getMissingValue();
+
+            context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).addToGoal(valor_retirar);
+            valor_envelope -=valor_retirar;
+            context.getCategoriaByName("Objetivos").setValor(valor_envelope);
+
+            flag = false;
+            if(valor_envelope > 0)
+                if(context.getListaObjetivos().getSize() > 0)
+                    for (int i=0; i< context.getListaObjetivos().getSize(); i++)
+                        if(!context.getListaObjetivos().getObjetivo(i).isFullfiled())
+                            flag = true; //continua
+
+            //se chega ao fim do for com a flag a false é pq estao tds cumpridos ou n ha dinheiro
+        }
+    }
+
     private void distribuiDinheiro(){
-        double dinheiro;
+        double dinheiro = 0;
+        double oldVlaue = 0;
+        double valorNosObejtivos = 0;
+        double valorQueFaltaNosObjetivs = 0;
+        for (int i = 0; i < context.getListaObjetivos().getSize(); i++) {
+            if(!context.getListaObjetivos().getObjetivo(i).isDone()){
+                System.out.println(context.getListaObjetivos().getObjetivo(i).getCurrentValue());
+                valorNosObejtivos += context.getListaObjetivos().getObjetivo(i).getCurrentValue();
+                valorQueFaltaNosObjetivs += context.getListaObjetivos().getObjetivo(i).getMissingValue();
+            }
+        }
         context.getListaObjetivos().sort(context.getData());
         int count = 0;
-        while(context.getCategoriasListDespesas().get(envelopeObjetivos).getValor()-context.getCategoriaByName("Objetivos").getOldValue() != 0.0 && !context.getListaObjetivos().isAllFullfiled()){
+        /*valor nos objetivos 0
+        * valor que falta nos obejtivos 3
+        * valor que os objetivos têm 2*/
+
+        /*valor nos objetivos 0
+         * valor que falta nos obejtivos 11
+         * valor que os obejtivos têm 10*/
+
+        /*valor nos objetivos 10
+         * valor que falta nos obejtivos 1
+         * valor que os obejtivos têm 10*//*
+        System.out.println(valorNosObejtivos);
+        System.out.println(context.getCategoriaByName("Objetivos").getValor());*/
+        while(valorNosObejtivos != context.getCategoriaByName("Objetivos").getValor() && oldVlaue != context.getCategoriaByName("Objetivos").getValor() && context.getCategoriasListDespesas().get(envelopeObjetivos).getValor()>context.getCategoriaByName("Objetivos").getOldValue() && !context.getListaObjetivos().isAllFullfiled()){
             for (int i = 0; i < context.getListaObjetivos().getSize() ; i++) {
                 double valorARetirar;
-                dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor()-context.getCategoriaByName("Objetivos").getOldValue();
+                if(oldVlaue == context.getCategoriaByName("Objetivos").getValor()){
+                    break;
+                }
+                dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor()-oldVlaue;
                 if(!context.getListaObjetivos().isFullfiled(i) && count != 0 && context.getCategoriasListDespesas().get(envelopeObjetivos).getValor() != 0.0){
                     if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro)
                         valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
                     else valorARetirar = dinheiro;
-                    context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(dinheiro - valorARetirar);
+                    oldVlaue += valorARetirar;
                     context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+                    dinheiro -= valorARetirar;
+                    context.getCategoriaByName("Objetivos").setValor(dinheiro);
                 }else{
                     if (context.getListaObjetivos().getObjetivo(i).getMissingValue() < dinheiro / 2)
                         valorARetirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
                     else valorARetirar = dinheiro / 2;
-
+                    oldVlaue += valorARetirar;
                     context.getListaObjetivos().getObjetivo(i).addToGoal(valorARetirar);
+                    dinheiro -= valorARetirar;
+                    context.getCategoriaByName("Objetivos").setValor(dinheiro);
                 }
-
             }
+            if(dinheiro == 0.0){
+                break;
+            }
+            System.out.println(oldVlaue);
             count++;
         }
 
         dinheiro = context.getCategoriasListDespesas().get(envelopeObjetivos).getValor();
         context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).addToGoal(dinheiro);
-        //context.getCategoriasListDespesas().get(envelopeObjetivos).setValor(0);
-
+        valorNosObejtivos -= dinheiro;
+        context.getCategoriaByName("Objetivos").setValor(valorNosObejtivos);
         verificaoObjetivoCompleto();
     }
-
     private void verificaoObjetivoCompleto() {
         for(int i = 0; i < context.getListaObjetivos().getSize();i++){
             if(context.getListaObjetivos().getObjetivo(i).isFullfiled() && !context.getListaObjetivos().getObjetivo(i).isDone()){
                 context.getListaNotificacoes().addToDo("Concluio o objetivo - " + context.getListaObjetivos().getObjetivo(i).getNome(), ToDo.TYPE.USER_GENERATED,"Objetivos",context.getListaObjetivos().getObjetivo(i).getValor( ));
-                context.getListaObjetivos().getObjetivo(i).setDone(true);
             }
         }
     }
 
     private void eliminar(int index){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Objetivo cumprido!");
+        alert.setHeaderText(null);
         alert.setGraphic(null);
-        alert.setHeaderText("Deseja eliminar este objetivo?");
+        alert.setTitle("Objetivo cumprido");
 
-        alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
-        Optional<ButtonType> a = alert.showAndWait();
-        if(a.get() == ButtonType.YES){
+        Label desc = new Label("Deseja pagar e eliminar o objetivo?");
+        desc.setStyle("-fx-font-size: 12px;-fx-font-family: 'Times New Roman';");
+
+        Label ldinheiro = new Label("..em dinheiro?");
+        CheckBox isDinheiro = new CheckBox();
+
+        grid.add(desc, 0, 0);
+        grid.add(ldinheiro,0,1);
+        grid.add(isDinheiro,1,1);
+
+        alert.getDialogPane().setContent(grid);
+
+        ButtonType buttonSim = new ButtonType("Sim");
+        ButtonType buttonNao = new ButtonType("Não");
+
+        alert.getButtonTypes().setAll(buttonSim, buttonNao);
+
+        alert.getDialogPane().lookupButton(buttonSim).setStyle("-fx-background-color:#92d0ff;-fx-font-family: 'Times New Roman';");
+        alert.getDialogPane().lookupButton(buttonNao).setStyle("-fx-background-color:#ff676a;-fx-font-family: 'Times New Roman';");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonSim){
             try{
-                context.getListaObjetivos().deleteObjetivo(index);
-                context.getListaObjetivos().sort(context.getData());
-                update();
+                context.adicionarCategoriaDespesa(context.getListaObjetivos().getObjetivo(index).getValor(),context.getListaObjetivos().getObjetivo(index).getNome(),context.getListaObjetivos().getObjetivo(index).getDescricao(),true,false);
+                int check = context.adicionarDespesa(context.getListaObjetivos().getObjetivo(index).getNome(),"Objetivo " + context.getListaObjetivos().getObjetivo(index).getNome() + " cumprido",LocalDate.now(),context.getListaObjetivos().getObjetivo(index).getValor(), isDinheiro.isSelected());
+                context.getCategoriasListDespesas().remove(context.getCategoriaByName(context.getListaObjetivos().getObjetivo(index).getNome()));
+
+                System.out.println(check);
+                if(check >= 0){
+                    context.getListaObjetivos().deleteObjetivo(index);
+                    context.getListaObjetivos().sort(context.getData());
+                    update();
+                }
+                else{
+                    Alert err = new Alert(Alert.AlertType.ERROR);
+                    err.setTitle("Falha ao pagar e eliminar objetivo.");
+                    err.setGraphic(null);
+                    err.setHeaderText("Verifique se tem dinheiro para o pagar...");
+                    err.showAndWait();
+                }
+
             }catch (Exception e){
                 Alert err = new Alert(Alert.AlertType.ERROR);
                 err.setTitle("Falha ao eliminar objetivo.");
                 err.setGraphic(null);
                 err.setHeaderText(null);
+                err.showAndWait();
+
+
             }
         }
+        update();
     }
-
-
 }

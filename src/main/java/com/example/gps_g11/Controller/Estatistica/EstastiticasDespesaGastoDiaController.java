@@ -291,7 +291,7 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
         graphicdespesas.getYAxis().setLabel("Montante\n");
         hboxGraph.setCenter(graphicdespesas);
 
-        graphicdespesas.setTitle("Despesas gastas");
+        graphicdespesas.setTitle("Evolução das despesas");
         for (CategoriaDespesas envelope : envelopes) {
             if (!cbenvelope.getValue().equals("Sem filtro")) {
                 if (!cbenvelope.getValue().equals(envelope.getNome())) {

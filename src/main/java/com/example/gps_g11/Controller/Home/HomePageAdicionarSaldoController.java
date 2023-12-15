@@ -111,7 +111,17 @@ public class HomePageAdicionarSaldoController {
             lblError5.setVisible(true);
             lblError.setTextFill(Color.RED);
             lblError.setText("Preencha os espaços obrigatórios");
-        }else{
+        }else if(Double.parseDouble(tfValor.getText())== 0){
+            lblError.setVisible(true);
+            lblError1.setVisible(false);
+            lblError2.setVisible(false);
+            lblError3.setVisible(true);
+            lblError4.setVisible(false);
+            lblError5.setVisible(false);
+            lblError.setTextFill(Color.RED);
+            lblError.setText("Valor Inválido");
+        }
+        else{
             lblError.setVisible(true);
             lblError1.setVisible(false);
             lblError2.setVisible(false);
