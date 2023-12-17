@@ -32,7 +32,6 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
     public BorderPane hboxGraph;
     private SideBarController sideBarController;
     private Context context;
-
     private boolean BotaoDia = true;
 
     public void setSideBar(SideBarController sideBarController) {
@@ -259,6 +258,42 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
                 }
             }
         }
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Total de despesas");
+        LocalDate dataAtual = dateIni;
+        while (dataAtual != null && !dataAtual.isAfter(dateFim)) {
+            double totalDespesas = 0;
+            for (Despesa despesa : despesas) {
+                if (despesa.getData().isEqual(dataAtual)) {
+                    totalDespesas += despesa.getMontante();
+                }
+            }
+            String dataFormatada = dataAtual.format(FormatoData);
+            series.getData().add(new XYChart.Data<>(dataFormatada, totalDespesas));
+            dataAtual = dataAtual.plusDays(1);
+        }
+        graphicdespesas.getData().add(series);
+
+        List<XYChart.Data<String, Number>> dataList = series.getData();
+        for (int i = 1; i < dataList.size(); i++) {
+            Number previousValue = dataList.get(i - 1).getYValue();
+            Number currentValue = dataList.get(i).getYValue();
+
+            if (previousValue.doubleValue() == currentValue.doubleValue()) {
+                XYChart.Data<String, Number> data = dataList.get(i);
+                data.setNode(null);
+            }
+        }
+
+        for (XYChart.Data<String, Number> data : series.getData()) {
+            Tooltip tooltip = new Tooltip("Data: " + data.getXValue() + "\nValor: " + data.getYValue());
+            Tooltip.install(data.getNode(), tooltip);
+
+            if (data.getNode() != null) {
+                data.getNode().setOnMouseReleased(event -> tooltip.hide());
+                data.getNode().setOnMousePressed(event -> tooltip.show(data.getNode(), event.getScreenX(), event.getScreenY()));
+            }
+        }
 
     }
 
@@ -337,7 +372,44 @@ public class EstastiticasDespesaGastoDiaController implements Initializable {
             }
         }
 
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Total de despesas");
+        double totalDespesas = 0;
+        LocalDate dataAtual = dateIni;
+        while (dataAtual != null && !dataAtual.isAfter(dateFim)) {
+            for (Despesa despesa : despesas) {
+                if (despesa.getData().isEqual(dataAtual)) {
+                    totalDespesas += despesa.getMontante();
+                }
+            }
+            String dataFormatada = dataAtual.format(FormatoData);
+            series.getData().add(new XYChart.Data<>(dataFormatada, totalDespesas));
+            dataAtual = dataAtual.plusDays(1);
+        }
+        graphicdespesas.getData().add(series);
+
+        List<XYChart.Data<String, Number>> dataList = series.getData();
+        for (int i = 1; i < dataList.size(); i++) {
+            Number previousValue = dataList.get(i - 1).getYValue();
+            Number currentValue = dataList.get(i).getYValue();
+
+            if (previousValue.doubleValue() == currentValue.doubleValue()) {
+                XYChart.Data<String, Number> data = dataList.get(i);
+                data.setNode(null);
+            }
+        }
+
+        for (XYChart.Data<String, Number> data : series.getData()) {
+            Tooltip tooltip = new Tooltip("Data: " + data.getXValue() + "\nValor: " + data.getYValue());
+            Tooltip.install(data.getNode(), tooltip);
+
+            if (data.getNode() != null) {
+                data.getNode().setOnMouseReleased(event -> tooltip.hide());
+                data.getNode().setOnMousePressed(event -> tooltip.show(data.getNode(), event.getScreenX(), event.getScreenY()));
+            }
+        }
     }
+
 }
 
 

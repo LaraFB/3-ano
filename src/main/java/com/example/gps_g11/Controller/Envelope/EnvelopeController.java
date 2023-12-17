@@ -200,11 +200,21 @@ public class EnvelopeController implements Initializable {
         context = Context.getInstance();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         isEnvelope = true;
-        update();
     }
 
-    public void setSideBar(SideBarController sideBarController) {
+    public void setSideBar(SideBarController sideBarController,boolean isEnvelope) {
         this.sideBarController = sideBarController;
+        this.isEnvelope = isEnvelope;
+        update();
+        if(isEnvelope){
+            btnCriarCategoria.setVisible(false);
+            btnCriarEnvelope.setVisible(true);
+            btnGuardaDinheiro.setVisible(true);
+        }else {
+            btnCriarCategoria.setVisible(true);
+            btnCriarEnvelope.setVisible(false);
+            btnGuardaDinheiro.setVisible(false);
+        }
     }
 
     public void onCriarEnvelope(){

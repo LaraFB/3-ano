@@ -89,7 +89,7 @@
                               <Insets right="140.0" />
                            </padding>
                         </HBox>
-                        <TextArea fx:id="taDescricao" maxWidth="300.0" minHeight="150.0" minWidth="300.0" prefHeight="150.0" prefWidth="300.0" promptText="Escreva aqui detalhes " styleClass="textarea" stylesheets="@../../Style.css">
+                        <TextArea fx:id="taDescricao" wrapText="true" maxWidth="300.0" minHeight="150.0" minWidth="300.0" prefHeight="150.0" prefWidth="300.0" promptText="Escreva aqui detalhes " styleClass="textarea" stylesheets="@../../Style.css">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>

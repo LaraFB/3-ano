@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="515.0" prefWidth="1000.0">
          <children>
@@ -69,7 +69,7 @@
                               <Font name="Times New Roman" size="18.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="taDescricao" maxWidth="250.0" prefHeight="125.0" prefWidth="250.0" promptText="Escreva aqui detalhes " styleClass="textarea">
+                        <TextArea fx:id="taDescricao" wrapText="true" maxWidth="250.0" prefHeight="125.0" prefWidth="250.0" promptText="Escreva aqui detalhes " styleClass="textarea">
                            <VBox.margin>
                               <Insets left="160.0" top="10.0" />
                            </VBox.margin>
@@ -212,7 +212,7 @@
       </VBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" prefWidth="170.0" styleClass="btn" text="Back to Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
+      <Button fx:id="btnBack" mnemonicParsing="false" onAction="#onBackToEnvelope" prefHeight="40.0" styleClass="btn" text="Back to Envelope" textFill="#545454" BorderPane.alignment="TOP_LEFT">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

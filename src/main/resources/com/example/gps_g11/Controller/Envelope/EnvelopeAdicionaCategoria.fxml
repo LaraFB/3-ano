@@ -78,7 +78,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextArea fx:id="taDescricao" maxWidth="250.0" prefHeight="187.0" prefWidth="250.0">
+                  <TextArea fx:id="taDescricao" wrapText="true" maxWidth="250.0" prefHeight="187.0" prefWidth="250.0">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font>

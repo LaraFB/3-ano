@@ -17,6 +17,7 @@ import java.util.*;
 public class EnvelopeVisualizarController{
     public Button btnEditar;
     public Button btnEliminar;
+    public Button btnBack;
     private SideBarController sideBarController;
     private CategoriaDespesas categoriaDespesas;
     private CategoriaEntradas categoriaEntradas;
@@ -57,6 +58,11 @@ public class EnvelopeVisualizarController{
         isEnvelope = true;
         reset();
         context = Context.getInstance();
+        if (isEnvelope) {
+            btnBack.setText("Voltar ao Envelope");
+        } else {
+            btnBack.setText("Voltar as Categorias");
+        }
     }
     public void setCategoria(CategoriaEntradas categoria){
         this.categoriaEntradas = categoria;
@@ -68,6 +74,11 @@ public class EnvelopeVisualizarController{
         isEnvelope = false;
         reset();
         context = Context.getInstance();
+        if (isEnvelope) {
+            btnBack.setText("Voltar ao Envelope");
+        } else {
+            btnBack.setText("Voltar as Categorias");
+        }
     }
 
 
@@ -257,12 +268,13 @@ public class EnvelopeVisualizarController{
         btnGuardar.setVisible(false);
 
         lblError.setVisible(false);
-        sideBarController.onEnvelope();
+        sideBarController.onEnvelope(true);
     }
 
     public void onBackToEnvelope(){
-        sideBarController.onEnvelope();
+        sideBarController.onEnvelope(isEnvelope);
     }
+
 
     public void onAdcDinheiro(){
         if(context.getCategoriasListDespesas().size() == 1){ //se so ha esta categoria

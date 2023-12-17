@@ -82,7 +82,7 @@
                               <Insets top="25.0" />
                            </VBox.margin>
                         </HBox>
-                        <TextArea fx:id="taDescricao" maxHeight="130.0" maxWidth="250.0" prefHeight="112.0" prefWidth="250.0" promptText="Escreva aqui detalhes ">
+                        <TextArea fx:id="taDescricao" wrapText="true" maxHeight="130.0" maxWidth="250.0" prefHeight="112.0" prefWidth="250.0" promptText="Escreva aqui detalhes ">
                            <VBox.margin>
                               <Insets left="150.0" top="10.0" />
                            </VBox.margin>

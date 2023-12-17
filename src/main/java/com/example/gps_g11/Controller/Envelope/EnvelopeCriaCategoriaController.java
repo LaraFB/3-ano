@@ -35,7 +35,7 @@ public class EnvelopeCriaCategoriaController {
     }
     @FXML
     void onBackCategoria() {
-       sideBarController.onEnvelope();
+       sideBarController.onEnvelope(false);
     }
 
     @FXML

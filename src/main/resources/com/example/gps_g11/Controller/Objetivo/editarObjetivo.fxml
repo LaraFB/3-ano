@@ -144,7 +144,7 @@
                         <Insets right="650.0" />
                      </VBox.margin>
                   </Label>
-                  <TextArea fx:id="taDescricao" maxHeight="150.0" maxWidth="729.0" prefHeight="122.0" prefWidth="729.0" promptText="Escreva aqui detalhes ">
+                  <TextArea fx:id="taDescricao" wrapText="true" maxHeight="150.0" maxWidth="729.0" prefHeight="122.0" prefWidth="729.0" promptText="Escreva aqui detalhes ">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font>

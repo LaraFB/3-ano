@@ -38,7 +38,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="taDescricao" prefHeight="200.0" prefWidth="315.0" style="-fx-background-color: white;" />
+                  <TextArea fx:id="taDescricao" wrapText="true" prefHeight="200.0" prefWidth="315.0" style="-fx-background-color: white;" />
                </children>
             </HBox>
                 <Label fx:id="LError" alignment="CENTER" prefHeight="19.0" prefWidth="417.0" text="Introduza uma montante!" textFill="#dd0f0f" visible="false">

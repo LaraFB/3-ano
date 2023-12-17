@@ -36,7 +36,7 @@ public class EnvelopeCriaEnvelopeController {
     }
 
     public void onBackToEnvelope(){
-        sideBarController.onEnvelope();
+        sideBarController.onEnvelope(true);
     }
     public void initialize(){
         lValorR.setVisible(false);

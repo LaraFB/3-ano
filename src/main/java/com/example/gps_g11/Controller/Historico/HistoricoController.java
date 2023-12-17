@@ -13,8 +13,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -26,8 +30,6 @@ public class HistoricoController implements Initializable {
     private static final String NO_FILTER = "Sem filtro";
     private static final String FILTER_ENTRADAS = "Entradas";
     private static final String FILTER_DESPESAS = "Despesas";
-
-
     private static final String FILTER_DATA_CRESCENTE = "Data por ordem crescente";
     private static final String FILTER_DATA_DECRESCENTE = "Data por ordem decrescente";
     private static final String FILTER_CATEGORIA_ORDEM_ALFABETICA = "Categoria por ordem alfabética";
@@ -405,7 +407,24 @@ public class HistoricoController implements Initializable {
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
+    private Callback<TableColumn<Transacao, String>, TableCell<Transacao, String>> wrapTextCellFactory() {
+        return column -> {
+            TableCell<Transacao, String> cell = new TextFieldTableCell<>(new StringConverter<>() {
+                @Override
+                public String toString(String object) {
+                    return object;
+                }
 
+                @Override
+                public String fromString(String string) {
+                    return string;
+                }
+            });
+
+            cell.setWrapText(true);
+            return cell;
+        };
+    }
     private void configurarTabela() {
         tfData.setCellValueFactory(new PropertyValueFactory<>("data"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
@@ -469,7 +488,6 @@ public class HistoricoController implements Initializable {
 
 
     }
-
 
 
 

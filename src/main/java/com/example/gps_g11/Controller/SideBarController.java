@@ -32,6 +32,7 @@ public class SideBarController {
 
     private CategoriaDespesas c;
     private CategoriaEntradas c1;
+    private boolean isEnvelope = true;
 
     public void onHomePage(){
         loadFXML("Home/HomePage.fxml");
@@ -39,10 +40,14 @@ public class SideBarController {
 
     public void onHistorico(){loadFXML("Historico/Historico.fxml");}
 
-    public void onEnvelope(){
+    public void onEnvelope(boolean isEnvelope){
+        this.isEnvelope = isEnvelope;
         loadFXML("Envelope/Envelope.fxml");
     }
-
+    public void onEnvelope(){
+        isEnvelope = true;
+        loadFXML("Envelope/Envelope.fxml");
+    }
     public void onObjetivos(){
         loadFXML("Objetivo/Objetivo.fxml");
     }
@@ -66,7 +71,7 @@ public class SideBarController {
                     break;
                 case "Envelope/Envelope.fxml":
                     EnvelopeController envelopeController = loader.getController();
-                    envelopeController.setSideBar(this);
+                    envelopeController.setSideBar(this,isEnvelope);
                     putBtnActive(btnEnvelope);
                     break;
                 case "Envelope/EnvelopeCriaEnvelope.fxml":

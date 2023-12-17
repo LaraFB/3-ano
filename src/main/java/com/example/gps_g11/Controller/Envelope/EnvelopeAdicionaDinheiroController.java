@@ -23,7 +23,7 @@ public class EnvelopeAdicionaDinheiroController {
     public void setSideBar(SideBarController sideBarController) {
         this.sideBarController = sideBarController;
     }
-    public void onBackToEnvelope() {sideBarController.onEnvelope();}
+    public void onBackToEnvelope() {sideBarController.onEnvelope(true);}
     public void initialize(){
         context = Context.getInstance();
         ObservableList<String> nomesEnvelopes = FXCollections.observableArrayList(context.getCategoriaDespesasNomes());
