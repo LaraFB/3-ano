@@ -4,6 +4,7 @@ import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Categoria.CategoriaEntradas;
 import com.example.gps_g11.Data.Context;
+import com.example.gps_g11.Data.Objetivo.ListaObjetivos;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,9 +21,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -87,8 +91,13 @@ public class ObjetivoController implements Initializable {
             PieChart objetivosPie = createPie(context.getListaObjetivos().getObjetivo(j));
             if(context.getListaObjetivos().getObjetivo(j).isFullfiled()) {
                 int finalJ = j;
-                objetivosPie.setOnMouseClicked(mouseEvent -> eliminar(finalJ));
-                objetivosPie.setTitle("Objetivo cumprido!");
+                //objetivosPie.setOnMouseClicked(mouseEvent -> eliminar(finalJ));
+                if(context.getListaObjetivos().getObjetivo(j).isDone()){
+                    objetivosPie.setTitle("Objetivo pago!");
+                }else{
+                    objetivosPie.setTitle("Objetivo cumprido!");
+                }
+
             }
             currentHBox.getChildren().add(objetivosPie);
 
@@ -143,42 +152,73 @@ public class ObjetivoController implements Initializable {
         double valor_retirar = 0;
 
         boolean flag = false;
-
+        for (int i = 0; i < context.getListaObjetivos().getSize(); i++) {
+            if(!context.getListaObjetivos().getObjetivo(i).isDone()){
+                valor_envelope = valor_envelope - context.getListaObjetivos().getObjetivo(i).getCurrentValue();
+            }
+        }
         if(valor_envelope > 0) flag = true;
         if(context.getListaObjetivos().getSize() <= 0) flag = false;
 
         while(flag){
             context.getListaObjetivos().sort(context.getData());
-            valor_envelope = context.getCategoriaByName("Objetivos").getValor();
+            List<Objetivo> objetivosNaoCumpridos = new ArrayList<>();
+            for (int i = 0; i < context.getListaObjetivos().getSize(); i++) {
+                if(!context.getListaObjetivos().getObjetivo(i).isFullfiled() || context.getListaObjetivos().getObjetivo(i).isDone()){
+                    objetivosNaoCumpridos.add(context.getListaObjetivos().getObjetivo(i));
+                }
+            }
 
-            for (int i=0; i< context.getListaObjetivos().getSize()-1; i++){
-                valor_retirar = valor_envelope/2;
-                if(context.getListaObjetivos().getObjetivo(i).getMissingValue() < valor_retirar)
-                    valor_retirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
+            /*for (int i=0; i< context.getListaObjetivos().getSize(); i++){
+                if(i == context.getListaObjetivos().getSize()-1){
+                    valor_retirar = valor_envelope;
+                    if(context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).getMissingValue() < valor_retirar)
+                        valor_retirar = context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).getMissingValue();
 
-                context.getListaObjetivos().getObjetivo(i).addToGoal(valor_retirar);
-                valor_envelope -=valor_retirar;
-                context.getCategoriaByName("Objetivos").setValor(valor_envelope);
+                    context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).addToGoal(valor_retirar);
+                    valor_envelope -=valor_retirar;
+                    context.getCategoriaByName("Objetivos").setValor(valor_envelope);
+                }else{
+                    valor_retirar = valor_envelope/2;
+                    if(context.getListaObjetivos().getObjetivo(i).getMissingValue() < valor_retirar)
+                        valor_retirar = context.getListaObjetivos().getObjetivo(i).getMissingValue();
+
+                    context.getListaObjetivos().getObjetivo(i).addToGoal(valor_retirar);
+                    valor_envelope -=valor_retirar;
+                    context.getCategoriaByName("Objetivos").setValor(valor_envelope);
+                }
+            }*/
+            for (int i=0; i< objetivosNaoCumpridos.size(); i++){
+                if(i == objetivosNaoCumpridos.size()-1){
+                    valor_retirar = valor_envelope;
+                    if(objetivosNaoCumpridos.get(objetivosNaoCumpridos.size()-1).getMissingValue() < valor_retirar)
+                        valor_retirar = objetivosNaoCumpridos.get(objetivosNaoCumpridos.size()-1).getMissingValue();
+
+                    objetivosNaoCumpridos.get(objetivosNaoCumpridos.size()-1).addToGoal(valor_retirar);
+                    valor_envelope -=valor_retirar;
+                }else{
+                    valor_retirar = valor_envelope/2;
+                    if(objetivosNaoCumpridos.get(i).getMissingValue() < valor_retirar)
+                        valor_retirar = objetivosNaoCumpridos.get(i).getMissingValue();
+
+                    objetivosNaoCumpridos.get(i).addToGoal(valor_retirar);
+                    valor_envelope -=valor_retirar;
+                }
             }
             //ultimo obj
-            valor_retirar = valor_envelope;
 
-            if(context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).getMissingValue() < valor_retirar)
-                valor_retirar = context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).getMissingValue();
-
-            context.getListaObjetivos().getObjetivo(context.getListaObjetivos().getSize()-1).addToGoal(valor_retirar);
-            valor_envelope -=valor_retirar;
-            context.getCategoriaByName("Objetivos").setValor(valor_envelope);
 
             flag = false;
-            if(valor_envelope > 0)
-                if(context.getListaObjetivos().getSize() > 0)
-                    for (int i=0; i< context.getListaObjetivos().getSize(); i++)
-                        if(!context.getListaObjetivos().getObjetivo(i).isFullfiled())
+            if(valor_envelope > 0){
+                if(objetivosNaoCumpridos.size() > 0)
+                    for (int i=0; i< objetivosNaoCumpridos.size()   ; i++)
+                        if(!objetivosNaoCumpridos.get(i).isFullfiled())
                             flag = true; //continua
+            }
 
             //se chega ao fim do for com a flag a false é pq estao tds cumpridos ou n ha dinheiro
         }
+        verificaoObjetivoCompleto();
     }
 
     private void distribuiDinheiro(){
