@@ -47,7 +47,7 @@ public class HomePageTransacaoController {
                 lblError.setTextFill(Color.RED);
                 lblError.setText("Introduza um valor positivo");
             }else {
-                if (cb1.getValue().equals("Levantamento de dinheiro")) {
+                if (cb1.getValue().equals("Levantei dinheiro")) {
                     if (context.getSaldo().getBudgetContaBancaria().getSaldoReal() < valor) {
                         lblError.setTextFill(Color.RED);
                         lblError.setText("Saldo insuficiente");

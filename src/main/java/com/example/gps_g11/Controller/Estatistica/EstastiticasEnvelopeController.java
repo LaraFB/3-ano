@@ -58,12 +58,12 @@ public class EstastiticasEnvelopeController {
         if(isEnvelopes){
             if (!context.getTransacoesDespesa().isEmpty()) {
                 datai.setValue(context.getTransacoesDespesa().get(0).getData());
-                dataf.setValue(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size() - 1).getData());
+                dataf.setValue(context.getTransacoesDespesa().get(context.getTransacoesDespesa().size()-1).getData());
             }
         }else{
             if (!context.getTransacoesEntrada().isEmpty()) {
                 datai.setValue(context.getTransacoesEntrada().get(0).getData());
-                dataf.setValue(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size() - 1).getData());
+                dataf.setValue(context.getTransacoesEntrada().get(context.getTransacoesEntrada().size()-1).getData());
             }
         }
         datai.setDayCellFactory(picker -> new DateCell() {
@@ -183,6 +183,7 @@ public class EstastiticasEnvelopeController {
 
     public void chartUpdate() {
         initializePieChart();
+        handlers();
     }
     private void initializePieChart() {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
@@ -228,6 +229,7 @@ public class EstastiticasEnvelopeController {
                     totalEntradas += entrada.getMontante();
                 }
             }
+
             for (CategoriaEntradas categoriaEntradas : context.getCategoriasListEntradas()) {
                 double montante = 0;
                 for (Entrada entrada : context.getTransacoesEntrada()) {
@@ -238,6 +240,7 @@ public class EstastiticasEnvelopeController {
                         montante += entrada.getMontante();
                     }
                 }
+                System.out.println(categoriaEntradas.getNome() + " - " + montante);
                 double percentual = (montante / totalEntradas) * 100;
                 pieChartData.add(new PieChart.Data(categoriaEntradas.getNome() + " (" + String.format("%.2f", percentual) + "%)", montante));
             }
