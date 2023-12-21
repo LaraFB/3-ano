@@ -196,7 +196,7 @@ It is assumed:
 
 ***
 ##### User Story 1
-As a student, I want to be able to track my daily expenses,so that I can maintain an accurate record of my personal finances.
+As a student, I want to be able to track my daily expenses, so that I can maintain an accurate record of my personal finances.
 ***
 ##### User Story 2
 As a user, I want to manage categories so that I can organize my expenses according to different types.
@@ -205,7 +205,7 @@ As a user, I want to manage categories so that I can organize my expenses accord
 As a student, I want to access expenses so that I can view all my recorded expenses.
 ***
 ##### User Story 4
-As a student, I want to generate reports so that I can analyze send them or analize them later.
+As a student, I want to see reports so that I can analyze them.
 ***
 ##### User Story 5
 As a user, I want to reserve amounts for future expenses so that I can plan my budget.
@@ -214,22 +214,22 @@ As a user, I want to reserve amounts for future expenses so that I can plan my b
 As a user, I want to set goals so that I can work for a specific objective.
 ***
 ##### User Story 7
-As a user, I want to see the monthly budget so that I can make adjustments as needed.
+As a user, I want to see the monthly budget so that I can adjust as needed.
 ***
 ##### User Story 8
 As a user, I want to extract data from reports in PDF and Excel, so that I can share and analyze my expenses.
 ***
 ##### User Story 9
-As a student, I want to reset the monthly budget, which is the amount of money I have available per month, so that I can start a new period of financial control.
+As a student, I want to reset the monthly budget, so that I can start a new period of financial control.
 ***
 ##### User Story 10
 As a student, I want to view the transaction history so that I can review my past financial activities.
 ***
 ##### User Story 11
-As a student, I want to view the use of my academic scholarship so that I can keep track of the scholarship usage and decide on the best way to manage it.
+As a student, I want to view the use of my academic scholarship so that I can keep track of its usage.
 ***
 ##### User Story 12
-As a user, I want to view expenses by categoria, so that I can understand in which categories I spend the most money.
+As a user, I want to view expenses by category, so that I can understand in which categories I spend the most money.
 ***
 ##### User Story 13
 As a working student, I want to add money to my budget, so that I can keep the budget updated.
@@ -268,25 +268,10 @@ By the end of the second realease we must have all the user stories with "must" 
 
 ##### Risk List
 
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
->>>>>>> 8c9f62edc89dcc4e7ef0c243b17575f05eec07c4
-- RSK1 – PxI: 2x4=8; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-- RSK2 – PxI: 1x4=4; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
-- RSK3 – PxI: 3x2=6; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
-=======
-- RSK1 – PxI: 3x4=12; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-- RSK2 – PxI: 2x4=12; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project. 
-- RSK3 – PxI: 4x2=8; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays.
->>>>>>> dev
-- RSK4 – PxI: 4x5=20; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
-
-
-##### Mitigation Actions (threats>=20)
- - RSK4 – MS; Constantly check with the client the progress of the project, make regular meetings and keep him updated.
- - RSK4 – AS; Never assume what the client wishes, always ask on any doubts encountered.
+RSK1 – PxI: 1x4=4; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
+RSK2 – PxI: 1x4=4; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project.
+RSK3 – PxI: 3x2=6; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays
+RSK4 – PxI: 3x5=15; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
 
 ***
 
@@ -593,24 +578,24 @@ Points:
 
 ##### Sprint Review
 
-- Analysis: what was not done or what was added (Link to US or Task from the PB)
+- Analysis: All requirements were met (Add recurrent expenses, notifications for goals or low funds, do all corrections needed).
 
-- Story Points: 2S+1M+2X+2H
+- Story Points: 1L + 3M + 3S
 
-- Version: 0.1
+- Version: 2.0
 
-- Client analysis: client feedback
+- Client analysis: As várias novas funcionalidades estão bem. Detetado um problema nos objetivos 
 
-- Conclusions: what to add/review
+- Conclusions: We successfully translated the client's vision into reality, accomplishing all the planned tasks.
 
 ##### Sprint Retrospective
 
 - What we did well:
-    - A
-- What we did less well:
-    - B
-- How to improve to the next sprint:
-    - C
+    - Manage to work within the time estimated (tasks have all been completed).
+    - Communication between members was effective.
+    - Completed all US planned.
 
+- What we did less well:
+    - Had a bug in objetives
 
 ***
