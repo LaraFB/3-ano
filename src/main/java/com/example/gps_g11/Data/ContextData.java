@@ -51,7 +51,7 @@ public class ContextData implements Serializable {
     public void saveToFile(String fileName) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
             oos.writeObject(this);
-            System.out.println("ContextData saved to " + fileName);
+            //System.out.println("ContextData saved to " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

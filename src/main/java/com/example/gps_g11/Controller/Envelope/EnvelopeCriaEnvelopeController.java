@@ -125,7 +125,7 @@ public class EnvelopeCriaEnvelopeController {
         ToggleButton toggleButtonAtivo = (ToggleButton) envelopeToggleGroup.getSelectedToggle();
 
 
-        if(tfValor.getText().isEmpty() || tfValorR.getText().isEmpty() || nomeEnvelope.getText().isEmpty() || toggleButtonAtivo == null || taDescricao.getText().isEmpty()){
+        if(tfValor.getText().isEmpty() || nomeEnvelope.getText().isEmpty() || toggleButtonAtivo == null || taDescricao.getText().isEmpty()){
             lblError.setVisible(true);
             lblError1.setVisible(true);
             lblError2.setVisible(true);
@@ -142,7 +142,13 @@ public class EnvelopeCriaEnvelopeController {
 
             int res;
             if(checkRecorrente.isSelected() == true)
-                res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected(),Double.parseDouble(tfValorR.getText()));
+                if(tfValorR.getText().isEmpty()){
+                    res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected(),Double.parseDouble(tfValorR.getText()));
+                }else{
+                    lblError.setTextFill(Color.RED);
+                    lblError.setText("Preencha os espaços obrigatórios");
+                    return;
+                }
             else
                 res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected());
 
@@ -153,7 +159,7 @@ public class EnvelopeCriaEnvelopeController {
                 lblError.setText("Envelope já existe");
                 lblError.setTextFill(Color.RED);
             }else{
-                    resetCampos();
+                resetCampos();
             }
         }
     }

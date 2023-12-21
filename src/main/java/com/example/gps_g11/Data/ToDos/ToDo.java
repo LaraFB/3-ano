@@ -1,5 +1,7 @@
 package com.example.gps_g11.Data.ToDos;
 
+import com.example.gps_g11.Data.Objetivo.Objetivo;
+
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -10,7 +12,8 @@ public class ToDo implements Serializable {
     private String description;
     private TYPE type;
     private String envelope;
-    private Double valor;
+    private Objetivo objetivo;
+    private double valorRecorrente;
 
     public ToDo(String description, TYPE type ){
         this.description = description;
@@ -22,11 +25,17 @@ public class ToDo implements Serializable {
         this.type = type;
         this.envelope = envelope;
     }
-    public ToDo(String description, TYPE type, String envelope,Double valor){
+    public ToDo(String description, TYPE type, String envelope, Objetivo objetivo){
         this.description = description;
         this.type = type;
         this.envelope = envelope;
-        this.valor = valor;
+        this.objetivo = objetivo;
+    }
+    public ToDo(String description, TYPE type, String envelope, double valorRecorrente){
+        this.description = description;
+        this.type = type;
+        this.envelope = envelope;
+        this.valorRecorrente = valorRecorrente;
     }
 
     public String getDescription() {
@@ -50,12 +59,20 @@ public class ToDo implements Serializable {
     public void setEnvelope(String area) {
         this.envelope = area;
     }
-    public Double getValor() {
-        return valor;
+
+    public Objetivo getObjetivo() {
+        return objetivo;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
     }
 
+    public double getValorRecorrente() {
+        return valorRecorrente;
+    }
+
+    public void setValorRecorrente(double valorRecorrente) {
+        this.valorRecorrente = valorRecorrente;
+    }
 }

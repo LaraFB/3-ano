@@ -162,7 +162,7 @@ public class Context {
             }
             if(categoriaDespesas  == null){
 
-                System.out.println("1");
+                //System.out.println("1");
                 return -2; //Se não existir categoria
             }
             if(categoriaDespesas.getValor() < montante ){

@@ -197,6 +197,23 @@ public class editarObjetivoController implements Initializable{
         //btnAdcDinheiro.setDisable(false);
         btnSalvar.setDisable(false);
         btnEliminar.setDisable(false);
+        if(context.getListaObjetivos().getObjetivo(index).isDone()){
+            btnEliminar.setDisable(true);
+            btnSalvar.setDisable(true);
+            tfNome.setDisable(true);
+            tfValor.setDisable(true);
+            taDescricao.setDisable(true);
+            sPrioridade.setDisable(true);
+            dpData.setDisable(true);
+        }else{
+            btnEliminar.setDisable(false);
+            btnSalvar.setDisable(false);
+            tfNome.setDisable(false);
+            tfValor.setDisable(false);
+            taDescricao.setDisable(false);
+            sPrioridade.setDisable(false);
+            dpData.setDisable(false);
+        }
     }
 
     private boolean isNumber(String text){

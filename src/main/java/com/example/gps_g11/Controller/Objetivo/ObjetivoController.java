@@ -30,6 +30,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static java.lang.Thread.sleep;
+
 public class ObjetivoController implements Initializable {
     public Button addObj;
 
@@ -164,7 +166,7 @@ public class ObjetivoController implements Initializable {
             context.getListaObjetivos().sort(context.getData());
             List<Objetivo> objetivosNaoCumpridos = new ArrayList<>();
             for (int i = 0; i < context.getListaObjetivos().getSize(); i++) {
-                if(!context.getListaObjetivos().getObjetivo(i).isFullfiled() || context.getListaObjetivos().getObjetivo(i).isDone()){
+                if(!context.getListaObjetivos().getObjetivo(i).isFullfiled() && !context.getListaObjetivos().getObjetivo(i).isDone()){
                     objetivosNaoCumpridos.add(context.getListaObjetivos().getObjetivo(i));
                 }
             }
@@ -228,7 +230,7 @@ public class ObjetivoController implements Initializable {
         double valorQueFaltaNosObjetivs = 0;
         for (int i = 0; i < context.getListaObjetivos().getSize(); i++) {
             if(!context.getListaObjetivos().getObjetivo(i).isDone()){
-                System.out.println(context.getListaObjetivos().getObjetivo(i).getCurrentValue());
+                //System.out.println(context.getListaObjetivos().getObjetivo(i).getCurrentValue());
                 valorNosObejtivos += context.getListaObjetivos().getObjetivo(i).getCurrentValue();
                 valorQueFaltaNosObjetivs += context.getListaObjetivos().getObjetivo(i).getMissingValue();
             }
@@ -276,7 +278,7 @@ public class ObjetivoController implements Initializable {
             if(dinheiro == 0.0){
                 break;
             }
-            System.out.println(oldVlaue);
+            //System.out.println(oldVlaue);
             count++;
         }
 
@@ -289,7 +291,7 @@ public class ObjetivoController implements Initializable {
     private void verificaoObjetivoCompleto() {
         for(int i = 0; i < context.getListaObjetivos().getSize();i++){
             if(context.getListaObjetivos().getObjetivo(i).isFullfiled() && !context.getListaObjetivos().getObjetivo(i).isDone()){
-                context.getListaNotificacoes().addToDo("Concluio o objetivo - " + context.getListaObjetivos().getObjetivo(i).getNome(), ToDo.TYPE.USER_GENERATED,"Objetivos",context.getListaObjetivos().getObjetivo(i).getValor( ));
+                context.getListaNotificacoes().addToDo("Concluio o objetivo - " + context.getListaObjetivos().getObjetivo(i).getNome(), ToDo.TYPE.USER_GENERATED,"Objetivos",context.getListaObjetivos().getObjetivo(i));
             }
         }
     }
@@ -332,7 +334,7 @@ public class ObjetivoController implements Initializable {
                 int check = context.adicionarDespesa(context.getListaObjetivos().getObjetivo(index).getNome(),"Objetivo " + context.getListaObjetivos().getObjetivo(index).getNome() + " cumprido",LocalDate.now(),context.getListaObjetivos().getObjetivo(index).getValor(), isDinheiro.isSelected());
                 context.getCategoriasListDespesas().remove(context.getCategoriaByName(context.getListaObjetivos().getObjetivo(index).getNome()));
 
-                System.out.println(check);
+                //System.out.println(check);
                 if(check >= 0){
                     context.getListaObjetivos().deleteObjetivo(index);
                     context.getListaObjetivos().sort(context.getData());

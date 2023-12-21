@@ -330,7 +330,7 @@ public class HomeController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonSim) {
-                context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), td.getValor(), isDinheiro.isSelected());
+                context.adicionarDespesa(td.getEnvelope(), "Pagou "+td.getEnvelope(), context.getData(), td.getObjetivo().getValor(), isDinheiro.isSelected());
                 context.getCategoriaByName(td.getEnvelope()).setPago(true);
                 context.getListaNotificacoes().removeToDo(td);
 
@@ -363,15 +363,15 @@ public class HomeController implements Initializable {
             if(td.getEnvelope() != null && td.getEnvelope().equals("Objetivos")){
                 for (CategoriaDespesas categoriasListDespesa : context.getCategoriasListDespesas()) {
                     if(categoriasListDespesa.getNome().equals(td.getEnvelope())) {
-                        categoriasListDespesa.setValor(categoriasListDespesa.getValor() - td.getValor());
+                        categoriasListDespesa.setValor(categoriasListDespesa.getValor() - td.getObjetivo().getValor());
                         String texto = td.getDescription();
                         int indiceTraco = texto.indexOf("-");
                         String resultado = null;
                         if (indiceTraco != -1) {
                             resultado = texto.substring(indiceTraco + 1).trim();
-                            System.out.println(resultado);
+                            //System.out.println(resultado);
                         }
-                        context.getListaNotificacoes().addToDo("Já pagou o objetivo - " + resultado, ToDo.TYPE.REQUEST, td.getEnvelope(), td.getValor());
+                        context.getListaNotificacoes().addToDo("Já pagou o objetivo - " + resultado, ToDo.TYPE.REQUEST, td.getEnvelope(), td.getObjetivo());
                         context.getListaObjetivos().getObjetivo(resultado).setDone(true);
 
                     }

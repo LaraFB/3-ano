@@ -188,7 +188,7 @@ public class SideBarController {
             }
         });
         Date.valueProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("Data alterada para: " + newValue);
+            //System.out.println("Data alterada para: " + newValue);
             context.verficacoes(newValue);
         });
 
