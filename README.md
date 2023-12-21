@@ -269,11 +269,8 @@ By the end of the second realease we must have all the user stories with "must" 
 ##### Risk List
 
 RSK1 – PxI: 1x4=4; The team doesn't have much experience in this type of project, this can lead to delays in goals due to poorly calculated time estimates or communication failures.
-
 RSK2 – PxI: 1x4=4; There are constant simultaneous changes to the project, this can cause conflicts,complications or delays on the project.
-
 RSK3 – PxI: 3x2=6; Taking into account that the group members are not professionals in this area, they may write code that uses excessive resources and encounter more bugs. This will force us to spend more time than necessary, leading to possible delays
-
 RSK4 – PxI: 3x5=15; Misunderstandings between the team and the client's expectations, might lead to project delays, compromised client satisfaction.
 
 ***
