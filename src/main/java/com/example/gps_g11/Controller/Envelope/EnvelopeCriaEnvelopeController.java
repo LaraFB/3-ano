@@ -27,6 +27,7 @@ public class EnvelopeCriaEnvelopeController {
     public ToggleButton tbtnEnvelopeAberto;
     public Button btnOk;
     public TextField nomeEnvelope;
+    public Label lblRecorrente;
     private SideBarController sideBarController;
     private ToggleGroup envelopeToggleGroup;
     private Context context;
@@ -55,7 +56,8 @@ public class EnvelopeCriaEnvelopeController {
         lblError2.setVisible(false);
         lblError3.setVisible(false);
         lblError.setVisible(false);
-
+        checkRecorrente.setVisible(false);
+        lblRecorrente.setVisible(false);
         checkRecorrente.setOnAction(event -> {
             if(checkRecorrente.isSelected()){
                 lValorR.setVisible(true);
@@ -141,7 +143,7 @@ public class EnvelopeCriaEnvelopeController {
             lblError.setTextFill(Color.GREEN);
 
             int res;
-            if(checkRecorrente.isSelected() == true)
+            /*if(checkRecorrente.isSelected() == true)
                 if(tfValorR.getText().isEmpty()){
                     res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected(),Double.parseDouble(tfValorR.getText()));
                 }else{
@@ -149,7 +151,7 @@ public class EnvelopeCriaEnvelopeController {
                     lblError.setText("Preencha os espaços obrigatórios");
                     return;
                 }
-            else
+            else*/
                 res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected());
 
             if(res == -1){
