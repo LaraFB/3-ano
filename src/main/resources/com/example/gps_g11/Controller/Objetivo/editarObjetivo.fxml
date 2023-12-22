@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.editarObjetivoController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Objetivo.editarObjetivoController">
    <right>
       <Button fx:id="btnNext" mnemonicParsing="false" onAction="#onNext" prefHeight="100.0" prefWidth="100.0" styleClass="btn" text="&gt;" textFill="#545454" BorderPane.alignment="CENTER">
          <font>
@@ -45,6 +45,9 @@
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
                   </Label>
                   <Label fx:id="lblError1" text="*" textFill="#ff676a">
                      <font>
@@ -72,7 +75,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tfValor" maxWidth="180.0" prefHeight="30.0" prefWidth="180.0" promptText="€" style="-fx-background-color: #DEEFFF;">
+                  <TextField fx:id="tfValor" maxWidth="215.0" prefHeight="30.0" prefWidth="215.0" promptText="€" style="-fx-background-color: #DEEFFF;">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font>
@@ -95,7 +98,7 @@
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="45.0" />
                      </HBox.margin>
                   </Label>
                   <Label fx:id="lblError12" text="*" textFill="#ff676a">
@@ -108,12 +111,12 @@
                         <Insets left="25.0" />
                      </HBox.margin>
                   </Slider>
-                  <Label fx:id="lPrioridade" text="00/10" textFill="#545454">
+                  <Label fx:id="lPrioridade" text="0/10" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
                   </Label>
-                  <Label text="Data Limite" textFill="#545454">
+                  <Label prefHeight="20.0" prefWidth="114.0" text="Data Limite" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
@@ -121,7 +124,7 @@
                         <Insets left="25.0" />
                      </padding>
                   </Label>
-                  <DatePicker fx:id="dpData">
+                  <DatePicker fx:id="dpData" prefHeight="25.0" prefWidth="176.0">
                      <HBox.margin>
                         <Insets left="25.0" />
                      </HBox.margin>
@@ -141,12 +144,12 @@
                         <Insets right="650.0" />
                      </VBox.margin>
                   </Label>
-                  <TextArea fx:id="taDescricao" maxHeight="150.0" maxWidth="670.0" prefHeight="150.0" prefWidth="670.0" promptText="Escreva aqui detalhes ">
+                  <TextArea fx:id="taDescricao" wrapText="true" maxHeight="150.0" maxWidth="729.0" prefHeight="122.0" prefWidth="729.0" promptText="Escreva aqui detalhes ">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="70.0" top="5.0" />
+                        <Insets right="15.0" top="5.0" />
                      </VBox.margin>
                   </TextArea>
                </children>
@@ -159,7 +162,10 @@
             </VBox>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <ProgressBar fx:id="pbObjetivo" opacity="0.4" prefHeight="20.0" prefWidth="708.0" progress="0.39" />
+                  <ProgressBar fx:id="pbObjetivo" opacity="0.4" prefHeight="20.0" prefWidth="661.0" progress="0.39">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin></ProgressBar>
                   <Label fx:id="lProgresso" text="100%" textFill="#545454">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
@@ -172,10 +178,13 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="48.0" prefWidth="780.0" spacing="5.0">
                <children>
-                  <Label fx:id="msgError" alignment="TOP_LEFT" prefHeight="20.0" prefWidth="571.0" text="Mensagem de Erro" textAlignment="JUSTIFY" textFill="#ff676a">
+                  <Label fx:id="msgError" alignment="CENTER" prefHeight="20.0" prefWidth="1008.0" text="Mensagem de Erro" textAlignment="JUSTIFY" textFill="#ff676a">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
                   </Label>
                   <Button fx:id="btnAdcDinheiro" disable="true" mnemonicParsing="false" onAction="#onAdcDinheiro" prefHeight="40.0" prefWidth="184.0" styleClass="btn" text="Adicionar dinheiro" textFill="#545454" visible="false">
                      <font>

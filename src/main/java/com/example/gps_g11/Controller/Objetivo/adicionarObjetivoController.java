@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class adicionarObjetivoController implements Initializable {
@@ -42,23 +43,27 @@ public class adicionarObjetivoController implements Initializable {
         if(tfNome.getText().isEmpty() ){
             msgError.setVisible(true);
             msgError.setText("Insira um nome!");
+            msgError.setTextFill(Color.RED);
             return;
         }
         if(tfValor.getText().isEmpty() || !isNumber(tfValor.getText()) ){
             msgError.setVisible(true);
             msgError.setText("Insira um valor numérico!");
+            msgError.setTextFill(Color.RED);
             return;
         }
 
         if(context.getListaObjetivos().getObjetivo(tfNome.getText()) != null){
             msgError.setVisible(true);
             msgError.setText("Objetivo já existe!");
+            msgError.setTextFill(Color.RED);
             return;
         }
 
         if(Double.parseDouble(tfValor.getText()) <= 0 ){
             msgError.setVisible(true);
             msgError.setText("Insira um valor positivo!");
+            msgError.setTextFill(Color.RED);
             return;
         }
 
@@ -92,7 +97,7 @@ public class adicionarObjetivoController implements Initializable {
 
 
             if(context.getCategoriasListDespesas().isEmpty() || temEnvelopeObjetivos == false)
-                context.adicionarCategoriaDespesa(0.0,"Objetivos","Para concetrização de objetivos", false,false);
+                context.adicionarCategoriaDespesa(0.0,"Objetivos","Para concetrização de objetivos", true,false);
 
         }catch (Exception e){
             msgError.setVisible(true);
@@ -100,8 +105,17 @@ public class adicionarObjetivoController implements Initializable {
         }
 
         context.getListaObjetivos().sort(context.getData());
-    }
 
+        resetCampos();
+    }
+    private void resetCampos() {
+        tfNome.clear();
+        tfValor.clear();
+        taDescricao.clear();
+        sPrioridade.setValue(0);
+        dpData.setValue(null);
+        lPrioridade.setText("0/10");
+    }
     public void onBackToObjetivos(){ sideBarController.onObjetivos();}
     //public void onBackToHomePage(){ sideBarController.onHomePage();}
 
@@ -112,6 +126,17 @@ public class adicionarObjetivoController implements Initializable {
 
         sPrioridade.valueProperty().addListener((observable, oldValue, newValue) -> {
             lPrioridade.setText(newValue.intValue()+"/10");
+        });
+        dpData.setValue(context.getData());
+        dpData.setDayCellFactory(datePicker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                if(localDate.isBefore(context.getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
         });
     }
 }

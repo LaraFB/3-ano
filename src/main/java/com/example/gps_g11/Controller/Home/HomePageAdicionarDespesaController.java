@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.util.StringConverter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
@@ -50,6 +51,18 @@ public class HomePageAdicionarDespesaController {
         cbTipoPagamento.getItems().addAll( "Débito", "Numerário");
         cbTipoPagamento.setValue("Escolhe");
 
+        dataPicker.setValue(context.getData());
+        dataPicker.setDayCellFactory(datePicker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                    if(localDate.isBefore(context.getData().minusDays(4)) || localDate.isAfter(context.getData())){
+                        setDisable(true);
+                        setStyle("-fx-background-color: #ffc0cb;");
+                    }
+            }
+        });
+
     }
 
     private void tfValorFormat() {
@@ -78,7 +91,7 @@ public class HomePageAdicionarDespesaController {
     }
     public void onOk(){
         LocalDate selectedDate = dataPicker.getValue();
-        if(tfValor.getText().isEmpty() || cbEnvelope.getValue().equals("Escolhe") || selectedDate == null || taDescricao.getText().isEmpty() || cbTipoPagamento.getValue().equals("Escolhe")){
+        if(tfValor.getText().isEmpty() || cbEnvelope.getValue() == null || cbEnvelope.getValue().equals("Escolhe") || selectedDate == null || taDescricao.getText().isEmpty() || cbTipoPagamento.getValue().equals("Escolhe")){
             lblError.setVisible(true);
             lblError1.setVisible(true);
             lblError2.setVisible(true);
@@ -97,10 +110,19 @@ public class HomePageAdicionarDespesaController {
             //Adicionar um transação do tipo despesa
             int res = context.adicionarDespesa(cbEnvelope.getValue(),taDescricao.getText(),selectedDate, Double.parseDouble(tfValor.getText()),cbTipoPagamento.getValue().equals("Numerário"));
             if(res == -2){
-                lblError.setText("Não exsite este envelope");
+                lblError.setText("Não existe este envelope");
                 lblError.setTextFill(Color.RED);
             }else if(res == -1){
                 lblError.setText("Não existe tanto dinheiro no envelope");
+                lblError.setTextFill(Color.RED);
+            }else if(res == -3){
+                lblError.setText("Valor inserido inválido");
+                lblError.setTextFill(Color.RED);
+            }else if(res == -4){
+                lblError.setText("Não existe tanto saldo na Dinheiro");
+                lblError.setTextFill(Color.RED);
+            }else if(res == -5){
+                lblError.setText("Não existe tanto saldo em Conta Bancária");
                 lblError.setTextFill(Color.RED);
             }else{
                 lblError.setText("Despesa efetuada com sucesso");
@@ -110,9 +132,10 @@ public class HomePageAdicionarDespesaController {
         }
     }
     private void resetCampos() {
+
         tfValor.clear();
         taDescricao.clear();
-        dataPicker.setValue(null);
+        dataPicker.setValue(LocalDate.from(LocalDateTime.now()));
         cbEnvelope.getSelectionModel().clearSelection();
     }
 }

@@ -4,6 +4,7 @@ import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Context;
 import com.example.gps_g11.Data.Objetivo.Objetivo;
 import com.example.gps_g11.Data.Transacao.Despesa;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,9 +12,11 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +54,7 @@ public class editarObjetivoController implements Initializable{
     private Label lPrioridade;
     @FXML
     private Label lProgresso;
+    //DecimalFormat df = new DecimalFormat("#.##");
 
     public void setSideBar(SideBarController sideBarController) {this.sideBarController = sideBarController;}
 
@@ -63,6 +67,16 @@ public class editarObjetivoController implements Initializable{
         sPrioridade.valueProperty().addListener((observable, oldValue, newValue) -> {
             lPrioridade.setText(newValue.intValue()+"/10");
         });
+        dpData.setDayCellFactory(datePicker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                if(localDate.isBefore(context.getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+        });
     }
 
     public void onBackToObjetivos(){ sideBarController.onObjetivos();}
@@ -71,18 +85,21 @@ public class editarObjetivoController implements Initializable{
         if(tfNome.getText().isEmpty() ){
             msgError.setVisible(true);
             msgError.setText("Insira um nome!");
+            msgError.setTextFill(Color.RED);
             return;
         }
 
         if(tfValor.getText().isEmpty() || !isNumber(tfValor.getText()) ){
             msgError.setVisible(true);
             msgError.setText("Insira um valor numérico!");
+            msgError.setTextFill(Color.RED);
             return;
         }
 
         if(Double.parseDouble(tfValor.getText()) <= 0 ){
             msgError.setVisible(true);
             msgError.setText("Insira um valor positivo!");
+            msgError.setTextFill(Color.RED);
             return;
         }
 
@@ -102,7 +119,11 @@ public class editarObjetivoController implements Initializable{
         }catch (Exception e){
             msgError.setVisible(true);
             msgError.setText("Falha ao alterar objetivo...");
+            msgError.setTextFill(Color.RED);
         }
+        msgError.setVisible(true);
+        msgError.setText("Objetivo editado com sucesso");
+        msgError.setTextFill(Color.GREEN);
     }
 
     public void onNext(){
@@ -168,11 +189,31 @@ public class editarObjetivoController implements Initializable{
         // ?% = (valor obtido * 1) / valor
 
         pbObjetivo.setProgress( context.getListaObjetivos().getObjetivo(index).getCurrentValue() / context.getListaObjetivos().getObjetivo(index).getValor());
-        lProgresso.setText((context.getListaObjetivos().getObjetivo(index).getCurrentValue() / context.getListaObjetivos().getObjetivo(index).getValor())*100 +"%");
+
+        DecimalFormat df =new DecimalFormat("#.00");
+
+        lProgresso.setText(df.format(context.getListaObjetivos().getObjetivo(index).getCurrentValue() / context.getListaObjetivos().getObjetivo(index).getValor()*100 )+"%");
         msgError.setVisible(false);
         //btnAdcDinheiro.setDisable(false);
         btnSalvar.setDisable(false);
         btnEliminar.setDisable(false);
+        if(context.getListaObjetivos().getObjetivo(index).isDone()){
+            btnEliminar.setDisable(true);
+            btnSalvar.setDisable(true);
+            tfNome.setDisable(true);
+            tfValor.setDisable(true);
+            taDescricao.setDisable(true);
+            sPrioridade.setDisable(true);
+            dpData.setDisable(true);
+        }else{
+            btnEliminar.setDisable(false);
+            btnSalvar.setDisable(false);
+            tfNome.setDisable(false);
+            tfValor.setDisable(false);
+            taDescricao.setDisable(false);
+            sPrioridade.setDisable(false);
+            dpData.setDisable(false);
+        }
     }
 
     private boolean isNumber(String text){

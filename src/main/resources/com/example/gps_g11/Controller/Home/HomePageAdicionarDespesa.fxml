@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageAdicionarDespesaController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../../Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Home.HomePageAdicionarDespesaController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Dividas por pagar" textAlignment="CENTER" textFill="#545454">
+            <Label text="Adicionar despesa" textAlignment="CENTER" textFill="#545454">
                <font>
                   <Font name="Times New Roman Bold" size="30.0" />
                </font>
@@ -82,7 +82,7 @@
                               <Insets top="25.0" />
                            </VBox.margin>
                         </HBox>
-                        <TextArea fx:id="taDescricao" maxHeight="130.0" maxWidth="250.0" prefHeight="130.0" prefWidth="250.0" promptText="Escreva aqui detalhes ">
+                        <TextArea fx:id="taDescricao" wrapText="true" maxHeight="130.0" maxWidth="250.0" prefHeight="112.0" prefWidth="250.0" promptText="Escreva aqui detalhes ">
                            <VBox.margin>
                               <Insets left="150.0" top="10.0" />
                            </VBox.margin>
@@ -122,7 +122,7 @@
                         </HBox>
                         <ChoiceBox fx:id="cbEnvelope" prefHeight="30.0" prefWidth="200.0">
                            <VBox.margin>
-                              <Insets left="55.0" top="5.0" />
+                              <Insets left="55.0" top="10.0" />
                            </VBox.margin>
                         </ChoiceBox>
                         <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="200.0">
@@ -155,7 +155,7 @@
                         </DatePicker>
                         <HBox alignment="CENTER_LEFT" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
                            <children>
-                              <Label text="Tipo de pagamento" textFill="#545454">
+                              <Label text="Forma de pagamento" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -176,7 +176,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </HBox>
-                        <ChoiceBox fx:id="cbTipoPagamento" prefWidth="200.0">
+                        <ChoiceBox fx:id="cbTipoPagamento" prefHeight="30.0" prefWidth="200.0">
                            <VBox.margin>
                               <Insets left="55.0" />
                            </VBox.margin>
@@ -187,9 +187,9 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="lblError" prefHeight="20.0" prefWidth="219.0" text="Mensagem de Erro" textFill="#ff676a">
+                  <Label fx:id="lblError" alignment="CENTER" prefHeight="20.0" prefWidth="374.0" text="Mensagem de Erro" textFill="#ff676a">
                      <HBox.margin>
-                        <Insets right="200.0" />
+                        <Insets right="100.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Times New Roman" size="18.0" />

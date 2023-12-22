@@ -6,25 +6,25 @@ import java.time.LocalDate;
 public class Transacao implements Serializable {
     private static int nextId = 0;
     private int id;
-    private String descricao;
-    private LocalDate data;
-    private double montante;
+    protected String descricao;
+    protected LocalDate data;
+    protected double montante;
+    protected double saldoAtual; //saldo com que ficou depois da trasnação
 
-    private boolean isDinheiro;
+    protected boolean isDinheiro;
 
-    public Transacao(String descricao, LocalDate data, double montante, boolean isDinheiro) {
+    public Transacao(String descricao, LocalDate data, double montante, boolean isDinheiro,double saldoAtual) {
         this.id = nextId++;
         this.descricao = descricao;
         this.data = data;
         this.montante = montante;
         this.isDinheiro = isDinheiro;
+        this.saldoAtual = saldoAtual;
     }
 
     public int getId() {
         return id;
     }
-
-
 
     public String getDescricao() {
         return descricao;
@@ -56,5 +56,13 @@ public class Transacao implements Serializable {
 
     public void setDinheiro(boolean dinheiro) {
         isDinheiro = dinheiro;
+    }
+
+    public double getSaldoAtual() {
+        return saldoAtual;
+    }
+
+    public void setSaldoAtual(double saldoAtual) {
+        this.saldoAtual = saldoAtual;
     }
 }

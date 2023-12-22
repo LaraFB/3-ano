@@ -1,12 +1,15 @@
 package com.example.gps_g11.Controller.Envelope;
 
+import com.example.gps_g11.Controller.Home.HomeAddCategoriaEntradaPopUp;
 import com.example.gps_g11.Controller.SideBarController;
 import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
 import com.example.gps_g11.Data.Categoria.CategoriaEntradas;
 import com.example.gps_g11.Data.Context;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -14,6 +17,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -25,12 +30,15 @@ public class EnvelopeController implements Initializable {
     public HBox hbox;
     public BorderPane root;
     public Button btnCriarEnvelope;
+    public Button btnCriarCategoria;
+
     public Button btnGuardaDinheiro;
     public Button btnSwitch;
     public Label lblTitle;
     private SideBarController sideBarController;
     private Context context;
-    boolean isEnvelope = true;
+    boolean isEnvelope;
+
     public void update() {
         int i = 0;
         int buttonsPerHBox = 5;
@@ -153,9 +161,9 @@ public class EnvelopeController implements Initializable {
         Image image;
         ImageView imageView;
 
-        image = new Image(getClass().getResource("/image/open_env_icon.png").toExternalForm());
+        image = new Image(getClass().getResource("/image/category_entrada_icon.png").toExternalForm());
         imageView  = new ImageView(image);
-        imageView.setFitWidth(130);
+        imageView.setFitWidth(100);
         imageView.setFitHeight(100);
         button.setGraphic(imageView);
 
@@ -184,24 +192,29 @@ public class EnvelopeController implements Initializable {
         DecimalFormat formato = new DecimalFormat("#,##0.00");
         return formato.format(numero);
     }
-    private void handleCategoriaButtonClick(CategoriaDespesas categoria) {
-        sideBarController.verEnvelope(categoria);
-    }
-    private void handleCategoriaButtonClick(CategoriaEntradas categoria) {
-        sideBarController.verCategoria(categoria);
-
-    }
+    private void handleCategoriaButtonClick(CategoriaDespesas categoria) {sideBarController.verEnvelope(categoria);}
+    private void handleCategoriaButtonClick(CategoriaEntradas categoria) {sideBarController.verCategoria(categoria);}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         context = Context.getInstance();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
-        update();
+        isEnvelope = true;
     }
 
-    public void setSideBar(SideBarController sideBarController) {
+    public void setSideBar(SideBarController sideBarController,boolean isEnvelope) {
         this.sideBarController = sideBarController;
+        this.isEnvelope = isEnvelope;
+        update();
+        if(isEnvelope){
+            btnCriarCategoria.setVisible(false);
+            btnCriarEnvelope.setVisible(true);
+            btnGuardaDinheiro.setVisible(true);
+        }else {
+            btnCriarCategoria.setVisible(true);
+            btnCriarEnvelope.setVisible(false);
+            btnGuardaDinheiro.setVisible(false);
+        }
     }
 
     public void onCriarEnvelope(){
@@ -212,6 +225,21 @@ public class EnvelopeController implements Initializable {
 
     public void onSwitch() {
         isEnvelope = !isEnvelope;
+        if(isEnvelope){
+            btnCriarCategoria.setVisible(false);
+            btnCriarEnvelope.setVisible(true);
+            btnGuardaDinheiro.setVisible(true);
+        }else {
+            btnCriarCategoria.setVisible(true);
+            btnCriarEnvelope.setVisible(false);
+            btnGuardaDinheiro.setVisible(false);
+        }
         update();
     }
+
+    public void onCriarCategoria() {
+        sideBarController.criaCategoria();
+        isEnvelope = false;
+    }
+
 }

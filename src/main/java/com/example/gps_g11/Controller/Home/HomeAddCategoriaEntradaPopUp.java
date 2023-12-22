@@ -1,6 +1,5 @@
 package com.example.gps_g11.Controller.Home;
 
-import com.example.gps_g11.Controller.NaoVaiSerPreciso.Budget.BudgetPaneController;
 import com.example.gps_g11.Data.Context;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -40,7 +39,7 @@ public class HomeAddCategoriaEntradaPopUp {
     public void onAddBudget() {
         if(tfNome.getText().isEmpty() || taDescricao.getText().isEmpty()){
             LError.setVisible(true);
-            LError.setText("Preenche o campo com o valor");
+            LError.setText("Preenche todos os campos");
         }else{
             if(context.adicionarCategoriaEntrada(tfNome.getText(),taDescricao.getText()) == 1){
                 onClose();

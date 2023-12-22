@@ -19,46 +19,18 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Adicionar Saldo" textAlignment="CENTER" textFill="#545454">
+            <Label text="Adicionar Receita" textAlignment="CENTER" textFill="#545454">
                <font>
                   <Font name="Times New Roman Bold" size="30.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="30.0" top="-50.0" />
+                  <Insets bottom="30.0" />
                </VBox.margin>
             </Label>
-            <HBox prefHeight="250.0" prefWidth="500.0">
+            <HBox prefHeight="289.0" prefWidth="1000.0">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="500.0">
                      <children>
-                        <HBox alignment="TOP_CENTER" layoutX="30.0" layoutY="65.0" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
-                           <children>
-                              <Label text="Tipo de pagamento" textFill="#545454">
-                                 <font>
-                                    <Font name="Times New Roman" size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="100.0" top="5.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Label fx:id="lblError1" text="*" textFill="#ff676a">
-                                 <font>
-                                    <Font name="Times New Roman" size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <ChoiceBox fx:id="cbTipoPagamento" prefWidth="200.0">
-                           <VBox.margin>
-                              <Insets left="140.0" />
-                           </VBox.margin>
-                        </ChoiceBox>
                         <HBox alignment="TOP_CENTER" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
                            <children>
                               <Label text="Valor" textFill="#545454">
@@ -66,7 +38,7 @@
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="-20.0" />
+                                    <Insets left="25.0" />
                                  </HBox.margin>
                               </Label>
                               <Label fx:id="lblError3" text="*" textFill="#ff676a">
@@ -79,25 +51,56 @@
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets left="20.0" top="15.0" />
+                              <Insets left="20.0" />
                            </VBox.margin>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
                         </HBox>
-                        <TextField fx:id="tfValor" maxHeight="30.0" maxWidth="200.0" prefHeight="30.0" prefWidth="200.0" promptText="€" style="-fx-background-color: #DEEFFF;">
+                        <TextField fx:id="tfValor" maxHeight="30.0" maxWidth="220.0" prefHeight="30.0" prefWidth="220.0" promptText="€" style="-fx-background-color: #DEEFFF;">
                            <VBox.margin>
-                              <Insets left="140.0" />
+                              <Insets left="200.0" />
                            </VBox.margin>
                            <font>
                               <Font name="Times New Roman" size="14.0" />
                            </font>
                         </TextField>
-                        <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
+                        <HBox alignment="TOP_CENTER" layoutX="30.0" layoutY="65.0" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
                            <children>
-                              <Label text="Tipo de Entrada" textFill="#545454">
+                              <Label text="Fonte de rendimento" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="75.0" top="3.0" />
+                                    <Insets left="150.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="lblError1" text="*" textFill="#ff676a">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ChoiceBox fx:id="cbTipoPagamento" prefWidth="220.0">
+                           <VBox.margin>
+                              <Insets left="200.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                        <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="157.0" text="Categoria de Entrada" textFill="#545454">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="155.0" top="3.0" />
                                  </HBox.margin>
                               </Label>
                               <Label fx:id="lblError4" text="*" textFill="#ff676a">
@@ -113,15 +116,18 @@
                               <Insets top="15.0" />
                            </VBox.margin>
                         </HBox>
-                        <ChoiceBox fx:id="cbTipoEntrada" layoutX="230.0" layoutY="50.0" prefWidth="200.0">
+                        <ChoiceBox fx:id="cbTipoEntrada" layoutX="230.0" layoutY="50.0" prefWidth="220.0">
                            <VBox.margin>
-                              <Insets left="140.0" />
+                              <Insets left="200.0" />
                            </VBox.margin>
                         </ChoiceBox>
-                        <Button fx:id="btnAddTipoEntrada" onAction="#onActionAddCategoriaEntrada" mnemonicParsing="false" prefWidth="200.0" styleClass="btn" text="Adicionar novo Tipo de Entrada">
+                        <Button fx:id="btnAddTipoEntrada" mnemonicParsing="false" onAction="#onActionAddCategoriaEntrada" prefHeight="41.0" prefWidth="220.0" styleClass="btn_history" text="Adicionar Categoria" textFill="#545454">
                            <VBox.margin>
-                              <Insets left="140.0" top="10.0" />
+                              <Insets left="200.0" top="15.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
                         </Button>
                      </children>
                   </VBox>
@@ -129,7 +135,7 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" maxHeight="30.0" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0">
                            <children>
-                              <Label text="Data de Pagamento" textFill="#545454">
+                              <Label text="Data" textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -150,14 +156,14 @@
                               <Insets left="50.0" />
                            </VBox.margin>
                         </HBox>
-                        <DatePicker fx:id="dataPicker" maxHeight="30.0" maxWidth="200.0" prefHeight="30.0" prefWidth="200.0">
+                        <DatePicker fx:id="dataPicker" maxHeight="30.0" maxWidth="249.0" prefHeight="30.0" prefWidth="249.0">
                            <VBox.margin>
                               <Insets left="50.0" />
                            </VBox.margin>
                         </DatePicker>
                         <HBox prefHeight="0.0" prefWidth="200.0">
                            <children>
-                              <Label text="Pequena Descrição " textFill="#545454">
+                              <Label text="Descrição " textFill="#545454">
                                  <font>
                                     <Font name="Times New Roman" size="18.0" />
                                  </font>
@@ -175,7 +181,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </HBox>
-                        <TextArea fx:id="taDescricao" maxHeight="130.0" maxWidth="250.0" prefHeight="130.0" prefWidth="250.0" promptText="Escreva aqui detalhes ">
+                        <TextArea fx:id="taDescricao" wrapText="true" maxHeight="154.0" maxWidth="259.0" prefHeight="154.0" prefWidth="274.0" promptText="Escreva aqui detalhes ">
                            <VBox.margin>
                               <Insets left="50.0" top="10.0" />
                            </VBox.margin>
@@ -187,11 +193,11 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="71.0" prefWidth="1000.0">
                <children>
-                  <Label fx:id="lblError" prefHeight="20.0" prefWidth="240.0" text="Mensagem de Erro" textFill="#ff676a">
+                  <Label fx:id="lblError" alignment="CENTER" prefHeight="20.0" prefWidth="381.0" text="Mensagem de Erro" textFill="#ff676a">
                      <HBox.margin>
-                        <Insets right="250.0" />
+                        <Insets right="100.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Times New Roman" size="18.0" />
@@ -199,7 +205,7 @@
                   </Label>
                   <Button fx:id="btnOk" mnemonicParsing="false" onAction="#onOk" prefHeight="30.0" prefWidth="80.0" styleClass="btn" text="OK" textFill="#545454">
                      <HBox.margin>
-                        <Insets right="200.0" />
+                        <Insets right="190.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Times New Roman" size="18.0" />

@@ -16,8 +16,11 @@ public class EnvelopeCriaEnvelopeController {
     public Label lblError1;
     public Label lblError2;
     public Label lblError3;
+    public Label lblError4;
+    public Label lValorR;
 
     public TextField tfValor;
+    public TextField tfValorR;
 
     public TextArea taDescricao;
     public ToggleButton tbtnEnvelopeFechado;
@@ -33,11 +36,16 @@ public class EnvelopeCriaEnvelopeController {
     }
 
     public void onBackToEnvelope(){
-        sideBarController.onEnvelope();
+        sideBarController.onEnvelope(true);
     }
     public void initialize(){
+        lValorR.setVisible(false);
+        lblError4.setVisible(false);
+        tfValorR.setVisible(false);
         context = Context.getInstance();
         tfValorFormat();
+        if(tfValorR !=null)
+            tfValorRFormat();
         envelopeToggleGroup = new ToggleGroup();
 
         tbtnEnvelopeFechado.setToggleGroup(envelopeToggleGroup);
@@ -47,6 +55,20 @@ public class EnvelopeCriaEnvelopeController {
         lblError2.setVisible(false);
         lblError3.setVisible(false);
         lblError.setVisible(false);
+
+        checkRecorrente.setOnAction(event -> {
+            if(checkRecorrente.isSelected()){
+                lValorR.setVisible(true);
+                lblError4.setVisible(true);
+                tfValorR.setVisible(true);
+            } else {
+                tfValorR.clear();
+                lValorR.setVisible(false);
+                lblError4.setVisible(false);
+                tfValorR.setVisible(false);
+            }
+        });
+
     }
     private void tfValorFormat(){
         Pattern pattern = Pattern.compile("^\\d*\\.?\\d{0,2}$");
@@ -71,10 +93,38 @@ public class EnvelopeCriaEnvelopeController {
 
         TextFormatter<String> textFormatter = new TextFormatter<>(converter, "", filter);
         tfValor.setTextFormatter(textFormatter);
+
+    }
+    private void tfValorRFormat(){
+        Pattern pattern = Pattern.compile("^\\d*\\.?\\d{0,2}$");
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            String newText = change.getControlNewText();
+            if (pattern.matcher(newText).matches()) {
+                return change;
+            }
+            return null;
+        };
+        StringConverter<String> converter = new StringConverter<>() {
+            @Override
+            public String fromString(String string) {
+                return string;
+            }
+
+            @Override
+            public String toString(String object) {
+                return object;
+            }
+        };
+
+        TextFormatter<String> textFormatter = new TextFormatter<>(converter, "", filter);
+        tfValorR.setTextFormatter(textFormatter);
+
     }
 
     public void onOk(){
         ToggleButton toggleButtonAtivo = (ToggleButton) envelopeToggleGroup.getSelectedToggle();
+
+
         if(tfValor.getText().isEmpty() || nomeEnvelope.getText().isEmpty() || toggleButtonAtivo == null || taDescricao.getText().isEmpty()){
             lblError.setVisible(true);
             lblError1.setVisible(true);
@@ -87,18 +137,36 @@ public class EnvelopeCriaEnvelopeController {
             lblError1.setVisible(false);
             lblError2.setVisible(false);
             lblError3.setVisible(false);
-            lblError.setText("Saldo adicionao com sucesso");
+            lblError.setText("Envelope adicionado com sucesso");
             lblError.setTextFill(Color.GREEN);
-            if(context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected()) == -1){
-                    lblError.setText("Saldo insuficiente");
+
+            int res;
+            if(checkRecorrente.isSelected() == true)
+                if(tfValorR.getText().isEmpty()){
+                    res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected(),Double.parseDouble(tfValorR.getText()));
+                }else{
                     lblError.setTextFill(Color.RED);
+                    lblError.setText("Preencha os espaços obrigatórios");
+                    return;
+                }
+            else
+                res = context.adicionarCategoriaDespesa(Double.parseDouble(tfValor.getText()),nomeEnvelope.getText(),taDescricao.getText(),toggleButtonAtivo == tbtnEnvelopeAberto,checkRecorrente.isSelected());
+
+            if(res == -1){
+                lblError.setText("Saldo insuficiente");
+                lblError.setTextFill(Color.RED);
+            }else if(res == -2){
+                lblError.setText("Envelope já existe");
+                lblError.setTextFill(Color.RED);
             }else{
-                    resetCampos();
+                resetCampos();
             }
         }
     }
     private void resetCampos() {
         tfValor.clear();
+        if(tfValorR != null)
+            tfValorR.clear();
         nomeEnvelope.clear();
         taDescricao.clear();
         envelopeToggleGroup.selectToggle(null);

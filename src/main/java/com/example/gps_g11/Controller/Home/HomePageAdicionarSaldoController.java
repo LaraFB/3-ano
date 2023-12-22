@@ -44,9 +44,9 @@ public class HomePageAdicionarSaldoController {
         sideBarController.onHomePage();
     }
 
-    public void onAdicionarBolsa(){
+    /*public void onAdicionarBolsa(){
         sideBarController.adicionarBolsa();
-    }
+    }*/
 
     public void initialize(){
         context = Context.getInstance();
@@ -60,6 +60,17 @@ public class HomePageAdicionarSaldoController {
         cbTipoPagamento.getItems().addAll( "Débito", "Numerário");
         cbTipoPagamento.setValue("Escolhe");
 
+        dataPicker.setValue(context.getData());
+        dataPicker.setDayCellFactory(datePicker -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate localDate, boolean b) {
+                super.updateItem(localDate, b);
+                if(localDate.isBefore(context.getData().minusDays(4)) || localDate.isAfter(context.getData())){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+        });
         update();
     }
 
@@ -100,7 +111,17 @@ public class HomePageAdicionarSaldoController {
             lblError5.setVisible(true);
             lblError.setTextFill(Color.RED);
             lblError.setText("Preencha os espaços obrigatórios");
-        }else{
+        }else if(Double.parseDouble(tfValor.getText())== 0){
+            lblError.setVisible(true);
+            lblError1.setVisible(false);
+            lblError2.setVisible(false);
+            lblError3.setVisible(true);
+            lblError4.setVisible(false);
+            lblError5.setVisible(false);
+            lblError.setTextFill(Color.RED);
+            lblError.setText("Valor Inválido");
+        }
+        else{
             lblError.setVisible(true);
             lblError1.setVisible(false);
             lblError2.setVisible(false);
@@ -149,13 +170,15 @@ public class HomePageAdicionarSaldoController {
         cbTipoEntrada.getItems().clear();
         if(context.getCategoriasListEntradas().isEmpty()){
             cbTipoEntrada.setDisable(true);
+            cbTipoEntrada.setValue("Crie um tipo de entrada");
         }else{
             cbTipoEntrada.setDisable(false);
             for (String categoriaEntradasNome : context.getCategoriaEntradasNomes()) {
                 cbTipoEntrada.getItems().add(categoriaEntradasNome);
+                cbTipoEntrada.setValue(categoriaEntradasNome);
             }
         }
-        cbTipoEntrada.setValue("Escolhe");
+      //  cbTipoEntrada.setValue("Escolhe");
     }
 
 

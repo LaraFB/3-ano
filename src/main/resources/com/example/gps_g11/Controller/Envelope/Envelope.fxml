@@ -12,15 +12,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #DEEFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeController">
+<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #DEEFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gps_g11.Controller.Envelope.EnvelopeController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnSwitch" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onSwitch" prefHeight="50.0"  styleClass="slideItem" stylesheets="@../../Style.css" text="Categorias  " textAlignment="RIGHT" textFill="#545454">
+                  <Button fx:id="btnSwitch" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onSwitch" prefHeight="50.0" styleClass="slideItem" stylesheets="@../../Style.css" text="Categorias  " textAlignment="RIGHT" textFill="#545454">
                      <font>
-                        <Font name="Times New Roman" size="16.0" />
+                        <Font name="Times New Roman" size="20.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.6">
@@ -35,13 +35,16 @@
                      <padding>
                         <Insets left="10.0" />
                      </padding>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
                   </Button>
-                  <Label fx:id="lblTitle" text="Todos os Envelopes Criados">
+                  <Label fx:id="lblTitle" text="Todos os Envelopes Criados" textFill="#545454">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Times New Roman Bold" size="30.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="200.0" />
+                        <Insets left="200.0" top="20.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -60,9 +63,9 @@
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox fx:id="venvelope" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="btnCriarEnvelope" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onCriarEnvelope" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Criar&#10;Envelope" textAlignment="CENTER">
+                        <Button fx:id="btnCriarEnvelope" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onCriarEnvelope" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Criar&#10;Envelope" textAlignment="CENTER" textFill="#545454">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -80,7 +83,25 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnGuardaDinheiro" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onGuardaDinheiro" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Adicionar&#10;Dinheiro" textAlignment="CENTER">
+                        <Button fx:id="btnCriarCategoria" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onCriarCategoria" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Criar&#10;Categoria" textAlignment="CENTER" textFill="#545454" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Times New Roman" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../image/add_category_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets top="-130.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnGuardaDinheiro" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onGuardaDinheiro" prefHeight="130.0" prefWidth="80.0" style="-fx-background-color: #EFF7FF;" text="Adicionar&#10;Dinheiro" textAlignment="CENTER" textFill="#545454">
                            <graphic>
                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

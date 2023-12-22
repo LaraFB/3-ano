@@ -1,14 +1,11 @@
 package com.example.gps_g11.Controller;
 
-import com.example.gps_g11.Controller.Envelope.EnvelopeController;
-import com.example.gps_g11.Controller.Envelope.EnvelopeCriaEnvelopeController;
-import com.example.gps_g11.Controller.Envelope.EnvelopeAdicionaDinheiroController;
-import com.example.gps_g11.Controller.Envelope.EnvelopeVisualizarController;
-import com.example.gps_g11.Controller.Estatistica.EstatisticaController;
+import com.example.gps_g11.Controller.Envelope.*;
+import com.example.gps_g11.Controller.Estatistica.EstastiticasDespesaGastoDiaController;
+import com.example.gps_g11.Controller.Estatistica.EstastiticasEnvelopeController;
 import com.example.gps_g11.Controller.Historico.HistoricoController;
 import com.example.gps_g11.Controller.Home.*;
 import com.example.gps_g11.Controller.Objetivo.ObjetivoController;
-
 import com.example.gps_g11.Controller.Objetivo.adicionarObjetivoController;
 import com.example.gps_g11.Controller.Objetivo.editarObjetivoController;
 import com.example.gps_g11.Data.Categoria.CategoriaDespesas;
@@ -23,7 +20,6 @@ import javafx.scene.layout.Pane;
 
 import java.time.LocalDate;
 
-
 public class SideBarController {
     public DatePicker Date;
     public Button btnHomePage;
@@ -36,6 +32,7 @@ public class SideBarController {
 
     private CategoriaDespesas c;
     private CategoriaEntradas c1;
+    private boolean isEnvelope = true;
 
     public void onHomePage(){
         loadFXML("Home/HomePage.fxml");
@@ -43,101 +40,113 @@ public class SideBarController {
 
     public void onHistorico(){loadFXML("Historico/Historico.fxml");}
 
-    public void onEnvelope(){
+    public void onEnvelope(boolean isEnvelope){
+        this.isEnvelope = isEnvelope;
         loadFXML("Envelope/Envelope.fxml");
     }
-
+    public void onEnvelope(){
+        isEnvelope = true;
+        loadFXML("Envelope/Envelope.fxml");
+    }
     public void onObjetivos(){
         loadFXML("Objetivo/Objetivo.fxml");
     }
 
-    public void onEstatisticas(){ loadFXML("Estatisticas/Estatisticas.fxml");}
+    public void onEstatisticas(){ loadFXML("Estatisticas/EstatisticasDespesasGastoDia.fxml");}
 
     private void loadFXML(String fxmlFileName) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
             Node node = loader.load();
-            if (loader != null) {
-                switch (fxmlFileName){
-                    case "Home/HomePage.fxml":
-                        HomeController homeController = loader.getController();
-                        homeController.setSideBar(this);
-                        putBtnActive(btnHomePage);
-                        break;
-                    case "Historico/Historico.fxml":
-                        HistoricoController historicoController = loader.getController();
-                        historicoController.setSideBar(this);
-                        putBtnActive(bntHistorico);
-                        break;
-                    case "Envelope/Envelope.fxml":
-                        EnvelopeController envelopeController = loader.getController();
-                        envelopeController.setSideBar(this);
-                        putBtnActive(btnEnvelope);
-                        break;
-                    case "Envelope/EnvelopeCriaEnvelope.fxml":
-                        EnvelopeCriaEnvelopeController envelopeCriaEnvelopeController = loader.getController();
-                        envelopeCriaEnvelopeController.setSideBar(this);
-                        putBtnActive(btnEnvelope);
-                        break;
-                    case "Envelope/EnvelopeAdicionaDinheiro.fxml":
-                        EnvelopeAdicionaDinheiroController envelopeGuardaDinheiroController =loader.getController();
-                        envelopeGuardaDinheiroController.setSideBar(this);
-                        putBtnActive(btnEnvelope);
-                        break;
-                    case "Envelope/EnvelopeVisualizar.fxml":
-                        EnvelopeVisualizarController envelopeVisualizarController =loader.getController();
-                        envelopeVisualizarController.setSideBar(this);
-                        if (c != null) {
-                            envelopeVisualizarController.setCategoria(c);
-                        }else{
-                            envelopeVisualizarController.setCategoria(c1);
-                        }
-                        putBtnActive(btnEnvelope);
-                        c = null;
-                        c1 = null;
-                        break;
-                    case "Home/HomePageAdicionarDespesa.fxml":
-                        HomePageAdicionarDespesaController homePageAdicionarDividaController = loader.getController();
-                        homePageAdicionarDividaController.setSideBar(this);
-                        putBtnActive(btnHomePage);
-                        break;
-                    case "Home/HomePageAdicionarSaldo.fxml":
-                        HomePageAdicionarSaldoController homePageAdicionarSaldoController = loader.getController();
-                        homePageAdicionarSaldoController.setSideBar(this);
-                        putBtnActive(btnHomePage);
-                        break;
-                    case "Home/HomePageAdicionarBolsa.fxml":
-                        HomePageAdicionarBolsaController homePageAdicionarBolsaController = loader.getController();
-                        homePageAdicionarBolsaController.setSideBar(this);
-                        putBtnActive(btnHomePage);
-                        break;
-                    case "Home/HomePageTransaction.fxml":
-                        HomePageTransactionController homePageTransactionController = loader.getController();
-                        homePageTransactionController.setSideBar(this);
-                        putBtnActive(btnHomePage);
-                        break;
-                    case "Objetivo/Objetivo.fxml":
-                        ObjetivoController objetivoController = loader.getController();
-                        objetivoController.setSideBar(this);
-                        putBtnActive(btnObjetivos);
-                        break;
-                    case "Objetivo/adicionarObjetivo.fxml":
-                        adicionarObjetivoController adcObjetivoController = loader.getController();
-                        adcObjetivoController.setSideBar(this);
-                        putBtnActive(btnObjetivos);
-                        break;
-                    case "Objetivo/editarObjetivo.fxml":
-                        editarObjetivoController editObjetivoController = loader.getController();
-                        editObjetivoController.setSideBar(this);
-                        putBtnActive(btnObjetivos);
-                        break;
-                    case "Estatisticas/Estatisticas.fxml":
-                        EstatisticaController estatitcaController = loader.getController();
-                        estatitcaController.setSideBar(this);
-                        putBtnActive(btnEstatistica);
-                        break;
-                    default:
-                }
+            switch (fxmlFileName) {
+                case "Home/HomePage.fxml":
+                    HomeController homeController = loader.getController();
+                    homeController.setSideBar(this);
+                    putBtnActive(btnHomePage);
+                    break;
+                case "Historico/Historico.fxml":
+                    HistoricoController historicoController = loader.getController();
+                    historicoController.setSideBar(this);
+                    putBtnActive(bntHistorico);
+                    break;
+                case "Envelope/Envelope.fxml":
+                    EnvelopeController envelopeController = loader.getController();
+                    envelopeController.setSideBar(this,isEnvelope);
+                    putBtnActive(btnEnvelope);
+                    break;
+                case "Envelope/EnvelopeCriaEnvelope.fxml":
+                    EnvelopeCriaEnvelopeController envelopeCriaEnvelopeController = loader.getController();
+                    envelopeCriaEnvelopeController.setSideBar(this);
+                    putBtnActive(btnEnvelope);
+                    break;
+                case "Envelope/EnvelopeAdicionaDinheiro.fxml":
+                    EnvelopeAdicionaDinheiroController envelopeGuardaDinheiroController = loader.getController();
+                    envelopeGuardaDinheiroController.setSideBar(this);
+                    putBtnActive(btnEnvelope);
+                    break;
+                case "Envelope/EnvelopeVisualizar.fxml":
+                    EnvelopeVisualizarController envelopeVisualizarController = loader.getController();
+                    envelopeVisualizarController.setSideBar(this);
+                    if (c != null) {
+                        envelopeVisualizarController.setCategoria(c);
+                    } else {
+                        envelopeVisualizarController.setCategoria(c1);
+                    }
+                    putBtnActive(btnEnvelope);
+                    c = null;
+                    c1 = null;
+                    break;
+                case "Home/HomePageAdicionarDespesa.fxml":
+                    HomePageAdicionarDespesaController homePageAdicionarDividaController = loader.getController();
+                    homePageAdicionarDividaController.setSideBar(this);
+                    putBtnActive(btnHomePage);
+                    break;
+                case "Home/HomePageAdicionarSaldo.fxml":
+                    HomePageAdicionarSaldoController homePageAdicionarSaldoController = loader.getController();
+                    homePageAdicionarSaldoController.setSideBar(this);
+                    putBtnActive(btnHomePage);
+                    break;
+                case "Home/HomePageAdicionarBolsa.fxml":
+                    HomePageAdicionarBolsaController homePageAdicionarBolsaController = loader.getController();
+                    homePageAdicionarBolsaController.setSideBar(this);
+                    putBtnActive(btnHomePage);
+                    break;
+                case "Home/HomePageTransacao.fxml":
+                    HomePageTransacaoController homePageTransacaoController = loader.getController();
+                    homePageTransacaoController.setSideBar(this);
+                    putBtnActive(btnHomePage);
+                    break;
+                case "Objetivo/Objetivo.fxml":
+                    ObjetivoController objetivoController = loader.getController();
+                    objetivoController.setSideBar(this);
+                    putBtnActive(btnObjetivos);
+                    break;
+                case "Objetivo/adicionarObjetivo.fxml":
+                    adicionarObjetivoController adcObjetivoController = loader.getController();
+                    adcObjetivoController.setSideBar(this);
+                    putBtnActive(btnObjetivos);
+                    break;
+                case "Objetivo/editarObjetivo.fxml":
+                    editarObjetivoController editObjetivoController = loader.getController();
+                    editObjetivoController.setSideBar(this);
+                    putBtnActive(btnObjetivos);
+                    break;
+                case "Estatisticas/EstatisticasDespesasGastoDia.fxml":
+                    EstastiticasDespesaGastoDiaController estastiticasDespesaController = loader.getController();
+                    estastiticasDespesaController.setSideBar(this);
+                    putBtnActive(btnEstatistica);
+                    break;
+                case "Estatisticas/EstatisticasEnvelope.fxml":
+                    EstastiticasEnvelopeController estastiticasEnvelopeController = loader.getController();
+                    estastiticasEnvelopeController.setSideBar(this);
+                    putBtnActive(btnEstatistica);
+                    break;
+                case "Envelope/EnvelopeCriaCategoria.fxml":
+                    EnvelopeCriaCategoriaController envelopeCriaCategoriaController = loader.getController();
+                    envelopeCriaCategoriaController.setSideBar(this);
+                    putBtnActive(btnEnvelope);
+                    break;
+                default:
             }
             ContentPane.getChildren().setAll(node);
         } catch (Exception e) {
@@ -179,15 +188,13 @@ public class SideBarController {
             }
         });
         Date.valueProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("Data alterada para: " + newValue);
+            //System.out.println("Data alterada para: " + newValue);
             context.verficacoes(newValue);
         });
 
-        inicializar();
+        //inicializar();
         onHomePage();
     }
-
-
 
     private void inicializar() {
         context.adicionarCategoriaEntrada("Mesada","Mesada");
@@ -204,6 +211,9 @@ public class SideBarController {
 
     public void criarEnvelopesPane(){
         loadFXML("Envelope/EnvelopeCriaEnvelope.fxml");
+    }
+    public void criaCategoria(){
+        loadFXML("Envelope/EnvelopeCriaCategoria.fxml");
     }
     public void adicionaDinheiroEnvelope(){loadFXML("Envelope/EnvelopeAdicionaDinheiro.fxml");}
     public void adicionarDespesa(){
@@ -227,14 +237,19 @@ public class SideBarController {
 
     public void adicionarObjetivos() { loadFXML("Objetivo/adicionarObjetivo.fxml");}
 
-    public void resetbudget(){loadFXML("Home/HomePageReset.fxml");}
+    public void transacao(){ loadFXML("Home/HomePageTransacao.fxml");}
+    //public void resetbudget(){loadFXML("Home/HomePageReset.fxml");}
 
     public void editarObjetivos() { loadFXML("Objetivo/editarObjetivo.fxml");}
 
-
-    public void transaction() {
+  /*  public void transaction() {
         loadFXML("Home/HomePageTransaction.fxml");
-    }
+    }*/
+
+    public void mudaestastiticasEnvelope(){loadFXML("Estatisticas/EstatisticasEnvelope.fxml");}
+    public void mudaestastiticasDespesa(){loadFXML("Estatisticas/EstatisticasDespesasGastoDia.fxml");}
+
+
 }
 
 

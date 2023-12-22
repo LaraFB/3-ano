@@ -150,7 +150,12 @@ public class ListaObjetivos implements Serializable {
                     prioridadeO1 = o1.getMissingValue() * (11- o1.getPrioridade());
                     prioridadeO2 = o2.getMissingValue() * (11- o2.getPrioridade());
                 }
-
+                if(o1.isDone()){
+                    prioridadeO2 += Integer.MAX_VALUE;
+                }
+                if(o2.isDone()){
+                    prioridadeO1 += Integer.MAX_VALUE;
+                }
                 if(prioridadeO1 == prioridadeO2) return 0;
                 if(prioridadeO1 > prioridadeO2) return -1;
                 else return 1;
@@ -159,4 +164,14 @@ public class ListaObjetivos implements Serializable {
 
         Collections.sort(objetivos,comparator);
     }
+
+    public boolean isAllFullfiled() {
+        for (Objetivo objetivo : objetivos) {
+            if(!objetivo.isFullfiled()){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

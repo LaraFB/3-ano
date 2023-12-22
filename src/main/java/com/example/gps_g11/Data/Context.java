@@ -21,7 +21,7 @@ public class Context {
 
     private Context() {
         contextData = new ContextData();
-        //loadFromFile();
+        loadFromFile();
     }
 
     public static Context getInstance() {
@@ -46,11 +46,14 @@ public class Context {
         if(contextData.getSaldo().getSaldoPorDistribuir()-valor < 0){
             return -1;
         }
+        if(valor == 0)
+            return -3;
         for (CategoriaDespesas categoria : contextData.getListaCategorias().getCategoriasDespesas()) {
             if(categoria.getNome().equals(nomeCategoria)){
                 categoria.setValor(categoria.getValor()+valor);
                 contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
                 contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
+                categoria.setOldValue(valor);
                 return 0;
             }
         }
@@ -60,10 +63,25 @@ public class Context {
         if(contextData.getSaldo().getSaldoPorDistribuir()-valor < 0){
             return -1; //Não existe saldo para adicionar algo ao envelope
         }
-        contextData.getListaCategorias().adicionarCategoriaDespesas(new CategoriaDespesas(name,descricao,valor,isAberto,isRecorrente));
-        contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
-        contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
-        return 0;
+
+        if(contextData.getListaCategorias().adicionarCategoriaDespesas(new CategoriaDespesas(name,descricao,valor,isAberto,isRecorrente))){
+            contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
+            contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
+            return 0;
+        }
+        return -2;
+    }
+    public int adicionarCategoriaDespesa(double valor, String name,String descricao,boolean isAberto, boolean isRecorrente, double valorRecorrente) {
+        if(contextData.getSaldo().getSaldoPorDistribuir()-valor < 0){
+            return -1; //Não existe saldo para adicionar algo ao envelope
+        }
+
+        if(contextData.getListaCategorias().adicionarCategoriaDespesas(new CategoriaDespesas(name,descricao,valor,isAberto,isRecorrente,valorRecorrente))){
+            contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()-valor);
+            contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()+valor);
+            return 0;
+        }
+        return -2;
     }
     public boolean isListaCategoriasDespesasEmpty() {
         return contextData.getListaCategorias().getCategoriasDespesas().isEmpty();
@@ -119,39 +137,57 @@ public class Context {
         * Se tiver saldo suficiente vai criar uma despesa
         * Desconta do budget o saldo Real e desconta o saldo nos envelopes, e desconta o valor do envelope
         * */
-
+        if(montante == 0)
+            return -3;
         CategoriaDespesas categoriaDespesas = null;
         for (CategoriaDespesas c : contextData.getListaCategorias().getCategoriasDespesas()) {
             if(c.getNome().equals(nomeCategoria)){
                 categoriaDespesas = c;
             }
         }
-        if(categoriaDespesas  == null){
-            return -2; //Se não existir categoria
-        }
-        if(categoriaDespesas.getValor() < montante || montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal() || montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
-            return -1; //Se não houver saldo suficiente nesse envelope
+        if(nomeCategoria.equals("Objetivos")){
+            if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
+                return -1;
+            }
+            if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
+                return -1;
+            }
+        }else{
+
+            if(isDinheiro && montante > contextData.getSaldo().getBudgetDinheiro().getSaldoReal()){
+                return -1;
+            }
+            if(!isDinheiro && montante > contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()){
+                return -1;
+            }
+            if(categoriaDespesas  == null){
+
+                //System.out.println("1");
+                return -2; //Se não existir categoria
+            }
+            if(categoriaDespesas.getValor() < montante ){
+                return -1; //Se não houver saldo suficiente nesse envelope
+            }
+            categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
         }
 
-        //Subtrai no envelope o valor da montante
-        categoriaDespesas.setValor(categoriaDespesas.getValor()-montante);
         //Adiciioan adespesa
-        Despesa transacao = new Despesa(descricao,date,montante,categoriaDespesas,isDinheiro);
-        //Adicionar ao historioTransacao a despesa
-        contextData.getHistoricoTransacoes().adicionarTransacaoDespesas(transacao);
-        //Subtrari ao saldo real e ao saldo nos envelopes a montante
-        contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()-montante);
-        contextData.getSaldo().setTotalDespesas(contextData.getSaldo().getTotalDespesas()+montante);
         if(isDinheiro){
             contextData.getSaldo().getBudgetDinheiro().setSaldoReal(contextData.getSaldo().getBudgetDinheiro().getSaldoReal()-montante);
         }else{
             contextData.getSaldo().getBudgetContaBancaria().setSaldoReal(contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()-montante);
         }
+        Despesa transacao = new Despesa(descricao,date,montante,categoriaDespesas,isDinheiro,contextData.getSaldo().getBudgetDinheiro().getSaldoReal()+contextData.getSaldo().getBudgetContaBancaria().getSaldoReal());
+        //Adicionar ao historioTransacao a despesa
+        contextData.getHistoricoTransacoes().adicionarTransacaoDespesas(transacao);
+        //Subtrari ao saldo real e ao saldo nos envelopes a montante
+        contextData.getSaldo().setSaldoNosEnvelopes(contextData.getSaldo().getSaldoNosEnvelopes()-montante);
+        contextData.getSaldo().setTotalDespesas(contextData.getSaldo().getTotalDespesas()+montante);
         return 0;
     }
     public List<Despesa> getTransacoesDespesa() {
         List<Despesa> transacoesDespesa = contextData.getHistoricoTransacoes().getTransacaoDespesas();
-        transacoesDespesa.sort(Comparator.comparing(Despesa::getData).reversed());
+        transacoesDespesa.sort(Comparator.comparing(Despesa::getData));
         return transacoesDespesa;
     }
 
@@ -212,7 +248,8 @@ public class Context {
          * Se existir tenho que verificar se essa categoria tem saldo suficiente nesse envelope
          * Aumenta do budget o saldo Real
          * */
-
+        if (montante ==0)
+            return -3;
         CategoriaEntradas categoriaEntradas = null;
         for (CategoriaEntradas c : contextData.getListaCategorias().getCategoriasEntradas()) {
             if(c.getNome().equals(nomeCategoria)){
@@ -222,20 +259,20 @@ public class Context {
         if(categoriaEntradas  == null){
             return -2; //Se não existir categoria
         }
-        categoriaEntradas.setValor(categoriaEntradas.getValor()+montante);
-        Entrada entrada = new Entrada(descricao,date,montante,categoriaEntradas,isDinheiro);
-        contextData.getHistoricoTransacoes().adicionarTransacaoEntrada(entrada);
-        contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()+montante);
         if(isDinheiro){
             contextData.getSaldo().getBudgetDinheiro().setSaldoReal(contextData.getSaldo().getBudgetDinheiro().getSaldoReal()+montante);
         }else{
             contextData.getSaldo().getBudgetContaBancaria().setSaldoReal(contextData.getSaldo().getBudgetContaBancaria().getSaldoReal()+ montante);
         }
+        categoriaEntradas.setValor(categoriaEntradas.getValor()+montante);
+        Entrada entrada = new Entrada(descricao,date,montante,categoriaEntradas,isDinheiro,contextData.getSaldo().getBudgetDinheiro().getSaldoReal()+contextData.getSaldo().getBudgetContaBancaria().getSaldoReal());
+        contextData.getHistoricoTransacoes().adicionarTransacaoEntrada(entrada);
+        contextData.getSaldo().setSaldoPorDistribuir(contextData.getSaldo().getSaldoPorDistribuir()+montante);
+
         return 0;
     }
     public List<Entrada> getTransacoesEntrada() {
         List<Entrada> transacaoEntradas = contextData.getHistoricoTransacoes().getTransacaoEntradas();
-        transacaoEntradas.sort(Comparator.comparing(Entrada::getData).reversed());
         return transacaoEntradas;
     }
 
@@ -329,8 +366,14 @@ public class Context {
             //guarda historico?
             //reset historico
         }
+        if(datee != null && datee.getMonth().compareTo(newValue.getMonth()) < 0) {
+            contextData.getSaldo().setTotalDespesas(0);
+            for (CategoriaDespesas categoriasDespesa : contextData.getListaCategorias().getCategoriasDespesas()) {
+                categoriasDespesa.setPago(false);
+            }
+        }
     }
-
+    private LocalDate datee= null;
 
     /*
 
